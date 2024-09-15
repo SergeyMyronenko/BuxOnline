@@ -1,0 +1,6 @@
+//імпорт змінних з файла App.scss
+@use '../../App.scss' as styles;
+
+h1{
+    color: styles.$red;
+}

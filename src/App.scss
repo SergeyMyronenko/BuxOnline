@@ -1,0 +1,64 @@
+//ресет стилів
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//змінні для кольорів, по порядку з фігми:
+
+//Головні кольори
+$lightBlue: #2E85EC;
+$blackForText: #282828;
+$blackForImg: #000000;
+$white: #ffffff;
+
+
+//Другорядні кольори
+$yellowForBanner:#FFE247;
+$grayForText:#626262;
+$grayforBorder:#BCBCBC;
+$grayForFill:#E9E9E9;
+$blue:#26508F;
+$red:#E33629;
+$yellowForIcons:#F4D31E;
+$blueForBanner:#2E85EC;
+
+//Стилі заголовків
+h1 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+
+}
+
+h3 {
+  font-size: 16px;
+   font-weight: 500;
+
+}
+
+h4 {
+  font-size: 15px;
+  // font-weight: ;
+  //ще невідомо
+
+}
+
+h5 {
+  font-size: 14px;
+  // font-weight: ;
+  //ще невідомо
+
+}
+
+h6 {
+  font-size: 12px;
+  // font-weight: ;
+  //ще невідомо
+
+}

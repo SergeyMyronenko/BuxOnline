@@ -1,0 +1,13 @@
+//імпорт змінних з файла App.scss
+@use '../../App.scss' as styles;
+
+.vacancyWrapper{
+    width: 100%;
+    height: max-content;
+    //використання змінних
+    //Також будемо використовувати nesting
+    h1{
+        color: styles.$blue;
+    }
+
+}
