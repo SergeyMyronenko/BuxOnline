@@ -1,0 +1,28 @@
+.accordion-wrapper {
+    display: grid;
+    
+
+
+    .accordion-title {
+        grid-template-rows: 1fr;
+        display: flex;
+        h3 {
+            font-weight: 700;
+            font-size: 15px;
+        }
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .accordion-list {
+        display: grid;
+        overflow: hidden;
+
+        .accordion-item {
+            display: flex;
+
+        }
+    }
+}

@@ -1,13 +1,77 @@
 //імпорт змінних з файла App.scss
 @use '../../App.scss' as styles;
 
-.vacancyWrapper{
+.vacancy-wrapper {
     width: 100%;
-    height: max-content;
+    // height: max-content;
+    height: 1000px;
+    display: flex;
+
     //використання змінних
     //Також будемо використовувати nesting
-    h1{
+    h1 {
         color: styles.$blue;
+    }
+
+    .vacancy-sidebar-wrapper {
+        background-color: white;
+        width: 400px;
+
+        .vacancy-sidebar {
+            padding-top: 25px;
+            width: 305px;
+            margin: auto;
+            flex-grow: 0;
+            flex-shrink: 0;
+
+            .vacancy-title {
+                display: flex;
+                align-items: end;
+                padding-bottom: 75px;
+                img {
+                    width: 38px;
+                    height: 44px;
+                }
+
+                h2 {
+                    color: styles.$blackForText;
+                    padding-left: 50px;
+                    
+                }
+            }
+
+            .vacancy-Options {
+                display: grid;
+                background-color: styles.$grayForFill;
+                border-radius: 10px;
+                padding: 25px 15px;
+               h3{
+                input[type=checkbox]{
+                    appearance: none;
+                    border: 1px solid black;
+                    border-radius: 3px;
+                    width: 12.5px;
+                    height: 12.5px;
+                    &:checked{
+                        //зробити кастомний чекбокс
+                        background-color: styles.$blackForText;
+                    }
+                }
+               } 
+            }
+        }
+    }
+
+    .vacancy-browse {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 613px;
+            height: 567px;
+        }
     }
 
 }
