@@ -6,6 +6,7 @@ import vacancyTitleImg from '../../assets/vacancyTitleImg.png';
 
 //імпорт компонентів
 import Accordion from '../../Components/Accordion/Accordion';
+import SubCategory from '../../Components/SubCategory/SubCategory';
 
 function Vacancy() {
     return (
@@ -19,17 +20,69 @@ function Vacancy() {
                         </div>
                         <div className="vacancy-options">
                             <Accordion accordionTitle="Software development">
-                                <p>Software Engineer</p>
-                                <p>Full Stack Developer</p>
-                                <p>Back End Developer</p>
-                                <p>Front End Developer</p>
+                                <SubCategory label='Software Engineer'></SubCategory>
+                                <SubCategory label='Full Stack Developer'></SubCategory>
+                                <SubCategory label='Backend Developer'></SubCategory>
+                                <SubCategory label='Frontend Developer'></SubCategory>
+                                <SubCategory label='Web Developer'></SubCategory>
+                                <SubCategory label='Mobile Developer'></SubCategory>
+                                <SubCategory label='DevOps Engineer'></SubCategory>
+                                <SubCategory label='Data Scientist'></SubCategory>
+                                <SubCategory label='Machine Learning Engineer'></SubCategory>
+                                <SubCategory label='AI Specialist'></SubCategory>
+                                <SubCategory label='Blockchain Developer'></SubCategory>
+                                <SubCategory label='Data Engineer'></SubCategory>
                             </Accordion>
-                            <h3>IT Infrastructure</h3>
-                            <h3>IT Management & Strategy</h3>
-                            <h3>Cybersecurity</h3>
-                            <h3>Product & UX Design</h3>
-                            <h3>Marketing & Content</h3>
-                            <h3>Data Analysis & Business</h3>
+                            <Accordion accordionTitle="IT Infrastructure">
+                                <SubCategory label="System Administrator" />
+                                <SubCategory label="Network Engineer" />
+                                <SubCategory label="Cloud Engineer" />
+                                <SubCategory label="Security Engineer" />
+                                <SubCategory label="IT Technician" />
+                                <SubCategory label="IT Support Specialist" />
+                                <SubCategory label="IT Manager" />
+                                <SubCategory label="IT Operations Manager" />
+                                <SubCategory label="IT Infrastructure Manager" />
+
+                            </Accordion>
+                            <Accordion accordionTitle="IT Management & Strategy">
+                                <SubCategory label="Project Manager" />
+                                <SubCategory label="IT Project Manager" />
+                                <SubCategory label="IT Coordinator" />
+                                <SubCategory label="IT Analyst" />
+                                <SubCategory label="IT Consultant" />
+                                <SubCategory label="IT Architect" />
+                                <SubCategory label="IT Strategist" />
+                                <SubCategory label="IT Service Manager" />
+                            </Accordion>
+                            <Accordion accordionTitle="Cybersecurity">
+                                <SubCategory label="IT Security Specialist" />
+                                <SubCategory label="IT Auditor" />
+                                <SubCategory label="IT Compliance Analyst" />
+                                <SubCategory label="IT Risk Manager" />
+                            </Accordion>
+                            <Accordion accordionTitle="Product & UX Design">
+                            <SubCategory label="UX Designer" />
+                                <SubCategory label="UI Designer" />
+                                <SubCategory label="Product Manager" />
+                                <SubCategory label="Technical Writer" />
+                            </Accordion>
+                            <Accordion accordionTitle="Marketing & Content">
+                                <SubCategory label="SEO Specialist" />
+                                <SubCategory label="Digital Marketer" />
+                                <SubCategory label="Social Media Manager" />
+                                <SubCategory label="E-commerce Specialist" />
+                                <SubCategory label="Content Strategist" />
+                                <SubCategory label="Email Marketing Specialist" />
+                                <SubCategory label="CRM Specialist" />
+                            </Accordion>
+                            <Accordion accordionTitle="Data Analysis & Business">
+                                <SubCategory label="Business Analyst" />
+                                <SubCategory label="Data Analyst" />
+                                <SubCategory label="IT Quality Assurance Analyst" />
+                                <SubCategory label="IT Trainer" />
+                                <SubCategory label="Scrum Master" />
+                            </Accordion>
                         </div>
                     </div>
                 </div>

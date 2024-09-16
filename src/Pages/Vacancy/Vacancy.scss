@@ -6,8 +6,6 @@
     // height: max-content;
     height: 1000px;
     display: flex;
-
-    //використання змінних
     //Також будемо використовувати nesting
     h1 {
         color: styles.$blue;
@@ -40,11 +38,12 @@
                 }
             }
 
-            .vacancy-Options {
+            .vacancy-options {
                 display: grid;
-                background-color: styles.$grayForFill;
                 border-radius: 10px;
                 padding: 25px 15px;
+                 background-color: styles.$grayForFill;
+
                h3{
                 input[type=checkbox]{
                     appearance: none;

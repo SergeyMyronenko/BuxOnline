@@ -6,10 +6,10 @@ import { FaAngleDown } from "react-icons/fa6";
 const Accordion = ({ accordionTitle, children }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <div className='accordion-wrapper'>
-            <div className="accordion-title">
+        <div className='accordion-wrapper' >
+            <div className="accordion-title"  onClick={()=>setIsOpen(!isOpen)}>
                 <h3 >{accordionTitle}</h3>
-                <div className={`accordion-button ${isOpen?'open':''}`} onClick={()=>setIsOpen(!isOpen)} >
+                <div className={`accordion-button ${isOpen?'open':''}`} >
                 <FaAngleDown></FaAngleDown>
                 <FaAngleDown></FaAngleDown>
                 </div>
@@ -19,8 +19,7 @@ const Accordion = ({ accordionTitle, children }) => {
                 <div className='accordion-items-wrapper'>
                     {React.Children.map(children, (child, index) => (
                         <li className='accordion-item' key={index}>
-                            <input type="checkbox" name="" id="" />
-                            {child}
+                                    {child}
                         </li>
                     ))}
                 </div>
