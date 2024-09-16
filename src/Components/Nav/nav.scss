@@ -1,0 +1,58 @@
+nav {
+  margin-left: 53px;
+  height: 72px;
+  margin-top: 26px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+nav .img-logo {
+  height: 40px;
+  width: 40px;
+}
+
+nav .nav-block-left{
+  display: flex;
+  align-items: center;
+  margin-left: 53px;
+}
+
+nav .nav-block-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 400px;
+  width: 50%;
+}
+
+nav h2 {
+  color: #2e85ec;
+  font-size: 18px;
+  text-shadow: 1px 1px 1px rgb(33, 57, 180);
+}
+
+nav h3 {
+  color: #282828;
+  font-size: 13px;
+}
+
+nav h4 {
+  color: black;
+  font-size: 14px;
+}
+
+nav .flag-nav {
+  width: 18px;
+  height: 13px;
+}
+
+nav .nav-entrance {
+  color: #2e85ec;
+  background-color: white;
+  border: 2px solid #2e85ec;
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
