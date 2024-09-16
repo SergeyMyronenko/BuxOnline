@@ -1,6 +1,6 @@
 import React from "react";
 import banner from "../../assets/indexBannerHeader.png";
-import "./header.scss";
+import "../Header/Header.scss";
 
 export default function Header() {
   return (
