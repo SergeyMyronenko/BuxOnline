@@ -9,11 +9,11 @@ function App() {
 
   return (
     <>
-    <Link to="/vite-react-app/">Index</Link>
-    <Link to="/vite-react-app/vacancy">Vacancy</Link>
+    <Link to="/BuxOnline/">Index</Link>
+    <Link to="/BuxOnline/vacancy">Vacancy</Link>
     <Routes>
-            <Route path='/vite-react-app/' element={<Index/>}/>
-            <Route path='/vite-react-app/vacancy' element={<Vacancy/>}/>
+            <Route path='/BuxOnline/' element={<Index/>}/>
+            <Route path='/BuxOnline/vacancy' element={<Vacancy/>}/>
      </Routes>
       
     
