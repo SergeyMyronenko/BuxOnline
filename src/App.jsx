@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-    <Link to="/BuxOnline/">Index</Link>
+   
     <Link to="/BuxOnline/vacancy">Vacancy</Link>
     <Routes>
             <Route path='/BuxOnline/' element={<Index/>}/>

@@ -2,16 +2,19 @@ import React from "react";
 import flag from "../../assets/indexFlagNav.png";
 import frame from "../../assets/indexFrameNav.png";
 import "../Nav/Nav.scss";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
     <nav>
-      <div classNameName="nav-block-left">
-        <img classNameName="img-logo" src={frame} alt="img-logo" />
-        <h2 classNameName="name-logo">Buxonline</h2>
+      <div className="nav-block-left">
+        <img className="img-logo" src={frame} alt="img-logo" />
+        <Link to="/BuxOnline/"> <h2 className="name-logo">Buxonline</h2></Link>
       </div>
       <div className="nav-block-right">
-        <h3>ВАКАНЦІЇ</h3>
+        <Link to='/BuxOnline/vacancy'>
+          <h3>ВАКАНЦІЇ</h3>
+        </Link>
         <h3>ДЛЯ БІЗНЕСУ</h3>
         <a className="nav-entrance" href="#">
           Вхід / Реєстрація
