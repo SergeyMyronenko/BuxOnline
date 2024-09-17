@@ -1,0 +1,47 @@
+.card {
+  width: 100%;
+  max-width: 483px;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 15px;
+  border: 1px solid #bcbcbc;
+  font-family: "Inter";
+  padding-left: 20px;
+  padding-top: 20px;
+  margin-left: 20px; //delete
+  &-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .card-title {
+      display: flex;
+      flex-direction: row;
+      gap: 23px;
+      h3 {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.032px;
+      }
+      .card-salary {
+        color: #26508f;
+      }
+    }
+  }
+  &-description {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.032px;
+    // &-main-requirements{
+
+    // }
+  }
+}
