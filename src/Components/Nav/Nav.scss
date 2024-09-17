@@ -1,0 +1,55 @@
+//імпорт змінних з файла App.scss
+@use "../../App.scss" as styles;
+
+nav {
+  margin-left: 53px;
+  height: 72px;
+  margin-top: 26px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .nav-block-left {
+    display: flex;
+    align-items: center;
+    margin-left: 53px;
+
+    .img-logo {
+      height: 40px;
+      width: 40px;
+    }
+
+    .name-logo {
+      color: styles.$lightBlue;
+      font-size: 18px;
+      text-shadow: 1px 1px 1px rgb(33, 57, 180);
+    }
+  }
+
+  .nav-block-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 400px;
+    width: 50%;
+
+    h3 {
+      color: styles.$blackForText;
+    }
+
+    .nav-entrance {
+      color: styles.$lightBlue;
+      background-color: styles.$white;
+      border: 2px solid styles.$lightBlue;
+      border-radius: 20px;
+      font-size: 14px;
+      padding: 10px 20px 10px 20px;
+      text-decoration: none;
+    }
+    
+    .flag-nav {
+      width: 18px;
+      height: 14px;
+    }
+    }
+}
