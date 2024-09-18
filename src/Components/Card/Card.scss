@@ -1,16 +1,13 @@
 .card {
   width: 100%;
   max-width: 483px;
-  height: 290px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   border-radius: 15px;
   border: 1px solid #bcbcbc;
   font-family: "Inter";
-  padding-left: 20px;
-  padding-top: 20px;
-  margin-left: 20px; //delete
+  padding: 20px;
   &-title-wrapper {
     display: flex;
     flex-direction: column;
@@ -40,8 +37,58 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.032px;
-    // &-main-requirements{
-
-    // }
+    &-main-requirements {
+      display: flex;
+      gap: 15px;
+      .location,
+      .experience {
+        display: flex;
+        gap: 5px;
+        padding: 4px 10px;
+        border-radius: 10px;
+        align-items: center;
+        border: 1px solid #282828;
+      }
+    }
+    &-skills {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      .skill {
+        display: flex;
+        padding: 4px 12px;
+        align-items: center;
+        gap: 5px;
+        border-radius: 10px;
+        border: 1px solid #626262;
+        color: #626262;
+      }
+    }
+  }
+  &-buttons-wrapper {
+    display: flex;
+    gap: 27px;
+    .button {
+      display: inline-flex;
+      padding: 12px 22px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 20px;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.032px;
+      border: 1px solid #2e85ec;
+    }
+    .details-button {
+      background-color: #2e85ec;
+      color: white;
+    }
+    .apply-button {
+      background-color: white;
+      color: #2e85ec;
+    }
   }
 }

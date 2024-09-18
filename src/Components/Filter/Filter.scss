@@ -1,0 +1,26 @@
+.filter {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  &-panel {
+    display: flex;
+    gap: 8px;
+    &-button {
+      font-size: 12px;
+      background-color: white;
+      display: flex;
+      padding: 8px 12px;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      border: 1px solid #3f7ee8;
+      color: #3f7ee8;
+      cursor: pointer;
+    }
+    .clear {
+      border: 1px solid #e33629;
+      color: #e33629;
+    }
+  }
+}
