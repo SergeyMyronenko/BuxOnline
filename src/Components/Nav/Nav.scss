@@ -52,7 +52,7 @@ nav {
         height: 13.5px;
         width: 18px;
       }
-      h4{
+      h5{
         font-weight: 400;
         
       }
@@ -83,7 +83,7 @@ nav {
       }
     }
 
-    h3 {
+    h5 {
       color: styles.$blackForText;
       &:hover{
         text-decoration: underline solid currentColor;

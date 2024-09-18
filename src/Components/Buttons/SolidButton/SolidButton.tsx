@@ -8,21 +8,22 @@ interface SolidButtonProps {
     fontSize?: number;
     onClick?: () => void;
     children?: React.ReactNode;
-    disabled?: false;
+    disabled?: boolean;
+    type?: 'button' | 'submit';
 }
 
-const SolidButton: React.FC<SolidButtonProps> = ({ width, height, borderRadius, onClick,children,fontSize,disabled }) => {
+const SolidButton: React.FC<SolidButtonProps> = ({ width, height, borderRadius, onClick, children, fontSize, disabled=false, type = 'button' }) => {
     //these styles override the default styles,
-    //specified in the HollowButton.scss file
+    //specified in the SolidButton.scss file
     const SolidButtonStyle = {
-        'width':`${width}px`,
+        'width': `${width}px`,
         'height': `${height}px`,
         'borderRadius': `${borderRadius}px`,
         'fontSize': `${fontSize}px`
     };
 
     return (
-        <button className="solid-button" style={SolidButtonStyle} disabled={disabled}>
+        <button className="solid-button" style={SolidButtonStyle} disabled={disabled} type={type} onClick={onClick}>
             {children}
         </button>
     );

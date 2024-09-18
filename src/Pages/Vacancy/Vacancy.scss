@@ -4,7 +4,7 @@
 .vacancy-wrapper {
     width: 100%;
     // height: max-content;
-    height: 1000px;
+    min-height: 1000px;
     display: flex;
     //Також будемо використовувати nesting
     h1 {
@@ -17,14 +17,15 @@
 
         .vacancy-sidebar {
             padding-top: 25px;
-            width: 305px;
+            width: 245px;
             margin: auto;
             flex-grow: 0;
             flex-shrink: 0;
 
             .vacancy-title {
+                padding: 5px;
                 display: flex;
-                align-items: end;
+                align-items: center;
                 padding-bottom: 75px;
                 img {
                     width: 38px;
@@ -66,7 +67,7 @@
         flex-grow: 1;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: top;
 
         img {
             width: 613px;

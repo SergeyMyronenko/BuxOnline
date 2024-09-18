@@ -25,7 +25,7 @@ function Vacancy() {
                             <img src={vacancyTitleImg} alt="" />
                             <h2>Вакансії</h2>
                         </div>
-                        <div className="vacancy-options">
+                        <form className="vacancy-options">
                             <Accordion accordionTitle="Software development">
                                 <SubCategory label='Software Engineer'></SubCategory>
                                 <SubCategory label='Full Stack Developer'></SubCategory>
@@ -90,9 +90,9 @@ function Vacancy() {
                                 <SubCategory label="IT Trainer" />
                                 <SubCategory label="Scrum Master" />
                             </Accordion>
-                        <SolidButton width={265}>Застосувати</SolidButton>
+                        <SolidButton width={200} type='submit'>Застосувати</SolidButton>
 
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div className="vacancy-browse">

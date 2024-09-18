@@ -78,18 +78,17 @@ export default function Nav() {
       </div>
 
       <div className="nav-block-right">
-        <Link to="/BuxOnline/vacancy">
+        <Link to='/BuxOnline/vacancy'>
           <h3>ВАКАНСІЇ</h3>
         </Link>
-        <h3>ДЛЯ БІЗНЕСУ</h3>
-        <Link>
-          <HollowButton width={157} fontSize={16} borderRadius={12}>
-            Вхід/Реєстрація
-          </HollowButton>
+        <h5>ДЛЯ БІЗНЕСУ</h5>
+        
+        <Link to='/BuxOnline/login'>
+         <HollowButton width={157} fontSize={16} borderRadius={12} >Вхід/Реєстрація</HollowButton>
         </Link>
         <button className="button-language-change" onClick={changeLanguage}>
           {flag}
-          <h4>{language}</h4>
+          <h5>{language}</h5>
           <TiArrowSortedDown />
           <div
             className={`language-change-dropdown ${
@@ -104,7 +103,7 @@ export default function Nav() {
               }}
             >
               {UA_FLAG}
-              <h4>UA</h4>
+              <h5>UA</h5>
             </div>
             <div
               className="dropdown-option"
@@ -114,7 +113,7 @@ export default function Nav() {
               }}
             >
               {UK_FLAG}
-              <h4>UK</h4>
+              <h5>UK</h5>
             </div>
           </div>
         </button>

@@ -8,9 +8,10 @@ interface HollowButtonProps {
     fontSize?: number;
     onClick?: () => void;
     children?: React.ReactNode;
-    disabled?: false;
+    disabled?: boolean;
+    type?: 'button' | 'submit';
 }
-const HollowButton: React.FC<HollowButtonProps> = ({ width, height, borderRadius, onClick,children,fontSize,disabled }) => {
+const HollowButton: React.FC<HollowButtonProps> = ({ width, height, borderRadius, onClick,children,fontSize,disabled=false,type='button' }) => {
     //these styles override the default styles,
     //specified in the HollowButton.scss file
     const HollowButtonStyle = {
@@ -21,7 +22,7 @@ const HollowButton: React.FC<HollowButtonProps> = ({ width, height, borderRadius
     };
 
     return (
-        <button className="hollow-button" style={HollowButtonStyle} disabled={disabled}>
+        <button className="hollow-button" style={HollowButtonStyle} disabled={disabled} type={type}>
             {children}
         </button>
     );
