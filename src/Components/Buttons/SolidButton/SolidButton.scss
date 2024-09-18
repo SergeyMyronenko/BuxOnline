@@ -31,6 +31,11 @@
         background-color: styles.$white;
         color: styles.$lightBlue;
     border: 1px solid styles.$lightBlue;
+    scale: 1.05;
 
+
+    }
+    &:not(:disabled):active {
+       scale: 0.95;
     }
 }

@@ -11,6 +11,7 @@ import Header from '../../Components/Header/Header';
 
 import Accordion from '../../Components/Accordion/Accordion';
 import SubCategory from '../../Components/SubCategory/SubCategory';
+import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 
 function Vacancy() {
     return (
@@ -89,6 +90,8 @@ function Vacancy() {
                                 <SubCategory label="IT Trainer" />
                                 <SubCategory label="Scrum Master" />
                             </Accordion>
+                        <SolidButton width={265}>Застосувати</SolidButton>
+
                         </div>
                     </div>
                 </div>
