@@ -1,13 +1,71 @@
 @use "../../App.scss" as styles;
-.form-wrapper{
+
+.form-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;    
-    height: 900px;
-    form{
-    border: 1px solid styles.$lightBlue;
-    border-radius: 16px;
-    padding: 64px;
+    align-items: center;
+    height: 700px;
+    text-align: center;
+    .title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    form {
+        border: 1px solid styles.$lightBlue;
+        border-radius: 16px;
+        padding: 64px;
+        color: styles.$blackForText;
+        p{
+            font-size: 20px;
+            &:nth-of-type(1){
+                padding: 25px 0px 15px 0px;
+            }
+            &:nth-of-type(2){
+                padding:25px 0px;
+            }
+            &:nth-last-of-type(1){
+                font-size: 16px;
+                span{
+                    color: styles.$lightBlue;
+                    cursor: pointer;
+                    a{
+                        text-decoration: none;
+                        color: styles.$lightBlue;   
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+        .media-login {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 486px;
+            height: 48px;
+            a{
+                height: 43px;
+                width: 146px;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                text-decoration: none;   
+                color: styles.$blackForText;
+                border: 1px solid styles.$lightBlue;
+                border-radius: 12px;
+                font-size: 20px;
+            }
+            
+        }
+
+
+        button {
+            width: 100%;
+            margin: 20px 0px 20px 0px;
+        }
     }
 }

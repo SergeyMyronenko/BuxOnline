@@ -79,7 +79,7 @@ export default function Nav() {
 
       <div className="nav-block-right">
         <Link to='/BuxOnline/vacancy'>
-          <h3>ВАКАНСІЇ</h3>
+          <h5>ВАКАНСІЇ</h5>
         </Link>
         <h5>ДЛЯ БІЗНЕСУ</h5>
         
