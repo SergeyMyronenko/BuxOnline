@@ -1,0 +1,41 @@
+@use '../../../App.scss' as styles;
+
+.solid-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    width: 138px;
+    height: 39px;
+    border-radius: 12px;
+    border: none;
+    background-color: styles.$lightBlue;
+    color: styles.$white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    // Селектор для вимкненої кнопки
+    // Змінює колір фону, тексту та рамки, а також курсор
+    // при вимкненому стані
+
+
+    &:disabled {
+        background-color: rgb(46, 133, 236,0.3);
+        color: styles.$white;
+        cursor: auto;
+    }
+
+    // Селектор для кнопки, яка не вимкнена, при наведенні
+    // Змінює колір фону та тексту при наведенні
+    &:not(:disabled):hover {
+        background-color: styles.$white;
+        color: styles.$lightBlue;
+    border: 1px solid styles.$lightBlue;
+    scale: 1.05;
+
+
+    }
+    &:not(:disabled):active {
+       scale: 0.95;
+    }
+}

@@ -2,17 +2,18 @@ $transitionAll: 0.5s cubic-bezier(0.7, 0, 0.31, 0.98);
 
 .accordion-wrapper {
     display: grid;
-    padding: 10px;
+    padding: 10px 0px;
 
     .accordion-title {
         grid-template-rows: 1fr;
         display: flex;
-        cursor: pointer;
 
 
         h3 {
             font-weight: 700;
             font-size: 15px;
+            cursor: pointer;
+
         }
         .accordion-button{
             margin-left: 10px;
@@ -20,7 +21,9 @@ $transitionAll: 0.5s cubic-bezier(0.7, 0, 0.31, 0.98);
             width: 20px;
             display: flex;
             flex-direction: column-reverse;
-            overflow: hidden;
+             overflow: hidden;
+             cursor: pointer;
+
 
             svg{
                 width: 20px;

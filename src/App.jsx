@@ -1,24 +1,19 @@
-import { Routes,Route } from "react-router";
+import { Routes, Route } from "react-router";
 
 import Vacancy from "./Pages/Vacancy/Vacancy";
 import Index from "./Pages/Index/Index";
-import { Link } from "react-router-dom";
+import NotFound from "./Pages/NotFound/NotFound";
 import './App.scss'
 
 function App() {
 
   return (
     <>
-   
-    <Link to="/BuxOnline/vacancy">Vacancy</Link>
-    <Routes>
-            <Route path='/BuxOnline/' element={<Index/>}/>
-            <Route path='/BuxOnline/vacancy' element={<Vacancy/>}/>
-     </Routes>
-      
-    
-      
-      
+      <Routes>
+        <Route path='/BuxOnline/' element={<Index />} />
+        <Route path='/BuxOnline/vacancy' element={<Vacancy />} />
+        <Route path='*' element={<NotFound/>}></Route>
+      </Routes>
     </>
   )
 }

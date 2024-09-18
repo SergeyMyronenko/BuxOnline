@@ -5,12 +5,19 @@ import vacancyBackgroungImg from '../../assets/vacancyBackgroundImg.png';
 import vacancyTitleImg from '../../assets/vacancyTitleImg.png';
 
 //імпорт компонентів
+import Nav from '../../Components/Nav/Nav';
+import Footer from '../../Components/Footer/Footer';
+import Header from '../../Components/Header/Header';
+
 import Accordion from '../../Components/Accordion/Accordion';
 import SubCategory from '../../Components/SubCategory/SubCategory';
+import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 
 function Vacancy() {
     return (
-        <div>
+        <>
+            <Header/>
+            <Nav />
             <div className="vacancy-wrapper">
                 <div className="vacancy-sidebar-wrapper">
                     <div className="vacancy-sidebar">
@@ -83,6 +90,8 @@ function Vacancy() {
                                 <SubCategory label="IT Trainer" />
                                 <SubCategory label="Scrum Master" />
                             </Accordion>
+                        <SolidButton width={265}>Застосувати</SolidButton>
+
                         </div>
                     </div>
                 </div>
@@ -90,7 +99,8 @@ function Vacancy() {
                     <img src={vacancyBackgroungImg} alt="" />
                 </div>
             </div>
-        </div>
+            <Footer/>
+        </>
     );
 }
 
