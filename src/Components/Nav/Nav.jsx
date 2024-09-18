@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import frame from "../../assets/indexFrameNav.png";
 import { TiArrowSortedDown } from "react-icons/ti";
-
 
 import "../Nav/Nav.scss";
 import { Link } from "react-router-dom";
+import HollowButton from "../Buttons/HollowButton/HollowButton";
+
+//флаг України у svg
 const UA_FLAG = <svg width="18" height="13.5" viewBox="0 0 18 13.5" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path fillRule="evenodd" clipRule="evenodd" d="M0 0.75H18V14.25H0V0.75Z" fill="#FFE247" />
   <path fillRule="evenodd" clipRule="evenodd" d="M0 0.75H18V7.5H0V0.75Z" fill="#2E85EC" />
 </svg>;
+//флаг Великобританії у svg
 const UK_FLAG = <svg width="18" height="13.5" viewBox="0 0 18 13.5" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="18" height="13.5" fill="#012169" />
   <path d="M0 0L18 13.5M18 0L0 13.5" stroke="white" strokeWidth="2" />
@@ -17,6 +19,8 @@ const UK_FLAG = <svg width="18" height="13.5" viewBox="0 0 18 13.5" fill="none" 
   <rect y="6" width="18" height="3" fill="white" />
   <rect x="8.25" width="1.5" height="13.5" fill="#C8102E" />
   <rect y="6.75" width="18" height="1.5" fill="#C8102E" /></svg>
+
+
 export default function Nav() {
   const [language, setLanguage] = useState("UK");
   const [flag, setFlag] = useState(UA_FLAG);
@@ -42,9 +46,7 @@ export default function Nav() {
         </Link>
         <h3>ДЛЯ БІЗНЕСУ</h3>
         <Link>
-          <div className="nav-entrance" href="#">
-            Вхід / Реєстрація
-          </div>
+         <HollowButton width={157} fontSize={16} borderRadius={12}>Вхід/Реєстрація</HollowButton>
         </Link>
         <button className="button-language-change" onClick={changeLanguage}>
           {flag}
