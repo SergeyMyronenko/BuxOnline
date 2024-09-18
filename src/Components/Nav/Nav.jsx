@@ -1,4 +1,5 @@
  import React from "react";
+ import { Link } from "react-router-dom";
  import flag from "../../images/flag-nav.png";
  import frame from '../../images/frame-nav.png';
  import './nav.scss';
@@ -15,7 +16,7 @@ return (
       <h2 classNameName="name-logo">Buxonline</h2>
     </div>
     <div className="nav-block-right">
-      <h3>ВАКАНЦІЇ</h3>
+      <h3><Link to="/vite-react-app/vacancy">ВАКАНЦІЇ</Link></h3>
       <h3>ДЛЯ БІЗНЕСУ</h3>
       <a className="nav-entrance" href="#">
         Вхід / Реєстрація 
