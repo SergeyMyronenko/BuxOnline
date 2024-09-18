@@ -17,6 +17,15 @@
         border-radius: 16px;
         padding: 64px;
         color: styles.$blackForText;
+        a{
+            color: styles.$lightBlue;
+        cursor: pointer;
+            text-decoration: none;
+            color: styles.$lightBlue;   
+            &:hover{
+                text-decoration: underline;
+            }
+        }
         p{
             font-size: 20px;
             &:nth-of-type(1){
@@ -27,17 +36,10 @@
             }
             &:nth-last-of-type(1){
                 font-size: 16px;
-                span{
-                    color: styles.$lightBlue;
-                    cursor: pointer;
-                    a{
-                        text-decoration: none;
-                        color: styles.$lightBlue;   
-                        &:hover{
-                            text-decoration: underline;
-                        }
-                    }
-                }
+                
+                    
+                    
+                
             }
         }
 

@@ -18,7 +18,11 @@
         border-radius: 12px;
         border: 1px solid styles.$grayforBorder;
         font-size: 16px;
-        padding: 20px;
-        color: styles.$blackForText;
+        padding-left: 20px;
+        &::placeholder{
+            color: styles.$grayforBorder;
+        }
+            
+
     }
 }
