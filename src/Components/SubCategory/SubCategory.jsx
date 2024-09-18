@@ -11,7 +11,7 @@ const SubCategory = ({label, checked, onChange }) => {
                     onChange={onChange}
                 />
             </div>
-            <label htmlFor={label}>{label}</label>
+            <label htmlFor={label}><h6>{label}</h6></label>
         </div>
     );
 };

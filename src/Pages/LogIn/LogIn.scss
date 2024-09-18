@@ -1,0 +1,13 @@
+@use "../../App.scss" as styles;
+.form-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    height: 900px;
+    form{
+    border: 1px solid styles.$lightBlue;
+    border-radius: 16px;
+    padding: 64px;
+
+    }
+}

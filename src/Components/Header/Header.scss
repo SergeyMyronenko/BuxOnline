@@ -8,14 +8,15 @@ header{
     padding: 0px 20px;
     align-items: center;
     color: styles.$white;
-    .banner-blue-left{
-        display: flex;
-        align-items: center;
-    }
     display: flex;
     justify-content: space-between;
     height: 36px;
     background-color: styles.$lightBlue;
+    .banner-blue-left{
+        display: flex;
+        align-items: center;
+    }
+   
    }
    .banner-yellow{
     padding: 0px 20px;
