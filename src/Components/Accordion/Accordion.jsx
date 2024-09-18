@@ -7,9 +7,9 @@ const Accordion = ({ accordionTitle, children }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className='accordion-wrapper' >
-            <div className="accordion-title"  onClick={()=>setIsOpen(!isOpen)}>
-                <h3 >{accordionTitle}</h3>
-                <div className={`accordion-button ${isOpen?'open':''}`} >
+            <div className="accordion-title"  >
+                <h3 onClick={()=>setIsOpen(!isOpen)}>{accordionTitle}</h3>
+                <div className={`accordion-button ${isOpen?'open':''}`} onClick={()=>setIsOpen(!isOpen)}>
                 <FaAngleDown></FaAngleDown>
                 <FaAngleDown></FaAngleDown>
                 </div>
