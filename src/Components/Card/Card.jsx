@@ -1,5 +1,7 @@
 import "./Card.scss";
 
+import { RiMapPinLine } from "react-icons/ri";
+
 const Card = () => {
   return (
     <div className="card">
@@ -28,35 +30,24 @@ const Card = () => {
       <div className="card-description">
         <div className="card-description-main-requirements">
           <div className="location">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M17.9999 4.47991C16.4086 2.88861 14.2504 1.99463 11.9999 1.99463C9.74949 1.99463 7.59123 2.88861 5.99993 4.47991C4.40863 6.07121 3.51465 8.22947 3.51465 10.4799C3.51465 12.7303 4.40863 14.8886 5.99993 16.4799L11.2699 21.7599C11.3629 21.8536 11.4735 21.928 11.5954 21.9788C11.7172 22.0296 11.8479 22.0557 11.9799 22.0557C12.1119 22.0557 12.2426 22.0296 12.3645 21.9788C12.4864 21.928 12.597 21.8536 12.6899 21.7599L17.9999 16.4299C19.5846 14.8452 20.4748 12.696 20.4748 10.4549C20.4748 8.21386 19.5846 6.06459 17.9999 4.47991ZM16.5699 14.9999L11.9999 19.5899L7.42993 14.9999C6.52707 14.0962 5.91241 12.9452 5.66362 11.6922C5.41484 10.4392 5.54312 9.14066 6.03223 7.96059C6.52135 6.78052 7.34935 5.77196 8.41156 5.06239C9.47377 4.35281 10.7225 3.97409 11.9999 3.97409C13.2773 3.97409 14.5261 4.35281 15.5883 5.06239C16.6505 5.77196 17.4785 6.78052 17.9676 7.96059C18.4567 9.14066 18.585 10.4392 18.3362 11.6922C18.0875 12.9452 17.4728 14.0962 16.5699 14.9999ZM8.99993 7.40991C8.19264 8.21968 7.73932 9.31648 7.73932 10.4599C7.73932 11.6033 8.19264 12.7001 8.99993 13.5099C9.59969 14.1107 10.3635 14.521 11.1956 14.6893C12.0276 14.8576 12.8909 14.7765 13.677 14.4561C14.4631 14.1356 15.1371 13.5902 15.6144 12.8882C16.0917 12.1861 16.3511 11.3588 16.3599 10.5099C16.3644 9.94311 16.2553 9.38117 16.0388 8.8573C15.8224 8.33343 15.5032 7.85827 15.0999 7.45991C14.7036 7.05449 14.231 6.73145 13.7094 6.50938C13.1877 6.2873 12.6273 6.17059 12.0603 6.16594C11.4934 6.16129 10.9311 6.26881 10.4059 6.4823C9.88067 6.69579 9.40285 7.01104 8.99993 7.40991ZM13.6899 12.0899C13.311 12.4747 12.8101 12.7158 12.2731 12.7722C11.736 12.8285 11.196 12.6966 10.7454 12.3988C10.2949 12.1011 9.96173 11.6562 9.80294 11.14C9.64415 10.6238 9.66958 10.0685 9.87489 9.56907C10.0802 9.06958 10.4526 8.65693 10.9285 8.40165C11.4044 8.14637 11.9542 8.06432 12.4839 8.16953C13.0135 8.27474 13.4902 8.56067 13.8324 8.97844C14.1746 9.39621 14.3611 9.91988 14.3599 10.4599C14.3454 11.0772 14.0864 11.6634 13.6399 12.0899H13.6899Z"
-                fill="#282828"
-              />
-            </svg>{" "}
+            <RiMapPinLine />
             <span className="country">Portugal</span>
           </div>
           <div className="experience">5 years</div>
         </div>
-        <div className="card-skills">
-          <div className="CSS">CSS</div>
-          <div className="PHP">CSS</div>
-          <div className="Yii">CSS</div>
-          <div className="Symfony">CSS</div>
-          <div className="MySQL">CSS</div>
-          <div className="Kubernetes">CSS</div>
-          <div className="+ ще 2">CSS</div>
+        <div className="card-description-skills">
+          <div className="skill">CSS</div>
+          <div className="skill">PHP</div>
+          <div className="skill">Yii</div>
+          <div className="skill">Symfony</div>
+          <div className="skill">MySQL</div>
+          <div className="skill">Kubernetes</div>
+          <div className="skill">+ ще 2</div>
         </div>
       </div>
       <div className="card-buttons-wrapper">
-        <button className="details-button">Детальніше</button>
-        <button className="respond-button">Відгукнутися</button>
+        <button className="button details-button">Детальніше</button>
+        <button className="button apply-button">Відгукнутися</button>
       </div>
     </div>
   );
