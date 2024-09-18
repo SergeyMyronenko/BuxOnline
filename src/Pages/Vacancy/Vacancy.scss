@@ -39,9 +39,10 @@
             }
 
             .vacancy-options {
+                width: 100%;
                 display: grid;
                 border-radius: 10px;
-                padding: 25px 15px;
+                padding: 25px 20px;
                  background-color: styles.$grayForFill;
 
                h3{
