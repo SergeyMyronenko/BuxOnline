@@ -8,6 +8,7 @@
     width: 138px;
     height: 39px;
     border-radius: 12px;
+    border: none;
     background-color: styles.$lightBlue;
     color: styles.$white;
     cursor: pointer;
@@ -19,7 +20,7 @@
 
 
     &:disabled {
-        background-color: styles.$lightBlue;
+        background-color: rgb(46, 133, 236,0.3);
         color: styles.$white;
         cursor: auto;
     }
@@ -29,5 +30,7 @@
     &:not(:disabled):hover {
         background-color: styles.$white;
         color: styles.$lightBlue;
+    border: 1px solid styles.$lightBlue;
+
     }
 }

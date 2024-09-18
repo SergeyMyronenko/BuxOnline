@@ -45,8 +45,8 @@ export default function Nav() {
           <h3>ВАКАНСІЇ</h3>
         </Link>
         <h3>ДЛЯ БІЗНЕСУ</h3>
-        <Link>
-         <HollowButton width={157} fontSize={16} borderRadius={12}>Вхід/Реєстрація</HollowButton>
+        <Link >
+         <HollowButton width={157} fontSize={16} borderRadius={12} >Вхід/Реєстрація</HollowButton>
         </Link>
         <button className="button-language-change" onClick={changeLanguage}>
           {flag}

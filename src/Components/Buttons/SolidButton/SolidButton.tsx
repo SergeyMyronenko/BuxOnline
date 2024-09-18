@@ -1,5 +1,5 @@
 import React from 'react';
-import './HollowButton.scss';
+import './SolidButton.scss';
 
 interface SolidButtonProps {
     width?: number;
