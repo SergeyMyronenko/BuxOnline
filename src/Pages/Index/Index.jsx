@@ -9,6 +9,7 @@ import indexLittlePhoto3 from "../../assets/indexLittlePhoto-3.png";
 import indexLittlePhotos from "../../assets/indexLittlePhotos.png";
 
 import Nav from "../../Components/Nav/Nav";
+import Header from "../../Components/Header/Header";
 
 
 import './Index.scss';
@@ -16,6 +17,7 @@ import './Index.scss';
 function Index () {
     return (
       <>
+      <Header/>
       <Nav/>
       <main>
         <div className="main-block">
