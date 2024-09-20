@@ -1,12 +1,14 @@
 import React from 'react';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
-import SelectField from '../../Components/Input/InputFIeld/SelectField';
-
+import SelectField from '../../Components/Input/InputField/SelectField';
+import { Link } from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 import './Register.scss';
 const RegisterCompany = () => {
     return (
         <>        
+        <Outlet></Outlet>
             <div className="form-wrapper">
 
                 <form>
@@ -21,7 +23,9 @@ const RegisterCompany = () => {
                     <InputField label='Назва компанії' type='text' placeholder='Назва компанії' id='company-name'></InputField>
                     <SelectField label="Тип компанії" options={["Компанія", "Агентство"]}></SelectField>
                 
-                    <SolidButton type='submit' fontSize={16}>Далі</SolidButton>
+                    <Link to ='onboard'>
+                        <SolidButton type='submit' fontSize={16}>Далі</SolidButton>
+                    </Link>
                 </form>
             </div>
         </>

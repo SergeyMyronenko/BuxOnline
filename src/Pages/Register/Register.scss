@@ -19,15 +19,14 @@
         padding: 64px;
         color: styles.$blackForText;
         width: 620px;
+
         a {
             text-decoration: none;
             color: styles.$lightBlue;
             color: styles.$lightBlue;
             cursor: pointer;
 
-            &:hover {
-                text-decoration: underline;
-            }
+            
         }
 
         p {
@@ -44,10 +43,10 @@
             &:nth-last-of-type(1) {
                 font-size: 16px;
 
-                
 
-                 
-                
+
+
+
             }
         }
 
@@ -58,6 +57,7 @@
             width: 486px;
             height: 48px;
             margin: 20px 0px;
+
             a {
                 height: 43px;
                 width: 146px;
@@ -79,15 +79,16 @@
             margin: 20px 0px 20px 0px;
         }
 
-       
 
-        .agree{
+
+        .agree {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            margin: auto ;
+            margin: auto;
             text-align: left;
+
             input[type=checkbox] {
                 width: 28px;
                 height: 28px;
@@ -101,8 +102,54 @@
 
                 }
 
-                
+
             }
+        }
+
+    }
+}
+
+.onboard-wrapper {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .onboard-box {
+        width: 90%;
+        height: 90%;
+        position: relative;
+
+        h1 {
+            padding-left: 50px;
+            color: styles.$blackForText;
+            padding-bottom: 50px;
+        }
+
+        .cards-wrapper {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+
+            .card {
+                width: 373px;
+                height: 375px;
+                border-radius: 16px;
+                border: 1px solid styles.$grayforBorder;
+
+                img {
+                    width: 100%;
+                }
+                h3{
+                    padding: 20px 0px;
+                }
+            }
+        }
+        button{
+            position: absolute;
+            margin-top: 50px;
+            right: 50px;
         }
 
     }

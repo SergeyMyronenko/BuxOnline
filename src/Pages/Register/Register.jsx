@@ -14,6 +14,8 @@ import './Register.scss';
 const Register = () => {
     return (
         <>
+        <Header></Header>
+        <Nav></Nav>
             <div className="form-wrapper">
 
                 <form>
@@ -75,7 +77,9 @@ const Register = () => {
                         <SubCategory></SubCategory>
                         <p>Я погоджуюся з <a href="#">Умовами обслуговування</a> та <br /> <a href="#">Політикою конфіденційності</a></p>
                     </div>
-                    <SolidButton type='submit' fontSize={16}>Зареєструватися</SolidButton>
+                    <Link to='/BuxOnline/register/company'>
+                        <SolidButton type='submit' fontSize={16}>Зареєструватися</SolidButton>
+                    </Link>
                     <p>Якщо у вас уже є обліковий запис, ми можете <Link to='/BuxOnline/login'>ВВІЙТИ ТУТ</Link></p>
                 </form>
             </div>
