@@ -18,6 +18,7 @@
         border-radius: 16px;
         padding: 64px;
         color: styles.$blackForText;
+        width: 620px;
         a {
             text-decoration: none;
             color: styles.$lightBlue;
@@ -56,7 +57,7 @@
             align-items: center;
             width: 486px;
             height: 48px;
-
+            margin: 20px 0px;
             a {
                 height: 43px;
                 width: 146px;
@@ -78,36 +79,7 @@
             margin: 20px 0px 20px 0px;
         }
 
-        .select-role {
-            display: grid;
-            text-align: left;
-            padding-bottom: 20px;
-
-            label {
-                font-size: 16px;
-                color: styles.$grayforBorder;
-                font-weight: 200;
-                padding-bottom: 5px;
-
-                &:hover+input {
-                    background-color: styles.$grayForFill;
-                }
-            }
-
-            select {
-                width: 100%;
-                height: 43px;
-                border-radius: 12px;
-                border: 1px solid styles.$grayforBorder;
-                font-size: 16px;
-                padding-left: 20px;
-                color: styles.$blackForText;
-
-               
-
-
-            }
-        }
+       
 
         .agree{
             display: flex;
