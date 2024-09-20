@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import Header from '../../Components/Header/Header';
 import Nav from '../../Components/Nav/Nav';
@@ -7,13 +8,14 @@ import Nav from '../../Components/Nav/Nav';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
 import SubCategory from '../../Components/SubCategory/SubCategory';
+import SelectField from '../../Components/Input/InputField/SelectField';
 
 import './Register.scss';
 const Register = () => {
     return (
         <>
-            <Header></Header>
-            <Nav></Nav>
+        <Header></Header>
+        <Nav></Nav>
             <div className="form-wrapper">
 
                 <form>
@@ -68,19 +70,16 @@ const Register = () => {
                     <InputField label='E-mail' type='email' placeholder='E-mail' id='email'></InputField>
                     <InputField label='Пароль' type='password' placeholder='Пароль' id='password'></InputField>
                     <InputField label='Підтвердьте пароль' type='password' placeholder='Підтвердьте пароль' id='repeat-password'></InputField>
-                    <div className="select-role">
-                        <label htmlFor="role">Тип реєстрації</label>
-                        <select id="role">
-                            <option value="candidate">Кандидат</option>
-                            <option value="employer">Робототавець</option>
-                        
-                        </select>
-                    </div>
+                    <SelectField label="Тип реєстрації" options={["Кандидат" ,"Роботодавець"]}></SelectField>
+                    
+                    
                     <div className='agree'>
                         <SubCategory></SubCategory>
                         <p>Я погоджуюся з <a href="#">Умовами обслуговування</a> та <br /> <a href="#">Політикою конфіденційності</a></p>
                     </div>
-                    <SolidButton type='submit' fontSize={16}>Зареєструватися</SolidButton>
+                    <Link to='/BuxOnline/register/company'>
+                        <SolidButton type='submit' fontSize={16}>Зареєструватися</SolidButton>
+                    </Link>
                     <p>Якщо у вас уже є обліковий запис, ми можете <Link to='/BuxOnline/login'>ВВІЙТИ ТУТ</Link></p>
                 </form>
             </div>
