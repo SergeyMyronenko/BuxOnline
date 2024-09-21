@@ -6,6 +6,7 @@ import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import cardImg1 from '../../assets/onboardCard1.png';
 import cardImg2 from '../../assets/onboardCard2.png';   
 import cardImg3 from '../../assets/onboardCard3.png';
+import { Link } from 'react-router-dom';
 const Onboard = () => {
     return (
         <>
@@ -31,7 +32,9 @@ const Onboard = () => {
                     <p>Зв’яжіться з кандидатами напряму через сайт</p>
                     </div>
                 </div>
-                <SolidButton> Розпочати</SolidButton>
+                <Link to='/BuxOnline/company/cabinet/1'>
+                    <SolidButton> Розпочати</SolidButton>
+                </Link>
             </div>
         </div>
         </>

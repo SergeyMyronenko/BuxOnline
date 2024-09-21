@@ -8,6 +8,7 @@ import Register from "./Pages/Register/Register";
 import RegisterCompany from "./Pages/Register/RegisterCompany";
 import Onboard from "./Pages/Register/Onboard";
 import CompanyCabinet from "./Pages/EmployerPage/CompanyCabinet";
+import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies";
 
 import './App.scss'
 
@@ -30,7 +31,9 @@ function App() {
         <Route path='/BuxOnline/register/company/' element={<RegisterCompany />} />
         <Route path="/BuxOnline/register/company/onboard" element={<Onboard />} />   
 
-        <Route path="BuxOnline/company/:id" element={<CompanyCabinet/>}></Route>      
+        <Route path="/BuxOnline/company/cabinet/:id" element={<CompanyCabinet/>}></Route>      
+        <Route path="/BuxOnline/company/jobs/" element={<CompanyVacancies/>}></Route>      
+
         
         <Route path='*' element={<NotFound />} />
       </Routes>

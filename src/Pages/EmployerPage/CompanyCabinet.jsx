@@ -93,7 +93,7 @@ const CompanyCabinet = () => {
                             <div>
                                 <h3>Повідомлення та події</h3>
                                 <ul>
-                                    <Link>
+                                    <Link to='/BuxOnline/company/jobs/'>
                                         <li>
                                             <div>
                                                 <PiBriefcase />
