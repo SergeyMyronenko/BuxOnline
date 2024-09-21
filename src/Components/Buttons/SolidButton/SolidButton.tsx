@@ -21,6 +21,8 @@ const SolidButton: React.FC<SolidButtonProps> = ({ width, height, borderRadius, 
         'borderRadius': `${borderRadius}px`,
         'fontSize': `${fontSize}px`
     };
+    if(width===100){SolidButtonStyle.width='100%'}
+
 
     return (
         <button className="solid-button" style={SolidButtonStyle} disabled={disabled} type={type} onClick={onClick}>
