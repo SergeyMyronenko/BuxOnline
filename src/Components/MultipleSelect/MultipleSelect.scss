@@ -1,0 +1,170 @@
+@use '../../App.scss' as styles;
+
+.mult-select-tag {
+    color: styles.$blackForText;
+
+    .wrapper {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        border: 1px solid styles.$grayforBorder;
+        border-radius: 16px;
+        background: white;
+        height: max-content;
+        width: 80%;
+        flex-wrap: wrap;
+        flex: 1 1 auto;
+        padding: 10px;
+        align-items: center;
+
+        .all-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            .skill-container {
+                display: flex;
+                height: 29px;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                font-weight: 500;
+                border: 1px solid styles.$grayforBorder;
+                border-radius: 9999px;
+                gap: 10px;
+
+                .skill-label {
+                    line-height: 1;
+                    font-weight: 400;
+                    font-size: 18px;
+                    flex: 0 1 auto;
+                }
+
+                .skill-close {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+                &.clear{
+                    cursor: pointer;
+                    transition: styles.$fastAnimation;
+                    &:hover{
+                        background-color: styles.$red;
+                        color: styles.$white;
+                    }
+                }
+            }
+        }
+
+        .input-body {
+            display: flex;
+            width: 100%;
+            position: relative;
+
+            .input {
+                flex: 1;
+                background: transparent;
+                border-radius: 16px;
+                padding: 0 10px;
+                margin: 10px 0;
+                height: 32px;
+                width: 100%;
+                color: styles.$blackForText;
+                outline: 0;
+                border: 1px solid styles.$grayforBorder;
+                background-color: styles.$white;
+            }
+
+            .btn-container {
+                height: 50px;
+                width: 50px;
+                top: 10px;
+                right: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                button {
+                    cursor: pointer;
+                    width: 36px;
+                    height: 29px;
+                    border-radius: 16px;
+                    border: 1px solid styles.$lightBlue;
+                    color: #718096;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+
+        .dropdown {
+            position: absolute;
+            background: white;
+            max-height: 15rem;
+            z-index: 11;
+            top: 120%;
+            width: 100%;
+            left: 0;
+            overflow-y: scroll;
+            border: 1px solid styles.$grayforBorder;
+            border-radius: 16px;
+            box-sizing: content-box;
+            opacity: 0;
+            transition: styles.$mediumAnimation;
+            transform: translateY(-1rem);
+            pointer-events: none;
+
+            &.open {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: all;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0.5rem;
+                margin: 0;
+
+                .no-results {
+                    padding: 0.5rem;
+                    border-radius: 16px;
+                }
+
+                .list-item {
+                    padding: 10px;
+                    margin: 10px;
+                    border-radius: 16px;
+                    cursor: pointer;
+                    transition: styles.$fastAnimation all;
+
+                    &:hover {
+                        background-color: styles.$lightBlue;
+                    }
+
+                    &.selected {
+                        border: 1px solid  styles.$lightBlue;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        pointer-events: none;
+
+        &.active {
+            pointer-events: all;
+        }
+    }
+
+
+}
