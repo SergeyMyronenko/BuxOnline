@@ -6,7 +6,7 @@ import Header from '../../Components/Header/Header';
 import Nav from '../../Components/Nav/Nav';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
-import SelectField from '../../Components/Input/InputField/SelectField';
+import SelectField from '../../Components/Input/InputSelect/InputSelect';
 
 import './ChooseMethodToCreate.scss';
 const ChooseMethodTochoose = () => {

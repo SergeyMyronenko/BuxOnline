@@ -7,8 +7,8 @@ import Nav from '../../Components/Nav/Nav';
 
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
-import SubCategory from '../../Components/SubCategory/SubCategory';
-import SelectField from '../../Components/Input/InputField/SelectField';
+import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox';
+import InputSelect from '../../Components/Input/InputSelect/InputSelect';
 
 import './Register.scss';
 const Register = () => {
@@ -70,11 +70,11 @@ const Register = () => {
                     <InputField label='E-mail' type='email' placeholder='E-mail' id='email'></InputField>
                     <InputField label='Пароль' type='password' placeholder='Пароль' id='password'></InputField>
                     <InputField label='Підтвердьте пароль' type='password' placeholder='Підтвердьте пароль' id='repeat-password'></InputField>
-                    <SelectField label="Тип реєстрації" options={["Кандидат" ,"Роботодавець"]}></SelectField>
+                    <InputSelect label="Тип реєстрації" options={["Кандидат" ,"Роботодавець"]}></InputSelect>
                     
                     
                     <div className='agree'>
-                        <SubCategory></SubCategory>
+                        <InputCheckbox></InputCheckbox>
                         <p>Я погоджуюся з <a href="#">Умовами обслуговування</a> та <br /> <a href="#">Політикою конфіденційності</a></p>
                     </div>
                     <Link to='/BuxOnline/register/company'>

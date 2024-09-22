@@ -1,11 +1,14 @@
 import React from 'react';
 
+import Header from '../../Components/Header/Header';
+import Nav from '../../Components/Nav/Nav';
+
 const CreateVacancy = () => {
     return (
-        <div>
-            <h1>Create Vacancy</h1>
-            {/* Add your form or other content here */}
-        </div>
+        <>
+           <Header></Header>
+           <Nav></Nav>
+        </>
     );
 };
 
