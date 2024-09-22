@@ -9,7 +9,8 @@ import RegisterCompany from "./Pages/Register/RegisterCompany";
 import Onboard from "./Pages/Register/Onboard";
 import CompanyCabinet from "./Pages/EmployerPage/CompanyCabinet";
 import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies";
-
+import ChooseMethodToCreate from "./Pages/EmployerPage/ChooseMethodToCreate";
+import CreateVacancy from "./Pages/EmployerPage/CreateVacancy";
 import './App.scss'
 
 function App() {
@@ -32,7 +33,11 @@ function App() {
         <Route path="/BuxOnline/register/company/onboard" element={<Onboard />} />   
 
         <Route path="/BuxOnline/company/cabinet/:id" element={<CompanyCabinet/>}></Route>      
-        <Route path="/BuxOnline/company/jobs/" element={<CompanyVacancies/>}></Route>      
+        <Route path="/BuxOnline/company/jobs/" element={<CompanyVacancies/>}></Route>    
+        <Route path="/BuxOnline/company/jobs/choose" element={<ChooseMethodToCreate/>}></Route>   
+        <Route path="/BuxOnline/company/jobs/create" element={<CreateVacancy/>}></Route>      
+
+
 
         
         <Route path='*' element={<NotFound />} />
