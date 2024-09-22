@@ -7,7 +7,9 @@
     justify-content: center;
     align-items: center;
     color: styles.$blackForText;
-
+    a{
+        text-decoration: none;
+    }
     .cabinet-box {
         width: 90%;
         height: 90%;
