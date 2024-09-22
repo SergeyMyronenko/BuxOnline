@@ -1,8 +1,8 @@
 //імпорт змінних з файла App.scss
-@use '../../App.scss' as styles;
+@use "../../App.scss" as styles;
 
-h1{
-    color: styles.$red;
+h1 {
+  color: styles.$red;
 }
 
 * {
@@ -12,75 +12,15 @@ h1{
   font-family: Inter;
   /* text-align: left; */
 }
-header {
-  height: 55.36px;
-}
-header .img-support {
-  width: 100%;
-}
-nav,
+
+
 main {
   margin-left: 53px;
 }
 
-nav {
-  height: 72px;
-  margin-top: 26px;
-  display: flex;
-  flex-direction: row;
-  /* background-color: coral; */
-  align-items: center;
-
-  /* justify-content: space-between; */
-}
-nav .nav-block-left {
-  /* background-color: aqua; */
-  display: flex;
-  align-items: center;
-  margin-left: 53px;
-}
-nav .nav-block-right {
-  /* background-color: brown; */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 400px;
-  width: 50%;
-}
-/* nav .img-logo {
-  height: 40px;
-  width: 40px;
-} */
-/* nav .name-logo {
-  color: #2e85ec;
-  font-size: 18px;
-  text-shadow: 1px 1px 1px rgb(33, 57, 180);
-}
-nav h3 {
-  color: #282828;
-  font-size: 13px;
-}
-nav .button-nav {
-  width: 18px;
-  height: 13px;
-} */
-/* nav h4 {
-  color: black;
-  font-size: 14px;
-}
-nav .nav-resume {
-  color: #2e85ec;
-  background-color: white;
-  border: 2px solid #2e85ec;
-  border-radius: 20px;
-  font-size: 14px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-} */
-
 main .main-block {
   display: flex;
-  margin-left: 53px;
+  // margin-left: 53px;
   margin-right: 19px;
   /* width: 1148px; */
   flex-direction: row;
@@ -98,9 +38,9 @@ main .main-block-left-text {
   margin-bottom: 25px;
 }
 main .main-img-hover {
-height: 613px;
-    width: 580px; 
-// background-color: blue; 
+  height: 613px;
+  width: 580px;
+  // background-color: blue;
 }
 
 main .main-block-left-1 {
@@ -111,45 +51,39 @@ main .main-block-left-1 {
 }
 
 main .main-block-right {
-  text-align: right;
+  // text-align: right;
   margin-right: 20px;
   /* background-color: chartreuse; */
-  justify-content: right;
+  // justify-content: right;
 }
-main .main-send-resume {
-  background-color: #2e85ec;
-  border-radius: 20px;
-  color: white;
-  width: 164px;
-  font-size: 12px;
-  padding: 10px;
-  text-decoration: none;
-}
+// main .main-send-resume {
+//   background-color: #2e85ec;
+//   border-radius: 20px;
+//   color: white;
+//   width: 164px;
+//   font-size: 12px;
+//   padding: 10px;
+//   text-decoration: none;
+// }
 
-main .main-block-left-2-header, .main-block-left-5-header {
+main .header-arrow {
   font-size: 22px;
   margin-bottom: 51px;
 }
 
-main .main-block-left-2-frame-text,
-.main-block-left-3-frame-text, .main-block-left-5-frame-text {
+main .header-arrow-block {
   display: flex;
-  /* align-items: start; */
 }
-main .main-block-left-2-frame-text .frame,
-.main-block-left-3-frame-text .frame, 
-.main-block-left-5-frame-text .frame{
+main .frame,
+.header-arrow-block .frame {
   margin-left: 50px;
   margin-right: 0;
   top: 5px;
   height: 48px;
   width: 48px;
 }
-/* main .main-block-left-text{ */
-/* margin-left: 50px; */
-/* } */
 
-main .main-block-left-2-header, .main-block-left-5-header {
+main .header-arrow {
   margin-left: 5px;
   margin-top: 23px;
 }
@@ -158,9 +92,8 @@ main .main-block-left-2-topic,
   font-size: 51px;
   color: #2e85ec;
   margin-top: 70px;
-
 }
-main .main-block-left-2-topic{
+main .main-block-left-2-topic {
   margin-bottom: 15px;
 }
 main .main-block-left-2-topic {
@@ -181,9 +114,8 @@ main .main-block-left-2-topic-text {
 }
 main .main-block-right-2 {
   text-align: left;
-  margin-top: 230px;
+  margin-top: 300px;
   margin-left: 24px;
-  
 }
 main .main-block-right-2-topic-text {
   /* margin-left: 50px; */
@@ -191,16 +123,19 @@ main .main-block-right-2-topic-text {
 }
 main .main-send-resume-block {
   padding: 50px;
-  margin: 20px;
+  margin: 0 auto;
   text-align: center;
+  align-items: center;
+  padding-left: 450px;
 }
-main .main-block-left-3-frame-text, .main-block-left-5-frame-text {
+main .main-block-left-3-frame-text,
+.header-arrow-block {
   margin-bottom: 50px;
 }
-.vector{
+.vector {
   background-image: url('data:image/svg+xml, <svg width="705" height="227" viewBox="0 0 705 227" fill="none" xmlns="http://www.w3.org/2000/svg" ><path d="M12.316 1C-2.15595 55.5 -30.6774 158.6 168.213 167C367.104 175.4 655.965 157.5 703 226" stroke="%232E85EC" stroke-width="3" /></svg>');
-background-size: 50%;
-padding-bottom: 50px;
+  background-size: 50%;
+  padding-bottom: 50px;
 }
 main .main-block-left-4 {
   display: flex;
@@ -220,8 +155,6 @@ main .main-block-left-4-center {
 main .main-block-left-4-end {
   width: 30%;
   background-color: #f8f9fa;
-
-  /* flex-flow: row;  */
 }
 main .main-block-left-4-end-block {
   margin-top: 30%;
@@ -274,241 +207,212 @@ main .photo-other-others {
   z-index: 4;
   right: 55px;
 }
-/* .footer {
-  display: flex;
-  height: 188px;
-  background-color: #f8f9fa;
+.scheme {
+  //  width: 1200px; /* Adjust to fit your design */
+  // height: 1100px; /* Adjust to fit your design */
+  background-image: url('data:image/svg+xml,<svg width="719" height="1446" viewBox="0 0 919 2000" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.316 1C-2.15595 55.5 -30.6774 158.6 168.213 167C367.104 175.4 655.965 157.5 703 226" stroke="%232E85EC" stroke-width="3"/><path d="M705.567 271C728.614 324.524 727.297 450.166 600.209 488.478C473.121 526.79 189.313 425.939 134 502" stroke="%232E85EC" stroke-width="3"/><path d="M109.855 534C88.331 574.633 79.8519 655.302 131.378 710.874C182.904 766.446 235.735 767.641 284 749.715" stroke="%232E85EC" stroke-width="3"/><path d="M303.244 774C320.653 825.204 245.447 922.833 367.309 913.275C489.17 903.717 416.75 1008.86 579 985.644" stroke="%232E85EC" stroke-width="3"/><path d="M599.593 1006C650.055 1175.7 329.732 1008.91 367.03 1166" stroke="%232E85EC" stroke-width="3"/><path d="M358.066 1193C314.5 1283 101.5 1149.5 109 1250" stroke="%232E85EC" stroke-width="3"/><path d="M100.461 1277C86.2363 1398.55 132.705 1461.56 265 1439.73" stroke="%232E85EC" stroke-width="3"/><circle cx="16" cy="23" r="23" fill="blue"/><text x="16" y="25" font-size="24" text-anchor="middle" fill="white">1</text><circle cx="700" cy="249" r="23" fill="blue"/><text x="700" y="255" font-size="24" text-anchor="middle" fill="white">2</text><circle cx="124" cy="520" r="23" fill="blue"/><text x="124" y="526" font-size="24" text-anchor="middle" fill="white">3</text><circle cx="300" cy="755" r="23" fill="blue"/><text x="300" y="765" font-size="24" text-anchor="middle" fill="white">4</text><circle cx="590" cy="1000" r="23" fill="blue"/><text x="590" y="1010" font-size="24" text-anchor="middle" fill="white">5</text><circle cx="360" cy="1170" r="23" fill="blue"/><text x="360" y="1180" font-size="24" text-anchor="middle" fill="white">6</text><circle cx="105" cy="1260" r="23" fill="blue"/><text x="105" y="1270" font-size="24" text-anchor="middle" fill="white">7</text><circle cx="270" cy="1440" r="23" fill="blue"/><text x="270" y="1450" font-size="24" text-anchor="middle" fill="white">8</text></svg>');
+  background-size: cover; /* Optional: cover the entire div */
+  background-color: transparent;
+  position: relative;
+  margin-left: 140px;
   padding-top: 50px;
+  // <circle cx="16" cy="15" r="15" fill="blue"/><text x="100" y="55" font-size="24" text-anchor="middle" fill="white">2</text>
+}
+.scheme-1,
+.scheme-2,
+.scheme-3,
+.scheme-4,
+.scheme-5,
+.scheme-6,
+.scheme-7,
+.scheme-8 {
+  display: flex;
 }
 
-footer .footer-text {
-  color: #2e85ec;
-  font-size: 12px;
-  display: block;
-  text-decoration: none;
-  line-height: 25px;
+.wr-sch-1 {
+  margin-top: -30px;
+  margin-left: 150px;
+  max-width: 458px;
 }
-footer .footer-logo-name {
-  color: #4e4e4e;
-  font-size: 18px;
+
+.scheme-1 h3 {
+  font-weight: 700;
+  line-height: 50px;
 }
-footer .footer-text-logo {
-  color: #212529;
-  font-size: 12px;
-}
-footer .footer-block-1-logo {
+
+.wr-sch-1-title {
   display: flex;
   align-items: center;
-  margin-top: -5px;
-  margin-bottom: 5px;
-} */
- .scheme{
-    //  width: 1200px; /* Adjust to fit your design */
-            // height: 1100px; /* Adjust to fit your design */
-            background-image: url('data:image/svg+xml,<svg width="719" height="1446" viewBox="0 0 919 2000" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.316 1C-2.15595 55.5 -30.6774 158.6 168.213 167C367.104 175.4 655.965 157.5 703 226" stroke="%232E85EC" stroke-width="3"/><path d="M705.567 271C728.614 324.524 727.297 450.166 600.209 488.478C473.121 526.79 189.313 425.939 134 502" stroke="%232E85EC" stroke-width="3"/><path d="M109.855 534C88.331 574.633 79.8519 655.302 131.378 710.874C182.904 766.446 235.735 767.641 284 749.715" stroke="%232E85EC" stroke-width="3"/><path d="M303.244 774C320.653 825.204 245.447 922.833 367.309 913.275C489.17 903.717 416.75 1008.86 579 985.644" stroke="%232E85EC" stroke-width="3"/><path d="M599.593 1006C650.055 1175.7 329.732 1008.91 367.03 1166" stroke="%232E85EC" stroke-width="3"/><path d="M358.066 1193C314.5 1283 101.5 1149.5 109 1250" stroke="%232E85EC" stroke-width="3"/><path d="M100.461 1277C86.2363 1398.55 132.705 1461.56 265 1439.73" stroke="%232E85EC" stroke-width="3"/><circle cx="16" cy="23" r="23" fill="blue"/><text x="16" y="25" font-size="24" text-anchor="middle" fill="white">1</text><circle cx="700" cy="249" r="23" fill="blue"/><text x="700" y="255" font-size="24" text-anchor="middle" fill="white">2</text><circle cx="124" cy="520" r="23" fill="blue"/><text x="124" y="526" font-size="24" text-anchor="middle" fill="white">3</text><circle cx="300" cy="755" r="23" fill="blue"/><text x="300" y="765" font-size="24" text-anchor="middle" fill="white">4</text><circle cx="590" cy="1000" r="23" fill="blue"/><text x="590" y="1010" font-size="24" text-anchor="middle" fill="white">5</text><circle cx="360" cy="1170" r="23" fill="blue"/><text x="360" y="1180" font-size="24" text-anchor="middle" fill="white">6</text><circle cx="105" cy="1260" r="23" fill="blue"/><text x="105" y="1270" font-size="24" text-anchor="middle" fill="white">7</text><circle cx="270" cy="1440" r="23" fill="blue"/><text x="270" y="1450" font-size="24" text-anchor="middle" fill="white">8</text></svg>');
-            background-size: cover; /* Optional: cover the entire div */
-           background-color: transparent;
-            position:relative;
-            margin-left: 140px;
-            padding-top: 50px;
-            // <circle cx="16" cy="15" r="15" fill="blue"/><text x="100" y="55" font-size="24" text-anchor="middle" fill="white">2</text>
- }
-.scheme-1, .scheme-2, .scheme-3, .scheme-4, .scheme-5, .scheme-6, .scheme-7, .scheme-8{
-  display: flex;
+  justify-content: space-between;
 }
-
-// .scheme-1{
-//   background-image: url('data:image/svg+xml,<svg width="705" height="227" viewBox="0 0 705 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.316 1C-2.15595 55.5 -30.6774 158.6 168.213 167C367.104 175.4 655.965 157.5 703 226" stroke="%232E85EC" stroke-width="3"/></svg>');
-//  background-repeat: no-repeat no-repeat;
-//                 background-position:40%;
-//                 background-position-x: 30px;
-//                 background-position-y: 80px;
-//                 background-size: 50%;
-               
-.wr-sch-1{
-  margin-top: -30px;
-      margin-left: 150px;
-      max-width: 458px;
+.wr-sch-1-title p {
+  background-color: styles.$lightBlue;
+  border-radius: 25%;
+  padding: 5px;
+  color: styles.$white;
+  font-size: 15px;
 }
-
-.scheme-1 h3{
-  font-weight: 700;
-     line-height: 50px;
-}
-
-.wr-sch-1-title{
-  display:flex;
-align-items: center;
-justify-content: space-between;
-}
-.wr-sch-1-title p{
-background-color:styles.$lightBlue;
-border-radius: 25%;
-padding: 5px;
-color: styles.$white;
-font-size: 15px;
-}
-.indexMagnifyingGlass{
+.indexMagnifyingGlass {
   margin-top: -100px;
   margin-left: 114px;
 }
-.scheme-2{
+.scheme-2 {
   flex-direction: row-reverse;
   margin-top: 120px;
   margin-right: 300px;
 }
 
-.wr-sch-2-title p{
-  background-color:styles.$lightBlue;
-border-radius: 25%;
-padding: 5px;
-color: styles.$white;
-font-size: 15px;}
+.wr-sch-2-title p {
+  background-color: styles.$lightBlue;
+  border-radius: 25%;
+  padding: 5px;
+  color: styles.$white;
+  font-size: 15px;
+}
 
-.wr-sch-2-title{
-  display:flex;
-align-items: center;
-justify-content: space-between;
+.wr-sch-2-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.scheme-2 h3{
+.scheme-2 h3 {
   font-weight: 700;
-     line-height: 50px;
+  line-height: 50px;
 }
-.wr-sch-2{
+.wr-sch-2 {
   // max-width: 458px;
   margin: 0;
   margin-right: 180px;
   padding-left: 25px;
 }
-.indexChatImg{
-   margin-top: 5px;
+.indexChatImg {
+  margin-top: 5px;
   margin-left: -100px;
   display: block;
 }
-.scheme-3{
- margin-top: 170px;
+.scheme-3 {
+  margin-top: 170px;
   margin-left: 230px;
 }
-.scheme-3 h3{
+.scheme-3 h3 {
   font-weight: 700;
-     line-height: 50px;
-   
+  line-height: 50px;
 }
-.wr-sch-3{
+.wr-sch-3 {
   // max-width: 458px;
   margin: 0;
   margin-right: 180px;
   padding-left: 25px;
 }
-.wr-sch-3-title{
-  display:flex;
-align-items: center;
-justify-content: space-between;
+.wr-sch-3-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.wr-sch-3-title p{
-background-color:styles.$lightBlue;
-border-radius: 25%;
-padding: 5px;
-color: styles.$white;
-font-size: 15px;
-// margin-right: 60px;
+.wr-sch-3-title p {
+  background-color: styles.$lightBlue;
+  border-radius: 25%;
+  padding: 5px;
+  color: styles.$white;
+  font-size: 15px;
+  // margin-right: 60px;
 }
-.indexCheckImg{
-position: relative;
-top: -80px;
-left: -45px;
+.indexCheckImg {
+  position: relative;
+  top: -80px;
+  left: -45px;
 }
-.scheme-4{
+.scheme-4 {
   flex-direction: row-reverse;
   margin-top: 120px;
   margin-left: 400px;
 }
 
-.wr-sch-4-title p{
-  background-color:styles.$lightBlue;
-border-radius: 25%;
-padding: 5px;
-color: styles.$white;
-font-size: 15px;
+.wr-sch-4-title p {
+  background-color: styles.$lightBlue;
+  border-radius: 25%;
+  padding: 5px;
+  color: styles.$white;
+  font-size: 15px;
 }
 
-.wr-sch-4-title{
-  display:flex;
-align-items: center;
-justify-content: space-between;
+.wr-sch-4-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.scheme-4 h3{
+.scheme-4 h3 {
   font-weight: 700;
-     line-height: 50px;
+  line-height: 50px;
 }
-.wr-sch-4{
+.wr-sch-4 {
   // max-width: 58px;
   // margin: 0;
   margin-right: 130px;
   padding-left: 255px;
 }
-.indexCommunityImg{
-   margin-top: 5px;
+.indexCommunityImg {
+  margin-top: 5px;
   margin-left: -400px;
   display: block;
 }
-.scheme-5{
-    margin-top: 50px;
+.scheme-5 {
+  margin-top: 50px;
   // margin-left: 400px;
 }
 
-.wr-sch-5-title p{
-  background-color:styles.$lightBlue;
-border-radius: 25%;
-padding: 5px;
-color: styles.$white;
-font-size: 15px;
+.wr-sch-5-title p {
+  background-color: styles.$lightBlue;
+  border-radius: 25%;
+  padding: 5px;
+  color: styles.$white;
+  font-size: 15px;
 }
 
-.wr-sch-5-title{
-  display:flex;
-align-items: center;
-justify-content: space-between;
+.wr-sch-5-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.scheme-5 h3{
+.scheme-5 h3 {
   font-weight: 700;
-     line-height: 50px;
+  line-height: 50px;
 }
-.wr-sch-5{
+.wr-sch-5 {
   // max-width: 58px;
   // margin: 0;
   margin-right: 290px;
   padding-left: 45px;
 }
-.indexSlideImg{
-   margin-top: -40px;
+.indexSlideImg {
+  margin-top: -40px;
   // margin-left: -400px;
   display: block;
 }
 
-.scheme-6{
-    margin-top: 50px;
+.scheme-6 {
+  margin-top: 50px;
   // margin-left: 400px;
 }
 
-.wr-sch-6-title p{
-  background-color:styles.$lightBlue;
-border-radius: 25%;
-padding: 5px;
-color: styles.$white;
-font-size: 15px;
+.wr-sch-6-title p {
+  background-color: styles.$lightBlue;
+  border-radius: 25%;
+  padding: 5px;
+  color: styles.$white;
+  font-size: 15px;
 }
 
-.wr-sch-6-title{
-  display:flex;
-align-items: center;
-justify-content: space-between;
+.wr-sch-6-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.scheme-6 h3{
+.scheme-6 h3 {
   font-weight: 700;
-     line-height: 50px;
+  line-height: 50px;
 }
-.wr-sch-6{
+.wr-sch-6 {
   // max-width: 58px;
   // margin: 0;
   margin-right: 150px;
@@ -516,66 +420,90 @@ justify-content: space-between;
   margin-top: -20px;
 }
 
-.scheme-7{
-    margin-top: 50px;
+.scheme-7 {
+  margin-top: 50px;
   // margin-left: 400px;
 }
 
-.wr-sch-7-title p{
-  background-color:styles.$lightBlue;
-border-radius: 25%;
-padding: 5px;
-color: styles.$white;
-font-size: 15px;
+.wr-sch-7-title p {
+  background-color: styles.$lightBlue;
+  border-radius: 25%;
+  padding: 5px;
+  color: styles.$white;
+  font-size: 15px;
 }
 
-.wr-sch-7-title{
-  display:flex;
-align-items: center;
-justify-content: space-between;
+.wr-sch-7-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.scheme-7 h3{
+.scheme-7 h3 {
   font-weight: 700;
-     line-height: 50px;
+  line-height: 50px;
 }
-.wr-sch-7{
+.wr-sch-7 {
   // max-width: 58px;
   // margin: 0;
   margin-right: 350px;
   padding-left: 260px;
   margin-top: -15px;
 }
-.scheme-8{
+.scheme-8 {
   flex-direction: row-reverse;
   margin-top: 120px;
   margin-left: 400px;
 }
 
-.wr-sch-8-title p{
-  background-color:styles.$lightBlue;
-border-radius: 25%;
-padding: 5px;
-color: styles.$white;
-font-size: 15px;
+.wr-sch-8-title p {
+  background-color: styles.$lightBlue;
+  border-radius: 25%;
+  padding: 5px;
+  color: styles.$white;
+  font-size: 15px;
 }
 
-.wr-sch-8-title{
-  display:flex;
-align-items: center;
-justify-content: space-between;
+.wr-sch-8-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.scheme-8 h3{
+.scheme-8 h3 {
   font-weight: 700;
-     line-height: 50px;
+  line-height: 50px;
 }
-.wr-sch-8{
+.wr-sch-8 {
   // max-width: 58px;
   // margin: 0;
   margin-right: 130px;
   padding-left: 255px;
 }
-.indexCashImg{
-   margin-top: 5px;
+.indexCashImg {
+  //  margin-top: 5px;
   margin-left: -400px;
   display: block;
+}
+
+main .main-send-resume-block {
+  padding: 50px;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  padding-left: 450px;
+}
+
+.send-resume-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  .s-r-bl {
+    width: 427px;
+    button{
+      margin-left: 55px;
+    }
+    p {
+      margin-bottom: 30px;
+    }
+  }
 }

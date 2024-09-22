@@ -13,10 +13,12 @@ import indexCheckImg from "../../assets/indexCheckImg.png";
 import indexCommunityImg from "../../assets/indexCommunityImg.png";
 import indexSlideImg from "../../assets/indexSlideImg.png";
 import indexCashImg from "../../assets/indexCashImg.png";
-// import BarIcon from "../../Components/Icons/IconsCurves";
+import indexSendResume from "../../assets/indexSendResume.png"
+import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";
 
 import Nav from "../../Components/Nav/Nav";
 import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
 
 
 import './Index.scss';
@@ -41,15 +43,16 @@ function Index () {
                   віддаленої роботи. Приєднуйтесь до нас і відкрийте нові
                   можливості для своєї кар'єри!
                 </p>
-                <a className="main-send-resume" href="#">
+                {/* <a className="main-send-resume" href="#">
                   Відправити резюме
-                </a>
+                </a> */}
+                <SolidButton width={265}>Відправити резюме</SolidButton>
+              </div>
+              <div className="header-arrow-block">
+                <img className="frame" src={vacancyTitleImg} alt="frame" />
+                <h5 className="header-arrow">Що ми пропонуємо</h5>
               </div>
               <div className="main-block-left-2">
-                <div className="main-block-left-2-frame-text">
-                  <img className="frame" src={vacancyTitleImg} alt="frame" />
-                  <h5 className="main-block-left-2-header">Що ми пропонуємо</h5>
-                </div>
                 <p className="main-block-left-2-text">
                   Якщо ви шукаєте роботу і у вас хороша англійська, то ми
                   пропонуємо вам роботу за кордоном. У США, країнах Європи, Азії
@@ -88,16 +91,15 @@ function Index () {
             </div>
           </div>
           <div className="main-send-resume-block">
-            <a className="main-send-resume" href="#">
+            {/* <a className="main-send-resume" href="#">
               Відправити резюме
-            </a>
+            </a> */}
+            <SolidButton width={265}>Відправити резюме</SolidButton>
           </div>
-
-          <div className="main-block-left-3-frame-text">
+          <div className="header-arrow-block">
             <img className="frame" src={vacancyTitleImg} alt="frame" />
-            <h5 className="main-block-left-2-header">Відгуки</h5>
+            <h5 className="header-arrow">Відгуки</h5>
           </div>
-
           <div className="main-block-left-4">
             <div className="main-block-left-4-start">
               <img src={indexBigPhoto1} alt="photo-1" />
@@ -152,17 +154,17 @@ function Index () {
                 <p className="main-block-left-4-end-text">
                   У нас вже працевлаштовано майже 260 осіб
                 </p>
-                <a className="main-send-resume" href="#">
+                {/* <a className="main-send-resume" href="#">
                   Відправити резюме
-                </a>
+                </a> */}
+                <SolidButton width={164}>Відправити резюме</SolidButton>
               </div>
             </div>
           </div>
-          <div className="main-block-left-5-frame-text">
+          <div className="header-arrow-block">
             <img className="frame" src={vacancyTitleImg} alt="frame" />
-            <h5 className="main-block-left-5-header">Як ми працюємо</h5>
+            <h5 className="header-arrow">Як ми працюємо</h5>
           </div>
-          {/* <BarIcon/> */}
           <div className="scheme">
             <div className="scheme-1">
               <div className="wr-sch-1">
@@ -316,7 +318,39 @@ function Index () {
               />
             </div>
           </div>
+          <div className="main-send-resume-block">
+            <SolidButton width={265}>Відправити резюме</SolidButton>
+          </div>
+          <div className="header-arrow-block">
+            <img className="frame" src={vacancyTitleImg} alt="frame" />
+            <h5 className="header-arrow">Переваги</h5>
+          </div>
+          <div className="header-arrow-block">
+            <img className="frame" src={vacancyTitleImg} alt="frame" />
+            <h5 className="header-arrow">Гарячі ваканції</h5>
+          </div>
+
+          <div className="header-arrow-block">
+            <img className="frame" src={vacancyTitleImg} alt="frame" />
+            <h5 className="header-arrow">Відправити резюме</h5>
+          </div>
+          <div className="send-resume-block">
+            <div className="s-r-bl">
+              <p>
+                Приєднуйтесь до нас сьогодні та відкрийте двері до нових
+                можливостей дистанційної кар'єри!
+              </p>
+              <SolidButton width={265}>Відправити резюме</SolidButton>
+            </div>
+
+            <img
+              src={indexSendResume}
+              alt={indexSendResume}
+              className="indexSendResume"
+            />
+          </div>
         </main>
+        <Footer />
       </>
     );
 };
