@@ -105,7 +105,7 @@ const ChooseMethodTochoose = () => {
                             </div>
                             {/* для правильного позиціонування */}
                             <form action="">
-                                <Link to='/BuxOnline/company/jobs/choose'>
+                                <Link to='/BuxOnline/company/jobs/create'>
                                     <SolidButton width={100} borderRadius={20}>Далі</SolidButton>
                                 </Link>
                             </form>

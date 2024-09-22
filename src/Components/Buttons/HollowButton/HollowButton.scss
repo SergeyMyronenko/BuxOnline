@@ -18,7 +18,6 @@
     // Змінює колір фону, тексту та рамки, а також курсор
     // при вимкненому стані
 
-
     &:disabled {
         background-color: styles.$grayForFill;
         color: styles.$grayForText;

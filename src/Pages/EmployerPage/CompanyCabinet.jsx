@@ -130,7 +130,9 @@ const CompanyCabinet = () => {
                                     </Link>
                                 </ul>
                             </div>
-                            <SolidButton>Додати вакансію</SolidButton>
+                            <Link to='/BuxOnline/company/jobs/choose'>
+                                <SolidButton>Додати вакансію</SolidButton>
+                            </Link>
                         </div>
                         <div className="company-info">{profileData(dataPlaceholer)}</div>
                     </span>
