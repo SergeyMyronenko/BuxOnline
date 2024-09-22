@@ -246,53 +246,74 @@ function Index () {
             </div>
 
             <div className="scheme-5">
-              <img src={indexSlideImg} alt="indexSlideImg" />
               <div className="wr-sch-5">
-                <h3>Спілкування із замовником</h3>
+                <div className="wr-sch-5-title">
+                  <h3>Спілкування із замовником</h3>
+                  <p>2 години</p>{" "}
+                </div>
                 <p>
                   Педставник Компанії з вами поспілкуватися через зум для того,
                   щоб домовитися.
                 </p>
               </div>
-              <div className="scheme-6">
-                <div className="wr-sch-6">
+              <img
+                src={indexSlideImg}
+                alt="indexSlideImg"
+                className="indexSlideImg"
+              />
+            </div>
+
+            <div className="scheme-6">
+              <div className="wr-sch-6">
+                <div className="wr-sch-5-title">
                   <h3>Оффер</h3>
+                  <p>1 день</p>{" "}
                 </div>
                 <p>
                   Ми надсилаємо оффер, який ви підписуєте, щоб
                   працевлаштуватися.
                 </p>
               </div>
+              {/* <img
+                src={indexSlideImg}
+                alt="indexSlideImg"
+                className="indexSlideImg"
+              /> */}
             </div>
+
             <div className="scheme-7">
               <div className="wr-sch-7">
-                <h3>Юридичне оформлення</h3>
+                <div className="wr-sch-5-title">
+                  {" "}
+                  <h3>Юридичне оформлення</h3>
+                  <p>5 днів</p>{" "}
+                </div>
+
                 <p>
                   Ми надсилаємо вам договір. У ньому наведено умови
-                  працевлаштування. Ознайомьеся, запитайте та підпишіть договір
+                  працевлаштування. Ознайомтеся, запитайте та підпишіть договір
                   для початку роботи віддалено.
                 </p>
               </div>
             </div>
+
             <div className="scheme-8">
               <div className="wr-sch-8">
-                <h3>Перша зарплата</h3>
+                <div className="wr-sch-5-title">
+                  <h3>Перша зарплата</h3>
+                  <p>30 днів</p>{" "}
+                </div>
+
                 <p>
                   Через місяць ви отримуєте свій перший Busonline шляхом
                   зарахування першої зарплати на ваш рахунок.
                 </p>
               </div>
-              <img src={indexCashImg} alt="indexCashImg" />
-            </div>
-            <div className="scheme-8">
-              <div className="wr-sch-8">
-                <h3>Перша зарплата</h3>
-                <p>
-                  Через місяць ви отримуєте свій перший Busonline шляхом
-                  зарахування першої зарплати на ваш рахунок.
-                </p>
-              </div>
-              <img src={indexCashImg} alt="indexCashImg" />
+              <img
+                src={indexCashImg}
+                alt="indexCashImg"
+                className="indexCashImg"
+              />
             </div>
           </div>
         </main>
