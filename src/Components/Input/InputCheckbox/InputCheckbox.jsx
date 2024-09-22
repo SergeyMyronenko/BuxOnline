@@ -1,6 +1,6 @@
 import React from 'react';
-import './SubCategory.scss';
-const SubCategory = ({label, checked, onChange }) => {
+import './InputCheckbox.scss';
+const InputCheckbox = ({label, checked, onChange }) => {
     return (
         <div className="subcategory-wrapper">
             <div className="checkbox-wrapper">
@@ -16,4 +16,4 @@ const SubCategory = ({label, checked, onChange }) => {
     );
 };
 
-export default SubCategory;
+export default InputCheckbox;

@@ -1,7 +1,7 @@
 import React from 'react';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
-import SelectField from '../../Components/Input/InputField/SelectField';
+import SelectField from '../../Components/Input/InputSelect/InputSelect';
 import { Link } from 'react-router-dom';
 import {Outlet} from 'react-router-dom';
 import './Register.scss';

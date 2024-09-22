@@ -10,7 +10,7 @@ import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 
 import Accordion from '../../Components/Accordion/Accordion';
-import SubCategory from '../../Components/SubCategory/SubCategory';
+import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 
 function Vacancy() {
@@ -27,68 +27,68 @@ function Vacancy() {
                         </div>
                         <form className="vacancy-options">
                             <Accordion accordionTitle="Software development">
-                                <SubCategory label='Software Engineer'></SubCategory>
-                                <SubCategory label='Full Stack Developer'></SubCategory>
-                                <SubCategory label='Backend Developer'></SubCategory>
-                                <SubCategory label='Frontend Developer'></SubCategory>
-                                <SubCategory label='Web Developer'></SubCategory>
-                                <SubCategory label='Mobile Developer'></SubCategory>
-                                <SubCategory label='DevOps Engineer'></SubCategory>
-                                <SubCategory label='Data Scientist'></SubCategory>
-                                <SubCategory label='Machine Learning Engineer'></SubCategory>
-                                <SubCategory label='AI Specialist'></SubCategory>
-                                <SubCategory label='Blockchain Developer'></SubCategory>
-                                <SubCategory label='Data Engineer'></SubCategory>
+                                <InputCheckbox label='Software Engineer'></InputCheckbox>
+                                <InputCheckbox label='Full Stack Developer'></InputCheckbox>
+                                <InputCheckbox label='Backend Developer'></InputCheckbox>
+                                <InputCheckbox label='Frontend Developer'></InputCheckbox>
+                                <InputCheckbox label='Web Developer'></InputCheckbox>
+                                <InputCheckbox label='Mobile Developer'></InputCheckbox>
+                                <InputCheckbox label='DevOps Engineer'></InputCheckbox>
+                                <InputCheckbox label='Data Scientist'></InputCheckbox>
+                                <InputCheckbox label='Machine Learning Engineer'></InputCheckbox>
+                                <InputCheckbox label='AI Specialist'></InputCheckbox>
+                                <InputCheckbox label='Blockchain Developer'></InputCheckbox>
+                                <InputCheckbox label='Data Engineer'></InputCheckbox>
                             </Accordion>
                             <Accordion accordionTitle="IT Infrastructure">
-                                <SubCategory label="System Administrator" />
-                                <SubCategory label="Network Engineer" />
-                                <SubCategory label="Cloud Engineer" />
-                                <SubCategory label="Security Engineer" />
-                                <SubCategory label="IT Technician" />
-                                <SubCategory label="IT Support Specialist" />
-                                <SubCategory label="IT Manager" />
-                                <SubCategory label="IT Operations Manager" />
-                                <SubCategory label="IT Infrastructure Manager" />
+                                <InputCheckbox label="System Administrator" />
+                                <InputCheckbox label="Network Engineer" />
+                                <InputCheckbox label="Cloud Engineer" />
+                                <InputCheckbox label="Security Engineer" />
+                                <InputCheckbox label="IT Technician" />
+                                <InputCheckbox label="IT Support Specialist" />
+                                <InputCheckbox label="IT Manager" />
+                                <InputCheckbox label="IT Operations Manager" />
+                                <InputCheckbox label="IT Infrastructure Manager" />
 
                             </Accordion>
                             <Accordion accordionTitle="IT Management & Strategy">
-                                <SubCategory label="Project Manager" />
-                                <SubCategory label="IT Project Manager" />
-                                <SubCategory label="IT Coordinator" />
-                                <SubCategory label="IT Analyst" />
-                                <SubCategory label="IT Consultant" />
-                                <SubCategory label="IT Architect" />
-                                <SubCategory label="IT Strategist" />
-                                <SubCategory label="IT Service Manager" />
+                                <InputCheckbox label="Project Manager" />
+                                <InputCheckbox label="IT Project Manager" />
+                                <InputCheckbox label="IT Coordinator" />
+                                <InputCheckbox label="IT Analyst" />
+                                <InputCheckbox label="IT Consultant" />
+                                <InputCheckbox label="IT Architect" />
+                                <InputCheckbox label="IT Strategist" />
+                                <InputCheckbox label="IT Service Manager" />
                             </Accordion>
                             <Accordion accordionTitle="Cybersecurity">
-                                <SubCategory label="IT Security Specialist" />
-                                <SubCategory label="IT Auditor" />
-                                <SubCategory label="IT Compliance Analyst" />
-                                <SubCategory label="IT Risk Manager" />
+                                <InputCheckbox label="IT Security Specialist" />
+                                <InputCheckbox label="IT Auditor" />
+                                <InputCheckbox label="IT Compliance Analyst" />
+                                <InputCheckbox label="IT Risk Manager" />
                             </Accordion>
                             <Accordion accordionTitle="Product & UX Design">
-                            <SubCategory label="UX Designer" />
-                                <SubCategory label="UI Designer" />
-                                <SubCategory label="Product Manager" />
-                                <SubCategory label="Technical Writer" />
+                            <InputCheckbox label="UX Designer" />
+                                <InputCheckbox label="UI Designer" />
+                                <InputCheckbox label="Product Manager" />
+                                <InputCheckbox label="Technical Writer" />
                             </Accordion>
                             <Accordion accordionTitle="Marketing & Content">
-                                <SubCategory label="SEO Specialist" />
-                                <SubCategory label="Digital Marketer" />
-                                <SubCategory label="Social Media Manager" />
-                                <SubCategory label="E-commerce Specialist" />
-                                <SubCategory label="Content Strategist" />
-                                <SubCategory label="Email Marketing Specialist" />
-                                <SubCategory label="CRM Specialist" />
+                                <InputCheckbox label="SEO Specialist" />
+                                <InputCheckbox label="Digital Marketer" />
+                                <InputCheckbox label="Social Media Manager" />
+                                <InputCheckbox label="E-commerce Specialist" />
+                                <InputCheckbox label="Content Strategist" />
+                                <InputCheckbox label="Email Marketing Specialist" />
+                                <InputCheckbox label="CRM Specialist" />
                             </Accordion>
                             <Accordion accordionTitle="Data Analysis & Business">
-                                <SubCategory label="Business Analyst" />
-                                <SubCategory label="Data Analyst" />
-                                <SubCategory label="IT Quality Assurance Analyst" />
-                                <SubCategory label="IT Trainer" />
-                                <SubCategory label="Scrum Master" />
+                                <InputCheckbox label="Business Analyst" />
+                                <InputCheckbox label="Data Analyst" />
+                                <InputCheckbox label="IT Quality Assurance Analyst" />
+                                <InputCheckbox label="IT Trainer" />
+                                <InputCheckbox label="Scrum Master" />
                             </Accordion>
                         <SolidButton width={200} type='submit'>Застосувати</SolidButton>
 

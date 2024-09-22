@@ -20,6 +20,7 @@ const HollowButton: React.FC<HollowButtonProps> = ({ width, height, borderRadius
         'borderRadius': `${borderRadius}px`,
         'fontSize': `${fontSize}px`
     };
+    if(width===100){HollowButtonStyle.width='100%'}
 
     return (
         <button className="hollow-button" style={HollowButtonStyle} disabled={disabled} type={type}>

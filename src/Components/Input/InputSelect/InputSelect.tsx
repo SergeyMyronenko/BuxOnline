@@ -1,6 +1,6 @@
 import React from 'react';
-import './SelectField.scss';
-const SelectField = ({ label, options }) => {
+import './InputSelect.scss';
+const InputSelect = ({ label, options }) => {
     return (
         <div className="select">
             <label htmlFor="role">{label}</label>
@@ -17,4 +17,4 @@ const SelectField = ({ label, options }) => {
     )
 };
 
-export default SelectField;
+export default InputSelect;
