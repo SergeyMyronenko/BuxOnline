@@ -4,7 +4,7 @@ import './InputField.scss';
 interface InputFieldProps {
     label: string;
     type: string;
-    id: string;
+    id?: string;
     placeholder?: string;
 }
 

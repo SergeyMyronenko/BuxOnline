@@ -4,6 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 interface Props {
     skills: string[];
+    id?: string;
 }
 
 const MultipleSelect: React.FC<Props> = ({ skills }) => {
