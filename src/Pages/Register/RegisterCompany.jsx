@@ -5,6 +5,18 @@ import SelectField from '../../Components/Input/InputSelect/InputSelect';
 import { Link } from 'react-router-dom';
 import {Outlet} from 'react-router-dom';
 import './Register.scss';
+/**
+ * RegisterCompany component renders a form for registering a company.
+ * 
+ * This component includes:
+ * - An SVG icon and a title "Деталі компанії" (Company Details).
+ * - An input field for the company name.
+ * - A select field for the company type with options "Компанія" (Company) and "Агентство" (Agency).
+ * - A submit button that navigates to the 'onboard' route.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered component.
+ */
 const RegisterCompany = () => {
     return (
         <>        

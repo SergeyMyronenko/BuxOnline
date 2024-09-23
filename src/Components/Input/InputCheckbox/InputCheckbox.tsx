@@ -9,6 +9,26 @@ interface InputCheckboxProps {
     height?: string;
 }
 
+/**
+ * InputCheckbox component renders a customizable checkbox input with a label.
+ *
+ * @component
+ * @param {Object} props - The properties object.
+ * @param {string} props.label - The label text for the checkbox.
+ * @param {function} props.onChange - The function to call when the checkbox state changes.
+ * @param {string} [props.id] - The optional id for the checkbox input. If not provided, the label will be used as the id.
+ * @param {string} [props.width] - The optional width of the checkbox input.
+ * @param {string} [props.height] - The optional height of the checkbox input.
+ *
+ * @example
+ * <InputCheckbox
+ *   label="Accept Terms and Conditions"
+ *   onChange={handleCheckboxChange}
+ *   id="termsCheckbox"
+ *   width="20px"
+ *   height="20px"
+ * />
+ */
 const InputCheckbox: React.FC<InputCheckboxProps> = ({ label, onChange, id, width, height }) => {
     return (
         <div className="subcategory-wrapper">

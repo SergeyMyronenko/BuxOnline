@@ -12,6 +12,16 @@ const dataPlaceholder = [{
     candidates: 0,
     submited: 0
 }]
+/**
+ * Component to display a list of vacancies or a message if no vacancies are available.
+ *
+ * @param {Object[]} data - Array of vacancy objects.
+ * @param {string} data[].id - Unique identifier for the vacancy.
+ * @param {string} data[].name - Name of the vacancy.
+ * @param {number} data[].candidates - Number of candidates for the vacancy.
+ * @param {number} data[].submited - Number of submissions for the vacancy.
+ * @returns {JSX.Element} A list of vacancies or a message indicating no vacancies.
+ */
 function DisplayVacancies(data) {
     if (data) {
         return (<ul className='vacancy-list'>

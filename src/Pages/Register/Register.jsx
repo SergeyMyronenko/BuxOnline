@@ -11,6 +11,19 @@ import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox.ts
 import InputSelect from '../../Components/Input/InputSelect/InputSelect';
 
 import './Register.scss';
+/**
+ * Register component renders a registration form with options to register using Google, LinkedIn, or GitHub,
+ * as well as via email. The form includes fields for email, password, password confirmation, and registration type.
+ * It also includes a checkbox to agree to terms of service and privacy policy.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Register />
+ * )
+ *
+ * @returns {JSX.Element} The rendered registration form component.
+ */
 const Register = () => {
     return (
         <>

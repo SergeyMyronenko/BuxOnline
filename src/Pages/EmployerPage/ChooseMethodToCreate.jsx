@@ -9,6 +9,23 @@ import InputField from '../../Components/Input/InputField/InputField';
 import SelectField from '../../Components/Input/InputSelect/InputSelect';
 
 import './ChooseMethodToCreate.scss';
+/**
+ * ChooseMethodTochoose component allows users to select a method for creating a job vacancy.
+ * 
+ * The component provides four methods:
+ * 1. Uploading a link: Users can input a URL to automatically fetch job details.
+ * 2. Using templates: Users can select from a list of predefined templates.
+ * 3. Uploading a file: Users can upload a PDF file containing job details.
+ * 4. Manual entry: Users can manually input job details.
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered component.
+ * 
+ * @example
+ * return (
+ *   <ChooseMethodTochoose />
+ * )
+ */
 const ChooseMethodTochoose = () => {
     const [fileName, setFileName] = useState('');
 

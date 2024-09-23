@@ -25,6 +25,42 @@ const allItems = [
 ];
 
 // made with AI
+/**
+ * CreateVacancy component renders a form for creating a job vacancy.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <CreateVacancy />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered component.
+ * 
+ * @description
+ * This component includes various input fields and selectors for specifying job details such as role, experience, skills, salary range, location, languages, job advantages, work environment, and business type. It also includes a text area for job description.
+ * 
+ * @function
+ * @name CreateVacancy
+ * 
+ * @property {string} value - The value of the job description text area.
+ * @property {function} setValue - Function to update the value of the job description text area.
+ * @property {Array} languageSelectors - Array of objects representing language selectors.
+ * @property {function} setLanguageSelectors - Function to update the array of language selectors.
+ * @property {function} addLanguageSelector - Function to add a new language selector.
+ * @property {function} clearLanguageSelector - Function to remove a language selector by its id.
+ * 
+ * @requires useState
+ * @requires useEffect
+ * @requires Header
+ * @requires Nav
+ * @requires InputSelect
+ * @requires MultipleSelect
+ * @requires InputField
+ * @requires SolidButton
+ * @requires InputCheckbox
+ * @requires InputArea
+ * @requires AiOutlineDelete
+ */
 const CreateVacancy = () => {
     const [value, setValue] = useState('Опишіть роботу');
 
