@@ -7,6 +7,17 @@ import cardImg1 from '../../assets/onboardCard1.png';
 import cardImg2 from '../../assets/onboardCard2.png';   
 import cardImg3 from '../../assets/onboardCard3.png';
 import { Link } from 'react-router-dom';
+/**
+ * Onboard component renders the onboarding page with a header, navigation,
+ * and a series of informational cards. Each card provides details about
+ * creating a job vacancy, finding the best matches, and connecting with candidates.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Onboard />
+ * )
+ */
 const Onboard = () => {
     return (
         <>

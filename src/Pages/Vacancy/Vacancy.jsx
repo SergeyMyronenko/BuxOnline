@@ -13,6 +13,19 @@ import Accordion from '../../Components/Accordion/Accordion';
 import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 
+/**
+ * Vacancy component renders the vacancy page layout.
+ * It includes a header, navigation, sidebar with vacancy options, and a main content area.
+ * The sidebar contains various categories of job roles with checkboxes for filtering.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Vacancy />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered vacancy page component.
+ */
 function Vacancy() {
     return (
         <>

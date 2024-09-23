@@ -8,6 +8,18 @@ import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
 
 import './LogIn.scss';
+/**
+ * LogIn component renders a login form with options to log in via Google, LinkedIn, or GitHub,
+ * as well as through email and password.
+ *
+ * @component
+ * @example
+ * return (
+ *   <LogIn />
+ * )
+ *
+ * @returns {JSX.Element} A login form with social media login options and email/password login.
+ */
 const LogIn = () => {
     return (
         <>

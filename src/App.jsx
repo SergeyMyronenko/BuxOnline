@@ -17,6 +17,19 @@ import '@mantine/core/styles.css';
 
 
 
+/**
+ * The main application component that sets up the routing for the application.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <App />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered component.
+ * 
+ * @todo Implement nested routing.
+ */
 function App() {
 
   return (

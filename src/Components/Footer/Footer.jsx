@@ -7,6 +7,17 @@ import { FaInstagram } from "react-icons/fa6";
 
 import './Footer.scss';
 
+/**
+ * Footer component renders the footer section of the application.
+ * It includes multiple sections such as company information, platform details,
+ * legal information, and contact details. It also provides social media links.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Footer />
+ * )
+ */
 export default function Footer() {
   return (
     <footer>

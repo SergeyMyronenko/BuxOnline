@@ -20,6 +20,16 @@ const dataPlaceholer = {
     email: "webdevpro@info.com",
     phone: "+380662652060"
 }
+/**
+ * Renders the profile data for a company.
+ *
+ * @param {Object} data - The profile data of the company.
+ * @param {string} data.companyName - The name of the company.
+ * @param {string} data.location - The location of the company.
+ * @param {string} data.email - The email address of the company.
+ * @param {string} data.phone - The phone number of the company.
+ * @returns {JSX.Element} The JSX element representing the profile data.
+ */
 function profileData(data) {
     if (data) {
         return (

@@ -47,6 +47,34 @@ const UK_FLAG = (
   </svg>
 );
 
+/**
+ * Nav component renders the navigation bar for the application.
+ * 
+ * @component
+ * @example
+ * return (
+ *   <Nav />
+ * )
+ * 
+ * @returns {JSX.Element} The rendered navigation bar component.
+ * 
+ * @description
+ * The Nav component includes:
+ * - A logo section with an SVG icon and a link to the homepage.
+ * - Navigation links to different sections of the application.
+ * - A language selection dropdown that allows users to switch between languages.
+ * 
+ * @function
+ * @name Nav
+ * 
+ * @property {string} language - The current language selected.
+ * @property {function} setLanguage - Function to update the selected language.
+ * @property {string} flag - The current flag icon representing the selected language.
+ * @property {function} setFlag - Function to update the flag icon.
+ * @property {boolean} isLanguageDropdownOpen - State to manage the visibility of the language dropdown.
+ * @property {function} setIsLanguageDropdownOpen - Function to toggle the language dropdown visibility.
+ * @property {function} changeLanguage - Function to handle the language change event.
+ */
 export default function Nav() {
   const [language, setLanguage] = useState("UK");
   const [flag, setFlag] = useState(UA_FLAG);

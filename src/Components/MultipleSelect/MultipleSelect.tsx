@@ -7,6 +7,56 @@ interface Props {
     id?: string;
 }
 
+/**
+ * MultipleSelect component allows users to select multiple items from a dropdown list.
+ * 
+ * @component
+ * @param {Props} props - The props for the component.
+ * @param {string[]} props.skills - The list of skills to choose from.
+ * 
+ * @returns {JSX.Element} The rendered MultipleSelect component.
+ * 
+ * @example
+ * const skills = ['JavaScript', 'TypeScript', 'React'];
+ * <MultipleSelect skills={skills} />
+ * 
+ * @remarks
+ * This component maintains its own state for selected items, input value, and dropdown visibility.
+ * It filters the list of skills based on the user's input and allows for adding and removing items from the selection.
+ * 
+ * @function
+ * @name MultipleSelect
+ * 
+ * @typedef {Object} Props
+ * @property {string[]} skills - The list of skills to choose from.
+ * 
+ * @internal
+ * @function handleInputChange - Updates the input value and opens the dropdown.
+ * @param {React.ChangeEvent<HTMLInputElement>} event - The input change event.
+ * 
+ * @internal
+ * @function handleItemSelect - Adds an item to the selected items and closes the dropdown.
+ * @param {string} item - The item to be added.
+ * 
+ * @internal
+ * @function handleItemRemove - Removes an item from the selected items.
+ * @param {number} index - The index of the item to be removed.
+ * 
+ * @internal
+ * @constant {string[]} allItems - The list of all skills.
+ * 
+ * @internal
+ * @constant {string[]} selectedItems - The list of selected items.
+ * 
+ * @internal
+ * @constant {string} inputValue - The current value of the input field.
+ * 
+ * @internal
+ * @constant {boolean} isDropdownOpen - The state of the dropdown visibility.
+ * 
+ * @internal
+ * @constant {string[]} filteredItems - The list of skills filtered based on the input value.
+ */
 const MultipleSelect: React.FC<Props> = ({ skills }) => {
     const [selectedItems, setSelectedItems] = useState<string[]>([]);
     const [inputValue, setInputValue] = useState<string>('');

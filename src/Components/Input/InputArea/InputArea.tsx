@@ -16,6 +16,32 @@ interface InputAreaProps {
 }
 var content: string;
 
+/**
+ * InputArea component is a rich text editor built using the Mantine and Tiptap libraries.
+ * It allows users to format text with various styles and alignments.
+ *
+ * @component
+ * @param {InputAreaProps} props - The properties for the InputArea component.
+ * @param {string} props.value - The current content of the editor.
+ * @param {React.Dispatch<React.SetStateAction<string>>} props.setValue - Function to update the content of the editor.
+ *
+ * @returns {JSX.Element} The rendered InputArea component.
+ *
+ * @remarks
+ * - The editor is initialized with several extensions including StarterKit, Underline, Link, and TextAlign.
+ * - The `useEffect` hook is used to update the parent component with the current content of the editor.
+ * - The component uses MantineProvider to wrap the RichTextEditor.
+ * - The toolbar includes controls for text formatting, headings, alignment, and undo/redo actions.
+ *
+ * @example
+ * ```tsx
+ * const [value, setValue] = useState<string>('');
+ * 
+ * return (
+ *   <InputArea value={value} setValue={setValue} />
+ * );
+ * ```
+ */
 const InputArea: React.FC<InputAreaProps> = ({ value, setValue }) => {
     const editor = useEditor({
         extensions: [
