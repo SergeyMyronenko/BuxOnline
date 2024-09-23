@@ -13,8 +13,14 @@ import indexCheckImg from "../../assets/indexCheckImg.png";
 import indexCommunityImg from "../../assets/indexCommunityImg.png";
 import indexSlideImg from "../../assets/indexSlideImg.png";
 import indexCashImg from "../../assets/indexCashImg.png";
-import indexSendResume from "../../assets/indexSendResume.png"
+import indexSendResume from "../../assets/indexSendResume.png";
+import advantages1 from "../../assets/indexAdvantages1.svg";
+import advantages2 from "../../assets/indexAdvantages2.svg";
+import advantages3 from "../../assets/indexAdvantages3.svg";
+import chatBotPointer from "../../assets/indexChatPointer.svg";
+import chatBotCurve from "../../assets/indexChatBotCurve.svg";
 import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";
+import HollowButtonProps from "../../Components/Buttons/HollowButton/HollowButton";
 
 import Nav from "../../Components/Nav/Nav";
 import Header from "../../Components/Header/Header";
@@ -325,6 +331,63 @@ function Index () {
             <img className="frame" src={vacancyTitleImg} alt="frame" />
             <h5 className="header-arrow">Переваги</h5>
           </div>
+
+          <div className="advantages-block">
+            <img src={advantages1} alt="advantages1" className="advantages1" />
+
+            <div className="a-1">
+              <span>1</span>
+              <p>Працюйте віддалено у будь-якій точці світу</p>
+            </div>
+            <img src={advantages2} alt="advantages2" className="advantages2" />
+
+            <div className="a-2">
+              <span>2</span>
+              <p>Допомога та консультації з юридичних питань</p>
+            </div>
+            <img src={advantages3} alt="advantages3" className="advantages3" />
+            <div className="a-3">
+              {" "}
+              <span>3</span>
+              <p>Працюйте у зручний для вас час</p>
+            </div>
+            <div className="a-4">
+              <span>4</span>
+              <p>Ми знайдемо ідеальну роботу, що відповідає вашим навичкам</p>
+            </div>
+            <div className="a-5">
+              <span>5</span>
+              <p>Задоволених співробітників уже понад 250 осіб!</p>
+            </div>
+          </div>
+
+          <div className="chat-bot-block">
+            <div className="ch-b-bl-1">
+              <h2>Є питання?</h2>
+              <p>Зайдіть у наш чат-бот і поставте йому запитання</p>
+              <h2>Увага!</h2>
+              <p>Чат-боту ставте питання англійською мовою.</p>
+            </div>
+            <div className="ch-b-bl-2">
+              <img
+                src={chatBotPointer}
+                alt="chatBotPointer"
+                className="chatBotPointer"
+              />
+              <div className="button-bot">
+              <HollowButtonProps width={277} fontSize={28} 
+             
+              >
+                <a href="#" className="link-bot">t.me/buxonline</a>
+              </HollowButtonProps> </div>
+              <img
+                src={chatBotCurve}
+                alt="chatBotCurve"
+                className="chatBotCurve"
+              />
+            </div>
+          </div>
+
           <div className="header-arrow-block">
             <img className="frame" src={vacancyTitleImg} alt="frame" />
             <h5 className="header-arrow">Гарячі ваканції</h5>
@@ -334,6 +397,7 @@ function Index () {
             <img className="frame" src={vacancyTitleImg} alt="frame" />
             <h5 className="header-arrow">Відправити резюме</h5>
           </div>
+
           <div className="send-resume-block">
             <div className="s-r-bl">
               <p>
