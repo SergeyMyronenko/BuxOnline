@@ -13,6 +13,10 @@ import ChooseMethodToCreate from "./Pages/EmployerPage/ChooseMethodToCreate";
 import CreateVacancy from "./Pages/EmployerPage/CreateVacancy";
 import './App.scss'
 
+import '@mantine/core/styles.css';
+
+
+
 function App() {
 
   return (
@@ -21,6 +25,7 @@ function App() {
     Todo: nested routing
     no time for that rn
     */}
+
       <Routes>
         <Route path='/BuxOnline/' element={<Index />} />
 
@@ -42,6 +47,7 @@ function App() {
         
         <Route path='*' element={<NotFound />} />
       </Routes>
+
     </>
   )
 }

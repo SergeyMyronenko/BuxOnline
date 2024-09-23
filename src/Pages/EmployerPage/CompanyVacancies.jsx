@@ -47,7 +47,7 @@ function DisplayVacancies(data) {
                 </svg>
                 <h1>У вас ще немає вакансій</h1>
                 <Link to='/BuxOnline/company/jobs/choose' >
-                    <SolidButton width={260}>Створити вакансію</SolidButton>
+                    <SolidButton width='235px' height='40px' borderRadius='20px'>Створити вакансію</SolidButton>
                 </Link>
             </div>
         )

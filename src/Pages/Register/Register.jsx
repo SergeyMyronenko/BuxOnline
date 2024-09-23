@@ -7,7 +7,7 @@ import Nav from '../../Components/Nav/Nav';
 
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
-import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox';
+import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox.tsx';
 import InputSelect from '../../Components/Input/InputSelect/InputSelect';
 
 import './Register.scss';
@@ -74,7 +74,7 @@ const Register = () => {
                     
                     
                     <div className='agree'>
-                        <InputCheckbox></InputCheckbox>
+                        <InputCheckbox width='28px' height='28px'></InputCheckbox>
                         <p>Я погоджуюся з <a href="#">Умовами обслуговування</a> та <br /> <a href="#">Політикою конфіденційності</a></p>
                     </div>
                     <Link to='/BuxOnline/register/company'>

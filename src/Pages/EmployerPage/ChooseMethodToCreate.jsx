@@ -48,7 +48,7 @@ const ChooseMethodTochoose = () => {
                             </div>
                             <form action="">
                                 <InputField type="url" label="Посилання" placeholder="Вставте посилання сюди" id='url'></InputField>
-                                <SolidButton type="submit" width={100} borderRadius={20}> Завантажити </SolidButton>
+                                <SolidButton type="submit" width='100%' height='39px' borderRadius='20px'> Завантажити </SolidButton>
                             </form>
                         </div>
                         <div className="choose-card">
@@ -63,7 +63,7 @@ const ChooseMethodTochoose = () => {
                             </div>
                             <form action="">
                                 <SelectField label="Шаблони" options={["Шаблон 1", "Шаблон 2", "Шаблон 3"]} id='template'></SelectField>
-                                <SolidButton type="submit" width={100} borderRadius={20}> Завантажити </SolidButton>
+                                <SolidButton type="submit" width='100%' borderRadius='20px'> Завантажити </SolidButton>
 
                             </form>
                         </div>
@@ -85,10 +85,10 @@ const ChooseMethodTochoose = () => {
                                     <label htmlFor="file" className='file-label'>Вибрати файл</label>
                                     <input type="file" id="file" onChange={handleFileChange} />
                                 </div>
-                                {/* треба зробити перевірку на пдф, може тут, може на бек? */}
+                                {/* a check for uploaded files is required here*/}
                                 <input type="text" value={fileName} readOnly disabled />
 
-                                <SolidButton type="submit" width={100} borderRadius={20}> Завантажити </SolidButton>
+                                <SolidButton type="submit" width='100%' height='39px' borderRadius='20px'> Завантажити </SolidButton>
 
                             </form>
                         </div>
@@ -103,10 +103,10 @@ const ChooseMethodTochoose = () => {
                                
                                 
                             </div>
-                            {/* для правильного позиціонування */}
+                            {/* the styles for these card are applied to the form element, so it is here to use them*/}
                             <form action="">
                                 <Link to='/BuxOnline/company/jobs/create'>
-                                    <SolidButton width={100} borderRadius={20}>Далі</SolidButton>
+                                    <SolidButton width='100%' height='39px' borderRadius='20px'>Далі</SolidButton>
                                 </Link>
                             </form>
 

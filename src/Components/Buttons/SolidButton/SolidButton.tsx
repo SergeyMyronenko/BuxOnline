@@ -2,30 +2,26 @@ import React from 'react';
 import './SolidButton.scss';
 
 interface SolidButtonProps {
-    width?: number;
-    height?: number;
-    borderRadius?: number;
-    fontSize?: number;
+    width?: string;
+    height?: string;
+    borderRadius?: string;
+    fontSize?: string;
     onClick?: () => void;
     children?: React.ReactNode;
     disabled?: boolean;
     type?: 'button' | 'submit';
 }
 
+// attention, I changed the wsay you pass the styles,
+//now you past them the same way you write css
+//for example: 
+{/* <SolidButton type="submit" width='100%' borderRadius='20px'> Завантажити </SolidButton> */}
+//width='value', value is the same value you write in css
+//the same way you pass the height, borderRadius, fontSize
+
 const SolidButton: React.FC<SolidButtonProps> = ({ width, height, borderRadius, onClick, children, fontSize, disabled=false, type = 'button' }) => {
-    //these styles override the default styles,
-    //specified in the SolidButton.scss file
-    const SolidButtonStyle = {
-        'width': `${width}px`,
-        'height': `${height}px`,
-        'borderRadius': `${borderRadius}px`,
-        'fontSize': `${fontSize}px`
-    };
-    if(width===100){SolidButtonStyle.width='100%'}
-
-
-    return (
-        <button className="solid-button" style={SolidButtonStyle} disabled={disabled} type={type} onClick={onClick}>
+      return (
+        <button className="solid-button" style={{width,height,borderRadius,fontSize}} disabled={disabled} type={type} onClick={onClick}>
             {children}
         </button>
     );
