@@ -37,7 +37,7 @@ function profileData(data) {
                                 <h2>{data.companyName}</h2>
                                 <p><TiLocationOutline />{data.location}</p>
                             </span>
-                            <SolidButton width={100} borderRadius={20} height={42}>Редагувати профіль</SolidButton>
+                            <SolidButton width='100%' borderRadius='20px' height='42px'>Редагувати профіль</SolidButton>
                         </div>
                     </div>
                     <div className="contact-info">
@@ -131,7 +131,7 @@ const CompanyCabinet = () => {
                                 </ul>
                             </div>
                             <Link to='/BuxOnline/company/jobs/choose'>
-                                <SolidButton>Додати вакансію</SolidButton>
+                                <SolidButton width='200px' height='40px' borderRadius='20px' >Додати вакансію</SolidButton>
                             </Link>
                         </div>
                         <div className="company-info">{profileData(dataPlaceholer)}</div>

@@ -103,7 +103,7 @@ const CreateVacancy = () => {
                                     </div>
                                 ))}
                             </div>
-                            <SolidButton onClick={addLanguageSelector}>Додати мову +</SolidButton>
+                            <SolidButton onClick={addLanguageSelector} borderRadius='20px' width='300px'>+ Додати мову </SolidButton>
                         </div>
                         <div className="field-wrapper">
                             <h2>Переваги роботи</h2>

@@ -55,7 +55,7 @@
                     }
                 }
                 form{
-                    height: 125px;
+                    height: 145px;
                     display: flex;
                     flex-direction: column;
                     justify-content: end;
@@ -95,7 +95,9 @@
 
 
                     }
-
+                    input[type=file] {
+                        display: none;
+                    }
                     input[type=text] {
                         border: none;
                         width: 100%;

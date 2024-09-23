@@ -9,7 +9,7 @@ interface InputSelectProps {
 
 const InputSelect: React.FC<InputSelectProps> = ({ label, options,id }) => {
     return (
-        <div className="select">
+        <div className="select-wrapper">
             <label htmlFor={id}>{label}</label>
             <select id={id}>
                 {options.map((option, index) => (
