@@ -2,6 +2,17 @@ import "./Filter.scss";
 
 import { CgClose } from "react-icons/cg";
 
+/**
+ * Filter component renders a filter panel with various filter options.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Filter />
+ * )
+ *
+ * @returns {JSX.Element} A div containing filter options and buttons to clear or select filters.
+ */
 const Filter = () => {
   return (
     <div className="filter">

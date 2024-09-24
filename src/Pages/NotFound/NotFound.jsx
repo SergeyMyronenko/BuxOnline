@@ -5,6 +5,18 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import HollowButton from '../../Components/Buttons/HollowButton/HollowButton';
 import './NotFound.scss';
+/**
+ * NotFound component renders a 404 error page with a custom SVG illustration,
+ * a message indicating that something went wrong, and a button to navigate back to the homepage.
+ *
+ * @component
+ * @example
+ * return (
+ *   <NotFound />
+ * )
+ *
+ * @returns {JSX.Element} The rendered NotFound component.
+ */
 const NotFound = () => {
     return (        
         <>

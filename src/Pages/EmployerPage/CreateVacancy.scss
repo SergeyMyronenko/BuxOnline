@@ -1,0 +1,139 @@
+@use '../../App.scss' as styles;
+
+.create-vacancy-wrapper {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    margin-bottom: 200px;
+    justify-content: center;
+    align-items: center;
+
+    .create-vacancy-box {
+
+        width: 90%;
+        height: 90%;
+        border-radius: 16px;
+        padding: 50px;
+        padding-bottom: 75px;
+
+        border: 1px solid styles.$grayforBorder;
+
+        form {
+            .field-wrapper {
+                padding: 20px 0px;
+                h2{
+                    padding-bottom: 20px;
+                }
+                .salary{
+                    display: flex;
+                    gap: 20px;
+                    >*{
+                        width: 50%;
+                    }
+                }
+                .languages{
+                   display: flex;
+                   gap: 20px;
+                   flex-wrap: wrap;
+                   >div{
+                          display: flex;
+                          gap: 10px;
+                          width: 100%;
+                   }
+                   .clear-language{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    button{
+                        border: none;
+                        height: 43px;
+                        width: 60px;
+                        border-radius: 12px;
+                        border: 1px solid styles.$grayforBorder;
+                        font-size: 24px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: styles.$fastAnimation;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: styles.$red;
+                            color: styles.$white;
+                        }
+                    }
+                   }
+                }
+                .advantages{
+                    display: grid;
+                    grid-template-columns: 30% 30% 30%;
+                    svg{
+                        width: 36px;
+                        height: 36px;
+                        color: styles.$lightBlue;
+                    }
+                    >div{
+                        align-items: center;
+                        gap: 10px;
+                    }
+                }
+
+            }
+
+          
+
+            .select-experience {
+                display: flex;
+
+                .radio-wrapper {
+                    position: relative;
+                    width: 70px;
+                    height: 48px;
+                    border: 1px solid styles.$lightBlue;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    label {
+                        cursor: pointer;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    input[type=radio] {
+                        opacity: 0
+                    }
+
+                    input[type=radio]:checked+label {
+                        background-color: styles.$lightBlue;
+
+                    }
+
+                    &:first-of-type {
+                        border-radius: 16px 0px 0px 16px;
+
+                        label {
+                            border-radius: 14.4px 0px 0px 14.4px;
+
+                        }
+                    }
+
+                    &:last-of-type {
+                        border-radius: 0px 16px 16px 0px;
+
+                        label {
+                            border-radius: 0px 14.4px 14.4px 0px;
+
+
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}

@@ -1,0 +1,39 @@
+.subcategory-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    .checkbox-wrapper {
+        display: flex;
+        align-items: center;
+
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 12.5px;
+            height: 12.5px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            margin-right: 10px;
+            &:checked {
+                //svg картинка
+                background-image: url("data:image/svg+xml,%3Csvg width='1' height='1' viewBox='0 0 9 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.69378 0.506163C8.63568 0.447583 8.56655 0.401086 8.49039 0.369356C8.41423 0.337625 8.33254 0.321289 8.25003 0.321289C8.16752 0.321289 8.08583 0.337625 8.00967 0.369356C7.93351 0.401086 7.86438 0.447583 7.80628 0.506163L3.15003 5.16866L1.19378 3.20616C1.13345 3.14789 1.06224 3.10207 0.984206 3.07132C0.906171 3.04056 0.822844 3.02548 0.738981 3.02693C0.655118 3.02838 0.572362 3.04634 0.495438 3.07977C0.418514 3.1132 0.348929 3.16146 0.290655 3.22179C0.23238 3.28211 0.186559 3.35333 0.155807 3.43136C0.125054 3.5094 0.109973 3.59272 0.111424 3.67659C0.112875 3.76045 0.130829 3.84321 0.164263 3.92013C0.197696 3.99705 0.245954 4.06664 0.30628 4.12491L2.70628 6.52491C2.76438 6.58349 2.83351 6.62999 2.90967 6.66172C2.98583 6.69345 3.06752 6.70979 3.15003 6.70979C3.23254 6.70979 3.31423 6.69345 3.39039 6.66172C3.46655 6.62999 3.53568 6.58349 3.59378 6.52491L8.69378 1.42491C8.75722 1.36639 8.80785 1.29535 8.84248 1.21629C8.87711 1.13723 8.89499 1.05185 8.89499 0.965538C8.89499 0.879224 8.87711 0.793846 8.84248 0.714784C8.80785 0.635722 8.75722 0.564689 8.69378 0.506163V0.506163Z' fill='black'/%3E%3C/svg%3E%0A");
+                background-repeat: no-repeat no-repeat;
+                background-position: center center;
+                background-size: cover;
+                
+            }
+            &:hover {
+                background-color: lightgray;
+            }
+        }
+
+        label {
+            cursor: pointer;
+            height: 100%;
+        }
+    }
+}

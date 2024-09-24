@@ -1,0 +1,117 @@
+@use '../../App.scss' as styles;
+
+.choose-vacancy-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .choose-vacancy-inner-wrapper {
+        margin-bottom: 100px;
+        margin-top: 50px;
+        width: 92%;
+        height: 90%;
+        border-radius: 16px;
+        border: 1px solid styles.$grayforBorder;
+        padding: 67px;
+
+        h1 {
+            color: styles.$blackForText;
+            padding-bottom: 50px;
+        }
+
+        .choose-vacancy-methods {
+            display: grid;
+            grid-template-columns: 48% 48%;
+            justify-content: space-between;
+
+            .choose-card {
+                border: 1px solid styles.$grayforBorder;
+                border-radius: 16px;
+                height: 550px;
+                padding: 20px;
+                margin: 30px 0px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+
+                .title {
+                    height: 300px;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    align-items: center;
+                    justify-content: space-evenly;
+
+                    h3 {}
+
+                    p {
+                        width: 60%;
+                        height: 100px;
+
+                        span {
+                            color: styles.$lightBlue;
+                        }
+                    }
+                }
+                form{
+                    height: 145px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: end;
+                    a{
+                        text-decoration: none;
+                    }
+                }
+
+                .file-form {
+                    div {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+
+                    label {
+                        background-color: styles.$white;
+                        border: 1px solid styles.$lightBlue;
+                        border-radius: 20px;
+                        padding: 10px;
+                        width: 100%;
+                        position: absolute;
+                        cursor: pointer;
+                        text-align: center;
+                        transition: 0.3s ease-in-out;
+
+                        &:hover {
+                            background-color: styles.$lightBlue;
+                            color: styles.$white;
+                            scale: 1.05;
+                        }
+                        &:active {
+                            scale: 1;
+                     
+                         }
+
+
+                    }
+                    input[type=file] {
+                        display: none;
+                    }
+                    input[type=text] {
+                        border: none;
+                        width: 100%;
+                        margin-bottom: 30px;
+                        margin-top: 20px;
+                        margin-left: 10px;
+
+                    }
+
+
+                }
+
+
+            }
+        }
+    }
+}

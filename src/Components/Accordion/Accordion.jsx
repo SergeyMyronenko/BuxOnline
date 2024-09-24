@@ -3,6 +3,21 @@ import './Accordion.scss';
 import { useState } from 'react';
 import { FaAngleDown } from "react-icons/fa6";
 
+/**
+ * Accordion component that displays a collapsible section with a title.
+ *
+ * @component
+ * @param {Object} props - The properties object.
+ * @param {string} props.accordionTitle - The title of the accordion.
+ * @param {React.ReactNode} props.children - The content to be displayed inside the accordion.
+ *
+ * @example
+ * <Accordion accordionTitle="Section 1">
+ *   <p>This is the content of the accordion.</p>
+ * </Accordion>
+ *
+ * @returns {JSX.Element} The rendered Accordion component.
+ */
 const Accordion = ({ accordionTitle, children }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (

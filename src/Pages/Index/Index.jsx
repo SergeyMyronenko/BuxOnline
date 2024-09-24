@@ -10,6 +10,7 @@ import indexLittlePhotos from "../../assets/indexLittlePhotos.png";
 
 import Header from "../../Components/Header/Header"
 import Nav from "../../Components/Nav/Nav";
+import Header from "../../Components/Header/Header";
 
 
 import './Index.scss';

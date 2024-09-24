@@ -7,7 +7,7 @@
     white-space: nowrap;
     width: 138px;
     height: 39px;
-    border-radius: 12px;
+    border-radius: 20px;
     background-color: styles.$white;
     border: 1px solid styles.$lightBlue;
     color: styles.$lightBlue;
@@ -17,7 +17,6 @@
     // Селектор для вимкненої кнопки
     // Змінює колір фону, тексту та рамки, а також курсор
     // при вимкненому стані
-
 
     &:disabled {
         background-color: styles.$grayForFill;

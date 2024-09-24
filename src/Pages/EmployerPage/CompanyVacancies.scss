@@ -1,0 +1,88 @@
+@use '../../App.scss' as styles;
+.vacancies-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        color:styles.$blackForText; 
+    }
+    .inner-wrapper{
+        width: 90%;
+        height: 90%;
+        padding-bottom: 50px;
+        span{
+            display: flex;
+            align-items: center;
+            h1{
+                padding-left: 20px;
+            }
+        }
+        .all-vacancies{
+            width: 100%;
+            height: 620px;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 16px;
+            border: 1px solid styles.$grayforBorder;
+            h1{
+                padding: 50px;
+            }
+            .no-vacancy{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding-top: 100px;
+              
+            }
+           
+            .vacancy-list{
+               
+                .vacancy-item{
+                   
+                        padding-left: 40px;
+                        border-bottom: 1px solid styles.$grayforBorder;
+                        display: flex;
+                        justify-content: space-between;
+                        h3{
+                            padding-bottom: 15px;
+                            color: styles.$blackForText;
+                        }
+                        span{
+                            display: flex;
+                            gap: 20px;
+                            color: styles.$grayForText;
+                            padding-bottom: 35px;
+                        }
+                    
+                    .right{
+                        display: flex;
+                        gap: 10px;
+                        button{
+                            width: 36px;
+                            height: 36px;
+                            background:none;
+                            border: none;
+                            cursor: pointer;
+                            color: styles.$grayForText;
+                            transition: 0.1s cubic-bezier(0.7, 0, 0.31, 0.98);
+    
+                            &:hover{
+                                color: styles.$blackForText;
+                            }
+                            svg{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }                  
+
+                }
+            }
+        }
+    }
+   
+}

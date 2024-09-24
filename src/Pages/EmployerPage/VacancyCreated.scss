@@ -1,0 +1,45 @@
+@use '../../App.scss' as styles;
+.vacancy-created-wrapper{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+.inner-vacancy-created-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 90%;
+    height: 90%;
+    gap: 50px;
+    margin: 50px 0px 100px;
+    }
+    .created-card{
+        padding: 90px;
+        flex: 1;
+        text-align: center;
+        border-radius: 16px;
+        border: 1px solid styles.$grayforBorder;
+        color: styles.$blackForText;
+        h3{
+            padding-bottom: 25px;
+        }
+    }
+    .best-fit-wrapper{
+
+        border-radius: 16px;
+        border: 1px solid styles.$grayforBorder;
+        display: flex;
+        flex-direction: column;
+        flex: 3;
+        padding: 40px;
+        h1{
+            color: styles.$blackForText;
+            padding-bottom: 25px;
+        }
+        .solid-button{
+            margin: 25px 0px;
+        }
+      
+    }
+}

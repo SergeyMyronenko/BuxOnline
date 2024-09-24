@@ -26,6 +26,13 @@ $blue:#26508F;
 $red:#E33629;
 $yellowForIcons:#F4D31E;
 
+//змінні для анімації
+$slowAnimation: 0.5s cubic-bezier(0.7, 0, 0.31, 0.98);
+$mediumAnimation: 0.5s cubic-bezier(0.7, 0, 0.31, 0.98);
+$fastAnimation: 0.1s cubic-bezier(0.7, 0, 0.31, 0.98);
+
+
+
 //Стилі заголовків
 h1 {
   font-size: 38px;
@@ -40,13 +47,13 @@ h2 {
 
 h3 {
   font-size: 24px;
-   font-weight: 500;
+   font-weight: 600;
 
 }
 
 h4 {
   font-size: 24px;
-  font-weight: normal;
+  font-weight: 450;
   
 
 }
@@ -62,4 +69,7 @@ h6 {
   font-weight: normal;
 
   
+}
+a{
+  text-decoration: none;
 }

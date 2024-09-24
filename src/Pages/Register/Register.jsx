@@ -1,19 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import Header from '../../Components/Header/Header';
 import Nav from '../../Components/Nav/Nav';
 
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
-import SubCategory from '../../Components/SubCategory/SubCategory';
+import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox.tsx';
+import InputSelect from '../../Components/Input/InputSelect/InputSelect';
 
 import './Register.scss';
+/**
+ * Register component renders a registration form with options to register using Google, LinkedIn, or GitHub,
+ * as well as via email. The form includes fields for email, password, password confirmation, and registration type.
+ * It also includes a checkbox to agree to terms of service and privacy policy.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Register />
+ * )
+ *
+ * @returns {JSX.Element} The rendered registration form component.
+ */
 const Register = () => {
     return (
         <>
-            <Header></Header>
-            <Nav></Nav>
+        <Header></Header>
+        <Nav></Nav>
             <div className="form-wrapper">
 
                 <form>
@@ -68,19 +83,16 @@ const Register = () => {
                     <InputField label='E-mail' type='email' placeholder='E-mail' id='email'></InputField>
                     <InputField label='Пароль' type='password' placeholder='Пароль' id='password'></InputField>
                     <InputField label='Підтвердьте пароль' type='password' placeholder='Підтвердьте пароль' id='repeat-password'></InputField>
-                    <div className="select-role">
-                        <label htmlFor="role">Тип реєстрації</label>
-                        <select id="role">
-                            <option value="candidate">Кандидат</option>
-                            <option value="employer">Робототавець</option>
-                        
-                        </select>
-                    </div>
+                    <InputSelect label="Тип реєстрації" options={["Кандидат" ,"Роботодавець"]}></InputSelect>
+                    
+                    
                     <div className='agree'>
-                        <SubCategory></SubCategory>
+                        <InputCheckbox width='28px' height='28px'></InputCheckbox>
                         <p>Я погоджуюся з <a href="#">Умовами обслуговування</a> та <br /> <a href="#">Політикою конфіденційності</a></p>
                     </div>
-                    <SolidButton type='submit' fontSize={16}>Зареєструватися</SolidButton>
+                    <Link to='/BuxOnline/register/company'>
+                        <SolidButton type='submit' fontSize={16}>Зареєструватися</SolidButton>
+                    </Link>
                     <p>Якщо у вас уже є обліковий запис, ми можете <Link to='/BuxOnline/login'>ВВІЙТИ ТУТ</Link></p>
                 </form>
             </div>
