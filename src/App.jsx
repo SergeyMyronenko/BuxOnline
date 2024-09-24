@@ -11,9 +11,12 @@ import CompanyCabinet from "./Pages/EmployerPage/CompanyCabinet";
 import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies";
 import ChooseMethodToCreate from "./Pages/EmployerPage/ChooseMethodToCreate";
 import CreateVacancy from "./Pages/EmployerPage/CreateVacancy";
+import ConfirmCreatedVacancy from "./Pages/EmployerPage/ConfirmCreatedVacancy.tsx";
+
 import './App.scss'
 
 import '@mantine/core/styles.css';
+import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
 
 
 
@@ -53,7 +56,12 @@ function App() {
         <Route path="/BuxOnline/company/cabinet/:id" element={<CompanyCabinet/>}></Route>      
         <Route path="/BuxOnline/company/jobs/" element={<CompanyVacancies/>}></Route>    
         <Route path="/BuxOnline/company/jobs/choose" element={<ChooseMethodToCreate/>}></Route>   
-        <Route path="/BuxOnline/company/jobs/create" element={<CreateVacancy/>}></Route>      
+        <Route path="/BuxOnline/company/jobs/create" element={<CreateVacancy/>}></Route>   
+        <Route path="/BuxOnline/company/jobs/create/:id" element={<ConfirmCreatedVacancy/>}></Route>    
+        <Route path="/BuxOnline/company/jobs/create/:id/finished" element={<VacancyCreated/>}></Route>    
+
+
+
 
 
 
