@@ -78,6 +78,7 @@ const LogIn = () => {
                     <p>Або за допомогою адресу електронної пошти</p>
                     <InputField label='E-mail' type='email' placeholder='E-mail' id='email'></InputField>
                     <InputField label='Пароль' type='password'  placeholder='Пароль' id='password'></InputField>
+                    <span><Link to='forgot-password'>Забули пароль?</Link></span>
                     <SolidButton type='submit' fontSize={16}>Ввійти</SolidButton>
                     <p>Якщо ви ще не зареєстровані, <Link to='/BuxOnline/register'>ЗАРЕСТРУЙТЕСЬ ТУТ</Link></p>
                 </form>

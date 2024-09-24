@@ -17,6 +17,7 @@ import './App.scss'
 
 import '@mantine/core/styles.css';
 import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
+import ForgotPassword from "./Pages/LogIn/ForgotPassword.jsx";
 
 
 
@@ -48,6 +49,10 @@ function App() {
         <Route path='/BuxOnline/vacancy' element={<Vacancy />} />
 
         <Route path='/BuxOnline/login' element={<LogIn />} />
+        <Route path='/BuxOnline/login/forgot-password' element={<ForgotPassword />} />
+        <Route path='/BuxOnline/login/forgot-password/:email' element={<ForgotPassword />} />
+
+
 
         <Route path='/BuxOnline/register' element={<Register />}/>
         <Route path='/BuxOnline/register/company/' element={<RegisterCompany />} />
