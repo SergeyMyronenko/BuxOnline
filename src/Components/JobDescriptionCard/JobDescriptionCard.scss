@@ -1,0 +1,31 @@
+@use '../../App.scss' as styles;
+
+.job-description-card {
+    display: grid;
+    width: 200px;
+    border: 1px solid styles.$lightBlue;
+    border-radius: 16px;
+    text-align: center;
+
+
+    .job-description-title {
+        background-color: styles.$lightBlue;
+        border-radius: 16px;
+        padding: 35px;
+        color: styles.$white;
+        font-size: 16px;
+        height: 150px;
+        
+
+        svg{
+            width: 36px;
+            height: 36px;
+        }       
+
+    }
+    .job-description-list {
+        padding: 25px 35px 45px;
+        list-style: none;
+
+    }
+}

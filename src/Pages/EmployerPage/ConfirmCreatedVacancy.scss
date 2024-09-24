@@ -1,0 +1,90 @@
+@use '../../App.scss' as styles;
+.confirm-wrapper{
+    width: 100vw;
+    height: max-content;
+    padding: 100px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .inner-confirm-wrapper{
+        width: 90%;
+        height: 90%;
+        border-radius: 16px;
+        border: 1px solid styles.$grayforBorder;
+        background-color: styles.$white;
+        padding: 60px 60px 120px 60px;
+        color: styles.$blackForText;
+        position: relative;
+        h2{
+            padding-bottom: 30px;
+        }
+        h4{
+            padding-bottom: 50px;
+        }
+
+        .title{
+            color: styles.$blackForText;
+
+        }
+        .city{
+            color: styles.$grayForText;
+            display: flex;
+            align-items:  baseline;
+        }
+        .job-bullet-points{
+            display: grid;
+            justify-content: space-between;
+            grid-template-columns: auto auto auto auto auto;
+        }
+        .job-description{
+            width: 100%;
+            margin-top: 50px;
+            padding: 50px;
+            border-radius: 16px;
+            background-color: styles.$white;
+            border: 1px solid styles.$grayforBorder;
+            h3{
+                padding-bottom: 50px;
+            }
+            span{
+                display: flex;
+                .job-description-paragraph{
+                    width: 70%;
+                    margin-right: 50px;
+                }
+                .skills-box{
+                    background-color: styles.$lightBlue;
+                    border-radius: 16px;
+                    width: 380px;
+                    padding: 30px;
+                    color: white;
+                    .all-skills{
+                        display: flex;
+                        list-style: none;
+                        gap: 10px;
+                        flex-wrap: wrap;
+                        li{
+                            min-width: 60px;
+                            padding: 0px 10px;
+                            height: 35px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 16px;
+                            border: 1px solid styles.$white;
+                            font-size: 18px;
+
+                        }
+                    }
+                }
+            }
+
+        }
+        .solid-button{            
+            margin: 50px 0px;
+            position: absolute;
+            left: 85%;
+        }
+
+    }
+}

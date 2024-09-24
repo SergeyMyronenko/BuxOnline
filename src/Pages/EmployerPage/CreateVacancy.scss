@@ -66,6 +66,11 @@
                 .advantages{
                     display: grid;
                     grid-template-columns: 30% 30% 30%;
+                    svg{
+                        width: 36px;
+                        height: 36px;
+                        color: styles.$lightBlue;
+                    }
                     >div{
                         align-items: center;
                         gap: 10px;

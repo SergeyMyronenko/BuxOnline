@@ -79,7 +79,7 @@ const CompanyVacancies = () => {
                         </span>
                     </span>
                     <div className="all-vacancies">
-                        {DisplayVacancies()}
+                        {DisplayVacancies(dataPlaceholder)}
                     </div>
                 </div>
             </div>
