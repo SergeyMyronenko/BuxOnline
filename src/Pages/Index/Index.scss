@@ -637,41 +637,73 @@ main {
     }
   }
 
-  .vacancy-block {
-    margin-top: 69px;
-    margin-bottom: 61px;
-    display: flex;
+ .vacancy-block {
+margin: 69px 0px 61px 0px;
+  display: flex;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 5945px;
+    width: 250px;
+    height: 380px; 
+    content: "";
+    z-index: 2;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+  }
+
+  .v-bl-slide {
+    border: 2px solid styles.$grayforBorder; 
     overflow: hidden;
-    .v-bl-slide {
-      border: styles.$grayforBorder 2px solid;
-      overflow: hidden;
-      border-radius: 20px;
-      background-color: #f4f4f4;
-      margin-right: 20px;
-      padding: 20px;
-      h3 {
-        color: styles.$lightBlue;
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-      h2 {
-        font-size: 16px;
-      }
-      p {
-        font-size: 16px;
-        margin-bottom: 20px;
-      }
-      .v-bl-button {
-        margin-left: 150px;
-      }
-      &:nth-child(1) {
-        margin-left: -25%;
-      }
-      &:nth-child(4) {
-        margin-right: -25%;
-      }
+    border-radius: 20px;
+    background-color: #f4f4f4;
+    margin-right: 20px;
+    padding: 20px;
+    animation: 35s slide infinite linear;
+    position: relative;
+
+    .v-bl-button{
+ padding-left: 55px;
+    }
+
+    h3 {
+      color: styles.$lightBlue; 
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
     }
   }
+
+  &:hover .v-bl-slide {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
 
   .send-resume-block {
     display: flex;
