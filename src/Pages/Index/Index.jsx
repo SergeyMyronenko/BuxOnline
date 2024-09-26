@@ -400,7 +400,7 @@ function Index () {
           </div>
 
           <div className="vacancy-block">
-            <div className="v-bl-wr">
+            <div className="v-bl-slide">
               <div className="v-bl">
                 <h3>Data Scientist</h3>
                 <h2>
