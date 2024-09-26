@@ -23,7 +23,7 @@ import chatBotCurve from "../../assets/indexChatBotCurve.svg";
 import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";//+
 import HollowButtonProps from "../../Components/Buttons/HollowButton/HollowButton";//+
 
-import Header from "../../Components/Header/Header"
+
 import Nav from "../../Components/Nav/Nav";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
