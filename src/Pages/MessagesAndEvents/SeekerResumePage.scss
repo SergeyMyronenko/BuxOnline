@@ -1,0 +1,96 @@
+@use "../../App.scss" as styles;
+
+.resume-page-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .resume-wrapper {
+    height: 100%;
+    margin: 25px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .resume-title {
+      height: auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h3 {
+        font-size: large;
+      }
+    }
+
+    .resume-list {
+      height: auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-self: center;
+      margin: 65px 0px;
+
+      .resume-item {
+        height: 135px;
+        width: 100%;
+        padding: 20px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid styles.$grayforBorder;
+        border-radius: 12px;
+
+        .name-and-date {
+          height: auto;
+          width: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+          h4 {
+            color: styles.$lightBlue;
+            font-weight: 600;
+            font-size: 22px;
+          }
+
+          p {
+            color: styles.$blackForText;
+            font-size: 16px;
+          }
+        }
+
+        .number-of-views {
+          height: auto;
+          width: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          span {
+            color: styles.$lightBlue;
+            font-weight: 600;
+            font-size: 22px;
+          }
+          p {
+            color: styles.$blackForText;
+            font-size: 20px;
+          }
+        }
+
+        .resume-actions {
+          height: 100%;
+          width: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+}

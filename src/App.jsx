@@ -12,36 +12,35 @@ import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies";
 import ChooseMethodToCreate from "./Pages/EmployerPage/ChooseMethodToCreate";
 import CreateVacancy from "./Pages/EmployerPage/CreateVacancy";
 import ConfirmCreatedVacancy from "./Pages/EmployerPage/ConfirmCreatedVacancy.tsx";
+import SeekerResumePage from "./Pages/MessagesAndEvents/SeekerResumePage.tsx";
 
-import './App.scss'
+import "./App.scss";
 
-import '@mantine/core/styles.css';
+import "@mantine/core/styles.css";
 import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
-
-
 
 /**
  * The main application component that sets up the routing for the application.
- * 
+ *
  * @component
  * @example
  * return (
  *   <App />
  * )
- * 
+ *
  * @returns {JSX.Element} The rendered component.
- * 
+ *
  * @todo Implement nested routing.
  */
 function App() {
-
   return (
     <>
-    {/* 
+      {/* 
     Todo: nested routing
     no time for that rn
     */}
 
+      {/* prettier-ignore */}
       <Routes>
         <Route path='/BuxOnline/' element={<Index />} />
 
@@ -60,7 +59,7 @@ function App() {
         <Route path="/BuxOnline/company/jobs/create/:id" element={<ConfirmCreatedVacancy/>}></Route>    
         <Route path="/BuxOnline/company/jobs/create/:id/finished" element={<VacancyCreated/>}></Route>    
 
-
+        <Route path="/BuxOnline/seeker/profile/resume" element={<SeekerResumePage/>}></Route>      
 
 
 
@@ -68,9 +67,8 @@ function App() {
         
         <Route path='*' element={<NotFound />} />
       </Routes>
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;
