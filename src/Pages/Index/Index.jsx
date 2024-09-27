@@ -30,150 +30,14 @@ import Footer from "../../Components/Footer/Footer";
 import './Index.scss';
 
 function Index () {
+
   function truncateText(text, limit) {
     return text.length > limit ? text.substring(0, limit) + "..." : text;
   }
 
-  // const content =
-  //   " Ми раді оголосити про нову захоплюючу можливість для талановитого та високомотивованого Data Scientist приєднатися до на...";
 
-  // const [vacancies, setVacancies] = useState([]);
-
-  // Simulated API call to fetch vacancies
-  // useEffect(() => {
-  //   // Simulating an API call
-  //   const fetchVacancies = async () => {
-  //     const vacanciesFromApi = [
-  //       {
-  //         id: 1,
-  //         title: "Data Scientist",
-  //         description:
-  //           "Data Scientist (віддалений) - гнучкість та дружнє робоче середовище",
-  //         content: "Your content here...",
-  //       },
-  //       {
-  //         id: 2,
-  //         title: "Developer",
-  //         description:
-  //           "Developer (віддалений) - гнучкість та дружнє робоче середовище",
-  //         content: "Your content here...",
-  //       },
-  //       {
-  //         id: 3,
-  //         title: "Data Analyst",
-  //         description:
-  //           "Data Analyst (віддалений) - гнучкість та дружнє робоче середовище",
-  //         content: "Your content here...",
-  //       },
-  //       {
-  //         id: 4,
-  //         title: "Software Engineer",
-  //         description:
-  //           "Software Engineer (віддалений) - гнучкість та дружнє робоче середовище",
-  //         content: "Your content here...",
-  //       },
-  //       {
-  //         id: 5,
-  //         title: "Machine Learning Engineer",
-  //         description:
-  //           "Machine Learning Engineer (віддалений) - гнучкість та дружнє робоче середовище",
-  //         content: "Your content here...",
-  //       },
-  //     ];
-
-      // Simulating a delay in fetching data
-  //     setTimeout(() => {
-  //       setVacancies(vacanciesFromApi);
-  //     }, 1000);
-  //   };
-
-  //   fetchVacancies();
-  // }, []); // Only run on component mount
-
-  // const [vacancies, setVacancies] = useState([]);
-
-  // Simulated API call to fetch vacancies
-  // useEffect(() => {
-  // Simulating an API call
-  // const fetchVacancies = async () => {
-  // const vacanciesFromApi = [
-  //   {
-  //     id: 1,
-  //     title: "Data",
-  //     description:
-  //       "Data Scientist (віддалений) - гнучкість та дружнє робоче середовище",
-  //     content: `${content}`,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Scientist",
-  //     description:
-  //       "Data Scientist (віддалений) - гнучкість та дружнє робоче середовище",
-  //     content: `${content}`,
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Java",
-  //     description:
-  //       "Data Scientist (віддалений) - гнучкість та дружнє робоче середовище",
-  //     content: `${content}`,
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Javascript",
-  //     description:
-  //       "Data Scientist (віддалений) - гнучкість та дружнє робоче середовище",
-  //     content: `${content}`,
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "Python",
-  //     description:
-  //       "Data Scientist (віддалений) - гнучкість та дружнє робоче середовище",
-  //     content: `${content}`,
-  //   },
-  // ];
-  // Simulate an async delay
-  // setInterval(() => {
-  //   setVacancies(vacanciesFromApi);
-  // });
-  // };
-
-  // fetchVacancies();
-  // }, []); // Empty dependency array to run only on mount
-
-  // Duplicate vacancies for infinite scrolling effect
-  // const allVacancies = [...vacancies, ...vacancies];
-
-  // Simulated API call to fetch vacancies
-  // useEffect(() => {
-  // Simulating an API call
-  // const fetchVacancies = async () => {
-  // const vacanciesFromApi =
-  // const cloneVacancy = () => {
-  //   const vacancyToClone = vacancies[0]; // Get the first vacancy
-  //   const newVacancy = {
-  //     ...vacancyToClone,
-  //     id: vacancies.length + 1, // Generate a new ID
-  //   };
-
-  //        setTimeout(() => {
-  //       setVacancies([...vacancies, newVacancy]);
-  //     }, 1000); // Update the vacancies state
-  // };
-
-  // Simulate an async delay
-
-  // };
-
-  // cloneVacancy();
-  // }, []); // Empty dependency array to run only on mount
-
-  // Duplicate vacancies for infinite scrolling effect
-  // const allVacancies = [...vacancies];
   const [vacancies, setVacancies] = useState([]);
 
-  // Simulate API call to fetch vacancies
   useEffect(() => {
     const fetchVacancies = async () => {
       const vacanciesFromApi = [
@@ -219,14 +83,30 @@ function Index () {
         },
       ];
 
-      // Simulate a delay before setting the vacancies
       setTimeout(() => {
         setVacancies(vacanciesFromApi);
       }, 1000);
     };
 
     fetchVacancies();
-  }, []); // Run only on mount
+  }, []); 
+
+  async function getData() {
+    const url = "https://glowing-boa-definite.ngrok-free.app";
+    try {
+      const response = await fetch(`${url}/jobs/jobs`);
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const json = await response.json();
+      console.log(json);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+  getData();
   return (
     <>
       <Header />
