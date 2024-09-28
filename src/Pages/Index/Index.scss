@@ -3,7 +3,7 @@
 
 main {
  
-  .general-info-block {
+  .general-info-section {
     display: flex;
     justify-content: space-between;
 
@@ -36,7 +36,7 @@ main {
     }
   }
 
-  .header-arrow-block {
+  .header-arrow-section {
     display: flex;
     margin-bottom: 16px;
     margin-top: 25px;
@@ -56,7 +56,7 @@ main {
     }
   }
 
-  .suggestion-advice-block {
+  .suggestion-advice-section {
     .text {
       text-align: left;
       width: 643px;
@@ -69,7 +69,7 @@ main {
       display: flex;
       width: 95%;
 
-      .topic-block-left {
+      .topic-section-left {
         margin-bottom: 15px;
         margin-left: 83px;
 
@@ -90,7 +90,7 @@ main {
         }
       }
 
-      .topic-block-right {
+      .topic-section-right {
         text-align: left;
         margin-left: 77px;
 
@@ -111,7 +111,7 @@ main {
     }
   }
 
-  .reviews-block {
+  .reviews-section {
     display: flex;
     align-items: space-between;
     margin-bottom: 56px;
@@ -177,7 +177,7 @@ main {
     }
   }
 
-  .scheme-block {
+  .scheme-section {
     background-image: url('data:image/svg+xml,<svg width="719" height="1446" viewBox="0 0 919 2000" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.316 1C-2.15595 55.5 -30.6774 158.6 168.213 167C367.104 175.4 655.965 157.5 703 226" stroke="%232E85EC" stroke-width="3"/><path d="M705.567 271C728.614 324.524 727.297 450.166 600.209 488.478C473.121 526.79 189.313 425.939 134 502" stroke="%232E85EC" stroke-width="3"/><path d="M109.855 534C88.331 574.633 79.8519 655.302 131.378 710.874C182.904 766.446 235.735 767.641 284 749.715" stroke="%232E85EC" stroke-width="3"/><path d="M303.244 774C320.653 825.204 245.447 922.833 367.309 913.275C489.17 903.717 416.75 1008.86 579 985.644" stroke="%232E85EC" stroke-width="3"/><path d="M599.593 1006C650.055 1175.7 329.732 1008.91 367.03 1166" stroke="%232E85EC" stroke-width="3"/><path d="M358.066 1193C314.5 1283 101.5 1149.5 109 1250" stroke="%232E85EC" stroke-width="3"/><path d="M100.461 1277C86.2363 1398.55 132.705 1461.56 265 1439.73" stroke="%232E85EC" stroke-width="3"/><circle cx="16" cy="23" r="23" fill="blue"/><text x="16" y="25" font-size="24" text-anchor="middle" fill="white">1</text><circle cx="700" cy="249" r="23" fill="blue"/><text x="700" y="255" font-size="24" text-anchor="middle" fill="white">2</text><circle cx="124" cy="520" r="23" fill="blue"/><text x="124" y="526" font-size="24" text-anchor="middle" fill="white">3</text><circle cx="300" cy="755" r="23" fill="blue"/><text x="300" y="765" font-size="24" text-anchor="middle" fill="white">4</text><circle cx="590" cy="1000" r="23" fill="blue"/><text x="590" y="1010" font-size="24" text-anchor="middle" fill="white">5</text><circle cx="360" cy="1170" r="23" fill="blue"/><text x="360" y="1180" font-size="24" text-anchor="middle" fill="white">6</text><circle cx="105" cy="1260" r="23" fill="blue"/><text x="105" y="1270" font-size="24" text-anchor="middle" fill="white">7</text><circle cx="270" cy="1440" r="23" fill="blue"/><text x="270" y="1450" font-size="24" text-anchor="middle" fill="white">8</text></svg>');
     background-size: cover;
     background-color: transparent;
@@ -446,7 +446,7 @@ main {
     }
   }
 
-  .button-block {
+  .button-section {
     display: inline-block;
     padding: 50px;
     margin: 0 auto;
@@ -455,7 +455,7 @@ main {
     padding-left: 503px;
   }
   
-  .advantages-block {
+  .advantages-section {
     .advantages1 {
       position: relative;
        }
@@ -590,7 +590,7 @@ main {
     }
   }
 
-  .chat-bot-block {
+  .chat-bot-section {
     display: flex;
     height: 331px;
     background-color: styles.$lightBlue;
@@ -636,7 +636,7 @@ main {
     }
   }
 
-.vacancy-block {
+.vacancy-section {
    margin: 50px 0px 50px 0px;
   overflow: hidden;
   width: 100%; 
@@ -716,7 +716,7 @@ main {
   }
 }
 
-  .send-resume-block {
+  .send-resume-section {
     display: flex;
     justify-content: center;
     align-items: center;

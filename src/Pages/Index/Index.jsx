@@ -1,4 +1,6 @@
 import React, { useState, useEffect} from "react";
+import { Link } from "react-router-dom";
+
 import vacancyTitleImg from "../../assets/vacancyTitleImg.png";
 import vacancyBackgroungImg from "../../assets/vacancyBackgroundImg.png";
 import indexBigPhoto1 from "../../assets/indexBigPhoto-1.png";
@@ -32,16 +34,16 @@ import './Index.scss';
 /**
  * Index page is the main page from which our application starts.
  * 
- * This component includes of component Header, component Nav , various internal blocks and component Footer. 
+ * This component includes of component Header, component Nav , various internal sections and component Footer. 
  *
- * Internal blocks : 
- * general-info-block - general information about the content, structure of the application; 
- * suggestion-advice-block - a block of tips and suggestions to improve the search for vacancies or employees; 
- * reviews-block - honest reviews of satisfied users in successfully finding a job through this application; 
- * scheme-block - a scheme that is guaranteed to help find a job; 
- * advantages-block - block structure of benefits of remote work; 
- * chat-bot-block - means of communication; vacancy-block - a brief description of current vacancies; 
- * send-resume-block - means of communication for help. 
+ * Internal sections : 
+ * general-info-section - general information about the content, structure of the application; 
+ * suggestion-advice-section - a section of tips and suggestions to improve the search for vacancies or employees; 
+ * reviews-section - honest reviews of satisfied users in successfully finding a job through this application; 
+ * scheme-section - a scheme that is guaranteed to help find a job; 
+ * advantages-section - section structure of benefits of remote work; 
+ * chat-bot-section - means of communication; vacancy-section - a brief description of current vacancies; 
+ * send-resume-section - means of communication for help. 
  * 
  * @component
  * @returns {JSX.Element} The rendered component.
@@ -135,7 +137,7 @@ function Index () {
       <Header />
       <Nav />
       <main>
-        <div className="general-info-block">
+        <section className="general-info-section">
           <div className="general-info">
             <h1 className="general-header">
               Сайт для пошуку роботи віддалено з дому
@@ -158,20 +160,20 @@ function Index () {
               alt="info-img"
             />
           </div>
-        </div>
+        </section>
 
-        <div className="header-arrow-block">
+        <section className="header-arrow-section">
           <img className="frame" src={vacancyTitleImg} alt="frame" />
           <h5 className="header-arrow">Що ми пропонуємо</h5>
-        </div>
+        </section>
 
-        <div className="suggestion-advice-block">
+        <section className="suggestion-advice-section">
           <p className="text">
             Якщо ви шукаєте роботу і у вас хороша англійська, то ми пропонуємо
             вам роботу за кордоном. У США, країнах Європи, Азії – на ваш смак
           </p>
           <div className="t-bl-r-l-flex">
-            <div className="topic-block-left">
+            <div className="topic-section-left">
               <h3 className="topic-left">5 years</h3>
               <h6 className="topic-text-left">Бажаний досвід</h6>
               <p className="text-left">
@@ -182,7 +184,7 @@ function Index () {
               </p>
             </div>
 
-            <div className="topic-block-right">
+            <div className="topic-section-right">
               <h3 className="topic-right">B1</h3>
               <h6 className="topic-text-right">English - Intermediate</h6>
               <p className="text-right">
@@ -192,18 +194,18 @@ function Index () {
               </p>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="button-block">
+        <section className="button-section">
           <SolidButton width={265}>Відправити резюме</SolidButton>
-        </div>
+        </section>
 
-        <div className="header-arrow-block">
+        <section className="header-arrow-section">
           <img className="frame" src={vacancyTitleImg} alt="frame" />
           <h5 className="header-arrow">Відгуки</h5>
-        </div>
+        </section>
 
-        <div className="reviews-block">
+        <section className="reviews-section">
           <div className="r-bl-wr">
             <img src={indexBigPhoto1} alt="photo-1" />
             <h5 className="photo-name">Ростислав Прозоровський</h5>
@@ -258,13 +260,14 @@ function Index () {
               <SolidButton width={164}>Відправити резюме</SolidButton>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="header-arrow-block">
+        <section className="header-arrow-section">
           <img className="frame" src={vacancyTitleImg} alt="frame" />
           <h5 className="header-arrow">Як ми працюємо</h5>
-        </div>
-        <div className="scheme-block">
+        </section>
+
+        <section className="scheme-section">
           <div className="scheme-1">
             <div className="wr-sch-1">
               <div className="wr-sch-1-title">
@@ -374,11 +377,6 @@ function Index () {
                 Ми надсилаємо оффер, який ви підписуєте, щоб працевлаштуватися.
               </p>
             </div>
-            {/* <img
-                src={indexSlideImg}
-                alt="indexSlideImg"
-                className="indexSlideImg"
-              /> */}
           </div>
 
           <div className="scheme-7">
@@ -415,16 +413,18 @@ function Index () {
               className="indexCashImg"
             />
           </div>
-        </div>
-        <div className="button-block">
+        </section>
+
+        <section className="button-section">
           <SolidButton width={265}>Відправити резюме</SolidButton>
-        </div>
-        <div className="header-arrow-block">
+        </section>
+
+        <section className="header-arrow-section">
           <img className="frame" src={vacancyTitleImg} alt="frame" />
           <h5 className="header-arrow">Переваги</h5>
-        </div>
+        </section>
 
-        <div className="advantages-block">
+        <section className="advantages-section">
           <img src={advantages1} alt="advantages1" className="advantages1" />
 
           <div className="a-1">
@@ -451,9 +451,9 @@ function Index () {
             <span>5</span>
             <p>Задоволених співробітників уже понад 250 осіб!</p>
           </div>
-        </div>
+        </section>
 
-        <div className="chat-bot-block">
+        <section className="chat-bot-section">
           <div className="ch-b-bl-1">
             <h2>Є питання?</h2>
             <p>Зайдіть у наш чат-бот і поставте йому запитання</p>
@@ -479,14 +479,14 @@ function Index () {
               className="chatBotCurve"
             />
           </div>
-        </div>
+        </section>
 
-        <div className="header-arrow-block">
+        <section className="header-arrow-section">
           <img className="frame" src={vacancyTitleImg} alt="frame" />
           <h5 className="header-arrow">Гарячі ваканції</h5>
-        </div>
+        </section>
 
-        <div className="vacancy-block">
+        <section className="vacancy-section">
           <div className="vacancy-wrapper">
             {vacancies.length > 0 && (
               <>
@@ -499,61 +499,22 @@ function Index () {
                       <p>{truncateText(vacancy.content, 85)}</p>
                     </div>
                     <div className="v-bl-button">
-                      <SolidButton>Детальніше</SolidButton>
+                      <Link to='/BuxOnline/vacancy/description'>
+                      <SolidButton>Детальніше</SolidButton></Link>
                     </div>
                   </div>
                 ))}
               </>
             )}
           </div>
-        </div>
-
-        {/* <div className="v-bl-slide">
-              <div className="v-bl">
-                <h3>Data Scientist</h3>
-                <h2>
-                  Data Scientist (віддалений) - гнучкість та дружнє робоче
-                  середовище
-                </h2>
-                <p>{truncateText(content, 121)}</p>
-              </div>
-              <div className="v-bl-button">
-                <SolidButton>Детальніше</SolidButton>
-              </div>
-            </div>
-            <div className="v-bl-slide">
-              <div className="v-bl">
-                <h3>Data Scientist</h3>
-                <h2>
-                  Data Scientist (віддалений) - гнучкість та дружнє робоче
-                  середовище
-                </h2>
-                <p>{truncateText(content, 121)}</p>
-              </div>
-              <div className="v-bl-button">
-                <SolidButton>Детальніше</SolidButton>
-              </div>
-            </div>
-            <div className="v-bl-slide">
-              <div className="v-bl">
-                <h3>Data Scientist</h3>
-                <h2>
-                  Data Scientist (віддалений) - гнучкість та дружнє робоче
-                  середовище
-                </h2>
-                <p>{truncateText(content, 121)}</p>
-              </div>
-              <div className="v-bl-button">
-                <SolidButton>Детальніше</SolidButton>
-              </div>
-            </div> */}
-
-        <div className="header-arrow-block">
+        </section>
+       
+        <section className="header-arrow-section">
           <img className="frame" src={vacancyTitleImg} alt="frame" />
           <h5 className="header-arrow">Відправити резюме</h5>
-        </div>
+        </section>
 
-        <div className="send-resume-block">
+        <section className="send-resume-section">
           <div className="s-r-bl">
             <p>
               Приєднуйтесь до нас сьогодні та відкрийте двері до нових
@@ -567,7 +528,7 @@ function Index () {
             alt={indexSendResume}
             className="indexSendResume"
           />
-        </div>
+        </section>
       </main>
       <Footer />
     </>
