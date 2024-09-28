@@ -29,6 +29,29 @@ import Footer from "../../Components/Footer/Footer";
 
 import './Index.scss';
 
+/**
+ * Index page is the main page from which our application starts.
+ * 
+ * This component includes of component Header, component Nav , various internal blocks and component Footer. 
+ *
+ * Internal blocks : 
+ * general-info-block - general information about the content, structure of the application; 
+ * suggestion-advice-block - a block of tips and suggestions to improve the search for vacancies or employees; 
+ * reviews-block - honest reviews of satisfied users in successfully finding a job through this application; 
+ * scheme-block - a scheme that is guaranteed to help find a job; 
+ * advantages-block - block structure of benefits of remote work; 
+ * chat-bot-block - means of communication; vacancy-block - a brief description of current vacancies; 
+ * send-resume-block - means of communication for help. 
+ * 
+ * @component
+ * @returns {JSX.Element} The rendered component.
+ * 
+ * @example
+ * return (
+ *   <Index />
+ * )
+ */
+
 function Index () {
 
   function truncateText(text, limit) {
