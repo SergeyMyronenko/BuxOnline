@@ -1,0 +1,16 @@
+//імпорт змінних з файла App.scss
+@use "../../App.scss" as styles;
+
+main{
+//   margin-left: 53px;  
+}
+// .vacancy-description-container{
+    
+// }
+
+h1{
+    font-size: 32px;
+    color: styles.$lightBlue;
+    margin-top: 69px;
+    margin-bottom: 30px;
+}

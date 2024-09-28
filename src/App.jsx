@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router";
 
 import Vacancy from "./Pages/Vacancy/Vacancy";
+import VacancyDescription from "./Pages/VacancyDescription/VacancyDescription.jsx";
 import Index from "./Pages/Index/Index";
 import NotFound from "./Pages/NotFound/NotFound";
 import LogIn from "./Pages/LogIn/LogIn";
@@ -18,6 +19,7 @@ import "./App.scss";
 
 import "@mantine/core/styles.css";
 import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
+
 
 /**
  * The main application component that sets up the routing for the application.
@@ -45,6 +47,7 @@ function App() {
         <Route path='/BuxOnline/' element={<Index />} />
 
         <Route path='/BuxOnline/vacancy' element={<Vacancy />} />
+        <Route path='/BuxOnline/vacancy/description' element ={<VacancyDescription/>}/>
 
         <Route path='/BuxOnline/login' element={<LogIn />} />
 
