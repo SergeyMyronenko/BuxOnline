@@ -7,6 +7,7 @@ interface InputFieldProps {
     id?: string;
     placeholder?: string;
     required?: boolean;
+    onChange?: (event: any) => void;
 }
 
 /**
@@ -20,11 +21,11 @@ interface InputFieldProps {
  * @param {string} [props.placeholder] - The placeholder text for the input field.
  * @returns {JSX.Element} The rendered input field component.
  */
-const InputField: React.FC<InputFieldProps> = ({ label, type, id,placeholder,required=true }) => {
+const InputField: React.FC<InputFieldProps> = ({ label, type, id,placeholder,required=true, onChange }) => {
     return (
         <div className='input-wrapper'>
             <label htmlFor={id}>{label}</label>
-            <input type={type} placeholder={placeholder}  id={id} required={required}/>
+            <input type={type} placeholder={placeholder}  id={id} required={required} onChange={onChange}/>
         </div>
     );
 };

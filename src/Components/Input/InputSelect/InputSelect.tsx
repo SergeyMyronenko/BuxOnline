@@ -3,7 +3,7 @@ import './InputSelect.scss';
 
 interface InputSelectProps {
     label: string;
-    options: string[];
+    options: {name:string,value:string}[];
     id?: string;
     onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -28,8 +28,8 @@ const InputSelect: React.FC<InputSelectProps> = ({ label, options,id,onChange })
             <label htmlFor={id}>{label}</label>
             <select id={id} onChange={onChange}>
                 {options.map((option, index) => (
-                    <option key={index} value={option}>
-                        {option}
+                    <option key={index} value={option.value}>
+                        {option.name}
                     </option>
                 ))}
             </select>

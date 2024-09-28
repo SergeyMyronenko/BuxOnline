@@ -21,7 +21,7 @@ import './Register.scss';
  * @returns {JSX.Element} The rendered Step1 component.
 **/
 
-const Step1 = ({ handleStateChange, select }: { handleStateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void, select: string }) => (
+const Step1 = ({ handleUserState }: { handleUserState: (event: any) => void }) => (
     <>
         <span className='title'>
             <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,10 +70,10 @@ const Step1 = ({ handleStateChange, select }: { handleStateChange: (event: React
                 GitHub
             </a>
         </div>
-        <InputField label='E-mail' type='email' placeholder='E-mail' id='email' />
-        <InputField label='Пароль' type='password' placeholder='Пароль' id='password' />
-        <InputField label='Підтвердьте пароль' type='password' placeholder='Підтвердьте пароль' id='repeat-password' />
-        <InputSelect label="Тип реєстрації" options={["Кандидат", "Роботодавець"]} onChange={handleStateChange} id='type-of-user'/>
+        <InputField label='E-mail' type='email' placeholder='E-mail' id='email' onChange={handleUserState} />
+        <InputField label='Пароль' type='password' placeholder='Пароль' id='password' onChange={handleUserState} />
+        <InputField label='Підтвердьте пароль' type='password' placeholder='Підтвердьте пароль' id='repeat-password' onChange={handleUserState} />
+        <InputSelect label="Тип реєстрації" options={[{name:"Кандидат",value:"employee"}, {name:"Роботодавець",value:"employer"}]} id='role' onChange={handleUserState} />
         <div className='agree'>
             <InputCheckbox width='28px' height='28px' onChange={() => { }} required={true} id='terms-of-service' />
             <p>Я погоджуюся з <a href="#">Умовами обслуговування</a> та <br /> <a href="#">Політикою конфіденційності</a></p>
@@ -89,16 +89,16 @@ const Step1 = ({ handleStateChange, select }: { handleStateChange: (event: React
  * @param {string} props.select - The current value of the select input.
  * @returns {JSX.Element} The rendered Step2 component.
  */
-const Step2 = ({ handleStateChange, select }: { handleStateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void, select: string }) => (
+const Step2 = ({ handleUserState }: { handleUserState: (event: any) => void }) => (
     <>
-    <span className='title'>
+        <span className='title'>
             <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M8.46061 16.25L12.2808 12.575C11.7841 12.525 11.4149 12.5 11.0074 12.5C7.60744 12.5 0.820312 14.175 0.820312 17.5V20H12.2808L8.46061 16.25ZM11.0074 10C13.8216 10 16.1009 7.7625 16.1009 5C16.1009 2.2375 13.8216 0 11.0074 0C8.1932 0 5.91385 2.2375 5.91385 5C5.91385 7.7625 8.1932 10 11.0074 10ZM16.6994 20.625L12.2808 16.25L14.0635 14.4875L16.6994 17.0875L23.2319 10.625L25.0146 12.3875L16.6994 20.625Z" fill="#282828" />
             </svg>
             <h2>Деталі компанії</h2>
         </span>
-        <InputField label='Назва компанії' type='text' placeholder='Введіть назву вашої компанії' id='contact-person' />
-        <InputSelect label="Тип компанії" options={["Компанія", "Агентство"]} onChange={handleStateChange}></InputSelect>
+        <InputField label='Назва компанії' type='text' placeholder='Введіть назву вашої компанії' id='companyName' onChange={handleUserState} />
+        <InputSelect label="Тип компанії" options={[{name:"Компанія",value:"Компанія"}, {name:"Агенство",value:"Агенство"}]} id="companyType" onChange={handleUserState} />
     </>
 );
 /**
@@ -108,28 +108,28 @@ const Step2 = ({ handleStateChange, select }: { handleStateChange: (event: React
  */
 const Step3 = () => (
     <>
-            <div className="onboard-box">
-                <h1>Онбордінг</h1>
-                <div className="cards-wrapper">
-                    <div className="card">
-                        <img src={cardImg1} alt="" />
-                        <h3>Cтворити вакансію</h3>
-                        <p>Cтворення оголошення про роботу з ключовими деталями</p>
-                    </div>
-                    <div className="card">
-                        <img src={cardImg2} alt="" />
-                        <h3>Знайти найкращі збіги</h3>
-                        <p>Наш штучний інтелект підбирає найкращих кандидатів на кожну вакансію</p>
-                    </div>
-                    <div className="card">
-                        <img src={cardImg3} alt="" />
-                        <h3>Зв’язок</h3>
-                        <p>Зв’яжіться з кандидатами напряму через сайт</p>
-                    </div>
+        <div className="onboard-box">
+            <h1>Онбордінг</h1>
+            <div className="cards-wrapper">
+                <div className="card">
+                    <img src={cardImg1} alt="" />
+                    <h3>Cтворити вакансію</h3>
+                    <p>Cтворення оголошення про роботу з ключовими деталями</p>
                 </div>
-              
+                <div className="card">
+                    <img src={cardImg2} alt="" />
+                    <h3>Знайти найкращі збіги</h3>
+                    <p>Наш штучний інтелект підбирає найкращих кандидатів на кожну вакансію</p>
+                </div>
+                <div className="card">
+                    <img src={cardImg3} alt="" />
+                    <h3>Зв’язок</h3>
+                    <p>Зв’яжіться з кандидатами напряму через сайт</p>
+                </div>
             </div>
-      
+
+        </div>
+
     </>
 
 
@@ -149,21 +149,84 @@ const Step3 = () => (
 **/
 const Register = () => {
     const navigate = useNavigate();
-    const [roleSelect, setRoleSelect] = useState('Кандидат');
-    const [companySelect, setCompanySelect] = useState('Компанія');
-
     const [step, setStep] = useState(1);
+    const [userData, setUserData] = useState({
+        email: '',
+        password: '',
+        role: 'employee',
+        userName: '',
+        companyName:'',
+        companyType: 'Company',
+    });
+    const registerAsSeeker = () => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        // myHeaders.append("Cookie", "csrftoken=ZqCy3CdwUsZK1cw8j1zlat9Nyo5AFymt");
 
+        const raw = JSON.stringify({
+            "email": userData.email,
+            "password": userData.password,
+            "role": userData.role,
+            "username": userData.email,
+        });
+
+        const requestOptions:RequestInit = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+        const url='http://127.0.0.1:8000'
+        // again, it works well, but ts has issues
+                // const url=import.meta.env.VITE_BASE_URL
+
+    
+        fetch(`${url}/auth/users/`, requestOptions)
+            .then((response) => response.text())
+            .then((result) => console.log(result))
+            .catch((error) => console.error(error));
+    }
+    const registerAsEmployer = () => {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        // myHeaders.append("Cookie", "csrftoken=ZqCy3CdwUsZK1cw8j1zlat9Nyo5AFymt");
+
+        const raw = JSON.stringify({
+            "email": userData.email,
+            "password": userData.password,
+            "role": userData.role,
+            "username": userData.companyName,
+            // Todo: remind backend to add this field
+            // "companytype":userData.companyType
+        });
+
+        const requestOptions:RequestInit = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+        const url='http://127.0.0.1:8000'
+        // again, it works well, but ts has issues
+                // const url=import.meta.env.VITE_BASE_URL
+    
+        fetch(`${url}/auth/users/`, requestOptions)
+            .then((response) => response.text())
+            .then((result) => console.log(result))
+            .catch((error) => console.error(error));
+    }
     const handleRegister = (event: FormEvent) => {
         console.log('Form submitted');
         event.preventDefault();
-        if (roleSelect === 'Кандидат') {
-            navigate('/BuxOnline/seeker');
-            console.log('Register as seeker');
-        } else if (roleSelect === 'Роботодавець') {
+        if (userData.role === 'employee') {
+            // navigate('/BuxOnline/seeker');
+            // console.log('Register as seeker');
+            registerAsSeeker();
+        } else if (userData.role === 'employer') {
             if (step === 3) {
-             navigate('/BuxOnline/company/cabinet/1');
-            console.log('Register as employer');
+                registerAsEmployer();
+                // navigate('/BuxOnline/company/cabinet/1');
+                // console.log('Register as employer');
 
             } else {
                 setStep(step + 1);
@@ -171,8 +234,15 @@ const Register = () => {
         }
     };
 
-    const handleStateChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setter(event.target.value);
+
+
+    const handleUserState = (event: any) => {
+        const { id, value } = event.target;
+        setUserData((prev) => ({
+            ...prev,
+            [id]: value
+        }));
+        console.log(userData);
         console.log(event.target.value);
     };
 
@@ -182,12 +252,12 @@ const Register = () => {
             <Nav />
             <div className="form-wrapper">
                 <form onSubmit={handleRegister}>
-                    {step === 1 && <Step1 handleStateChange={handleStateChange(setRoleSelect)} select={roleSelect} />}
-                    {step === 2 && <Step2 handleStateChange={handleStateChange(setCompanySelect)} select={companySelect}/>}
+                    {step === 1 && <Step1 handleUserState={handleUserState} />}
+                    {step === 2 && <Step2 handleUserState={handleUserState} />}
                     {step === 3 && <Step3 />}
-                    
+
                     <SolidButton type='submit' fontSize='16px'>
-                        {roleSelect === 'Роботодавець' && step < 3 ? 'Next' : 'Зареєструватися'}
+                        {userData.role === 'employer' ? (step === 1 ? 'Далі' : step === 2 ? 'Зареєструватися' : 'Розпочати') : 'Зареєструватися'}
                     </SolidButton>
                     {step === 1 && (
                         <p>Якщо у вас уже є обліковий запис, ви можете <Link to='/BuxOnline/login'>ВВІЙТИ ТУТ</Link></p>
