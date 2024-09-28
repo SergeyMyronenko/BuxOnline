@@ -4,7 +4,7 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import "../Nav/Nav.scss";
 import { Link } from "react-router-dom";
 import HollowButton from "../Buttons/HollowButton/HollowButton";
-
+import { useAuth } from "../../Hooks/useAuth/useAuth";
 //флаг України у svg
 const UA_FLAG = (
   <svg
@@ -78,7 +78,7 @@ const UK_FLAG = (
 export default function Nav() {
   const [language, setLanguage] = useState("UK");
   const [flag, setFlag] = useState(UA_FLAG);
-
+  const {token} = useAuth();
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const changeLanguage = () => {
     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
@@ -112,7 +112,7 @@ export default function Nav() {
         <h5>ДЛЯ БІЗНЕСУ</h5>
         
         <Link to='/BuxOnline/login'>
-         <HollowButton width={157} fontSize={16} borderRadius={12} >Вхід/Реєстрація</HollowButton>
+         <HollowButton width={157} fontSize={16} borderRadius={12} >{token}</HollowButton>
         </Link>
         <button className="button-language-change" onClick={changeLanguage}>
           {flag}

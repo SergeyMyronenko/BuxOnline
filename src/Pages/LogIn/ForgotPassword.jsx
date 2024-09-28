@@ -68,9 +68,8 @@ const ForgotPassword = () => {
                 <div className="form-wrapper">
                     <form>
                         <h2>Відновлення паролю</h2>
-                        <p>На пошту <span>{email}</span> був надісланий код, введіть його нижче</p>
-                        <input ref={resetCodeRef} label='Код підтвердження' type='number' placeholder='Код підтвердження' id='code' className='forgot-password'></input>
-                        <SolidButton type='button' fontSize={16} onClick={handleCode}>Скинути пароль</SolidButton>
+                        <p>На пошту <span>{email}</span> був надісланий лист, перейдіть за</p>
+                        
                     </form>
                 </div >
             </>

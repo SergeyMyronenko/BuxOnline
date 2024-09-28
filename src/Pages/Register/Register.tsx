@@ -242,8 +242,9 @@ const Register = () => {
             ...prev,
             [id]: value
         }));
-        console.log(userData);
         console.log(event.target.value);
+        console.log(userData);
+
     };
 
     return (

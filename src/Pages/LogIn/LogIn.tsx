@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { useState, FormEvent } from 'react';
 import Header from '../../Components/Header/Header';
 import Nav from '../../Components/Nav/Nav';
 
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
 
+import { useAuth } from '../../Hooks/useAuth/useAuth';
 import './LogIn.scss';
 /**
  * LogIn component renders a login form with options to log in via Google, LinkedIn, or GitHub,
@@ -20,14 +21,52 @@ import './LogIn.scss';
  *
  * @returns {JSX.Element} A login form with social media login options and email/password login.
  */
+
 const LogIn = () => {
+    const [userData, setUserData] = useState({
+        email: '',
+        password: '',
+    });
+    const { setToken, token } = useAuth();
+    const handleUserState = (event: any) => {
+        const { id, value } = event.target;
+        setUserData((prev) => ({
+            ...prev,
+            [id]: value
+        }));
+        console.log(event.target.value);
+        console.log(userData);
+
+    };
+    const handleLogin=(event:FormEvent)=>{
+        event.preventDefault();
+        const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    const raw = JSON.stringify({
+      "email": userData.email,
+      "password": userData.password,    
+    });
+    
+    const requestOptions:RequestInit = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+    
+      fetch("http://127.0.0.1:8000/auth/jwt/create/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => { setToken(result.access); console.log(token);})
+      .catch((error) => console.error(error));
+    }
     return (
         <>
             <Header></Header>
             <Nav></Nav>
             <div className="form-wrapper">
 
-                <form>
+                <form onSubmit={handleLogin}>
                     <span className='title'>
                         <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M8.46061 16.25L12.2808 12.575C11.7841 12.525 11.4149 12.5 11.0074 12.5C7.60744 12.5 0.820312 14.175 0.820312 17.5V20H12.2808L8.46061 16.25ZM11.0074 10C13.8216 10 16.1009 7.7625 16.1009 5C16.1009 2.2375 13.8216 0 11.0074 0C8.1932 0 5.91385 2.2375 5.91385 5C5.91385 7.7625 8.1932 10 11.0074 10ZM16.6994 20.625L12.2808 16.25L14.0635 14.4875L16.6994 17.0875L23.2319 10.625L25.0146 12.3875L16.6994 20.625Z" fill="#282828" />
@@ -76,10 +115,10 @@ const LogIn = () => {
                         </a>
                     </div>
                     <p>Або за допомогою адресу електронної пошти</p>
-                    <InputField label='E-mail' type='email' placeholder='E-mail' id='email'></InputField>
-                    <InputField label='Пароль' type='password'  placeholder='Пароль' id='password'></InputField>
+                    <InputField label='E-mail' type='email' placeholder='E-mail' id='email' onChange={handleUserState}></InputField>
+                    <InputField label='Пароль' type='password'  placeholder='Пароль' id='password' onChange={handleUserState}></InputField>
                     <span><Link to='forgot-password'>Забули пароль?</Link></span>
-                    <SolidButton type='submit' fontSize={16}>Ввійти</SolidButton>
+                    <SolidButton type='submit' fontSize='16px'>Ввійти</SolidButton>
                     <p>Якщо ви ще не зареєстровані, <Link to='/BuxOnline/register'>ЗАРЕСТРУЙТЕСЬ ТУТ</Link></p>
                 </form>
             </div>

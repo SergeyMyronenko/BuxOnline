@@ -18,11 +18,14 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from "react-router-dom";
 
 import App from './App.jsx'
+import { AuthProvider } from '../src/Hooks/useAuth/useAuth.tsx';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App></App>
-    </BrowserRouter>
-  </StrictMode>,
+  <AuthProvider>
+    <StrictMode>
+      <BrowserRouter>
+        <App></App>
+      </BrowserRouter>
+    </StrictMode>,
+  </AuthProvider>
 )

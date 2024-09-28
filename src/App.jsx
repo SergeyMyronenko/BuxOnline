@@ -10,12 +10,13 @@ import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies";
 import ChooseMethodToCreate from "./Pages/EmployerPage/ChooseMethodToCreate";
 import CreateVacancy from "./Pages/EmployerPage/CreateVacancy";
 import ConfirmCreatedVacancy from "./Pages/EmployerPage/ConfirmCreatedVacancy.tsx";
+import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
+import ForgotPassword from "./Pages/LogIn/ForgotPassword.jsx";
 
 import './App.scss'
 
 import '@mantine/core/styles.css';
-import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
-import ForgotPassword from "./Pages/LogIn/ForgotPassword.jsx";
+
 
 
 
