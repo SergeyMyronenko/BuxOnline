@@ -2,8 +2,7 @@
 @use "../../App.scss" as styles;
 
 main {
-  margin-left: 53px;
-
+ 
   .general-info-block {
     display: flex;
     justify-content: space-between;
@@ -11,8 +10,8 @@ main {
     .general-info {
       text-align: left;
       width: 613px;
-      margin-left: 15px;
-      margin-bottom: 220px;
+      margin-left: 68px;
+      margin-bottom: 36px;
 
       .general-header {
         color: styles.$blackForText;
@@ -28,10 +27,10 @@ main {
       }
     }
     .general-info-img {
-      margin-right: 20px;
+      margin-right: 0px;
 
       .info-img {
-        height: 613px;
+        height: 580px;
         width: 580px;
       }
     }
@@ -39,18 +38,18 @@ main {
 
   .header-arrow-block {
     display: flex;
-    margin-bottom: 50px;
+    margin-bottom: 16px;
     margin-top: 25px;
 
     .header-arrow {
       font-size: 22px;
-      margin-bottom: 51px;
-      margin-left: 5px;
+      margin-bottom: 16px;
+      margin-left: 58px;
       margin-top: 23px;
     }
     .frame {
-      margin-left: 15px;
-      margin-right: 0;
+      margin-left: 68px;
+      margin-right: -53px;
       top: 5px;
       height: 48px;
       width: 48px;
@@ -61,17 +60,18 @@ main {
     .text {
       text-align: left;
       width: 643px;
-      margin-left: 30px;
+      margin-left: 83px;
       margin-top: 60px;
       margin-bottom: 51px;
     }
 
     .t-bl-r-l-flex {
       display: flex;
+      width: 95%;
 
       .topic-block-left {
         margin-bottom: 15px;
-        margin-left: 30px;
+        margin-left: 83px;
 
         .topic-left {
           font-size: 51px;
@@ -92,7 +92,7 @@ main {
 
       .topic-block-right {
         text-align: left;
-        margin-left: 24px;
+        margin-left: 77px;
 
         .topic-right {
           font-size: 51px;
@@ -114,12 +114,13 @@ main {
   .reviews-block {
     display: flex;
     align-items: space-between;
+    margin-bottom: 56px;
 
     .r-bl-wr {
       width: 30%;
       background-color: styles.$grayForFill;
       border-radius: 15px;
-      margin-left: 15px;
+      margin-left: 38px;
       padding: 20px;
 
       .r-bl-photos-text {
@@ -181,7 +182,7 @@ main {
     background-size: cover;
     background-color: transparent;
     position: relative;
-    margin-left: 140px;
+    margin-left: 170px;
     padding-top: 50px;
 
     .scheme-1,
@@ -446,19 +447,18 @@ main {
   }
 
   .button-block {
+    display: inline-block;
     padding: 50px;
     margin: 0 auto;
     text-align: center;
     align-items: center;
-    padding-left: 450px;
+    padding-left: 503px;
   }
   
   .advantages-block {
     .advantages1 {
       position: relative;
-      left: -53px;
-      margin-left: 0px;
-    }
+       }
 
     .a-1 {
       display: flex;
@@ -483,7 +483,7 @@ main {
     .advantages2 {
       display: block;
       position: relative;
-      right: -1017px;
+      left: 1070px;
       margin-right: 0px;
       top: -120px;
     }
@@ -585,7 +585,6 @@ main {
     }
     .advantages3 {
       position: relative;
-      left: -53px;
       margin-left: 0px;
       top: 110px;
     }
@@ -637,41 +636,85 @@ main {
     }
   }
 
-  .vacancy-block {
-    margin-top: 69px;
-    margin-bottom: 61px;
-    display: flex;
+.vacancy-block {
+   margin: 50px 0px 50px 0px;
+  overflow: hidden;
+  width: 100%; 
+   max-height: 350px; 
+
+
+.vacancy-wrapper {
+  display: flex;
+   height: 340px; 
+   width: auto; 
+  animation: scroll 15s linear infinite; 
+   
+  .v-bl-slide {
+    border: 2px solid styles.$grayforBorder; 
+    border-radius: 20px;
     overflow: hidden;
-    .v-bl-wr {
-      border: styles.$grayforBorder 2px solid;
-      overflow: hidden;
-      border-radius: 20px;
-      background-color: #f4f4f4;
-      margin-right: 20px;
-      padding: 20px;
-      h3 {
-        color: styles.$lightBlue;
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-      h2 {
-        font-size: 16px;
-      }
-      p {
-        font-size: 16px;
-        margin-bottom: 20px;
-      }
-      .v-bl-button {
-        margin-left: 150px;
-      }
-      &:nth-child(1) {
-        margin-left: -25%;
-      }
-      &:nth-child(4) {
-        margin-right: -25%;
-      }
+    background-color: #f4f4f4;
+    margin-right: 20px;
+    padding: 20px;
+    min-width: 300px; 
+    height: 300px; 
+    white-space: nowrap;
+    text-wrap: pretty;
+  
+    .v-bl-button{
+     padding-left: 55px;
+     padding-bottom: 50px;
+    }
+
+    h3 {
+      color: styles.$lightBlue; 
+      font-size: 24px;
+      margin-bottom: 20px;
+      
+    }
+
+    h2 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
     }
   }
+}
+&::before,
+  &::after {
+    position: absolute;
+    top: 5565px;
+    width: 250px;
+    height: 350px; 
+    content: "";
+    z-index: 2;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+  }
+ &:hover .vacancy-wrapper {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); 
+  }
+}
 
   .send-resume-block {
     display: flex;
@@ -681,7 +724,7 @@ main {
     .s-r-bl {
       width: 427px;
       button {
-        margin-left: 55px;
+        margin-left: 75px;
       }
       p {
         margin-bottom: 30px;
