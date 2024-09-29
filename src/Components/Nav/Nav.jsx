@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
 
 import "../Nav/Nav.scss";
 import { Link } from "react-router-dom";
 import HollowButton from "../Buttons/HollowButton/HollowButton";
-import { useAuth } from "../../Hooks/useAuth/useAuth";
+import { useAuth } from "../../Hooks/useAuth";
+import Cookies from 'js-cookie';
 //флаг України у svg
 const UA_FLAG = (
   <svg
@@ -78,11 +79,13 @@ const UK_FLAG = (
 export default function Nav() {
   const [language, setLanguage] = useState("UK");
   const [flag, setFlag] = useState(UA_FLAG);
-  const {token} = useAuth();
+  const {token, setToken} = useAuth();
+
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const changeLanguage = () => {
     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
   };
+  useEffect(() => {setToken(Cookies.get('jwt'))}, [token])
 
   return (
     <nav>

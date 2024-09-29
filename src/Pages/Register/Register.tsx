@@ -1,15 +1,19 @@
 import React, { useState, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Header from '../../Components/Header/Header.jsx';
 // it works fine, the images are displayed well, but I don't understand why TS has issues
 import cardImg1 from '../../assets/onboardCard1.png';
 import cardImg2 from '../../assets/onboardCard2.png';
 import cardImg3 from '../../assets/onboardCard3.png';
+
+import Header from '../../Components/Header/Header.jsx';
 import Nav from '../../Components/Nav/Nav.jsx';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton.tsx';
 import InputField from '../../Components/Input/InputField/InputField.tsx';
 import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox.tsx';
 import InputSelect from '../../Components/Input/InputSelect/InputSelect.tsx';
+
+import useFormState from '../../Hooks/useFormState.tsx';
+
 import './Register.scss';
 
 /**
@@ -21,7 +25,7 @@ import './Register.scss';
  * @returns {JSX.Element} The rendered Step1 component.
 **/
 
-const Step1 = ({ handleUserState }: { handleUserState: (event: any) => void }) => (
+const Step1 = ({ handleUserData }: { handleUserData: (event: any) => void }) => (
     <>
         <span className='title'>
             <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,10 +74,10 @@ const Step1 = ({ handleUserState }: { handleUserState: (event: any) => void }) =
                 GitHub
             </a>
         </div>
-        <InputField label='E-mail' type='email' placeholder='E-mail' id='email' onChange={handleUserState} />
-        <InputField label='Пароль' type='password' placeholder='Пароль' id='password' onChange={handleUserState} />
-        <InputField label='Підтвердьте пароль' type='password' placeholder='Підтвердьте пароль' id='repeat-password' onChange={handleUserState} />
-        <InputSelect label="Тип реєстрації" options={[{name:"Кандидат",value:"employee"}, {name:"Роботодавець",value:"employer"}]} id='role' onChange={handleUserState} />
+        <InputField label='E-mail' type='email' placeholder='E-mail' id='email' onChange={handleUserData} />
+        <InputField label='Пароль' type='password' placeholder='Пароль' id='password' onChange={handleUserData} />
+        <InputField label='Підтвердьте пароль' type='password' placeholder='Підтвердьте пароль' id='repeat-password' onChange={handleUserData} />
+        <InputSelect label="Тип реєстрації" options={[{name:"Кандидат",value:"employee"}, {name:"Роботодавець",value:"employer"}]} id='role' onChange={handleUserData} />
         <div className='agree'>
             <InputCheckbox width='28px' height='28px' onChange={() => { }} required={true} id='terms-of-service' />
             <p>Я погоджуюся з <a href="#">Умовами обслуговування</a> та <br /> <a href="#">Політикою конфіденційності</a></p>
@@ -89,7 +93,7 @@ const Step1 = ({ handleUserState }: { handleUserState: (event: any) => void }) =
  * @param {string} props.select - The current value of the select input.
  * @returns {JSX.Element} The rendered Step2 component.
  */
-const Step2 = ({ handleUserState }: { handleUserState: (event: any) => void }) => (
+const Step2 = ({ handleUserData }: { handleUserData: (event: any) => void }) => (
     <>
         <span className='title'>
             <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,8 +101,8 @@ const Step2 = ({ handleUserState }: { handleUserState: (event: any) => void }) =
             </svg>
             <h2>Деталі компанії</h2>
         </span>
-        <InputField label='Назва компанії' type='text' placeholder='Введіть назву вашої компанії' id='companyName' onChange={handleUserState} />
-        <InputSelect label="Тип компанії" options={[{name:"Компанія",value:"Компанія"}, {name:"Агенство",value:"Агенство"}]} id="companyType" onChange={handleUserState} />
+        <InputField label='Назва компанії' type='text' placeholder='Введіть назву вашої компанії' id='companyName' onChange={handleUserData} />
+        <InputSelect label="Тип компанії" options={[{name:"Компанія",value:"Компанія"}, {name:"Агенство",value:"Агенство"}]} id="companyType" onChange={handleUserData} />
     </>
 );
 /**
@@ -150,7 +154,7 @@ const Step3 = () => (
 const Register = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
-    const [userData, setUserData] = useState({
+    const [userData, handleUserData] = useFormState({
         email: '',
         password: '',
         role: 'employee',
@@ -161,8 +165,6 @@ const Register = () => {
     const registerAsSeeker = () => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        // myHeaders.append("Cookie", "csrftoken=ZqCy3CdwUsZK1cw8j1zlat9Nyo5AFymt");
-
         const raw = JSON.stringify({
             "email": userData.email,
             "password": userData.password,
@@ -236,16 +238,6 @@ const Register = () => {
 
 
 
-    const handleUserState = (event: any) => {
-        const { id, value } = event.target;
-        setUserData((prev) => ({
-            ...prev,
-            [id]: value
-        }));
-        console.log(event.target.value);
-        console.log(userData);
-
-    };
 
     return (
         <>
@@ -253,8 +245,8 @@ const Register = () => {
             <Nav />
             <div className="form-wrapper">
                 <form onSubmit={handleRegister}>
-                    {step === 1 && <Step1 handleUserState={handleUserState} />}
-                    {step === 2 && <Step2 handleUserState={handleUserState} />}
+                    {step === 1 && <Step1 handleUserData={handleUserData} />}
+                    {step === 2 && <Step2 handleUserData={handleUserData} />}
                     {step === 3 && <Step3 />}
 
                     <SolidButton type='submit' fontSize='16px'>

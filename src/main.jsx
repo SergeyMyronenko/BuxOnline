@@ -18,7 +18,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from "react-router-dom";
 
 import App from './App.jsx'
-import { AuthProvider } from '../src/Hooks/useAuth/useAuth.tsx';
+import { AuthProvider } from '../src/Hooks/useAuth.tsx';
 
 createRoot(document.getElementById('root')).render(
   <AuthProvider>

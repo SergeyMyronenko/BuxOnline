@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, FormEvent } from 'react';
+import { useAuth } from '../../Hooks/useAuth';
 import Header from '../../Components/Header/Header';
 import Nav from '../../Components/Nav/Nav';
-
+import { useNavigate } from 'react-router-dom';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
+import useFormState from '../../Hooks/useFormState';
 
-import { useAuth } from '../../Hooks/useAuth/useAuth';
+import Cookies from 'js-cookie';
 import './LogIn.scss';
 /**
  * LogIn component renders a login form with options to log in via Google, LinkedIn, or GitHub,
@@ -23,21 +25,12 @@ import './LogIn.scss';
  */
 
 const LogIn = () => {
-    const [userData, setUserData] = useState({
+    const navigate = useNavigate();
+    const [userData, handleUserData] = useFormState({
         email: '',
         password: '',
     });
     const { setToken, token } = useAuth();
-    const handleUserState = (event: any) => {
-        const { id, value } = event.target;
-        setUserData((prev) => ({
-            ...prev,
-            [id]: value
-        }));
-        console.log(event.target.value);
-        console.log(userData);
-
-    };
     const handleLogin=(event:FormEvent)=>{
         event.preventDefault();
         const myHeaders = new Headers();
@@ -57,7 +50,12 @@ const LogIn = () => {
     
       fetch("http://127.0.0.1:8000/auth/jwt/create/", requestOptions)
       .then((response) => response.json())
-      .then((result) => { setToken(result.access); console.log(token);})
+      .then((result) => {
+        setToken(result.access);
+        Cookies.set('jwt', result.access, { expires: 1 / 96 }); // 15 minutes
+        console.log(result.access);
+        navigate('/BuxOnline/company/cabinet/:1'); // Navigate to the dashboard or another protected route
+    })
       .catch((error) => console.error(error));
     }
     return (
@@ -115,8 +113,8 @@ const LogIn = () => {
                         </a>
                     </div>
                     <p>Або за допомогою адресу електронної пошти</p>
-                    <InputField label='E-mail' type='email' placeholder='E-mail' id='email' onChange={handleUserState}></InputField>
-                    <InputField label='Пароль' type='password'  placeholder='Пароль' id='password' onChange={handleUserState}></InputField>
+                    <InputField label='E-mail' type='email' placeholder='E-mail' id='email' onChange={handleUserData}></InputField>
+                    <InputField label='Пароль' type='password'  placeholder='Пароль' id='password' onChange={handleUserData}></InputField>
                     <span><Link to='forgot-password'>Забули пароль?</Link></span>
                     <SolidButton type='submit' fontSize='16px'>Ввійти</SolidButton>
                     <p>Якщо ви ще не зареєстровані, <Link to='/BuxOnline/register'>ЗАРЕСТРУЙТЕСЬ ТУТ</Link></p>
