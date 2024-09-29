@@ -79,13 +79,13 @@ const UK_FLAG = (
 export default function Nav() {
   const [language, setLanguage] = useState("UK");
   const [flag, setFlag] = useState(UA_FLAG);
-  const {token, setToken} = useAuth();
+  const {token} = useAuth();
 
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const changeLanguage = () => {
     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
   };
-  useEffect(() => {setToken(Cookies.get('jwt'))}, [token])
+  // useEffect(() => {setToken(Cookies.get('jwt'))}, [token])
 
   return (
     <nav>

@@ -30,34 +30,17 @@ const LogIn = () => {
         email: '',
         password: '',
     });
-    const { setToken, token } = useAuth();
-    const handleLogin=(event:FormEvent)=>{
+    const { login } = useAuth();
+    const handleLogin = async (event: React.FormEvent) => {
         event.preventDefault();
-        const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    
-    const raw = JSON.stringify({
-      "email": userData.email,
-      "password": userData.password,    
-    });
-    
-    const requestOptions:RequestInit = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow"
+        try {
+            await login(userData.email, userData.password);
+            navigate('/Buxonline/company/cabinet/1'); // Navigate to the dashboard or another protected route
+        } catch (error) {
+            console.error(error);
+            // Handle login error
+        }
     };
-    
-      fetch("http://127.0.0.1:8000/auth/jwt/create/", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        setToken(result.access);
-        Cookies.set('jwt', result.access, { expires: 1 / 96 }); // 15 minutes
-        console.log(result.access);
-        navigate('/BuxOnline/company/cabinet/:1'); // Navigate to the dashboard or another protected route
-    })
-      .catch((error) => console.error(error));
-    }
     return (
         <>
             <Header></Header>
