@@ -51,6 +51,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
  * ```
  */
 const AuthProvider = ({ children }: { children: ReactNode }) => {
+    const url=import.meta.env.VITE_BASE_URL
+
     const [token, setToken] = useState<string | null>(null);
 
     useEffect(() => {
@@ -79,7 +81,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             redirect: "follow"
         };
 
-        const response = await fetch("http://127.0.0.1:8000/auth/jwt/create/", requestOptions);
+        const response = await fetch(`${url}/auth/jwt/create/`, requestOptions);
         if (response.ok) {
             const result = await response.json();
             setToken(result.access);
@@ -88,19 +90,17 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         } else {
             throw new Error(`Login failed: ${await response.text()}`);
         }
+
     };
 
     const refreshToken = async () => {
         const refresh = Cookies.get('refreshToken');
-        if (!refresh) {
-            logout();
-            return;
-        }
-
-        const raw = JSON.stringify({ refresh });
-
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "refresh": refresh
+        });
 
         const requestOptions: RequestInit = {
             method: "POST",
@@ -109,13 +109,16 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             redirect: "follow"
         };
 
-        const response = await fetch("http://127.0.0.1:8000/auth/jwt/refresh/", requestOptions);
+        const response = await fetch(`${url}/auth/jwt/refresh`, requestOptions);
         if (response.ok) {
             const result = await response.json();
             setToken(result.access);
             Cookies.set('jwt', result.access, { expires: 1 / 96 }); // 15 minutes
+            Cookies.set('refreshToken', result.refresh, { expires: 7 }); // Store refresh token for 7 days
+            console.log('Token refreshed');
+            console.log(result);
         } else {
-            logout();
+            throw new Error(`Login failed: ${await response.text()}`);
         }
     };
 

@@ -154,6 +154,8 @@ const Step3 = () => (
 const Register = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
+    const url=import.meta.env.VITE_BASE_URL;
+
     const [userData, handleUserData] = useFormState({
         email: '',
         password: '',
@@ -178,9 +180,6 @@ const Register = () => {
             body: raw,
             redirect: "follow"
         };
-        const url='http://127.0.0.1:8000'
-        // again, it works well, but ts has issues
-                // const url=import.meta.env.VITE_BASE_URL
 
     
         fetch(`${url}/auth/users/`, requestOptions)
@@ -208,10 +207,7 @@ const Register = () => {
             body: raw,
             redirect: "follow"
         };
-        const url='http://127.0.0.1:8000'
-        // again, it works well, but ts has issues
-                // const url=import.meta.env.VITE_BASE_URL
-    
+        
         fetch(`${url}/auth/users/`, requestOptions)
             .then((response) => response.text())
             .then((result) => console.log(result))

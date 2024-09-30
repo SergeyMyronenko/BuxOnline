@@ -25,6 +25,7 @@ import './LogIn.scss';
  */
 
 const LogIn = () => {
+    const url=import.meta.env.VITE_BASE_URL
     const navigate = useNavigate();
     const [userData, handleUserData] = useFormState({
         email: '',
@@ -35,7 +36,28 @@ const LogIn = () => {
         event.preventDefault();
         try {
             await login(userData.email, userData.password);
-            navigate('/Buxonline/company/cabinet/1'); // Navigate to the dashboard or another protected route
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", `JWT ${Cookies.get('jwt')}`);
+
+
+            const requestOptions:RequestInit = {
+                method: "GET",
+                headers: myHeaders,
+                redirect: "follow"
+            };
+
+            fetch(`${url}/auth/users/me/`, requestOptions)
+            
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log(result)
+                    navigate(`/BuxOnline/company/cabinet/${result.id}`)
+                })
+                 .catch((error) => console.error(error));
+            ;
+            
+        // navigate(`/BuxOnline/company/cabinet/1`)
+
         } catch (error) {
             console.error(error);
             // Handle login error
@@ -97,7 +119,7 @@ const LogIn = () => {
                     </div>
                     <p>Або за допомогою адресу електронної пошти</p>
                     <InputField label='E-mail' type='email' placeholder='E-mail' id='email' onChange={handleUserData}></InputField>
-                    <InputField label='Пароль' type='password'  placeholder='Пароль' id='password' onChange={handleUserData}></InputField>
+                    <InputField label='Пароль' type='password' placeholder='Пароль' id='password' onChange={handleUserData}></InputField>
                     <span><Link to='forgot-password'>Забули пароль?</Link></span>
                     <SolidButton type='submit' fontSize='16px'>Ввійти</SolidButton>
                     <p>Якщо ви ще не зареєстровані, <Link to='/BuxOnline/register'>ЗАРЕСТРУЙТЕСЬ ТУТ</Link></p>
