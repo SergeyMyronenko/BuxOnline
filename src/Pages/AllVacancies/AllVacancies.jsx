@@ -1,5 +1,5 @@
 import React from 'react';
-import './Vacancy.scss';
+import './AllVacancies.scss';
 //імпорт ассетів
 import vacancyBackgroungImg from '../../assets/vacancyBackgroundImg.png';
 import vacancyTitleImg from '../../assets/vacancyTitleImg.png';
@@ -26,7 +26,7 @@ import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
  * 
  * @returns {JSX.Element} The rendered vacancy page component.
  */
-function Vacancy() {
+function AllVacancies() {
     return (
         <>
             <Header/>
@@ -117,4 +117,4 @@ function Vacancy() {
     );
 }
 
-export default Vacancy;
+export default AllVacancies;

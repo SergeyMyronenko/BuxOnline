@@ -1,7 +1,7 @@
 import React from "react";
 import "./CompanyMessage.scss";
-import Header from "../../Components/Header/Header";
-import Nav from "../../Components/Nav/Nav";
+import Header from "../../../Components/Header/Header";
+import Nav from "../../../Components/Nav/Nav";
 
 import { Link } from "react-router-dom";
 /**
@@ -13,8 +13,6 @@ import { Link } from "react-router-dom";
 function CompanyMessage() {
   return (
     <>
-      <Header />
-      <Nav />
       <main className="cabinet-message-wrapper">
         <section className="cabinet-message-box">
           <span>

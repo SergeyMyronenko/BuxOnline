@@ -2,10 +2,10 @@ import React from 'react';
 import './VacancyCreated.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../Components/Header/Header';
-import Nav from '../../Components/Nav/Nav';
-import InputArea from '../../Components/Input/InputArea/InputArea';
-import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
+import Header from '../../../Components/Header/Header';
+import Nav from '../../../Components/Nav/Nav';
+import InputArea from '../../../Components/Input/InputArea/InputArea';
+import SolidButton from '../../../Components/Buttons/SolidButton/SolidButton';
 /**
  * VacancyCreated component renders a page indicating that a vacancy has been successfully created.
  * It includes a header, navigation, and a card with a congratulatory message.
