@@ -18,6 +18,7 @@ import "./App.scss";
 
 import "@mantine/core/styles.css";
 import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
+import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
 
 /**
  * The main application component that sets up the routing for the application.
@@ -59,7 +60,8 @@ function App() {
         <Route path="/BuxOnline/company/jobs/create/:id" element={<ConfirmCreatedVacancy/>}></Route>    
         <Route path="/BuxOnline/company/jobs/create/:id/finished" element={<VacancyCreated/>}></Route>    
 
-        <Route path="/BuxOnline/seeker/profile/resume" element={<SeekerResumePage/>}></Route>      
+        <Route path="/BuxOnline/seeker/profile/resume" element={<SeekerResumePage/>}></Route>     
+        <Route path="/BuxOnline/moderator" element={<AdminPage />}></Route> 
 
 
 
