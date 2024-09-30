@@ -14,6 +14,7 @@ import SeekerResumePage from "./Pages/SeekerPage/MessagesAndEvents/SeekerResumeP
 import EmptyOutlet from "./Pages/EmptyOutlet/EmptyOutlet.jsx";
 import "@mantine/core/styles.css";
 import "./App.scss";
+import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
 
 
 /**
@@ -78,7 +79,7 @@ function App() {
         {/* These are all the routes and pages related to moderator cabinet */}
         <Route path="/BuxOnline/moderator/cabinet/:id" element={<EmptyOutlet />}>
         {/* the line below is responsible for the main page */}
-          <Route index element={<h1>Moderator cabinet</h1>} />
+          <Route index element={<AdminPage />} />
           {/* all the other lines are different paths and pages inside the cabinet */}
           <Route path="resumes" element={<SeekerResumePage />} />
           <Route path="offers" element={<h1>Seeker offers</h1>} />
