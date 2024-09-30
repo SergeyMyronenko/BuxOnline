@@ -15,7 +15,6 @@ import ConfirmCreatedVacancy from "./Pages/EmployerPage/ConfirmCreatedVacancy.ts
 import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
 import ForgotPassword from "./Pages/LogIn/ForgotPassword.jsx";
 import SeekerResumePage from "./Pages/MessagesAndEvents/SeekerResumePage.tsx";
-import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
 
 
 import "@mantine/core/styles.css";
@@ -56,9 +55,6 @@ function App() {
 
         <Route path='/BuxOnline/register' element={<Register />}/>
        
-        <Route path="/BuxOnline/company/cabinet/:id" element={<CompanyCabinet/>}></Route>      
-        <Route path='/BuxOnline/register/company/' element={<RegisterCompany />} />
-        <Route path="/BuxOnline/register/company/onboard" element={<Onboard />} />   
 
         <Route path="/BuxOnline/company/cabinet/:id" element={<CompanyCabinet/>}></Route> 
         <Route path="/BuxOnline/company/cabinet/:id/message" element={<CompanyMessage/>}></Route>     
