@@ -1,9 +1,9 @@
 import React from "react";
-import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";
-import HollowButton from "../../Components/Buttons/HollowButton/HollowButton";
-import Footer from "../../Components/Footer/Footer";
-import Header from "../../Components/Header/Header";
-import Nav from "../../Components/Nav/Nav";
+import SolidButton from "../../../Components/Buttons/SolidButton/SolidButton";
+import HollowButton from "../../../Components/Buttons/HollowButton/HollowButton";
+import Footer from "../../../Components/Footer/Footer";
+import Header from "../../../Components/Header/Header";
+import Nav from "../../../Components/Nav/Nav";
 import "./SeekerResumePage.scss";
 
 interface IResume {

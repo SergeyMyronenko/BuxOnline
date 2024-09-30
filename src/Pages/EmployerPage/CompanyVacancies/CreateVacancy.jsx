@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../Components/Header/Header';
-import Nav from '../../Components/Nav/Nav';
+import Header from '../../../Components/Header/Header';
+import Nav from '../../../Components/Nav/Nav';
 
-import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
-import InputSelect from '../../Components/Input/InputSelect/InputSelect';
-import MultipleSelect from '../../Components/MultipleSelect/MultipleSelect';
-import InputField from '../../Components/Input/InputField/InputField';
-import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox';
-import InputArea from '../../Components/Input/InputArea/InputArea';
+import SolidButton from '../../../Components/Buttons/SolidButton/SolidButton';
+import InputSelect from '../../../Components/Input/InputSelect/InputSelect';
+import MultipleSelect from '../../../Components/MultipleSelect/MultipleSelect';
+import InputField from '../../../Components/Input/InputField/InputField';
+import InputCheckbox from '../../../Components/Input/InputCheckbox/InputCheckbox';
+import InputArea from '../../../Components/Input/InputArea/InputArea';
 
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaHouseLaptop } from "react-icons/fa6";

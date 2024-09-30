@@ -1,10 +1,10 @@
 import React from 'react';
 import './ConfirmCreatedVacancy.scss';
 import { Link } from 'react-router-dom';
-import Header from '../../Components/Header/Header';;
-import Nav from '../../Components/Nav/Nav';
-import JobDescriptionCard from '../../Components/JobDescriptionCard/JobDescriptionCard';
-import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
+import Header from '../../../Components/Header/Header';;
+import Nav from '../../../Components/Nav/Nav';
+import JobDescriptionCard from '../../../Components/JobDescriptionCard/JobDescriptionCard';
+import SolidButton from '../../../Components/Buttons/SolidButton/SolidButton';
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { LiaUserClockSolid } from "react-icons/lia";

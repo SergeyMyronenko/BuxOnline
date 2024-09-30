@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../../Components/Header/Header';
-import Nav from '../../Components/Nav/Nav';
+import Header from '../../../Components/Header/Header';
+import Nav from '../../../Components/Nav/Nav';
 import './CompanyVacancies.scss';
-import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
+import SolidButton from '../../../Components/Buttons/SolidButton/SolidButton';
 import { Link } from 'react-router-dom';
 import { TbEdit } from "react-icons/tb";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -66,8 +66,6 @@ function DisplayVacancies(data) {
 const CompanyVacancies = () => {
     return (
         <>
-            <Header></Header>
-            <Nav></Nav>
             <div className="vacancies-wrapper">
                 <div className='inner-wrapper'>
                     <span>
