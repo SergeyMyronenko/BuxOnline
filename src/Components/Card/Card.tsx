@@ -1,3 +1,4 @@
+import React from "react";
 import "./Card.scss";
 
 import { RiMapPinLine } from "react-icons/ri";
@@ -23,10 +24,10 @@ import { RiMapPinLine } from "react-icons/ri";
  * - Buttons for viewing more details and applying for the job.
  */
 // eslint-disable-next-line react/prop-types
-const Card = ({ cardInfo, btnDetail, btnApply }) => {
+const Card = ({ cardInfo, btnDetail, btnApply, width }) => {
   const skillsList = cardInfo.skills;
   return (
-    <div className="card">
+    <div style={{ width }} className="card">
       <div className="card-title-wrapper">
         <div className="logo">
           <svg
