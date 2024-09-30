@@ -11,11 +11,11 @@ import CompanyMessage from "./Pages/EmployerPage/CompanyMessages/CompanyMessage.
 import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies/CompanyVacancies.jsx";
 import ForgotPassword from "./Pages/LogIn/ForgotPassword.jsx";
 import SeekerResumePage from "./Pages/SeekerPage/MessagesAndEvents/SeekerResumePage.tsx";
+import SeekerOffersPage from "./Pages/SeekerPage/MessagesAndEvents/SeekerOffersPage.tsx";
 import EmptyOutlet from "./Pages/EmptyOutlet/EmptyOutlet.jsx";
 import "@mantine/core/styles.css";
 import "./App.scss";
 import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
-
 
 /**
  * The main application component that sets up the routing for the application.
@@ -38,7 +38,7 @@ function App() {
     no time for that rn
     */}
 
-
+      {/* prettier-ignore */}
       <Routes>
         <Route path='/BuxOnline/' element={<Index />} />
 
@@ -70,7 +70,7 @@ function App() {
           
           {/* all the other lines below are different paths and pages inside the cabinet */}
           <Route path="resumes" element={<SeekerResumePage />} />
-          <Route path="offers" element={<h1>Seeker offers</h1>} />
+          <Route path="offers" element={<SeekerOffersPage />} />
           <Route path="messages" element={<h1>Seeker Messages</h1>} />
           <Route path="favorites" element={<h1>Seeker Favorites</h1>} />
         </Route>

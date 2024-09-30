@@ -1,9 +1,6 @@
 import React from "react";
 import SolidButton from "../../../Components/Buttons/SolidButton/SolidButton";
 import HollowButton from "../../../Components/Buttons/HollowButton/HollowButton";
-import Footer from "../../../Components/Footer/Footer";
-import Header from "../../../Components/Header/Header";
-import Nav from "../../../Components/Nav/Nav";
 import "./SeekerResumePage.scss";
 
 interface IResume {
@@ -28,8 +25,6 @@ const seekersResumeList: IResume[] = [
 const SeekerResumePage = () => {
   return (
     <div className="resume-page-wrapper">
-      <Header />
-      <Nav />
       <div className="resume-wrapper">
         <div className="resume-title">
           <h2>Мої резюме</h2>
@@ -41,7 +36,6 @@ const SeekerResumePage = () => {
           })}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
