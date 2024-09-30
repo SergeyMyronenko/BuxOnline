@@ -1,71 +1,85 @@
 $transitionAll: 0.5s cubic-bezier(0.7, 0, 0.31, 0.98);
+@use "../../App.scss" as styles;
 
 .accordion-wrapper {
-    display: grid;
-    padding: 10px 0px;
-
-    .accordion-title {
-        display: flex;
-        justify-content: space-between;
-        width: 205px;
-
-        h5 {
-            font-weight: 700;
-            cursor: pointer;
-            width: 90%;
-
-        }
-        .accordion-button{
-            height: 20px !important;
-            width: 20px !important;
-            display: flex;
-            flex-direction: column-reverse;
-            overflow: hidden;
-            cursor: pointer;
-            align-items: center;
-
-            svg{
-                width: 20px;
-                height: 20px;
-                flex-shrink: 0;
-                transition: $transitionAll;
-
-                &:nth-of-type(2){
-                    transform: rotate(180deg);
-                }
-
-            }
-          
-            &.open{
-                svg:nth-of-type(1){
-                    transform: translateY(100%);
-                }
-                svg:nth-of-type(2){
-                    transform: translateY(100%) rotate(180deg);
-                }
-            }
-        }
-        
+  display: grid;
+  padding: 10px 0px;
+  .accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style-type: none;
+    .item-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .item-title {
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 0em;
+        color: styles.$blackForImg;
+      }
     }
-    .accordion-list {
-        display: grid;
-        grid-template-rows: 0fr;    
+  }
+  .accordion-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 205px;
+
+    h5 {
+      font-weight: 700;
+      cursor: pointer;
+      width: 90%;
+      margin-bottom: 15px;
+    }
+    .accordion-button {
+      height: 20px !important;
+      width: 20px !important;
+      display: flex;
+      flex-direction: column-reverse;
+      overflow: hidden;
+      cursor: pointer;
+      align-items: center;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
         transition: $transitionAll;
 
-        &.open{
-            grid-template-rows: 1fr;
-        }    
-        .accordion-items-wrapper {
-            overflow: hidden;
-            .accordion-item {
-                display: flex;    
-                p {
-                    font-size: 14px;
-                }
-    
-    
-            }
+        &:nth-of-type(2) {
+          transform: rotate(180deg);
         }
-        
+      }
+
+      &.open {
+        svg:nth-of-type(1) {
+          transform: translateY(100%);
+        }
+        svg:nth-of-type(2) {
+          transform: translateY(100%) rotate(180deg);
+        }
+      }
     }
+  }
+  .accordion-list {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: $transitionAll;
+
+    &.open {
+      grid-template-rows: 1fr;
+    }
+    .accordion-items-wrapper {
+      overflow: hidden;
+      .accordion-item {
+        display: flex;
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }

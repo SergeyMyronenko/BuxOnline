@@ -1,13 +1,12 @@
 .card {
-  width: 100%;
-  max-width: 483px;
+  width: 517px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   border-radius: 15px;
   border: 1px solid #bcbcbc;
   font-family: "Inter";
-  padding: 20px;
+  padding: 30px;
   &-title-wrapper {
     display: flex;
     flex-direction: column;
@@ -15,6 +14,7 @@
     .card-title {
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       gap: 23px;
       h3 {
         font-size: 20px;
@@ -48,12 +48,16 @@
         border-radius: 10px;
         align-items: center;
         border: 1px solid #282828;
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0em;
       }
     }
     &-skills {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
+      list-style-type: none;
       .skill {
         display: flex;
         padding: 4px 12px;
@@ -68,6 +72,7 @@
   &-buttons-wrapper {
     display: flex;
     gap: 27px;
+    margin-top: 30px;
     .button {
       display: inline-flex;
       padding: 12px 22px;
