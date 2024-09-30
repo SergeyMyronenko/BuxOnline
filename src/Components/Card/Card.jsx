@@ -22,7 +22,9 @@ import { RiMapPinLine } from "react-icons/ri";
  * - A description section with the location, experience required, and a list of skills.
  * - Buttons for viewing more details and applying for the job.
  */
-const Card = () => {
+// eslint-disable-next-line react/prop-types
+const Card = ({ cardInfo, btnDetail, btnApply }) => {
+  const skillsList = cardInfo.skills;
   return (
     <div className="card">
       <div className="card-title-wrapper">
@@ -42,32 +44,33 @@ const Card = () => {
             />
           </svg>
         </div>
+        {/* <h3 className="company">{cardInfo.title}</h3> */}
         <div className="card-title">
-          <h3 className="card-position">Senior Software Engineer</h3>
-          <h3 className="card-salary">₴25000-30000</h3>
+          <h3 className="card-position">{cardInfo.position}</h3>
+          <h3 className="card-salary">{`₴${cardInfo.salary_min}-${cardInfo.salary_max}`}</h3>
         </div>
       </div>
       <div className="card-description">
         <div className="card-description-main-requirements">
           <div className="location">
             <RiMapPinLine />
-            <span className="country">Portugal</span>
+            <span className="country">{cardInfo.country}</span>
           </div>
-          <div className="experience">5 years</div>
+          <div className="experience">{cardInfo.required_experience} years</div>
         </div>
-        <div className="card-description-skills">
-          <div className="skill">CSS</div>
-          <div className="skill">PHP</div>
-          <div className="skill">Yii</div>
-          <div className="skill">Symfony</div>
-          <div className="skill">MySQL</div>
-          <div className="skill">Kubernetes</div>
-          <div className="skill">+ ще 2</div>
-        </div>
+        <ul className="card-description-skills">
+          {skillsList.map((skill, i) => {
+            return (
+              <li key={i}>
+                <p className="skill">{skill.name}</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
       <div className="card-buttons-wrapper">
-        <button className="button details-button">Детальніше</button>
-        <button className="button apply-button">Відгукнутися</button>
+        <button className="button details-button">{btnDetail}</button>
+        <button className="button apply-button">{btnApply}</button>
       </div>
     </div>
   );

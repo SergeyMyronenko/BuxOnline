@@ -1,0 +1,13 @@
+@use "../../App.scss" as styles;
+
+.content-wrapper {
+  width: 1054px;
+  .job-card-list {
+    list-style-type: none;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: 1436px;
+  }
+}
