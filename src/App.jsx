@@ -15,12 +15,6 @@ import EmptyOutlet from "./Pages/EmptyOutlet/EmptyOutlet.jsx";
 import "@mantine/core/styles.css";
 import "./App.scss";
 
-<<<<<<< HEAD
-=======
-import "@mantine/core/styles.css";
-import VacancyCreated from "./Pages/EmployerPage/VacancyCreated.tsx";
-import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
->>>>>>> admin-page
 
 /**
  * The main application component that sets up the routing for the application.
@@ -56,7 +50,6 @@ function App() {
 
         <Route path='/BuxOnline/register' element={<Register />} />
 
-<<<<<<< HEAD
         {/* These are all the routes and pages related to company cabinet */}
         <Route path="/BuxOnline/company/cabinet/:id" element={<EmptyOutlet />}>
         {/* the line below is responsible for the main page */}
@@ -67,17 +60,6 @@ function App() {
           <Route path="candidates" element={<h1>Company Candidates</h1>} />
           <Route path="favorites" element={<h1>Company Favorites</h1>} />
         </Route>
-=======
-        <Route path="/BuxOnline/company/cabinet/:id" element={<CompanyCabinet/>}></Route>      
-        <Route path="/BuxOnline/company/jobs/" element={<CompanyVacancies/>}></Route>    
-        <Route path="/BuxOnline/company/jobs/choose" element={<ChooseMethodToCreate/>}></Route>   
-        <Route path="/BuxOnline/company/jobs/create" element={<CreateVacancy/>}></Route>   
-        <Route path="/BuxOnline/company/jobs/create/:id" element={<ConfirmCreatedVacancy/>}></Route>    
-        <Route path="/BuxOnline/company/jobs/create/:id/finished" element={<VacancyCreated/>}></Route>    
-
-        <Route path="/BuxOnline/seeker/profile/resume" element={<SeekerResumePage/>}></Route>     
-        <Route path="/BuxOnline/moderator" element={<AdminPage />}></Route> 
->>>>>>> admin-page
 
 
         {/* These are all the routes and pages related to seeker cabinet */}
