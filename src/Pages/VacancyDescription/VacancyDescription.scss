@@ -1,0 +1,67 @@
+//import variables from file App.scss
+@use "../../App.scss" as styles;
+
+.vacancy-main {
+  margin-left: 61px;
+  text-align: left;
+
+  h1 {
+    font-size: 32px;
+    color: styles.$lightBlue;
+    margin-top: 69px;
+    margin-bottom: 30px;
+  }
+  .vacancy-description-section {
+    margin-bottom: 69px;
+    margin-right: 100px;
+  }
+  .classification-advantages-section {
+    display: flex;
+    margin-right: 100px;
+    margin-bottom: 55px;
+
+    .class-adv-left-sidebar {
+      width: 50%;
+      margin-right: 115px;
+    }
+    .class-adv-right-sidebar {
+      width: 50%;
+    }
+  }
+
+  .responsibilities-img-section {
+    margin-right: 100px;
+    margin-bottom: 40px;
+    display: flex;
+
+    .respon-img-left-sidebar {
+      width: 50%;
+      margin-right: 115px;
+    }
+
+    .respon-img-right-sidebar {
+      width: 50%;
+      .info-img {
+        width: 613px;
+        height: 670px;
+        padding-top: 175px;
+      }
+    }
+  }
+
+  h4 {
+    font-size: 29px;
+    margin-bottom: 10px;
+  }
+
+  .underline-header {
+    background-color: styles.$red;
+    height: 6px;
+    margin-bottom: 60px;
+    width: 50%;
+  }
+  .vacancy-main-button {
+    margin-bottom: 48px;
+    margin-left: 132px;
+  }
+}

@@ -1,0 +1,121 @@
+@use "../../App.scss" as styles;
+
+.cabinet-message-wrapper {
+  width: 100%;
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: styles.$blackForText;
+
+  a {
+    text-decoration: none;
+  }
+
+  .cabinet-message-box {
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+
+    span:nth-of-type(1) {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      h1 {
+        color: styles.$blackForText;
+      }
+    }
+
+    span:nth-of-type(2) {
+      display: flex;
+      gap: 100px;
+      padding-top: 50px;
+
+      .company-message {
+        border: 1px solid styles.$grayforBorder;
+        border-radius: 16px;
+        padding: 35px;
+        width: 600%;
+        height: 620px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        ul {
+          a {
+            text-decoration: none;
+            color: styles.$blackForText;
+
+            li {
+              border-radius: 16px;
+              padding-top: 30px;
+              padding-bottom: 30px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              font-size: 24px;
+              transition: 0.1s cubic-bezier(0.7, 0, 0.31, 0.98);
+
+              .row {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                align-items: center;
+
+                .column-1 {
+                  display: flex;
+                  flex-direction: column;
+
+                  h3 {
+                    font-size: 28px;
+                    margin-bottom: 20px;
+                  }
+
+                  .p-message {
+                    font-size: 20px;
+                    opacity: 0.5;
+                  }
+                }
+
+                svg {
+                  margin-right: 30px;
+                  margin-left: 40px;
+                }
+              }
+
+              .column-2 {
+                margin-top: 9px;
+                margin-right: 40px;
+                .p-new-message {
+                  background-color: styles.$lightBlue;
+                  border: 1px white solid;
+                  border-radius: 68%;
+                  color: styles.$white;
+                  text-align: center;
+                }
+
+                .p-date {
+                  margin-bottom: 26px;
+                  font-size: 18px;
+                  opacity: 0.5;
+                }
+              }
+
+              &:hover {
+                background-color: styles.$lightBlue;
+                color: styles.$white;
+              }
+            }
+          }
+          hr {
+            width: 95%;
+            padding: 0px;
+            margin: 0 auto;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
