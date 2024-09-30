@@ -9,6 +9,7 @@ import Register from "./Pages/Register/Register";
 import RegisterCompany from "./Pages/Register/RegisterCompany";
 import Onboard from "./Pages/Register/Onboard";
 import CompanyCabinet from "./Pages/EmployerPage/CompanyCabinet";
+import CompanyMessage from "./Pages/EmployerPage/CompanyMessage.jsx";
 import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies";
 import ChooseMethodToCreate from "./Pages/EmployerPage/ChooseMethodToCreate";
 import CreateVacancy from "./Pages/EmployerPage/CreateVacancy";
@@ -47,7 +48,7 @@ function App() {
         <Route path='/BuxOnline/' element={<Index />} />
 
         <Route path='/BuxOnline/vacancy' element={<Vacancy />} />
-        <Route path='/BuxOnline/vacancy/description' element ={<VacancyDescription/>}/>
+        <Route path='/BuxOnline/vacancy/description/' element ={<VacancyDescription/>}/> 
 
         <Route path='/BuxOnline/login' element={<LogIn />} />
 
@@ -55,7 +56,8 @@ function App() {
         <Route path='/BuxOnline/register/company/' element={<RegisterCompany />} />
         <Route path="/BuxOnline/register/company/onboard" element={<Onboard />} />   
 
-        <Route path="/BuxOnline/company/cabinet/:id" element={<CompanyCabinet/>}></Route>      
+        <Route path="/BuxOnline/company/cabinet/:id" element={<CompanyCabinet/>}></Route> 
+       <Route path="/BuxOnline/company/cabinet/:id/message" element={<CompanyMessage/>}></Route>     
         <Route path="/BuxOnline/company/jobs/" element={<CompanyVacancies/>}></Route>    
         <Route path="/BuxOnline/company/jobs/choose" element={<ChooseMethodToCreate/>}></Route>   
         <Route path="/BuxOnline/company/jobs/create" element={<CreateVacancy/>}></Route>   
