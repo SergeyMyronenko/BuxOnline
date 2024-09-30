@@ -23,9 +23,12 @@
     "@tiptap/pm": "^2.7.2",
     "@tiptap/react": "^2.7.2",
     "@tiptap/starter-kit": "^2.7.2",
+<<<<<<< HEAD
     "dotenv": "^16.4.5",
     "js-cookie": "^3.0.5",
+=======
     "clsx": "^2.1.1",
+>>>>>>> admin-page
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
