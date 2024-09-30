@@ -4,8 +4,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 900px;
+    height: max-content;
     text-align: center;
+    padding: 50px 0px;
 
     .title {
         display: flex;
@@ -18,7 +19,10 @@
         border-radius: 16px;
         padding: 64px;
         color: styles.$blackForText;
-        width: 620px;
+        min-width: 620px;
+        width: max-content;
+        max-width:90%;
+        
 
         a {
             text-decoration: none;
@@ -95,16 +99,11 @@
     }
 }
 
-.onboard-wrapper {
-    width: 100%;
-    height: 900px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 
     .onboard-box {
-        width: 90%;
-        height: 90%;
+        width: 100%;
+        height: 100%;
         position: relative;
 
         h1 {
@@ -114,9 +113,11 @@
         }
 
         .cards-wrapper {
+            width:100%;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
             text-align: center;
+            gap: 50px;
 
             .card {
                 width: 373px;
@@ -139,4 +140,3 @@
         }
 
     }
-}

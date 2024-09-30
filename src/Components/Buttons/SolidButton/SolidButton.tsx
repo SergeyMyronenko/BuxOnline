@@ -1,12 +1,12 @@
 import React from 'react';
 import './SolidButton.scss';
-
+import { FormEvent } from 'react';
 interface SolidButtonProps {
     width?: string;
     height?: string;
     borderRadius?: string;
     fontSize?: string;
-    onClick?: () => void;
+    onClick?: (event?:any) => void;
     children?: React.ReactNode;
     disabled?: boolean;
     type?: 'button' | 'submit';

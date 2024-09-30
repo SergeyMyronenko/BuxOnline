@@ -3,28 +3,33 @@ import './InputSelect.scss';
 
 interface InputSelectProps {
     label: string;
-    options: string[];
+    options: {name:string,value:string}[];
     id?: string;
+    onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 /**
  * InputSelect component renders a labeled select dropdown.
  *
  * @component
- * @param {InputSelectProps} props - The props for the InputSelect component.
- * @param {string} props.label - The label for the select dropdown.
- * @param {string[]} props.options - The options to be displayed in the select dropdown.
- * @param {string} props.id - The id for the select element.
- * @returns {JSX.Element} The rendered InputSelect component.
+ * @param {Object}  - The props for the InputSelect component.
+ * @param {string}  - The label for the select dropdown.
+ * @param {string[]}- The array of options to be displayed in the dropdown.ment} The rendered InputSelect component.
+ * @param {function onChange(event:React.ChangeEvent<HTMLSelectElement>)} - The function to be called when the value of the select dropdown changes.
+ * @example <InputSelect label="Тип компанії" options={["Компанія", "Агентство"]} onChange={handleSelectInput}></InputSelect>
+        
+ * 
+    
+ }}
  */
-const InputSelect: React.FC<InputSelectProps> = ({ label, options,id }) => {
+const InputSelect: React.FC<InputSelectProps> = ({ label, options,id,onChange }) => {
     return (
         <div className="select-wrapper">
             <label htmlFor={id}>{label}</label>
-            <select id={id}>
+            <select id={id} onChange={onChange}>
                 {options.map((option, index) => (
-                    <option key={index} value={option}>
-                        {option}
+                    <option key={index} value={option.value}>
+                        {option.name}
                     </option>
                 ))}
             </select>

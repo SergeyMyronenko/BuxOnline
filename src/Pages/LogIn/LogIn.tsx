@@ -1,45 +1,83 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
-
+import { useState, FormEvent } from 'react';
+import { useAuth } from '../../Hooks/useAuth';
 import Header from '../../Components/Header/Header';
 import Nav from '../../Components/Nav/Nav';
-
+import { useNavigate } from 'react-router-dom';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
-import InputCheckbox from '../../Components/Input/InputCheckbox/InputCheckbox.tsx';
-import InputSelect from '../../Components/Input/InputSelect/InputSelect';
+import useFormState from '../../Hooks/useFormState';
 
-import './Register.scss';
+import Cookies from 'js-cookie';
+import './LogIn.scss';
 /**
- * Register component renders a registration form with options to register using Google, LinkedIn, or GitHub,
- * as well as via email. The form includes fields for email, password, password confirmation, and registration type.
- * It also includes a checkbox to agree to terms of service and privacy policy.
+ * LogIn component renders a login form with options to log in via Google, LinkedIn, or GitHub,
+ * as well as through email and password.
  *
  * @component
  * @example
  * return (
- *   <Register />
+ *   <LogIn />
  * )
  *
- * @returns {JSX.Element} The rendered registration form component.
+ * @returns {JSX.Element} A login form with social media login options and email/password login.
  */
-const Register = () => {
+
+const LogIn = () => {
+    const url=import.meta.env.VITE_BASE_URL
+    const navigate = useNavigate();
+    const [userData, handleUserData] = useFormState({
+        email: '',
+        password: '',
+    });
+    const { login } = useAuth();
+    const handleLogin = async (event: React.FormEvent) => {
+        event.preventDefault();
+        try {
+            await login(userData.email, userData.password);
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", `JWT ${Cookies.get('jwt')}`);
+
+
+            const requestOptions:RequestInit = {
+                method: "GET",
+                headers: myHeaders,
+                redirect: "follow"
+            };
+
+            fetch(`${url}/auth/users/me/`, requestOptions)
+            
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log(result)
+                    navigate(`/BuxOnline/company/cabinet/${result.id}`)
+                })
+                 .catch((error) => console.error(error));
+            ;
+            
+        // navigate(`/BuxOnline/company/cabinet/1`)
+
+        } catch (error) {
+            console.error(error);
+            // Handle login error
+        }
+    };
     return (
         <>
-        <Header></Header>
-        <Nav></Nav>
+            <Header></Header>
+            <Nav></Nav>
             <div className="form-wrapper">
 
-                <form>
+                <form onSubmit={handleLogin}>
                     <span className='title'>
                         <svg width="26" height="21" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M8.46061 16.25L12.2808 12.575C11.7841 12.525 11.4149 12.5 11.0074 12.5C7.60744 12.5 0.820312 14.175 0.820312 17.5V20H12.2808L8.46061 16.25ZM11.0074 10C13.8216 10 16.1009 7.7625 16.1009 5C16.1009 2.2375 13.8216 0 11.0074 0C8.1932 0 5.91385 2.2375 5.91385 5C5.91385 7.7625 8.1932 10 11.0074 10ZM16.6994 20.625L12.2808 16.25L14.0635 14.4875L16.6994 17.0875L23.2319 10.625L25.0146 12.3875L16.6994 20.625Z" fill="#282828" />
                         </svg>
-                        <h2>Реєстрація</h2>
+                        <h2>Вхід</h2>
                     </span>
-                    <p>Створіть обліковий запис за допомогою:</p>
-                    <div className="media-register">
+                    <p>Увійдіть до свого облікового запису через:</p>
+                    <div className="media-login">
                         <a href='#'>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_106_301)">
@@ -80,20 +118,11 @@ const Register = () => {
                         </a>
                     </div>
                     <p>Або за допомогою адресу електронної пошти</p>
-                    <InputField label='E-mail' type='email' placeholder='E-mail' id='email'></InputField>
-                    <InputField label='Пароль' type='password' placeholder='Пароль' id='password'></InputField>
-                    <InputField label='Підтвердьте пароль' type='password' placeholder='Підтвердьте пароль' id='repeat-password'></InputField>
-                    <InputSelect label="Тип реєстрації" options={["Кандидат" ,"Роботодавець"]}></InputSelect>
-                    
-                    
-                    <div className='agree'>
-                        <InputCheckbox width='28px' height='28px'></InputCheckbox>
-                        <p>Я погоджуюся з <a href="#">Умовами обслуговування</a> та <br /> <a href="#">Політикою конфіденційності</a></p>
-                    </div>
-                    <Link to='/BuxOnline/register/company'>
-                        <SolidButton type='submit' fontSize={16}>Зареєструватися</SolidButton>
-                    </Link>
-                    <p>Якщо у вас уже є обліковий запис, ми можете <Link to='/BuxOnline/login'>ВВІЙТИ ТУТ</Link></p>
+                    <InputField label='E-mail' type='email' placeholder='E-mail' id='email' onChange={handleUserData}></InputField>
+                    <InputField label='Пароль' type='password' placeholder='Пароль' id='password' onChange={handleUserData}></InputField>
+                    <span><Link to='forgot-password'>Забули пароль?</Link></span>
+                    <SolidButton type='submit' fontSize='16px'>Ввійти</SolidButton>
+                    <p>Якщо ви ще не зареєстровані, <Link to='/BuxOnline/register'>ЗАРЕСТРУЙТЕСЬ ТУТ</Link></p>
                 </form>
             </div>
 
@@ -101,4 +130,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default LogIn;
