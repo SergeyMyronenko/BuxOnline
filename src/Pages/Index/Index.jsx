@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import vacancyTitleImg from "../../assets/vacancyTitleImg.png";
@@ -22,44 +22,42 @@ import advantages3 from "../../assets/indexAdvantages3.svg";
 import chatBotPointer from "../../assets/indexChatPointer.svg";
 import chatBotCurve from "../../assets/indexChatBotCurve.svg";
 
-import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";//+
-import HollowButtonProps from "../../Components/Buttons/HollowButton/HollowButton";//+
+import SolidButton from "../../Components/Buttons/SolidButton/SolidButton"; //+
+import HollowButtonProps from "../../Components/Buttons/HollowButton/HollowButton"; //+
 
 import Nav from "../../Components/Nav/Nav";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 
-import './Index.scss';
+import "./Index.scss";
 
 /**
  * Index page is the main page from which our application starts.
- * 
- * This component includes of component Header, component Nav , various internal sections and component Footer. 
  *
- * Internal sections : 
- * general-info-section - general information about the content, structure of the application; 
- * suggestion-advice-section - a section of tips and suggestions to improve the search for vacancies or employees; 
- * reviews-section - honest reviews of satisfied users in successfully finding a job through this application; 
- * scheme-section - a scheme that is guaranteed to help find a job; 
- * advantages-section - section structure of benefits of remote work; 
- * chat-bot-section - means of communication; vacancy-section - a brief description of current vacancies; 
- * send-resume-section - means of communication for help. 
- * 
+ * This component includes of component Header, component Nav , various internal sections and component Footer.
+ *
+ * Internal sections :
+ * general-info-section - general information about the content, structure of the application;
+ * suggestion-advice-section - a section of tips and suggestions to improve the search for vacancies or employees;
+ * reviews-section - honest reviews of satisfied users in successfully finding a job through this application;
+ * scheme-section - a scheme that is guaranteed to help find a job;
+ * advantages-section - section structure of benefits of remote work;
+ * chat-bot-section - means of communication; vacancy-section - a brief description of current vacancies;
+ * send-resume-section - means of communication for help.
+ *
  * @component
  * @returns {JSX.Element} The rendered component.
- * 
+ *
  * @example
  * return (
  *   <Index />
  * )
  */
 
-function Index () {
-
+function Index() {
   function truncateText(text, limit) {
     return text.length > limit ? text.substring(0, limit) + "..." : text;
   }
-
 
   const [vacancies, setVacancies] = useState([]);
 
@@ -114,7 +112,7 @@ function Index () {
     };
 
     fetchVacancies();
-  }, []); 
+  }, []);
 
   async function getData() {
     const url = "https://glowing-boa-definite.ngrok-free.app";
@@ -134,8 +132,6 @@ function Index () {
   getData();
   return (
     <>
-      <Header />
-      <Nav />
       <main>
         <section className="general-info-section">
           <div className="general-info">
@@ -499,8 +495,9 @@ function Index () {
                       <p>{truncateText(vacancy.content, 85)}</p>
                     </div>
                     <div className="v-bl-button">
-                      <Link to='/BuxOnline/vacancy/description'>
-                      <SolidButton>Детальніше</SolidButton></Link>
+                      <Link to="/BuxOnline/vacancy/description">
+                        <SolidButton>Детальніше</SolidButton>
+                      </Link>
                     </div>
                   </div>
                 ))}
@@ -508,7 +505,7 @@ function Index () {
             )}
           </div>
         </section>
-       
+
         <section className="header-arrow-section">
           <img className="frame" src={vacancyTitleImg} alt="frame" />
           <h5 className="header-arrow">Відправити резюме</h5>
@@ -530,9 +527,8 @@ function Index () {
           />
         </section>
       </main>
-      <Footer />
     </>
   );
-};
+}
 
 export default Index;

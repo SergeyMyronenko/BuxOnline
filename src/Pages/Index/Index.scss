@@ -2,7 +2,7 @@
 @use "../../App.scss" as styles;
 
 main {
- 
+  width: 100%;
   .general-info-section {
     display: flex;
     justify-content: space-between;
@@ -10,7 +10,6 @@ main {
     .general-info {
       text-align: left;
       width: 613px;
-      margin-left: 68px;
       margin-bottom: 36px;
 
       .general-header {
@@ -44,12 +43,10 @@ main {
     .header-arrow {
       font-size: 22px;
       margin-bottom: 16px;
-      margin-left: 58px;
+      margin-left: 35px;
       margin-top: 23px;
     }
     .frame {
-      margin-left: 68px;
-      margin-right: -53px;
       top: 5px;
       height: 48px;
       width: 48px;
@@ -60,7 +57,6 @@ main {
     .text {
       text-align: left;
       width: 643px;
-      margin-left: 83px;
       margin-top: 60px;
       margin-bottom: 51px;
     }
@@ -71,7 +67,6 @@ main {
 
       .topic-section-left {
         margin-bottom: 15px;
-        margin-left: 83px;
 
         .topic-left {
           font-size: 51px;
@@ -112,7 +107,9 @@ main {
   }
 
   .reviews-section {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: space-between;
     margin-bottom: 56px;
 
@@ -120,7 +117,6 @@ main {
       width: 30%;
       background-color: styles.$grayForFill;
       border-radius: 15px;
-      margin-left: 38px;
       padding: 20px;
 
       .r-bl-photos-text {
@@ -182,7 +178,7 @@ main {
     background-size: cover;
     background-color: transparent;
     position: relative;
-    margin-left: 170px;
+    margin-left: 110px;
     padding-top: 50px;
 
     .scheme-1,
@@ -454,11 +450,12 @@ main {
     align-items: center;
     padding-left: 503px;
   }
-  
+
   .advantages-section {
     .advantages1 {
       position: relative;
-       }
+      margin-left: -60px;
+    }
 
     .a-1 {
       display: flex;
@@ -585,19 +582,19 @@ main {
     }
     .advantages3 {
       position: relative;
-      margin-left: 0px;
+      margin-left: -60px;
       top: 110px;
     }
   }
 
   .chat-bot-section {
+    width: calc(100% + 120px);
     display: flex;
     height: 331px;
     background-color: styles.$lightBlue;
     position: relative;
-    left: -53px;
-    margin-left: 0px;
-    margin-right: -53px;
+    position: relative;
+    inset: 0 -60px;
     margin-bottom: 106px;
     padding-left: 283px;
     padding-top: 50px;
@@ -636,85 +633,85 @@ main {
     }
   }
 
-.vacancy-section {
-   margin: 50px 0px 50px 0px;
-  overflow: hidden;
-  width: 100%; 
-   max-height: 350px; 
-
-
-.vacancy-wrapper {
-  display: flex;
-   height: 340px; 
-   width: auto; 
-  animation: scroll 15s linear infinite; 
-   
-  .v-bl-slide {
-    border: 2px solid styles.$grayforBorder; 
-    border-radius: 20px;
+  .vacancy-section {
+    width: calc(100% + 120px);
+    position: relative;
+    left: -60px;
+    right: -60px;
     overflow: hidden;
-    background-color: #f4f4f4;
-    margin-right: 20px;
-    padding: 20px;
-    min-width: 300px; 
-    height: 300px; 
-    white-space: nowrap;
-    text-wrap: pretty;
-  
-    .v-bl-button{
-     padding-left: 55px;
-     padding-bottom: 50px;
+    max-height: 350px;
+
+    .vacancy-wrapper {
+      display: flex;
+      height: 340px;
+      width: auto;
+      animation: scroll 15s linear infinite;
+
+      .v-bl-slide {
+        border: 2px solid styles.$grayforBorder;
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: #f4f4f4;
+        margin-right: 20px;
+        padding: 20px;
+        min-width: 300px;
+        height: 300px;
+        white-space: nowrap;
+        text-wrap: pretty;
+
+        .v-bl-button {
+          padding-left: 55px;
+          padding-bottom: 50px;
+        }
+
+        h3 {
+          color: styles.$lightBlue;
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+
+        h2 {
+          font-size: 16px;
+        }
+
+        p {
+          font-size: 16px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      top: 5565px;
+      width: 250px;
+      height: 350px;
+      content: "";
+      z-index: 2;
     }
 
-    h3 {
-      color: styles.$lightBlue; 
-      font-size: 24px;
-      margin-bottom: 20px;
-      
+    &::before {
+      left: 0;
+      background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
     }
 
-    h2 {
-      font-size: 16px;
+    &::after {
+      right: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
     }
-
-    p {
-      font-size: 16px;
-      margin-bottom: 20px;
+    &:hover .vacancy-wrapper {
+      animation-play-state: paused;
     }
   }
-}
-&::before,
-  &::after {
-    position: absolute;
-    top: 5565px;
-    width: 250px;
-    height: 350px; 
-    content: "";
-    z-index: 2;
-  }
 
-  &::before {
-    left: 0;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
-
-  &::after {
-    right: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
-  }
- &:hover .vacancy-wrapper {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); 
-  }
-}
 
   .send-resume-section {
     display: flex;

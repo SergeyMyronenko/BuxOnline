@@ -13,6 +13,7 @@ import ForgotPassword from "./Pages/LogIn/ForgotPassword.jsx";
 import SeekerResumePage from "./Pages/SeekerPage/MessagesAndEvents/SeekerResumePage.tsx";
 import SeekerOffersPage from "./Pages/SeekerPage/MessagesAndEvents/SeekerOffersPage.tsx";
 import EmptyOutlet from "./Pages/EmptyOutlet/EmptyOutlet.jsx";
+import EmptyOutletNoFooter from "./Pages/EmptyOutlet/EmptyOutletNoFooter.jsx";
 import "@mantine/core/styles.css";
 import "./App.scss";
 import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
@@ -41,25 +42,18 @@ function App() {
 
       {/* prettier-ignore */}
       <Routes>
-        <Route path="/BuxOnline/" element={<Index />} />
+        <Route path="/BuxOnline/" element={<EmptyOutlet />}>
+          <Route index element={<Index />} />
+          <Route path='vacancies' element={<AllVacancies />} />
+          <Route path='vacancies/:id' element={<VacancyDescription />} />
+        </Route>
 
-        <Route path="/BuxOnline/vacancies" element={<AllVacancies />} />
-        <Route
-          path="/BuxOnline/vacancies/:id"
-          element={<VacancyDescription />}
-        />
-
-        <Route path="/BuxOnline/login" element={<LogIn />} />
-        <Route
-          path="/BuxOnline/login/forgot-password"
-          element={<ForgotPassword />}
-        />
-        <Route
-          path="/BuxOnline/login/forgot-password/:email"
-          element={<ForgotPassword />}
-        />
-
-        <Route path="/BuxOnline/register" element={<Register />} />
+        <Route path="/BuxOnline/" element={<EmptyOutletNoFooter />}>
+          <Route path='login' element={<LogIn />} />
+          <Route path='login/forgot-password' element={<ForgotPassword />} />
+          <Route path='login/forgot-password/:email' element={<ForgotPassword />} />
+          <Route path='register' element={<Register />} />
+        </Route>
 
         {/* These are all the routes and pages related to company cabinet */}
         <Route path="/BuxOnline/company/cabinet/:id" element={<EmptyOutlet />}>

@@ -1,5 +1,5 @@
-import React from 'react';
-import './VacancyDescription.scss';
+import React from "react";
+import "./VacancyDescription.scss";
 
 //import assets
 import vacancyBackgroungImg from "../../assets/vacancyBackgroundImg.png";
@@ -12,24 +12,22 @@ import Footer from "../../Components/Footer/Footer";
 import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";
 
 /**
- * 
+ *
  * This component includes a Header component, a Nav component, a dynamic inner section.
- * This section is generated from data extracted from the API, which in turn is called using buttons in the Index component. 
- * 
+ * This section is generated from data extracted from the API, which in turn is called using buttons in the Index component.
+ *
  * @component
  * @returns {JSX.Element} The rendered component.
- * 
+ *
  * @example
  * return (
  *   <VacancyDescription />
  * )
  */
 
-function VacancyDescription () {
+function VacancyDescription() {
   return (
     <>
-      <Header></Header>
-      <Nav></Nav>
       <main className="vacancy-main">
         <section className="vacancy-description-section">
           <h1>Інженер-програміст</h1>
@@ -48,7 +46,6 @@ function VacancyDescription () {
         </section>
 
         <section className="classification-advantages-section">
-
           <div className="class-adv-left-sidebar">
             <h4>Кваліфікації:</h4>
             <hr className="underline-header" />
@@ -100,7 +97,6 @@ function VacancyDescription () {
               Сприятливе та інклюзивне робоче середовище, де ви можете зростати.
             </p>
           </div>
-
         </section>
 
         <section className="responsibilities-img-section">
@@ -163,9 +159,7 @@ function VacancyDescription () {
         <div className="vacancy-main-button">
           <SolidButton width={265}>Відправити резюме</SolidButton>
         </div>
-
       </main>
-      <Footer></Footer>
     </>
   );
 }
