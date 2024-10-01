@@ -2,12 +2,13 @@
 @use "../../App.scss" as styles;
 
 nav {
-  margin: 25px 60px;
-  height: 40px;
+  padding: 25px 0px;
+
+  // height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  a{
+  a {
     text-decoration: none;
   }
 
@@ -17,12 +18,10 @@ nav {
     justify-content: space-between;
     width: 125px;
 
-    
-
     .name-logo {
       color: styles.$lightBlue;
       font-size: 18px;
-      &:hover{
+      &:hover {
         text-decoration: underline solid currentColor;
       }
       // text-shadow: 1px 1px 1px rgb(33, 57, 180);
@@ -35,28 +34,26 @@ nav {
     justify-content: space-between;
     width: 500px;
     white-space: nowrap;
-    .button-language-change{
+    .button-language-change {
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: relative;
       width: 60px;
-      background:none;
+      background: none;
       border: none;
       display: flex;
       font-size: 16px;
       cursor: pointer;
-      
 
-      svg{
+      svg {
         height: 13.5px;
         width: 18px;
       }
-      h5{
+      h5 {
         font-weight: 400;
-        
       }
-      .language-change-dropdown{
+      .language-change-dropdown {
         position: absolute;
         top: 100%;
         opacity: 0;
@@ -64,28 +61,24 @@ nav {
         transition: 0.5s;
         pointer-events: none;
 
-        &.active{
+        &.active {
           opacity: 1;
           transform: translateY(0);
           pointer-events: all;
         }
-        .dropdown-option{
+        .dropdown-option {
           display: flex;
           justify-content: space-between;
           align-items: center;
           width: 40px;
           cursor: pointer;
-         
-          
-
         }
-
       }
     }
 
     h5 {
       color: styles.$blackForText;
-      &:hover{
+      &:hover {
         text-decoration: underline solid currentColor;
       }
     }
@@ -98,11 +91,9 @@ nav {
       font-size: 14px;
       padding: 10px 20px 10px 20px;
       text-decoration: none;
-      &:hover{
+      &:hover {
         text-decoration: underline solid currentColor;
       }
     }
-    
-   
   }
 }
