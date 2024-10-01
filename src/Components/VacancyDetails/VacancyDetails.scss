@@ -1,0 +1,110 @@
+@use "../../App.scss" as styles;
+
+.confirm-wrapper {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .inner-confirm-wrapper {
+    margin-top: 5px;
+    border-radius: 16px;
+    border: 1px solid styles.$grayforBorder;
+    background-color: styles.$white;
+    padding: 60px;
+    margin-bottom: 60px;
+    color: styles.$blackForText;
+    position: relative;
+    h2 {
+      padding-bottom: 30px;
+    }
+    h4 {
+      margin-bottom: 20px;
+    }
+
+    .title {
+      color: styles.$blackForText;
+    }
+    .city {
+      color: styles.$grayForText;
+      display: flex;
+      align-items: baseline;
+    }
+    .job-bullet-points {
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: auto auto auto auto auto;
+    }
+    .job-description {
+      width: 100%;
+      margin-top: 60px;
+      padding: 40px 40px 46px 40px;
+      border-radius: 16px;
+      background-color: styles.$white;
+      border: 1px solid styles.$grayforBorder;
+      h3 {
+        margin-bottom: 30px;
+      }
+      span {
+        display: flex;
+        .job-description-paragraph {
+          width: 710px;
+          height: 144px;
+          margin-right: 50px;
+        }
+        .skills-box {
+          background-color: styles.$lightBlue;
+          border-radius: 16px;
+          width: 380px;
+          height: 162px;
+          padding: 20px 30px 0 30px;
+          color: white;
+          .all-skills {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            flex-wrap: wrap;
+            li {
+              min-width: 60px;
+              padding: 0px 10px;
+              height: 35px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 16px;
+              border: 1px solid styles.$white;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .card-details-button {
+    display: flex;
+    gap: 27px;
+    margin-bottom: 60px;
+    .button {
+      display: inline-flex;
+      padding: 12px 22px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.032px;
+      border: 1px solid #2e85ec;
+    }
+    .details-button {
+      background-color: #2e85ec;
+      color: white;
+    }
+    .apply-button {
+      background-color: white;
+      color: #2e85ec;
+    }
+  }
+}

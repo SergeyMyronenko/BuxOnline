@@ -60,9 +60,9 @@ const MyOffice = () => {
     }
   };
 
-  useEffect(() => {
-    getJobsCategories();
-  }, []);
+  // useEffect(() => {
+  //   getJobsCategories();
+  // }, []);
 
   return (
     <div className="container">

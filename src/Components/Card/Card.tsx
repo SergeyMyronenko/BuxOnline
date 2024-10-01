@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate, useParams } from "react-router";
 import "./Card.scss";
 
 import { RiMapPinLine } from "react-icons/ri";
@@ -24,8 +25,15 @@ import { RiMapPinLine } from "react-icons/ri";
  * - Buttons for viewing more details and applying for the job.
  */
 // eslint-disable-next-line react/prop-types
-const Card = ({ cardInfo, btnDetail, btnApply, width }) => {
+const Card = ({ cardInfo, btnDetail, btnApply, type, width }) => {
   const skillsList = cardInfo.skills;
+  const navigate = useNavigate();
+  const user = useParams();
+
+  const handleDetailsClick = () => {
+    navigate(`/BuxOnline/moderator/cabinet/${user.id}/resumes/${cardInfo.id}`);
+  };
+
   return (
     <div style={{ width }} className="card">
       <div className="card-title-wrapper">
@@ -70,8 +78,17 @@ const Card = ({ cardInfo, btnDetail, btnApply, width }) => {
         </ul>
       </div>
       <div className="card-buttons-wrapper">
-        <button className="button details-button">{btnDetail}</button>
-        <button className="button apply-button">{btnApply}</button>
+        {type === "moderator" && (
+          <button
+            className="button details-button"
+            onClick={handleDetailsClick}
+          >
+            {btnDetail}
+          </button>
+        )}
+        {type === "moderator" && (
+          <button className="button apply-button">{btnApply}</button>
+        )}
       </div>
     </div>
   );
