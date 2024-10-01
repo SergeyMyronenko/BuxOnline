@@ -1,77 +1,76 @@
 //імпорт змінних з файла App.scss
-@use '../../App.scss' as styles;
+@use "../../App.scss" as styles;
 
 .vacancy-wrapper {
-    width: 100%;
-    // height: max-content;
-    min-height: 1000px;
-    display: flex;
-    //Також будемо використовувати nesting
-    h1 {
-        color: styles.$blue;
-    }
+  width: 100%;
+  // height: max-content;
+  min-height: 1000px;
+  display: flex;
+  justify-content: space-between;
+  //Також будемо використовувати nesting
+  h1 {
+    color: styles.$blue;
+  }
 
-    .vacancy-sidebar-wrapper {
-        background-color: white;
-        width: 400px;
+  .vacancy-sidebar-wrapper {
+    background-color: white;
+    width: 400px;
 
-        .vacancy-sidebar {
-            padding-top: 25px;
-            width: 245px;
-            margin: auto;
-            flex-grow: 0;
-            flex-shrink: 0;
+    .vacancy-sidebar {
+      padding-top: 25px;
+      width: 245px;
+      flex-grow: 0;
+      flex-shrink: 0;
 
-            .vacancy-title {
-                padding: 5px;
-                display: flex;
-                align-items: center;
-                padding-bottom: 75px;
-                img {
-                    width: 38px;
-                    height: 44px;
-                }
-
-                h2 {
-                    color: styles.$blackForText;
-                    padding-left: 50px;
-                    
-                }
-            }
-
-            .vacancy-options {
-                width: 100%;
-                display: grid;
-                border-radius: 10px;
-                padding: 25px 20px;
-                 background-color: styles.$grayForFill;
-
-               h3{
-                input[type=checkbox]{
-                    appearance: none;
-                    border: 1px solid black;
-                    border-radius: 3px;
-                    width: 12.5px;
-                    height: 12.5px;
-                    &:checked{
-                        background-color: styles.$blackForText;
-                    }
-                }
-               } 
-            }
-        }
-    }
-
-    .vacancy-browse {
-        flex-grow: 1;
+      .vacancy-title {
+        padding: 5px;
         display: flex;
-        justify-content: center;
-        align-items: top;
-
+        align-items: center;
+        padding-bottom: 75px;
         img {
-            width: 613px;
-            height: 567px;
+          width: 38px;
+          height: 44px;
         }
-    }
 
+        h2 {
+          color: styles.$blackForText;
+          padding-left: 50px;
+        }
+      }
+
+      .vacancy-options {
+        width: 100%;
+        display: grid;
+        border-radius: 10px;
+        padding: 25px 20px;
+        background-color: styles.$grayForFill;
+
+        h3 {
+          input[type="checkbox"] {
+            appearance: none;
+            border: 1px solid black;
+            border-radius: 3px;
+            width: 12.5px;
+            height: 12.5px;
+            &:checked {
+              background-color: styles.$blackForText;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .vacancy-browse {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 135px;
+    margin-right: 165px;
+
+    img {
+      width: 613px;
+      height: 567px;
+    }
+  }
 }
