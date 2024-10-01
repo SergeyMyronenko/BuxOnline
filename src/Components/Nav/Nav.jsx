@@ -115,7 +115,7 @@ export default function Nav() {
         <h5>ДЛЯ БІЗНЕСУ</h5>
         
         <Link to='/BuxOnline/login'>
-         <HollowButton width={157} fontSize={16} borderRadius={12} >{token}</HollowButton>
+         <HollowButton width={157} fontSize={16} borderRadius={12} >Вхід/реєстрація</HollowButton>
         </Link>
         <button className="button-language-change" onClick={changeLanguage}>
           {flag}

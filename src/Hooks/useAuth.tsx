@@ -87,6 +87,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             setToken(result.access);
             Cookies.set('jwt', result.access, { expires: 1 / 96 }); // 15 minutes
             Cookies.set('refreshToken', result.refresh, { expires: 7 }); // Store refresh token for 7 days
+            console.log("successfull login:", result);
         } else {
             throw new Error(`Login failed: ${await response.text()}`);
         }
@@ -116,7 +117,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             Cookies.set('jwt', result.access, { expires: 1 / 96 }); // 15 minutes
             Cookies.set('refreshToken', result.refresh, { expires: 7 }); // Store refresh token for 7 days
             console.log('Token refreshed');
-            console.log(result);
+            // console.log(result);
         } else {
             throw new Error(`Login failed: ${await response.text()}`);
         }

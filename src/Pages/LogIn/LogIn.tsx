@@ -31,14 +31,16 @@ const LogIn = () => {
         email: '',
         password: '',
     });
-    const { login } = useAuth();
+    const { login,token } = useAuth();
     const handleLogin = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
             await login(userData.email, userData.password);
             const myHeaders = new Headers();
-            myHeaders.append("Authorization", `JWT ${Cookies.get('jwt')}`);
-
+            myHeaders.append("ngrok-skip-browser-warning", "69420");
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Authorization", `JWT ${token}`);
+            
 
             const requestOptions:RequestInit = {
                 method: "GET",
@@ -50,7 +52,7 @@ const LogIn = () => {
             
                 .then((response) => response.json())
                 .then((result) => {
-                    console.log(result)
+                    // console.log(result)
                     navigate(`/BuxOnline/company/cabinet/${result.id}`)
                 })
                  .catch((error) => console.error(error));
