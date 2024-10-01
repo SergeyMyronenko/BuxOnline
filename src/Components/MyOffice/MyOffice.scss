@@ -1,9 +1,8 @@
 @use "../../App.scss" as styles;
 
 .container {
-  width: 1320px;
-  padding: 0 60px;
-  flex: 1 1 auto;
+  box-sizing: border-box;
+
   .my-office-box {
     display: flex;
     gap: 20px;
@@ -23,6 +22,7 @@
   }
   .head-vacancy {
     display: flex;
+    width: 1320px;
     gap: 40px;
     border-bottom: 1px solid styles.$grayForText;
     padding: 0px 0px 1px 0px;
@@ -49,9 +49,9 @@
   }
   .main-box {
     display: flex;
-    width: 1320px;
     margin: 0 auto;
     gap: 20px;
+    align-items: flex-start;
     .sidebar {
       width: 246px;
       border-radius: 12px;
