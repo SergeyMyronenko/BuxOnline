@@ -2,8 +2,8 @@ import React from 'react';
 import './InputSelect.scss';
 
 interface InputSelectProps {
-    label: string;
-    options: {name:string,value:string}[];
+    label: string|number;
+    options: {name:string,value:string|number}[];
     id?: string;
     onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }

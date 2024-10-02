@@ -17,14 +17,14 @@ const useFormState = <T extends Record<string, any>>(initialState: T) => {
     const [formState, setFormState] = useState<T>(initialState);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { id, value } = event.target;
+        const { id, name, value } = event.target;
+        const key = name || id; // Use name if provided, otherwise use id
         setFormState((prev) => ({
             ...prev,
-            [id]: value
+            [key]: value
         }));
         console.log(formState);
     };
-
     return [formState, handleChange] as const;
 };
 

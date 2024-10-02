@@ -23,20 +23,19 @@ import './LogIn.scss';
  */
 
 const LogIn = () => {
-    const url=import.meta.env.VITE_BASE_URL
     const navigate = useNavigate();
     const [userData, handleUserData] = useFormState({
         email: '',
         password: '',
     });
-    const { login,token } = useAuth();
+    const { login,token,url } = useAuth();
     const handleLogin = async (event: React.FormEvent) => {
         event.preventDefault();
         try {
             await login(userData.email, userData.password);
             const myHeaders = new Headers();
             // local host doesnt allow this header...
-            // myHeaders.append("ngrok-skip-browser-warning", "69420");
+            myHeaders.append("ngrok-skip-browser-warning", "69420");
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("Authorization", `JWT ${token}`);
             

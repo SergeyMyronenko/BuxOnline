@@ -14,11 +14,14 @@ import MultipleSelect from '../../../Components/MultipleSelect/MultipleSelect';
 
 import './CompanyVacancies.scss';
 import useFormState from '../../../Hooks/useFormState';
+import { useAuth } from '../../../Hooks/useAuth';
 
 
 
-const Multiform = () => {    
-    const CompanyVacancies=()=>{
+const Multiform = () => {
+
+    const {token,url} = useAuth();
+    const CompanyVacancies = () => {
         const dataPlaceholder = [{
             id: 1,
             name: "Back End Engineer",
@@ -35,7 +38,7 @@ const Multiform = () => {
                         <h1>Вакансії компанії</h1>
                     </span>
                     <SolidButton width='250px' onClick={() => nextStep()}>Створити вакансію</SolidButton>
-    
+
                 </span>
                 <div className="all-vacancies">
                     {
@@ -75,15 +78,15 @@ const Multiform = () => {
                         )
                     }
                 </div>
-    
-    
+
+
             </div>
         )
     };
 
     const ChooseMethodToCreate = () => {
         const [fileName, setFileName] = useState('');
-    
+
         const handleFileChange = (event) => {
             const file = event.target.files[0];
             if (file) {
@@ -91,8 +94,8 @@ const Multiform = () => {
             } else {
                 setFileName('');
             }
-    
-    
+
+
         };
         return (
             <>
@@ -129,12 +132,12 @@ const Multiform = () => {
                                 </svg>
                                 <h3>З шаблонів</h3>
                                 <p>Вибрати з ряду готових шаблонів</p>
-    
+
                             </div>
                             <form action="">
                                 <InputSelect label="Шаблони" options={["Шаблон 1", "Шаблон 2", "Шаблон 3"]} id='template'></InputSelect>
                                 <SolidButton type="submit" width='100%' borderRadius='20px'> Завантажити </SolidButton>
-    
+
                             </form>
                         </div>
                         <div className="choose-card">
@@ -148,18 +151,18 @@ const Multiform = () => {
                                 <p>Виберіть свій файл<br />
                                     Прикріпити до <span>1 файлу</span>, не більше <span>10 МБ</span>, формат<span> PDF</span>
                                 </p>
-    
+
                             </div>
                             <form action="" className='file-form'>
                                 <div>
                                     <label htmlFor="file" className='file-label'>Вибрати файл</label>
-                                    <input type="file" id="file" onChange={handleFileChange} />
+                                    <input type="file" id="file" onChange={handleFileChange} required />
                                 </div>
                                 {/* a check for uploaded files is required here*/}
                                 <input type="text" value={fileName} readOnly disabled />
-    
+
                                 <SolidButton type="submit" width='100%' height='39px' borderRadius='20px'> Завантажити </SolidButton>
-    
+
                             </form>
                         </div>
                         <div className="choose-card">
@@ -170,20 +173,18 @@ const Multiform = () => {
                                 </svg>
                                 <h3>Введення вручну</h3>
                                 <p>Введіть дані вашої вакансії вручну</p>
-    
-    
+
+
                             </div>
                             {/* the styles for these card are applied to the form element, so it is here to use them*/}
-                            <form action="">
-    
-                                <SolidButton width='100%' height='39px' borderRadius='20px' onClick={()=>nextStep()}>Далі</SolidButton>
-    
-                            </form>
-    
+                            {/* <form action=""> */}
+                                <SolidButton width='100%' height='39px' borderRadius='20px' onClick={() => nextStep()}>Далі</SolidButton>
+                            {/* </form> */}
+
                         </div>
                     </div>
                 </div>
-    
+
             </>
         );
     };
@@ -198,9 +199,11 @@ const Multiform = () => {
             'Agile', 'Scrum', 'JIRA', 'Trello', 'VSCode', 'IntelliJ', 'Eclipse'
         ];
         const [vacancyData, handleVacancyDataChange] = useFormState({
+            moderation_comment: '',
             title: '',
-            description:'<p>Опишіть роботу</p>',
-            skills:'',
+            name_company: '',
+            description: '<p>Опишіть роботу</p>',
+            skills: [],
             required_experience: '',
             city: '',
             salary_min: '',
@@ -208,152 +211,238 @@ const Multiform = () => {
             category: {},
             subcategory: '',
             education_levels: [],
-            languages:[],
-            work_type   : '',
-            work_format: '',
-            company_type: '',
+            languages: [{}],
+            work_type: 'fulltime',
+            work_format: 'online',
+            company_type: 'Product',
+            country: 'Ukraine',
             status: 'pending',
-            
+            employer: 1,
+            position: 'testing'
+
         })
-        
-        const handleInputAreaChange = (string) => {
-            handleVacancyDataChange({target:{value:string, id:'description'}})
+
+        const AreaInputChange = (string) => {
+            handleVacancyDataChange({ target: { value: string, id: 'description' } })
+        }
+        const SkillsChange = (skills) => {
+            handleVacancyDataChange({ target: { value: skills, id: 'skills' } })
         }
         const [languageSelectors, setLanguageSelectors] = useState([{ id: 1 }]);
-    
+
         const addLanguageSelector = () => {
-            setLanguageSelectors([...languageSelectors, { id: languageSelectors.length + 1 }]);
+            const newId = languageSelectors.length + 1;
+            const newLanguageSelectors = [...languageSelectors, { id: newId }];
+            setLanguageSelectors(newLanguageSelectors);
+            handleVacancyDataChange({
+                target: {
+                    name: 'languages',
+                    value: [...vacancyData.languages, {}]
+                }
+            });
         };
-    
+
         const clearLanguageSelector = (id) => {
-            setLanguageSelectors(languageSelectors.filter(selector => selector.id !== id));
+            const newLanguageSelectors = languageSelectors.filter(selector => selector.id !== id);
+            setLanguageSelectors(newLanguageSelectors);
+            handleVacancyDataChange({
+                target: {
+                    name: 'languages',
+                    value: vacancyData.languages.filter((_, index) => index !== id - 1)
+                }
+            });
         };
+        const handleLanguageChange = (id, value) => {
+            const newLanguages = vacancyData.languages.map((language, index) =>
+                index === id - 1 ? value : language
+            );
+            handleVacancyDataChange({
+                target: {
+                    name: 'languages',
+                    value: newLanguages
+                }
+            });
+        };
+        const createVacancy = (event:React.FormEvent) => {
+            event.preventDefault();
+
+            console.log("Form sent")
+           
+            const myHeaders = new Headers();
+            myHeaders.append("Authorization", `JWT ${token}`);
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "moderation_comment": "",
+                "title": vacancyData.title,
+                "name_company": "esadas",
+                "description": vacancyData.description,
+                "required_experience": vacancyData.required_experience,
+                "city": vacancyData.description,
+                "salary_min": vacancyData.salary_min,
+                "salary_max": vacancyData.salary_max,
+                "work_type": "fulltime",
+                "work_format": "online",
+                "type": "Product",
+                "country": "ukr",
+                "position": "adsa",
+                "employer": 1
+            });
+
+            const requestOptions:RequestInit = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            };
+
+            fetch(`${url}/jobs/jobs/`, requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.error(error));
+        }
 
         return (
             <>
-            
-                    <div className="create-inner-wrapper">
-                        <form action="">
-                            <h2>Деталі вакансії</h2>
-                            <div className="field-wrapper">
-                                <InputField type='text' placeholder='Назва вакансії' label='Назва' id='title' onChange={handleVacancyDataChange}></InputField>
+
+                <div className="create-inner-wrapper">
+                    <form action="" onSubmit={createVacancy}>
+                        <h2>Деталі вакансії</h2>
+                        <div className="field-wrapper">
+                            <InputField type='text' placeholder='Назва вакансії' label='Назва' id='title' onChange={handleVacancyDataChange}></InputField>
+                        </div>
+                        <div className='field-wrapper'>
+                            <h2>Роль</h2>
+                            <InputSelect label="Роль, яку ви б хотіли найняти" id='subcategory' onChange={handleVacancyDataChange} options={[{ name: "Back End Developer", value: 1 }, { name: "Front End Developer", value: 2 }, { name: "Fullstack Developer", value: 3 }]}></InputSelect>
+                        </div>
+                        <div className='field-wrapper'>
+                            <h2>Років досвіду</h2>
+                            <div className="select-experience">
+                                {[...Array(11).keys()].map(year => (
+                                    <div className="radio-wrapper" key={year}>
+                                        <input
+                                            type="radio"
+                                            name="required_experience"
+                                            id={`experience-${year}`}
+                                            value={year === 10 ? 10 : year}
+                                            onChange={handleVacancyDataChange}
+                                            required
+                                        />
+                                        <label htmlFor={`experience-${year}`}>{year === 10 ? '10+' : year}</label>
+                                    </div>
+                                ))}
                             </div>
-                            <div className='field-wrapper'>
-                                <h2>Роль</h2>
-                                <InputSelect label="Роль, яку ви б хотіли найняти"  id='subcategory' onChange={handleVacancyDataChange} options={[{name:"Back End Developer", value:1}, {name:"Front End Developer", value:2}, {name:"Fullstack Developer", value:3}]}></InputSelect>
+                        </div>
+                        <div className='field-wrapper'>
+                            <h2>Навички</h2>
+                            <MultipleSelect skills={allItems} id='skills' onChange={SkillsChange}></MultipleSelect>
+                        </div>
+                        <div className='field-wrapper'>
+                            <h2>Діапазон заробітної плати($)</h2>
+                            <div className='salary'>
+                                <InputField type='number' placeholder='Початкова сума' label='Від' id='salary_min' onChange={handleVacancyDataChange}></InputField>
+                                <InputField type='number' placeholder='Кінцева сума' label='До' id='salary_max' onChange={handleVacancyDataChange}></InputField>
                             </div>
-                            <div className='field-wrapper'>
-                                <h2>Років досвіду</h2>
-                                <div className="select-experience">
-                                    {[...Array(11).keys()].map(year => (
-                                        <div className="radio-wrapper" key={year}>
-                                            <input type="radio" name="experience" id={`experience-${year}`} />
-                                            <label htmlFor={`experience-${year}`}>{year === 10 ? '10+' : year}</label>
+
+                        </div>
+                        <div className="field-wrapper">
+                            <h2>Місцезнаходження</h2>
+                            <InputField type='text' placeholder='Введіть місцезнаходження' label='Місто' id='city' onChange={handleVacancyDataChange}></InputField>
+                        </div>
+
+                        <div className="field-wrapper">
+                            <h2>Мови</h2>
+                            <div className='languages'>
+                                {languageSelectors.map((selector) => (
+                                    <div key={selector.id}>
+                                        <InputSelect
+                                            label='Мови'
+                                            options={[
+                                                { name: "Англійська", value: "English" },
+                                                { name: "Українська", value: "Ukrainian" },
+                                                { name: "Французька", value: "French" },
+                                                { name: "Німецька", value: "German" }
+                                            ]}
+                                            id={`language-${selector.id}`}
+                                            onChange={(e) => handleLanguageChange(selector.id, { ...vacancyData.languages[selector.id - 1], language: e.target.value })}
+                                        />
+                                        <InputSelect
+                                            label='Рівень'
+                                            options={[
+                                                { name: "Beginner", value: "Beginner" },
+                                                { name: "Intermediate", value: "Intermediate" },
+                                                { name: "Advanced", value: "Advanced" },
+                                                { name: "Native", value: "Native" }
+                                            ]}
+                                            id={`language-level-${selector.id}`}
+                                            onChange={(e) => handleLanguageChange(selector.id, { ...vacancyData.languages[selector.id - 1], level: e.target.value })}
+                                        />
+                                        <div key={selector.id} className="clear-language">
+                                            <button type='button' onClick={() => clearLanguageSelector(selector.id)}>
+                                                <AiOutlineDelete />
+                                            </button>
                                         </div>
-                                    ))}
-                                </div>
+                                    </div>
+                                ))}
+                                <SolidButton onClick={addLanguageSelector} borderRadius='20px' width='300px'>+ Додати мову</SolidButton>
                             </div>
-                            <div className='field-wrapper'>
-                                <h2>Навички</h2>
-                                <MultipleSelect skills={allItems} id='skills'></MultipleSelect>
-                            </div>    
-                            <div className='field-wrapper'>
-                                <h2>Діапазон заробітної плати($)</h2>
-                                <div className='salary'>
-                                    <InputField type='number' placeholder='Початкова сума' label='Від' id='min-salary'></InputField>
-                                    <InputField type='number' placeholder='Кінцева сума' label='До' id='max-salary'></InputField>
-                                </div>
-    
-                            </div>
-                            <div className="field-wrapper">
-                                <h2>Місцезнаходження</h2>
-                                <InputField type='text' placeholder='Введіть місцезнаходження' label='Місто' id='city'></InputField>
-                            </div>
-    
-                            <div className="field-wrapper">
-                                <h2>Мови</h2>
-                                <div className='languages'>
-                                    {languageSelectors.map((selector) => (
-                                        <div key={selector.id}>
-                                            <InputSelect
-                                                label='Мови'
-                                                options={["Англійська", "Українська", "Російська", "Румунська", "Польська", "Французька", "Німецька", "Іспанська", "Італійська"]}
-                                                id={`language-${selector.id}`}
-                                            />
-                                            <InputSelect
-                                                label='Рівень'
-                                                options={["A0", "A1", "A2", "B1", "B2", "C1", "C2"]}
-                                                id={`language-level-${selector.id}`}
-                                            />
-                                            <div key={selector.id} className="clear-language" >
-                                                <button type='button' onClick={() => clearLanguageSelector(selector.id)}>
-                                                    <AiOutlineDelete />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                                <SolidButton onClick={addLanguageSelector} borderRadius='20px' width='300px'>+ Додати мову </SolidButton>
-                            </div>
-                            <div className="field-wrapper">
-                                <h2>Переваги роботи</h2>
-                                <div className="advantages">
-                                    <div>
+
+                        </div>
+                        <div className="field-wrapper">
+                            <h2>Переваги роботи</h2>
+                            <div className="advantages">
+                                <div>
                                     <LiaUserClockSolid />
-                                        <h4>Вид зайнятості</h4>
-                                        <InputCheckbox label='Part-time' width='20px' height='20px'></InputCheckbox>
-                                        <InputCheckbox label='Full-time' width='20px' height='20px'></InputCheckbox>
-                                        <InputCheckbox label='Контракт' width='20px' height='20px'></InputCheckbox>
-    
-                                    </div>
-                                    <div>
-                                    <FaHouseLaptop/>
-    
-                                        <h4>Робоче середовище</h4>
-                                        <InputCheckbox label='Дистанційно' width='20px' height='20px'></InputCheckbox>
-                                        <InputCheckbox label='В офісі' width='20px' height='20px'></InputCheckbox>
-                                        <InputCheckbox label='Гібридно' width='20px' height='20px'></InputCheckbox>
-    
-                                    </div>
-                                    <div>
-                                    <FaHandshakeAngle/>
-                                        <h4>Тип бізнесу</h4>
-                                        <InputCheckbox label='Startup' width='20px' height='20px'></InputCheckbox>
-                                        <InputCheckbox label='Product' width='20px' height='20px'></InputCheckbox>
-                                        <InputCheckbox label='Outsource' width='20px' height='20px'></InputCheckbox>
-                                        <InputCheckbox label='Outstaff' width='20px' height='20px'></InputCheckbox>
-                                    </div>
+                                    <h4>Вид зайнятості</h4>
+                                    <InputCheckbox label='Part-time' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
+                                    <InputCheckbox label='Full-time' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
+                                    <InputCheckbox label='Контракт' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
+
+                                </div>
+                                <div>
+                                    <FaHouseLaptop />
+
+                                    <h4>Робоче середовище</h4>
+                                    <InputCheckbox label='Дистанційно' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='В офісі' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='Гібридно' width='20px' height='20px'></InputCheckbox>
+
+                                </div>
+                                <div>
+                                    <FaHandshakeAngle />
+                                    <h4>Тип бізнесу</h4>
+                                    <InputCheckbox label='Startup' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='Product' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='Outsource' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='Outstaff' width='20px' height='20px'></InputCheckbox>
                                 </div>
                             </div>
-                            <div className="field-wrapper">
-                                <h2>Опис роботи</h2>
-                                <InputArea initialValue={vacancyData.description} setValue={handleInputAreaChange} ></InputArea>
-                                
-                            </div>
-                            <Link to='/BuxOnline/company/jobs/create/1'>
-                                <SolidButton type='submit'>Далі</SolidButton>
-                            </Link>
-                        </form>
-                    </div>
-               
+                        </div>
+                        <div className="field-wrapper">
+                            <h2>Опис роботи</h2>
+                            <InputArea initialValue={vacancyData.description} setValue={AreaInputChange} ></InputArea>
+
+                        </div>
+                        
+                            <SolidButton type='submit' >Далі</SolidButton>
+                       
+                    </form>
+                </div>
+
             </>
         );
     };
-    
+
     const [step, setStep] = useState(1);
 
     const nextStep = () => {
         setStep(step + 1);
     };
 
-    const prevStep = () => {
-        setStep(step - 1);
-    };
-
     return (
-       
+
         <div className="vacancies-wrapper">
-            {step === 1 && (<CompanyVacancies  />)}
+            {step === 1 && (<CompanyVacancies />)}
             {step === 2 && (<ChooseMethodToCreate />)}
             {step === 3 && (<CreateVacancy />)}
         </div >

@@ -15,6 +15,7 @@ import InputSelect from '../../Components/Input/InputSelect/InputSelect.tsx';
 import useFormState from '../../Hooks/useFormState.tsx';
 
 import './Register.scss';
+import { useAuth } from '../../Hooks/useAuth.tsx';
 
 /**
  * Step1 component renders the first step of the registration form.
@@ -154,8 +155,7 @@ const Step3 = () => (
 const Register = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
-    const url=import.meta.env.VITE_BASE_URL;
-
+    const {url}=useAuth();
     const [userData, handleUserData] = useFormState({
         email: '',
         password: '',

@@ -5,6 +5,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 interface Props {
     skills: string[];
     id?: string;
+    onChange?: (value:string[]) => void;
 }
 
 /**
@@ -57,7 +58,7 @@ interface Props {
  * @internal
  * @constant {string[]} filteredItems - The list of skills filtered based on the input value.
  */
-const MultipleSelect: React.FC<Props> = ({ skills }) => {
+const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
     const [selectedItems, setSelectedItems] = useState<string[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
     const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -66,20 +67,24 @@ const MultipleSelect: React.FC<Props> = ({ skills }) => {
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
-        setIsDropdownOpen(true);
+        setIsDropdownOpen(true);    
     };
 
     const handleItemSelect = (item: string) => {
         if (!selectedItems.includes(item)) {
             setSelectedItems([...selectedItems, item]);
+            onChange!([...selectedItems, item]);
         }
         setInputValue('');
         setIsDropdownOpen(false);
+        
     };
 
     const handleItemRemove = (index: number) => {
         const newItems = selectedItems.filter((_, i) => i !== index);
         setSelectedItems(newItems);
+        onChange!(newItems);
+
     };
 
     const filteredItems = allItems.filter(item =>
@@ -89,7 +94,7 @@ const MultipleSelect: React.FC<Props> = ({ skills }) => {
     return (
         <div className="mult-select-tag">
             <div className="wrapper">
-                <div className="all-skills">
+                <div className="skills">
                     {selectedItems.map((item, index) => (
                         <div key={index} className="skill-container">
                             <span className="skill-label">{item}</span>
@@ -115,7 +120,9 @@ const MultipleSelect: React.FC<Props> = ({ skills }) => {
                         onChange={handleInputChange}
                         onFocus={() => setIsDropdownOpen(true)}
                         placeholder='Введіть назву навички...'
-                    />
+                    >
+                        
+                    </input>
                     <div className="btn-container">
                         <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} type='button'>
                             {isDropdownOpen ? (
