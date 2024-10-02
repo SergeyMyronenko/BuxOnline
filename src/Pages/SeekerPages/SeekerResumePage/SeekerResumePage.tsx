@@ -2,6 +2,7 @@ import React from "react";
 import SolidButton from "../../../Components/Buttons/SolidButton/SolidButton";
 import HollowButton from "../../../Components/Buttons/HollowButton/HollowButton";
 import "./SeekerResumePage.scss";
+import WavyLine from "../../../Components/Icons/WavyLine";
 
 interface IResume {
   name: string;
@@ -27,7 +28,10 @@ const SeekerResumePage = () => {
     <div className="resume-page-wrapper">
       <div className="resume-wrapper">
         <div className="resume-title">
-          <h2>Мої резюме</h2>
+          <div className="resumes-header">
+            <WavyLine />
+            <h2>Мої резюме</h2>
+          </div>
           <SolidButton>Створити</SolidButton>
         </div>
         <div className="resume-list">
