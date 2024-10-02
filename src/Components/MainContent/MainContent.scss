@@ -1,0 +1,29 @@
+@use "../../App.scss" as styles;
+
+.content-wrapper {
+  width: 1054px;
+  .job-card-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .load-btn {
+    display: flex;
+    padding: 12px 22px;
+
+    margin: 40px auto;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.032px;
+    background-color: #2e85ec;
+    color: white;
+    border: none;
+  }
+}
