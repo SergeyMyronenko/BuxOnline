@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState, FormEvent } from 'react';
 import { useAuth } from '../../Hooks/useAuth';
 import Header from '../../Components/Header/Header';
 import Nav from '../../Components/Nav/Nav';
@@ -9,7 +8,6 @@ import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../Components/Input/InputField/InputField';
 import useFormState from '../../Hooks/useFormState';
 
-import Cookies from 'js-cookie';
 import './LogIn.scss';
 /**
  * LogIn component renders a login form with options to log in via Google, LinkedIn, or GitHub,
@@ -37,7 +35,8 @@ const LogIn = () => {
         try {
             await login(userData.email, userData.password);
             const myHeaders = new Headers();
-            myHeaders.append("ngrok-skip-browser-warning", "69420");
+            // local host doesnt allow this header...
+            // myHeaders.append("ngrok-skip-browser-warning", "69420");
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("Authorization", `JWT ${token}`);
             

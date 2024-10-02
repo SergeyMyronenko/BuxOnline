@@ -10,22 +10,11 @@ import InputField from '../../../Components/Input/InputField/InputField';
 import InputCheckbox from '../../../Components/Input/InputCheckbox/InputCheckbox';
 import InputArea from '../../../Components/Input/InputArea/InputArea';
 
-import { AiOutlineDelete } from "react-icons/ai";
-import { FaHouseLaptop } from "react-icons/fa6";
-import { FaHandshakeAngle } from "react-icons/fa6";
-import { LiaUserClockSolid } from "react-icons/lia";
 
 import './CreateVacancy.scss';
 
 
-const allItems = [
-    'JavaScript', 'TypeScript', 'React', 'Node.js', 'Express', 'MongoDB',
-    'GraphQL', 'Apollo', 'Redux', 'HTML', 'CSS', 'Sass', 'Webpack',
-    'Babel', 'Jest', 'Cypress', 'Docker', 'Kubernetes', 'AWS', 'Azure',
-    'GCP', 'Python', 'Django', 'Flask', 'Java', 'Spring', 'Hibernate',
-    'MySQL', 'PostgreSQL', 'SQLite', 'Git', 'GitHub', 'GitLab', 'CI/CD',
-    'Agile', 'Scrum', 'JIRA', 'Trello', 'VSCode', 'IntelliJ', 'Eclipse'
-];
+
 
 // made with AI
 /**
@@ -81,15 +70,13 @@ const CreateVacancy = () => {
 
     return (
         <>
-            <Header></Header>
-            <Nav></Nav>
             <div className='create-vacancy-wrapper'>
                 <div className="create-vacancy-box">
                     <form action="">
                         <h2>Деталі вакансії</h2>
                         <div className='field-wrapper'>
                             <h2>Роль</h2>
-                            <InputSelect label="Роль, яку ви б хотіли найняти" options={["Back End Developer", "Front End Developer", "Fullstack Developer"]} id='role'></InputSelect>
+                            <InputSelect label="Роль, яку ви б хотіли найняти"  options={[{name:"Back End Developer", value:1}, {name:"Front End Developer", value:2}, {name:"Fullstack Developer", value:3}]} id='role'></InputSelect>
                         </div>
                         <div className='field-wrapper'>
                             <h2>Років досвіду</h2>
