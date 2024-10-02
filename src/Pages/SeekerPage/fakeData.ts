@@ -1,4 +1,4 @@
-import { IVacancy } from "../interfaces/types";
+import { IVacancy } from "./interfaces/types";
 
 const reviewsList: IVacancy[] = [
   {

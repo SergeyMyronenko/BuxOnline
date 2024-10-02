@@ -1,0 +1,30 @@
+.seeker-profile-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 60px;
+
+  .profile-title {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 25px 0px;
+
+    .profile-header {
+      display: flex;
+      gap: 20px;
+
+      h2 {
+        font-size: 32px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .profile-data-wrapper {
+    width: 100%;
+  }
+}

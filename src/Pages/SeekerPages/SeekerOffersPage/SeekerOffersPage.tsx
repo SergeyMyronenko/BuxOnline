@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "./SeekerResumePage.scss";
-import WavyLine from "../../../Components/Icons/WavyLine";
 import "./SeekerOffersPage.scss";
+import WavyLine from "../../../Components/Icons/WavyLine";
+import { reviewsList, invitationList } from "../../SeekerPage/fakeData";
 import Card from "../../../Components/Card/Card";
-import { reviewsList, invitationList } from "./fakeData";
 
 const SeekerOffersPage = () => {
   const [view, setView] = useState<"review" | "invitation">("review");
@@ -43,6 +42,7 @@ const SeekerOffersPage = () => {
               reviewsList?.map((resume, i) => (
                 <Card
                   key={i}
+                  type="seeker"
                   cardInfo={resume}
                   btnDetail={"Надіслано 23 червня 2024 15:16"}
                   btnApply={"Переглянуто 5 днів тому"}
@@ -58,6 +58,7 @@ const SeekerOffersPage = () => {
               invitationList?.map((invitation, i) => (
                 <Card
                   key={i}
+                  type="seeker"
                   cardInfo={invitation}
                   btnDetail={"Надіслано 23 червня 2024 15:16"}
                   btnApply={"Переглянуто 5 днів тому"}
