@@ -114,7 +114,7 @@ const CompanyCabinetBase = () => {
                     <li>
                       <div>
                         <IoPeopleOutline />
-                        Кандидати
+                        Відгуки на вакансії
                       </div>
                       <p>0</p>
                     </li>
@@ -123,14 +123,14 @@ const CompanyCabinetBase = () => {
                     <li>
                       <div>
                         <GoHeart />
-                        Обране резюме
+                        Обрані кандидати
                       </div>
                       <p>0</p>
                     </li>
                   </Link>
                 </ul>
               </div>
-              <Link to="jobs/choose">
+              <Link to="jobs">
                 <SolidButton width="200px" height="40px" borderRadius="20px">
                   Додати вакансію
                 </SolidButton>

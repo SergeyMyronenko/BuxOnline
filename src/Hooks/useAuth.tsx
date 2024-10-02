@@ -2,6 +2,7 @@ import React, { createContext, useState, useContext, ReactNode, useEffect } from
 import Cookies from 'js-cookie';
 
 interface AuthContextType {
+    url:string;
     token: string | null;
     login: (email: string, password: string) => Promise<void>;
     logout: () => void;
@@ -51,7 +52,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
  * ```
  */
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const url=import.meta.env.VITE_BASE_URL
+    // const url='http://127.0.0.1:8000';
+    const url='https://glowing-boa-definite.ngrok-free.app';
 
     const [token, setToken] = useState<string | null>(null);
 
@@ -87,6 +89,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             setToken(result.access);
             Cookies.set('jwt', result.access, { expires: 1 / 96 }); // 15 minutes
             Cookies.set('refreshToken', result.refresh, { expires: 7 }); // Store refresh token for 7 days
+            console.log("successfull login:", result);
         } else {
             throw new Error(`Login failed: ${await response.text()}`);
         }
@@ -116,7 +119,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             Cookies.set('jwt', result.access, { expires: 1 / 96 }); // 15 minutes
             Cookies.set('refreshToken', result.refresh, { expires: 7 }); // Store refresh token for 7 days
             console.log('Token refreshed');
-            console.log(result);
+            // console.log(result);
         } else {
             throw new Error(`Login failed: ${await response.text()}`);
         }
@@ -129,7 +132,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ token, login, logout, refreshToken }}>
+        <AuthContext.Provider value={{ token, login, logout, refreshToken,url }}>
             {children}
         </AuthContext.Provider>
     );

@@ -8,7 +8,7 @@ import LogIn from "./Pages/LogIn/LogIn";
 import Register from "./Pages/Register/Register";
 import CompanyCabinet from "./Pages/EmployerPage/EmployerPage.jsx";
 import CompanyMessage from "./Pages/EmployerPage/CompanyMessages/CompanyMessage.jsx";
-import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies/CompanyVacancies.jsx";
+import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies/CompanyVacancies";
 import ForgotPassword from "./Pages/LogIn/ForgotPassword.jsx";
 import SeekerResumePage from "./Pages/SeekerPage/MessagesAndEvents/SeekerResumePage.tsx";
 import SeekerOffersPage from "./Pages/SeekerPage/MessagesAndEvents/SeekerOffersPage.tsx";
