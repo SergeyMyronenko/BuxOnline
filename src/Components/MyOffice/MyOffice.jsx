@@ -6,63 +6,552 @@ import clsx from "clsx";
 import titleImage from "../../assets/vacancyTitleImg.png";
 import InputCheckbox from "../Input/InputCheckbox/InputCheckbox";
 
-const categoriesList = [
+const jobs = [
+  {
+    id: 1,
+    skills: [
+      {
+        id: 1,
+        name: "Html",
+      },
+      {
+        id: 2,
+        name: "Css",
+      },
+      {
+        id: 3,
+        name: "PHP",
+      },
+      {
+        id: 4,
+        name: "jQuery",
+      },
+      {
+        id: 5,
+        name: "Symfony",
+      },
+    ],
+    category: 5,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 1,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "25000",
+    salary_max: "30000",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: "Portugal",
+    position: "Senior Software Engineer",
+    employer: 1,
+  },
+  {
+    id: 2,
+    skills: [
+      {
+        id: 1,
+        name: "ячс",
+      },
+    ],
+    category: 2,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 2,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "zxcsd",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "123.00",
+    salary_max: "321.00",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: null,
+    position: null,
+    employer: 1,
+  },
+  {
+    id: 3,
+    skills: [
+      {
+        id: 1,
+        name: "ячс",
+      },
+    ],
+    category: 4,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 3,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "zxcsd",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "123.00",
+    salary_max: "321.00",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: null,
+    position: null,
+    employer: 1,
+  },
+  {
+    id: 4,
+    skills: [
+      {
+        id: 1,
+        name: "ячс",
+      },
+    ],
+    category: 5,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 1,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "zxcsd",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "123.00",
+    salary_max: "321.00",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: null,
+    position: null,
+    employer: 1,
+  },
   {
     id: 5,
-    name: "Software Development",
+    skills: [
+      {
+        id: 1,
+        name: "Html",
+      },
+      {
+        id: 2,
+        name: "Css",
+      },
+      {
+        id: 3,
+        name: "PHP",
+      },
+      {
+        id: 4,
+        name: "jQuery",
+      },
+      {
+        id: 5,
+        name: "Symfony",
+      },
+    ],
+    category: 6,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 1,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "25000",
+    salary_max: "30000",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: "Portugal",
+    position: "Senior Software Engineer",
+    employer: 1,
   },
   {
     id: 6,
-    name: "IT Infrastructure",
+    skills: [
+      {
+        id: 1,
+        name: "ячс",
+      },
+    ],
+    category: 2,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 2,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "zxcsd",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "123.00",
+    salary_max: "321.00",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: null,
+    position: null,
+    employer: 1,
   },
   {
     id: 7,
-    name: "IT Management & Strategy",
+    skills: [
+      {
+        id: 1,
+        name: "ячс",
+      },
+    ],
+    category: null,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 3,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "zxcsd",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "123.00",
+    salary_max: "321.00",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: null,
+    position: null,
+    employer: 1,
   },
   {
     id: 8,
-    name: "Cybersecurity",
+    skills: [
+      {
+        id: 1,
+        name: "ячс",
+      },
+    ],
+    category: null,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 1,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "zxcsd",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "123.00",
+    salary_max: "321.00",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: null,
+    position: null,
+    employer: 1,
   },
   {
-    id: 9,
-    name: "Product & UX Design",
-  },
-  {
-    id: 10,
-    name: "Marketing & Content",
-  },
-  {
-    id: 11,
-    name: "Data Analysis & Business",
+    id: 8,
+    skills: [
+      {
+        id: 1,
+        name: "ячс",
+      },
+    ],
+    category: null,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 1,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "zxcsd",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "123.00",
+    salary_max: "321.00",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: null,
+    position: null,
+    employer: 1,
   },
 ];
 
 const MyOffice = () => {
+  const [cards, setCards] = useState(jobs);
   const [isActive, setIsActive] = useState("vacancy");
-  const [categories, setCategories] = useState(categoriesList);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [companies, setCompanies] = useState([]);
+  const [datePeriod, setDatePeriod] = useState({ from: "", to: "" });
   const [isChecked, setIsChecked] = useState(false);
+  const [vacancies, setVacancies] = useState(0);
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  console.log(cards);
+
+  const URL = "https://glowing-boa-definite.ngrok-free.app";
+  const myHeaders = new Headers();
+  myHeaders.append("ngrok-skip-browser-warning", "69420");
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
+  const handleCheckCategory = (categoryName) => {
+    setSelectedCategories((prevSelected) =>
+      prevSelected.includes(categoryName)
+        ? prevSelected.filter((name) => name !== categoryName)
+        : [...prevSelected, categoryName]
+    );
+  };
+
+  const filterVacancies = () => {
+    let filtered = cards;
+
+    // Filter to category
+    if (selectedCategories.length > 0) {
+      filtered = filtered.filter((job) =>
+        selectedCategories.includes(job.category)
+      );
+    }
+    setFilteredJobs(filtered);
+  };
+
+  const resetFilters = () => {
+    setSelectedCategories([]);
+    setCompanies([]);
+    setDatePeriod({ from: "", to: "" });
+    setIsChecked(false);
+  };
+
+  const getCards = async () => {
+    try {
+      const res = await fetch(`${URL}/jobs/jobs`, requestOptions);
+
+      if (!res.ok) {
+        throw new Error(`Not found: ${res.text()}`);
+      }
+
+      const data = await res.json();
+
+      setCards(data);
+    } catch (error) {
+      console.error("Помилка при завантаженні даних:", error);
+      setCards([]);
+    }
+  };
+
   const getJobsCategories = async () => {
     const BASE_URL = "https://glowing-boa-definite.ngrok-free.app";
 
+    const myHeaders = new Headers();
+    myHeaders.append("ngrok-skip-browser-warning", "69420");
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
     try {
-      const res = await fetch(`${BASE_URL}/jobs/job-categories`);
+      const res = await fetch(
+        `${BASE_URL}/jobs/job-categories`,
+        requestOptions
+      );
+
+      if (!res.ok) {
+        throw new Error(`Not found: ${await res.text()}`);
+      }
 
       const data = await res.json();
-      console.log(data);
       setCategories(data);
+
+      const resJobs = await fetch(`${BASE_URL}/jobs/jobs`, requestOptions);
+
+      if (!resJobs.ok) {
+        throw new Error(`Not found: ${await res.text()}`);
+      }
+
+      const jobs = await resJobs.json();
+      setVacancies(jobs.length);
+      // setFilteredJobs(jobs);
     } catch (error) {
       console.error(error);
     }
   };
 
-  // useEffect(() => {
-  //   getJobsCategories();
-  // }, []);
+  useEffect(() => {
+    getCards();
+    getJobsCategories();
+  }, []);
 
   return (
     <div className="container">
@@ -79,9 +568,9 @@ const MyOffice = () => {
             setIsActive("vacancy");
           }}
         >
-          Вакансії (10)
+          Вакансії ({vacancies})
         </p>
-        <p
+        {/* <p
           className={clsx("head-vacancy-title", {
             active: isActive === "announcements",
           })}
@@ -90,16 +579,28 @@ const MyOffice = () => {
           }}
         >
           Оголошення (10)
-        </p>
+        </p> */}
       </div>
       <div className="main-box">
-        <form className="sidebar">
+        <form
+          className="sidebar"
+          onSubmit={(e) => {
+            e.preventDefault();
+            filterVacancies();
+            resetFilters();
+          }}
+        >
           <Accordion accordionTitle="Категорія">
             <ul>
               {categories.map((category) => {
                 return (
                   <li key={category.id}>
-                    <InputCheckbox label={category.name}></InputCheckbox>
+                    <InputCheckbox
+                      label={category.name}
+                      onChange={() => {
+                        handleCheckCategory(category.name);
+                      }}
+                    ></InputCheckbox>
                   </li>
                 );
               })}
@@ -145,8 +646,11 @@ const MyOffice = () => {
               )}
             </div>
           </Accordion>
+          <button className="filter-button" type="submit">
+            Застосувати фільтр
+          </button>
         </form>
-        <MainContent />
+        <MainContent filter={filteredJobs} cards={cards} />
       </div>
     </div>
   );

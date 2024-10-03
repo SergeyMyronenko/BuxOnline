@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import "./Card.scss";
 
@@ -26,13 +26,55 @@ import { RiMapPinLine } from "react-icons/ri";
  */
 // eslint-disable-next-line react/prop-types
 const Card = ({ cardInfo, btnDetail, btnApply, type, width }) => {
-  const skillsList = cardInfo.skills;
+  const [position, setPosition] = useState("");
+  console.log(cardInfo.category);
+
   const navigate = useNavigate();
   const user = useParams();
+
+  const URL = "https://glowing-boa-definite.ngrok-free.app";
+  const myHeaders = new Headers();
+  myHeaders.append("ngrok-skip-browser-warning", "69420");
+  myHeaders.append("Content-Type", "application/json");
+
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
 
   const handleDetailsClick = () => {
     navigate(`/BuxOnline/moderator/cabinet/${user.id}/resumes/${cardInfo.id}`);
   };
+
+  const categoryId = cardInfo.category;
+
+  const getPosition = async (id) => {
+    console.log("Айді:", id);
+
+    try {
+      const res = await fetch(
+        `${URL}/jobs/job-sub-categories/?id=${id}`,
+        requestOptions
+      );
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Not found: ${errorText}`);
+      }
+
+      const data = await res.json();
+      data.forEach((element) => {
+        setPosition(element.name);
+      });
+    } catch (error) {
+      console.error("Помилка при завантаженні даних:", error);
+    }
+  };
+
+  useEffect(() => {
+    getPosition(categoryId);
+  }, [categoryId]);
 
   return (
     <div style={{ width }} className="card">
@@ -55,7 +97,7 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width }) => {
         </div>
         {/* <h3 className="company">{cardInfo.title}</h3> */}
         <div className="card-title">
-          <h3 className="card-position">{cardInfo.position}</h3>
+          <h3 className="card-position">{position}</h3>
           <h3 className="card-salary">{`₴${cardInfo.salary_min}-${cardInfo.salary_max}`}</h3>
         </div>
       </div>
@@ -68,13 +110,14 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width }) => {
           <div className="experience">{cardInfo.required_experience} years</div>
         </div>
         <ul className="card-description-skills">
-          {skillsList.map((skill, i) => {
-            return (
-              <li key={i}>
-                <p className="skill">{skill.name}</p>
-              </li>
-            );
-          })}
+          {cardInfo.skills &&
+            cardInfo.skills.map((skill, i) => {
+              return (
+                <li key={i}>
+                  <p className="skill">{skill.name}</p>
+                </li>
+              );
+            })}
         </ul>
       </div>
       <div className="card-buttons-wrapper">

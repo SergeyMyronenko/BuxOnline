@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Filter.scss";
 
 import { CgClose } from "react-icons/cg";
@@ -13,24 +14,49 @@ import { CgClose } from "react-icons/cg";
  *
  * @returns {JSX.Element} A div containing filter options and buttons to clear or select filters.
  */
-const Filter = () => {
+const Filter = ({ onClose, isVisible, filter }) => {
+  const [handleCloseCategory, handleCloseCompany, handleCloseDate] = onClose;
+  const [isVisibleCategory, isVisibleCompany, isVisibleDate] = isVisible;
+  const findVacancy = filter.length;
+
   return (
     <div className="filter">
-      <p>Знайдено 10 вакансій</p>
+      <p>Знайдено {findVacancy} вакансій</p>
       <div className="filter-panel">
         <button className="filter-panel-button clear">Очистити фільтр</button>
-        <button className="filter-panel-button category">
-          Software development
-          <CgClose />
-        </button>
-        <button className="filter-panel-button company">
-          SoftServe
-          <CgClose />
-        </button>
-        <button className="filter-panel-button time">
-          Сьогодні
-          <CgClose />
-        </button>
+        {isVisibleCategory && (
+          <button
+            className="filter-panel-button category"
+            onClick={() => {
+              handleCloseCategory();
+            }}
+          >
+            Software development
+            <CgClose />
+          </button>
+        )}
+        {isVisibleCompany && (
+          <button
+            className="filter-panel-button company"
+            onClick={() => {
+              handleCloseCompany();
+            }}
+          >
+            SoftServe
+            <CgClose />
+          </button>
+        )}
+        {isVisibleDate && (
+          <button
+            className="filter-panel-button time"
+            onClick={() => {
+              handleCloseDate();
+            }}
+          >
+            Сьогодні
+            <CgClose />
+          </button>
+        )}
       </div>
     </div>
   );

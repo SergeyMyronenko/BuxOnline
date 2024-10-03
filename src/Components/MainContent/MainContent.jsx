@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Card from "../Card/Card";
 import "./MainContent.scss";
 import Filter from "../Filter/Filter";
@@ -28,7 +28,7 @@ const jobs = [
         name: "Symfony",
       },
     ],
-    category: null,
+    category: 5,
     subcategory: null,
     education_levels: [
       {
@@ -72,7 +72,7 @@ const jobs = [
         name: "ячс",
       },
     ],
-    category: null,
+    category: 2,
     subcategory: null,
     education_levels: [
       {
@@ -116,7 +116,7 @@ const jobs = [
         name: "ячс",
       },
     ],
-    category: null,
+    category: 4,
     subcategory: null,
     education_levels: [
       {
@@ -160,7 +160,7 @@ const jobs = [
         name: "ячс",
       },
     ],
-    category: null,
+    category: 5,
     subcategory: null,
     education_levels: [
       {
@@ -220,7 +220,7 @@ const jobs = [
         name: "Symfony",
       },
     ],
-    category: null,
+    category: 6,
     subcategory: null,
     education_levels: [
       {
@@ -264,7 +264,7 @@ const jobs = [
         name: "ячс",
       },
     ],
-    category: null,
+    category: 2,
     subcategory: null,
     education_levels: [
       {
@@ -388,53 +388,100 @@ const jobs = [
     position: null,
     employer: 1,
   },
+  {
+    id: 8,
+    skills: [
+      {
+        id: 1,
+        name: "ячс",
+      },
+    ],
+    category: null,
+    subcategory: null,
+    education_levels: [
+      {
+        id: 1,
+        city: "киев",
+        specialty: "123",
+        start_date: "2024-09-09",
+        end_date: "2025-08-16",
+        education_level: "highschool",
+      },
+    ],
+    languages: [
+      {
+        id: 1,
+        name: "ячс",
+        level: "beginner",
+      },
+    ],
+    status: "approved",
+    moderation_comment: "zxcxzcsdsdsd",
+    view_count: 5,
+    title: "zxcsd",
+    name_company: null,
+    description: "1232123123",
+    required_experience: 3,
+    city: "Киев",
+    salary_min: "123.00",
+    salary_max: "321.00",
+    work_type: "fulltime",
+    work_format: "online",
+    type: "pending",
+    country: null,
+    position: null,
+    employer: 1,
+  },
 ];
 
-const MainContent = () => {
-  const [cards, setCards] = useState(jobs);
+const MainContent = ({ filter, cards }) => {
+  const [isVisibleCategory, setIsVisibleCategory] = useState(true);
+  const [isVisibleCompany, setIsVisibleCompany] = useState(true);
+  const [isVisibleDate, setIsVisibleDate] = useState(true);
 
-  const URL = "https://glowing-boa-definite.ngrok-free.app";
-
-  const getCards = async () => {
-    try {
-      const response = await fetch(`${URL}/jobs/jobs`);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      setCards(data);
-    } catch (error) {
-      console.error("Помилка при завантаженні даних:", error);
-      setCards([]);
-    }
+  const handleCloseCategory = () => {
+    setIsVisibleCategory(false);
+  };
+  const handleCloseCompany = () => {
+    setIsVisibleCompany(false);
+  };
+  const handleCloseDate = () => {
+    setIsVisibleDate(false);
   };
 
-  // useEffect(() => {
-  //   getCards();
-  // }, []);
+  const CloseButton = [
+    handleCloseCategory,
+    handleCloseCompany,
+    handleCloseDate,
+  ];
+
+  const visibleButton = [isVisibleCategory, isVisibleCompany, isVisibleDate];
 
   return (
     <div className="content-wrapper">
-      <Filter />
-
+      <Filter onClose={CloseButton} isVisible={visibleButton} filter={filter} />
       <ul className="job-card-list">
-        {cards.map((card) => {
-          return (
-            <li key={card.id}>
-              <Card
-                cardInfo={card}
-                btnDetail="Детальніше"
-                btnApply="Схвалити"
-                type="moderator"
-              />
-            </li>
-          );
-        })}
+        {cards &&
+          cards.map((card, i) => {
+            return (
+              <li key={i}>
+                <Card
+                  cardInfo={card}
+                  btnDetail="Детальніше"
+                  btnApply="Схвалити"
+                  type="moderator"
+                />
+              </li>
+            );
+          })}
       </ul>
-      <button className="load-btn" type="submit">
-        Завантажити ще
-      </button>
+      <div style={{ height: "104px" }}>
+        {cards.length > 8 && (
+          <button className="load-btn" type="submit">
+            Завантажити ще
+          </button>
+        )}
+      </div>
     </div>
   );
 };
