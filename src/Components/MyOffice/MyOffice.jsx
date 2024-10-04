@@ -32,7 +32,7 @@ const jobs = [
       },
     ],
     category: 5,
-    subcategory: null,
+    subcategory: 5,
     education_levels: [
       {
         id: 1,
@@ -76,7 +76,7 @@ const jobs = [
       },
     ],
     category: 2,
-    subcategory: null,
+    subcategory: 6,
     education_levels: [
       {
         id: 1,
@@ -120,7 +120,7 @@ const jobs = [
       },
     ],
     category: 4,
-    subcategory: null,
+    subcategory: 6,
     education_levels: [
       {
         id: 1,
@@ -164,7 +164,7 @@ const jobs = [
       },
     ],
     category: 5,
-    subcategory: null,
+    subcategory: 3,
     education_levels: [
       {
         id: 1,
@@ -224,7 +224,7 @@ const jobs = [
       },
     ],
     category: 6,
-    subcategory: null,
+    subcategory: 4,
     education_levels: [
       {
         id: 1,
@@ -268,7 +268,7 @@ const jobs = [
       },
     ],
     category: 2,
-    subcategory: null,
+    subcategory: 4,
     education_levels: [
       {
         id: 1,
@@ -312,7 +312,7 @@ const jobs = [
       },
     ],
     category: null,
-    subcategory: null,
+    subcategory: 5,
     education_levels: [
       {
         id: 1,
@@ -356,7 +356,7 @@ const jobs = [
       },
     ],
     category: null,
-    subcategory: null,
+    subcategory: 6,
     education_levels: [
       {
         id: 1,
@@ -392,7 +392,7 @@ const jobs = [
     employer: 1,
   },
   {
-    id: 8,
+    id: 9,
     skills: [
       {
         id: 1,
@@ -400,7 +400,7 @@ const jobs = [
       },
     ],
     category: null,
-    subcategory: null,
+    subcategory: 7,
     education_levels: [
       {
         id: 1,
@@ -447,7 +447,6 @@ const MyOffice = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [vacancies, setVacancies] = useState(0);
   const [filteredJobs, setFilteredJobs] = useState([]);
-  console.log(cards);
 
   const URL = "https://glowing-boa-definite.ngrok-free.app";
   const myHeaders = new Headers();
@@ -472,16 +471,32 @@ const MyOffice = () => {
     );
   };
 
-  const filterVacancies = () => {
-    let filtered = cards;
+  const handleCheckCompanies = (companyName) => {
+    setCompanies((prevSelected) =>
+      prevSelected.includes(companyName)
+        ? prevSelected.filter((name) => name !== companyName)
+        : [...prevSelected, companyName]
+    );
+  };
 
-    // Filter to category
+  const filterVacancies = () => {
+    let filteredCards = [...cards];
+
+    // Filter by categories
     if (selectedCategories.length > 0) {
-      filtered = filtered.filter((job) =>
+      filteredCards = filteredCards.filter((job) =>
         selectedCategories.includes(job.category)
       );
     }
-    setFilteredJobs(filtered);
+
+    // Filter by companies
+    if (companies.length > 0) {
+      filteredCards = filteredCards.filter((job) =>
+        companies.includes(job.name_company?.toLowerCase())
+      );
+    }
+
+    setFilteredJobs(filteredCards);
   };
 
   const resetFilters = () => {
@@ -549,9 +564,9 @@ const MyOffice = () => {
   };
 
   useEffect(() => {
-    getCards();
+    // getCards();
     getJobsCategories();
-  }, []);
+  }, [selectedCategories, companies, cards]);
 
   return (
     <div className="container">
@@ -607,11 +622,36 @@ const MyOffice = () => {
             </ul>
           </Accordion>
           <Accordion accordionTitle="Компанії">
-            <InputCheckbox label="SoftServe"></InputCheckbox>
-            <InputCheckbox label="Nakivo"></InputCheckbox>
-            <InputCheckbox label="MCPK"></InputCheckbox>
-            <InputCheckbox label="GlobalLogic"></InputCheckbox>
-            <InputCheckbox label="Luxoft"></InputCheckbox>
+            <InputCheckbox
+              label="SoftServe"
+              onChange={() => {
+                handleCheckCompanies("softserve");
+              }}
+            ></InputCheckbox>
+            <InputCheckbox
+              label="Nakivo"
+              onChange={() => {
+                handleCheckCompanies("nakivo");
+              }}
+            ></InputCheckbox>
+            <InputCheckbox
+              label="MCPK"
+              onChange={() => {
+                handleCheckCompanies("mcpk");
+              }}
+            ></InputCheckbox>
+            <InputCheckbox
+              label="GlobalLogic"
+              onChange={() => {
+                handleCheckCompanies("globallogic");
+              }}
+            ></InputCheckbox>
+            <InputCheckbox
+              label="Luxoft"
+              onChange={() => {
+                handleCheckCompanies("luxoft");
+              }}
+            ></InputCheckbox>
           </Accordion>
           <Accordion accordionTitle="За датою">
             <InputCheckbox label="Сьогодні"></InputCheckbox>

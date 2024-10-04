@@ -25,33 +25,27 @@ import { RiMapPinLine } from "react-icons/ri";
  * - Buttons for viewing more details and applying for the job.
  */
 // eslint-disable-next-line react/prop-types
-const Card = ({ cardInfo, btnDetail, btnApply, type, width }) => {
+
+const URL = "https://glowing-boa-definite.ngrok-free.app";
+const myHeaders = new Headers();
+myHeaders.append("ngrok-skip-browser-warning", "69420");
+myHeaders.append("Content-Type", "application/json");
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow",
+};
+
+const Card = ({ cardInfo, btnDetail, btnApply, type, width, user }) => {
   const [position, setPosition] = useState("");
-  console.log(cardInfo.category);
-
   const navigate = useNavigate();
-  const user = useParams();
-
-  const URL = "https://glowing-boa-definite.ngrok-free.app";
-  const myHeaders = new Headers();
-  myHeaders.append("ngrok-skip-browser-warning", "69420");
-  myHeaders.append("Content-Type", "application/json");
-
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
-  };
 
   const handleDetailsClick = () => {
     navigate(`/BuxOnline/moderator/cabinet/${user.id}/resumes/${cardInfo.id}`);
   };
 
-  const categoryId = cardInfo.category;
-
   const getPosition = async (id) => {
-    console.log("Айді:", id);
-
     try {
       const res = await fetch(
         `${URL}/jobs/job-sub-categories/?id=${id}`,
@@ -73,8 +67,8 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width }) => {
   };
 
   useEffect(() => {
-    getPosition(categoryId);
-  }, [categoryId]);
+    getPosition(cardInfo.subcategory);
+  }, [cardInfo]);
 
   return (
     <div style={{ width }} className="card">
