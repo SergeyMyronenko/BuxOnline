@@ -732,3 +732,19 @@ main {
     }
   }
 }
+@media screen and (min-width:1025px) and (max-width:1366px) {
+  
+}
+@media screen and (max-width:1024px) {
+  
+}
+@media screen and (max-width:800px) {
+  
+}
+@media screen and (max-width:420px) {
+  main{
+    background-color:30%; }
+    .general-info-section {
+      background-color: rgb(65, 39, 7);
+    }
+}
