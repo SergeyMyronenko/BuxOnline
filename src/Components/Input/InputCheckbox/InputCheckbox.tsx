@@ -4,6 +4,7 @@ import './InputCheckbox.scss';
 interface InputCheckboxProps {
     label?: string;
     id?: string;
+    name?: string;
     onChange?: (event?: any) => void;
     width?: string;
     height?: string;
@@ -24,7 +25,7 @@ interface InputCheckboxProps {
  * @param {boolean} [props.required=false] - Whether the checkbox input is required.
  * @returns {JSX.Element} The rendered InputCheckbox component.
  */
-const InputCheckbox: React.FC<InputCheckboxProps> = ({ label, onChange, id, width, height,required=false }) => {
+const InputCheckbox: React.FC<InputCheckboxProps> = ({ label, onChange, id, width, height,required=false,name }) => {
     return (
         <div className="subcategory-wrapper">
             <div className="checkbox-wrapper">
@@ -35,6 +36,7 @@ const InputCheckbox: React.FC<InputCheckboxProps> = ({ label, onChange, id, widt
                     onChange={onChange}
                     style={{ width, height }}
                     required={required}
+                    name={name}
                 />
             </div>
             <label htmlFor={id || label}><h6>{label}</h6></label>

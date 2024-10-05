@@ -65,8 +65,6 @@ const LogIn = () => {
     };
     return (
         <>
-            <Header></Header>
-            <Nav></Nav>
             <div className="form-wrapper">
 
                 <form onSubmit={handleLogin}>

@@ -2,64 +2,44 @@ import React, { useState } from 'react';
 import './MultipleSelect.scss';
 import { AiOutlineDelete } from "react-icons/ai";
 
+interface skill{
+    id:number;
+    name:string;
+}
 interface Props {
-    skills: string[];
+    skills: skill[];
     id?: string;
-    onChange?: (value:string[]) => void;
+    onChange?: (value:skill[]) => void;
 }
 
 /**
- * MultipleSelect component allows users to select multiple items from a dropdown list.
+ * MultipleSelect component allows users to select multiple skills from a dropdown list.
  * 
  * @component
- * @param {Props} props - The props for the component.
- * @param {string[]} props.skills - The list of skills to choose from.
+ * @param {Props} props - The props for the MultipleSelect component.
+ * @param {skill[]} props.skills - The list of available skills to select from.
+ * @param {(selectedSkills: skill[]) => void} props.onChange - Callback function to handle changes in the selected skills.
+ * @param {string} props.id - The unique identifier for the component.
  * 
  * @returns {JSX.Element} The rendered MultipleSelect component.
  * 
  * @example
- * const skills = ['JavaScript', 'TypeScript', 'React'];
- * <MultipleSelect skills={skills} />
+ * <MultipleSelect
+ *   skills={[{ name: 'JavaScript' }, { name: 'TypeScript' }]}
+ *   onChange={(selectedSkills) => console.log(selectedSkills)}
+ *   id="skills-select"
+ * />
  * 
  * @remarks
- * This component maintains its own state for selected items, input value, and dropdown visibility.
- * It filters the list of skills based on the user's input and allows for adding and removing items from the selection.
+ * The component maintains its own state for the selected items, input value, and dropdown visibility.
+ * It filters the available skills based on the input value and displays the filtered list in a dropdown.
+ * Users can add skills by selecting them from the dropdown and remove them by clicking on the skill's close button.
  * 
- * @function
- * @name MultipleSelect
- * 
- * @typedef {Object} Props
- * @property {string[]} skills - The list of skills to choose from.
- * 
- * @internal
- * @function handleInputChange - Updates the input value and opens the dropdown.
- * @param {React.ChangeEvent<HTMLInputElement>} event - The input change event.
- * 
- * @internal
- * @function handleItemSelect - Adds an item to the selected items and closes the dropdown.
- * @param {string} item - The item to be added.
- * 
- * @internal
- * @function handleItemRemove - Removes an item from the selected items.
- * @param {number} index - The index of the item to be removed.
- * 
- * @internal
- * @constant {string[]} allItems - The list of all skills.
- * 
- * @internal
- * @constant {string[]} selectedItems - The list of selected items.
- * 
- * @internal
- * @constant {string} inputValue - The current value of the input field.
- * 
- * @internal
- * @constant {boolean} isDropdownOpen - The state of the dropdown visibility.
- * 
- * @internal
- * @constant {string[]} filteredItems - The list of skills filtered based on the input value.
+ * @typedef {Object} skill
+ * @property {string} name - The name of the skill.
  */
 const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
-    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+    const [selectedItems, setSelectedItems] = useState<skill[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
     const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
@@ -70,7 +50,7 @@ const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
         setIsDropdownOpen(true);    
     };
 
-    const handleItemSelect = (item: string) => {
+    const handleItemSelect = (item: skill) => {
         if (!selectedItems.includes(item)) {
             setSelectedItems([...selectedItems, item]);
             onChange!([...selectedItems, item]);
@@ -88,7 +68,7 @@ const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
     };
 
     const filteredItems = allItems.filter(item =>
-        item.toLowerCase().includes(inputValue.toLowerCase())
+        item.name.toLowerCase().includes(inputValue.toLowerCase())
     );
 
     return (
@@ -97,7 +77,7 @@ const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
                 <div className="skills">
                     {selectedItems.map((item, index) => (
                         <div key={index} className="skill-container">
-                            <span className="skill-label">{item}</span>
+                            <span className="skill-label">{item.name}</span>
                             <div className="skill-close" onClick={() => handleItemRemove(index)}>
                                 <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.3327 11.8332L1.66602 1.1665M12.3327 1.1665L1.66602 11.8332" stroke="#282828" strokeWidth="1.5" strokeLinecap="round" />
@@ -148,7 +128,7 @@ const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
                                     onClick={() => handleItemSelect(item)}
                                     className={`list-item ${selectedItems.includes(item) ? 'selected' : ''}`}
                                 >
-                                    {item}
+                                    {item.name}
                                 </li>
                             ))
                         )}

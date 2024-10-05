@@ -177,9 +177,9 @@ const Multiform = () => {
 
                             </div>
                             {/* the styles for these card are applied to the form element, so it is here to use them*/}
-                            {/* <form action=""> */}
+                            <form action="">
                                 <SolidButton width='100%' height='39px' borderRadius='20px' onClick={() => nextStep()}>Далі</SolidButton>
-                            {/* </form> */}
+                            </form>
 
                         </div>
                     </div>
@@ -190,18 +190,30 @@ const Multiform = () => {
     };
 
     const CreateVacancy = () => {
-        const allItems = [
-            'JavaScript', 'TypeScript', 'React', 'Node.js', 'Express', 'MongoDB',
-            'GraphQL', 'Apollo', 'Redux', 'HTML', 'CSS', 'Sass', 'Webpack',
-            'Babel', 'Jest', 'Cypress', 'Docker', 'Kubernetes', 'AWS', 'Azure',
-            'GCP', 'Python', 'Django', 'Flask', 'Java', 'Spring', 'Hibernate',
-            'MySQL', 'PostgreSQL', 'SQLite', 'Git', 'GitHub', 'GitLab', 'CI/CD',
-            'Agile', 'Scrum', 'JIRA', 'Trello', 'VSCode', 'IntelliJ', 'Eclipse'
-        ];
+        const  [languages,setLanguages]=useState([{id:0,name:'',level:''}]);
+        const  [skills,setSkills]=useState([{id:0,name:''}]);
+
+        useEffect(() => {
+            const requestOptions:RequestInit = {
+                method: "GET",
+                redirect: "follow"
+              };
+            //   fetch languages
+              fetch(`${url}/jobs/languages/`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => {setLanguages(result);console.log(languages)})
+                .catch((error) => console.error(error));
+            // fetch skills
+            fetch(`${url}/jobs/skills/`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => {setSkills(result);console.log(languages)})
+                .catch((error) => console.error(error));
+        },[])
+
         const [vacancyData, handleVacancyDataChange] = useFormState({
             moderation_comment: '',
             title: '',
-            name_company: '',
+            // name_company: '',
             description: '<p>Опишіть роботу</p>',
             skills: [],
             required_experience: '',
@@ -218,7 +230,7 @@ const Multiform = () => {
             country: 'Ukraine',
             status: 'pending',
             employer: 1,
-            position: 'testing'
+            // position: 'testing'
 
         })
 
@@ -241,7 +253,7 @@ const Multiform = () => {
                 }
             });
         };
-
+    
         const clearLanguageSelector = (id) => {
             const newLanguageSelectors = languageSelectors.filter(selector => selector.id !== id);
             setLanguageSelectors(newLanguageSelectors);
@@ -252,8 +264,9 @@ const Multiform = () => {
                 }
             });
         };
+    
         const handleLanguageChange = (id, value) => {
-            const newLanguages = vacancyData.languages.map((language, index) =>
+            const newLanguages = vacancyData.languages.map((language, index) => 
                 index === id - 1 ? value : language
             );
             handleVacancyDataChange({
@@ -335,7 +348,7 @@ const Multiform = () => {
                         </div>
                         <div className='field-wrapper'>
                             <h2>Навички</h2>
-                            <MultipleSelect skills={allItems} id='skills' onChange={SkillsChange}></MultipleSelect>
+                            <MultipleSelect skills={skills} id='skills' onChange={SkillsChange}></MultipleSelect>
                         </div>
                         <div className='field-wrapper'>
                             <h2>Діапазон заробітної плати($)</h2>
@@ -357,26 +370,11 @@ const Multiform = () => {
                                     <div key={selector.id}>
                                         <InputSelect
                                             label='Мови'
-                                            options={[
-                                                { name: "Англійська", value: "English" },
-                                                { name: "Українська", value: "Ukrainian" },
-                                                { name: "Французька", value: "French" },
-                                                { name: "Німецька", value: "German" }
-                                            ]}
+                                            options={languages.map((language) => ({ name: language.name+' - '+language.level, value: language.id }))}
                                             id={`language-${selector.id}`}
                                             onChange={(e) => handleLanguageChange(selector.id, { ...vacancyData.languages[selector.id - 1], language: e.target.value })}
                                         />
-                                        <InputSelect
-                                            label='Рівень'
-                                            options={[
-                                                { name: "Beginner", value: "Beginner" },
-                                                { name: "Intermediate", value: "Intermediate" },
-                                                { name: "Advanced", value: "Advanced" },
-                                                { name: "Native", value: "Native" }
-                                            ]}
-                                            id={`language-level-${selector.id}`}
-                                            onChange={(e) => handleLanguageChange(selector.id, { ...vacancyData.languages[selector.id - 1], level: e.target.value })}
-                                        />
+                                        
                                         <div key={selector.id} className="clear-language">
                                             <button type='button' onClick={() => clearLanguageSelector(selector.id)}>
                                                 <AiOutlineDelete />
@@ -394,9 +392,9 @@ const Multiform = () => {
                                 <div>
                                     <LiaUserClockSolid />
                                     <h4>Вид зайнятості</h4>
-                                    <InputCheckbox label='Part-time' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
-                                    <InputCheckbox label='Full-time' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
-                                    <InputCheckbox label='Контракт' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
+                                    <InputCheckbox label='Part-time' width='20px' height='20px' name='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
+                                    <InputCheckbox label='Full-time' width='20px' height='20px' name='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
+                                    <InputCheckbox label='Контракт' width='20px' height='20px' name='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
 
                                 </div>
                                 <div>
@@ -424,7 +422,9 @@ const Multiform = () => {
 
                         </div>
                         
-                            <SolidButton type='submit' >Далі</SolidButton>
+                        <SolidButton type='submit' >Далі</SolidButton>
+
+                
                        
                     </form>
                 </div>
