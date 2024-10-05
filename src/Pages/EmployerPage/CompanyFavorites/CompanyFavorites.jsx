@@ -1,6 +1,6 @@
 import React from 'react';
-import './FavoriteCandidates.scss';
+import './CompanyFavorites.scss';
 
-const FavoriteCandidates = () => {};
+const CompanyFavorites = () => {};
 
-export default FavoriteCandidates;
+export default CompanyFavorites;
