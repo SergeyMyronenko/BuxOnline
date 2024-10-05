@@ -5,7 +5,7 @@ interface InputSelectProps {
     label: string|number;
     options: {name:string,value:string|number}[];
     id?: string;
-    onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    onChange?: (event: any) => void;
 }
 
 /**

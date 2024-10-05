@@ -20,7 +20,7 @@ import { useAuth } from '../../../Hooks/useAuth';
 
 const Multiform = () => {
 
-    const {token,url} = useAuth();
+    const { token, url } = useAuth();
     const CompanyVacancies = () => {
         const dataPlaceholder = [{
             id: 1,
@@ -135,7 +135,7 @@ const Multiform = () => {
 
                             </div>
                             <form action="">
-                                <InputSelect label="Шаблони" options={["Шаблон 1", "Шаблон 2", "Шаблон 3"]} id='template'></InputSelect>
+                                <InputSelect label="Шаблони" options={[{ name: "Шаблон 1", value: 1 }, { name: "Шаблон 2", value: 2 }, { name: "Шаблон 3", value: 3 }]} id='template'></InputSelect>
                                 <SolidButton type="submit" width='100%' borderRadius='20px'> Завантажити </SolidButton>
 
                             </form>
@@ -190,25 +190,25 @@ const Multiform = () => {
     };
 
     const CreateVacancy = () => {
-        const  [languages,setLanguages]=useState([{id:0,name:'',level:''}]);
-        const  [skills,setSkills]=useState([{id:0,name:''}]);
+        const [languages, setLanguages] = useState([{ id: 0, name: '', level: '' }]);
+        const [skills, setSkills] = useState([{ id: 0, name: '' }]);
 
         useEffect(() => {
-            const requestOptions:RequestInit = {
+            const requestOptions: RequestInit = {
                 method: "GET",
                 redirect: "follow"
-              };
+            };
             //   fetch languages
-              fetch(`${url}/jobs/languages/`, requestOptions)
+            fetch(`${url}/jobs/languages/`, requestOptions)
                 .then((response) => response.json())
-                .then((result) => {setLanguages(result);console.log(languages)})
+                .then((result) => { setLanguages(result) })
                 .catch((error) => console.error(error));
             // fetch skills
             fetch(`${url}/jobs/skills/`, requestOptions)
                 .then((response) => response.json())
-                .then((result) => {setSkills(result);console.log(languages)})
+                .then((result) => { setSkills(result) })
                 .catch((error) => console.error(error));
-        },[])
+        }, [])
 
         const [vacancyData, handleVacancyDataChange] = useFormState({
             moderation_comment: '',
@@ -224,9 +224,12 @@ const Multiform = () => {
             subcategory: '',
             education_levels: [],
             languages: [{}],
-            work_type: 'fulltime',
-            work_format: 'online',
-            company_type: 'Product',
+            // work_type: 'fulltime',
+            // work_format: 'online',
+            // company_type: 'Product',
+            work_type: [],
+            work_format: [],
+            company_type: [],
             country: 'Ukraine',
             status: 'pending',
             employer: 1,
@@ -234,12 +237,13 @@ const Multiform = () => {
 
         })
 
-        const AreaInputChange = (string) => {
-            handleVacancyDataChange({ target: { value: string, id: 'description' } })
+        const AreaInputChange = (event) => {
+            handleVacancyDataChange({ target: { value: event, id: 'description' } })
         }
-        const SkillsChange = (skills) => {
-            handleVacancyDataChange({ target: { value: skills, id: 'skills' } })
+        const SkillsChange = (event) => {
+            handleVacancyDataChange({ target: { value: event, id: 'skills' } })
         }
+
         const [languageSelectors, setLanguageSelectors] = useState([{ id: 1 }]);
 
         const addLanguageSelector = () => {
@@ -253,7 +257,17 @@ const Multiform = () => {
                 }
             });
         };
-    
+        
+        const handleCheckBoxChange = (event) => {
+            const { name, value, checked } = event.target;
+            handleVacancyDataChange({
+            target: {
+                name,
+                value: checked ? [...vacancyData[name], value] : vacancyData[name].filter((item) => item !== value),
+            },
+            });
+        };
+
         const clearLanguageSelector = (id) => {
             const newLanguageSelectors = languageSelectors.filter(selector => selector.id !== id);
             setLanguageSelectors(newLanguageSelectors);
@@ -264,9 +278,9 @@ const Multiform = () => {
                 }
             });
         };
-    
+
         const handleLanguageChange = (id, value) => {
-            const newLanguages = vacancyData.languages.map((language, index) => 
+            const newLanguages = vacancyData.languages.map((language, index) =>
                 index === id - 1 ? value : language
             );
             handleVacancyDataChange({
@@ -276,11 +290,11 @@ const Multiform = () => {
                 }
             });
         };
-        const createVacancy = (event:React.FormEvent) => {
+        const createVacancy = (event: React.FormEvent) => {
             event.preventDefault();
 
             console.log("Form sent")
-           
+
             const myHeaders = new Headers();
             myHeaders.append("Authorization", `JWT ${token}`);
             myHeaders.append("Content-Type", "application/json");
@@ -294,6 +308,10 @@ const Multiform = () => {
                 "city": vacancyData.description,
                 "salary_min": vacancyData.salary_min,
                 "salary_max": vacancyData.salary_max,
+                
+                // "work_type": vacancyData.work_type,
+                // "work_format": vacancyData.work_format,
+                // "type": vacancyData.company_type,
                 "work_type": "fulltime",
                 "work_format": "online",
                 "type": "Product",
@@ -302,7 +320,7 @@ const Multiform = () => {
                 "employer": 1
             });
 
-            const requestOptions:RequestInit = {
+            const requestOptions: RequestInit = {
                 method: "POST",
                 headers: myHeaders,
                 body: raw,
@@ -370,11 +388,11 @@ const Multiform = () => {
                                     <div key={selector.id}>
                                         <InputSelect
                                             label='Мови'
-                                            options={languages.map((language) => ({ name: language.name+' - '+language.level, value: language.id }))}
+                                            options={languages.map((language) => ({ name: language.name + ' - ' + language.level, value: language.id }))}
                                             id={`language-${selector.id}`}
                                             onChange={(e) => handleLanguageChange(selector.id, { ...vacancyData.languages[selector.id - 1], language: e.target.value })}
                                         />
-                                        
+
                                         <div key={selector.id} className="clear-language">
                                             <button type='button' onClick={() => clearLanguageSelector(selector.id)}>
                                                 <AiOutlineDelete />
@@ -392,27 +410,27 @@ const Multiform = () => {
                                 <div>
                                     <LiaUserClockSolid />
                                     <h4>Вид зайнятості</h4>
-                                    <InputCheckbox label='Part-time' width='20px' height='20px' name='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
-                                    <InputCheckbox label='Full-time' width='20px' height='20px' name='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
-                                    <InputCheckbox label='Контракт' width='20px' height='20px' name='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
+                                    <InputCheckbox label='Part-time' width='20px' height='20px' name='work_type' value='parttime' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Full-time' width='20px' height='20px' name='work_type' value='fulltime' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Контракт' width='20px' height='20px' name='work_type' value='contract' onChange={handleCheckBoxChange}></InputCheckbox>
 
                                 </div>
                                 <div>
                                     <FaHouseLaptop />
 
                                     <h4>Робоче середовище</h4>
-                                    <InputCheckbox label='Дистанційно' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='В офісі' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='Гібридно' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='Дистанційно' width='20px' height='20px' name='work_format' value='offline' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='В офісі' width='20px' height='20px' name='work_format' value='online' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Гібридно' width='20px' height='20px' name='work_format' value='hybrid' onChange={handleCheckBoxChange}></InputCheckbox>
 
                                 </div>
                                 <div>
                                     <FaHandshakeAngle />
                                     <h4>Тип бізнесу</h4>
-                                    <InputCheckbox label='Startup' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='Product' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='Outsource' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='Outstaff' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='Startup' width='20px' height='20px' name='company_type' value='Startup ' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Product' width='20px' height='20px' name='company_type' value='Product  ' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Outsource' width='20px' height='20px' name='company_type' value='Outstaff  ' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Outstaff' width='20px' height='20px' name='company_type' value='Outsource ' onChange={handleCheckBoxChange}></InputCheckbox>
                                 </div>
                             </div>
                         </div>
@@ -421,11 +439,11 @@ const Multiform = () => {
                             <InputArea initialValue={vacancyData.description} setValue={AreaInputChange} ></InputArea>
 
                         </div>
-                        
+
                         <SolidButton type='submit' >Далі</SolidButton>
 
-                
-                       
+
+
                     </form>
                 </div>
 

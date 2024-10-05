@@ -37,8 +37,7 @@ const LogIn = () => {
             // local host doesnt allow this header...
             myHeaders.append("ngrok-skip-browser-warning", "69420");
             myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("Authorization", `JWT ${token}`);
-            
+            myHeaders.append("Authorization", `JWT ${token}`);        
 
             const requestOptions:RequestInit = {
                 method: "GET",

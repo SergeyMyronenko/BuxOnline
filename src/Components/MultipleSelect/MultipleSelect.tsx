@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import './MultipleSelect.scss';
 import { AiOutlineDelete } from "react-icons/ai";
 
-interface skill{
-    id:number;
-    name:string;
+interface skill {
+    id: number;
+    name: string;
 }
+
 interface Props {
     skills: skill[];
     id?: string;
-    onChange?: (value:skill[]) => void;
+    onChange?: (value: number[]) => void;
 }
 
 /**
@@ -18,15 +19,15 @@ interface Props {
  * @component
  * @param {Props} props - The props for the MultipleSelect component.
  * @param {skill[]} props.skills - The list of available skills to select from.
- * @param {(selectedSkills: skill[]) => void} props.onChange - Callback function to handle changes in the selected skills.
+ * @param {(selectedSkills: number[]) => void} props.onChange - Callback function to handle changes in the selected skills.
  * @param {string} props.id - The unique identifier for the component.
  * 
  * @returns {JSX.Element} The rendered MultipleSelect component.
  * 
  * @example
  * <MultipleSelect
- *   skills={[{ name: 'JavaScript' }, { name: 'TypeScript' }]}
- *   onChange={(selectedSkills) => console.log(selectedSkills)}
+ *   skills={[{ id: 1, name: 'JavaScript' }, { id: 2, name: 'TypeScript' }]}
+ *   onChange={(selectedSkillIds) => console.log(selectedSkillIds)}
  *   id="skills-select"
  * />
  * 
@@ -36,9 +37,10 @@ interface Props {
  * Users can add skills by selecting them from the dropdown and remove them by clicking on the skill's close button.
  * 
  * @typedef {Object} skill
+ * @property {number} id - The id of the skill.
  * @property {string} name - The name of the skill.
  */
-const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
+const MultipleSelect: React.FC<Props> = ({ skills, onChange, id }) => {
     const [selectedItems, setSelectedItems] = useState<skill[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
     const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -47,24 +49,23 @@ const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
-        setIsDropdownOpen(true);    
+        setIsDropdownOpen(true);
     };
 
     const handleItemSelect = (item: skill) => {
         if (!selectedItems.includes(item)) {
-            setSelectedItems([...selectedItems, item]);
-            onChange!([...selectedItems, item]);
+            const newSelectedItems = [...selectedItems, item];
+            setSelectedItems(newSelectedItems);
+            onChange && onChange(newSelectedItems.map(skill => skill.id));
         }
         setInputValue('');
         setIsDropdownOpen(false);
-        
     };
 
     const handleItemRemove = (index: number) => {
         const newItems = selectedItems.filter((_, i) => i !== index);
         setSelectedItems(newItems);
-        onChange!(newItems);
-
+        onChange && onChange(newItems.map(skill => skill.id));
     };
 
     const filteredItems = allItems.filter(item =>
@@ -101,7 +102,6 @@ const MultipleSelect: React.FC<Props> = ({ skills,onChange,id }) => {
                         onFocus={() => setIsDropdownOpen(true)}
                         placeholder='Введіть назву навички...'
                     >
-                        
                     </input>
                     <div className="btn-container">
                         <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} type='button'>

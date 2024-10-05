@@ -16,7 +16,7 @@ import { useState, ChangeEvent } from 'react';
 const useFormState = <T extends Record<string, any>>(initialState: T) => {
     const [formState, setFormState] = useState<T>(initialState);
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: any) => {
         const { id, name, value } = event.target;
         const key = name || id; // Use name if provided, otherwise use id
         setFormState((prev) => ({
