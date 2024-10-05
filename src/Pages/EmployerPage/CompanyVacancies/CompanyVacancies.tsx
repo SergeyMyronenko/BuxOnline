@@ -192,24 +192,7 @@ const Multiform = () => {
     const CreateVacancy = () => {
         const [languages, setLanguages] = useState([{ id: 0, name: '', level: '' }]);
         const [skills, setSkills] = useState([{ id: 0, name: '' }]);
-
-        useEffect(() => {
-            const requestOptions: RequestInit = {
-                method: "GET",
-                redirect: "follow"
-            };
-            //   fetch languages
-            fetch(`${url}/jobs/languages/`, requestOptions)
-                .then((response) => response.json())
-                .then((result) => { setLanguages(result) })
-                .catch((error) => console.error(error));
-            // fetch skills
-            fetch(`${url}/jobs/skills/`, requestOptions)
-                .then((response) => response.json())
-                .then((result) => { setSkills(result) })
-                .catch((error) => console.error(error));
-        }, [])
-
+        const [subcategories, setSubcategories] = useState([{ id: 0,category:{id:0,name:''}, name: '' }]);
         const [vacancyData, handleVacancyDataChange] = useFormState({
             moderation_comment: '',
             title: '',
@@ -221,9 +204,9 @@ const Multiform = () => {
             salary_min: '',
             salary_max: '',
             category: {},
-            subcategory: '',
+            subcategory: subcategories[0].id, // Add a default integer value
             education_levels: [],
-            languages: [{}],
+            languages: [languages[0].id], // Add a default integer value
             // work_type: 'fulltime',
             // work_format: 'online',
             // company_type: 'Product',
@@ -237,6 +220,29 @@ const Multiform = () => {
 
         })
 
+        useEffect(() => {
+            const requestOptions: RequestInit = {
+                method: "GET",
+                redirect: "follow"
+            };
+            //   fetch languages
+            fetch(`${url}/jobs/languages/`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => { setLanguages(result);handleLanguageChange(1, result[0].id); })
+                .catch((error) => console.error(error));
+            // fetch skills
+            fetch(`${url}/jobs/skills/`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => { setSkills(result); })
+                .catch((error) => console.error(error));
+            // fetch subcategories
+            fetch(`${url}/jobs/job-sub-categories/`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => { setSubcategories(result);handleVacancyDataChange({target:{value:result[0].id,id:"subcategory"}});})
+                .catch((error) => console.error(error));
+        }, [])
+
+        
         const AreaInputChange = (event) => {
             handleVacancyDataChange({ target: { value: event, id: 'description' } })
         }
@@ -253,18 +259,8 @@ const Multiform = () => {
             handleVacancyDataChange({
                 target: {
                     name: 'languages',
-                    value: [...vacancyData.languages, {}]
+                    value: [...vacancyData.languages, languages[0].id] // Add a default integer value
                 }
-            });
-        };
-        
-        const handleCheckBoxChange = (event) => {
-            const { name, value, checked } = event.target;
-            handleVacancyDataChange({
-            target: {
-                name,
-                value: checked ? [...vacancyData[name], value] : vacancyData[name].filter((item) => item !== value),
-            },
             });
         };
 
@@ -278,10 +274,9 @@ const Multiform = () => {
                 }
             });
         };
-
         const handleLanguageChange = (id, value) => {
             const newLanguages = vacancyData.languages.map((language, index) =>
-                index === id - 1 ? value : language
+                index === id - 1 ? parseInt(value) : language
             );
             handleVacancyDataChange({
                 target: {
@@ -290,6 +285,17 @@ const Multiform = () => {
                 }
             });
         };
+        
+        const handleCheckBoxChange = (event) => {
+            const { name, value, checked } = event.target;
+            handleVacancyDataChange({
+                target: {
+                    name,
+                    value: checked ? [...vacancyData[name], value] : vacancyData[name].filter((item) => item !== value),
+                },
+            });
+        };
+
         const createVacancy = (event: React.FormEvent) => {
             event.preventDefault();
 
@@ -305,10 +311,12 @@ const Multiform = () => {
                 "name_company": "esadas",
                 "description": vacancyData.description,
                 "required_experience": vacancyData.required_experience,
-                "city": vacancyData.description,
+                "city": vacancyData.city,
                 "salary_min": vacancyData.salary_min,
                 "salary_max": vacancyData.salary_max,
-                
+                "languages": vacancyData.languages,
+                "subcategory": vacancyData.subcategory,
+                "category": subcategories.find((subcategory) => subcategory.id === vacancyData.subcategory)!.category.id,
                 // "work_type": vacancyData.work_type,
                 // "work_format": vacancyData.work_format,
                 // "type": vacancyData.company_type,
@@ -344,7 +352,7 @@ const Multiform = () => {
                         </div>
                         <div className='field-wrapper'>
                             <h2>Роль</h2>
-                            <InputSelect label="Роль, яку ви б хотіли найняти" id='subcategory' onChange={handleVacancyDataChange} options={[{ name: "Back End Developer", value: 1 }, { name: "Front End Developer", value: 2 }, { name: "Fullstack Developer", value: 3 }]}></InputSelect>
+                            <InputSelect label="Роль, яку ви б хотіли найняти" id='subcategory' onChange={handleVacancyDataChange} options={subcategories.map((subcategory) => ({ name: subcategory.name, value: subcategory.id }))}></InputSelect>
                         </div>
                         <div className='field-wrapper'>
                             <h2>Років досвіду</h2>
@@ -390,7 +398,7 @@ const Multiform = () => {
                                             label='Мови'
                                             options={languages.map((language) => ({ name: language.name + ' - ' + language.level, value: language.id }))}
                                             id={`language-${selector.id}`}
-                                            onChange={(e) => handleLanguageChange(selector.id, { ...vacancyData.languages[selector.id - 1], language: e.target.value })}
+                                            onChange={(e) => handleLanguageChange(selector.id, e.target.value)} // Pass the integer value
                                         />
 
                                         <div key={selector.id} className="clear-language">
