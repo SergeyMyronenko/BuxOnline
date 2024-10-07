@@ -1,0 +1,70 @@
+@use '../../../App.scss' as styles;
+.edit-inner-wrapper{
+    // background-color: red;
+    width: 100%;
+   padding: 50px 0px 100px;
+    .title{
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    form{
+        .input-company-logo{     
+            padding: 25px 0px;       
+            width: max-content;
+            height: max-content;
+            display: flex;
+            gap: 50px;
+            .label-wrapper{
+                h2{
+                    padding-bottom: 20px;
+                }
+                p{
+                    padding-bottom: 15px;
+                }
+            }
+            .company-logo{
+                height: 256px;
+                width: 256px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+            input[type="file"]{
+                display: none;
+            }
+            label {
+                background-color: styles.$white;
+                border: 1px solid styles.$lightBlue;
+                border-radius: 20px;
+                padding: 10px;
+                width: 100%;
+                cursor: pointer;
+                text-align: center;
+                transition: 0.3s ease-in-out;
+
+                &:hover {
+                    background-color: styles.$lightBlue;
+                    color: styles.$white;
+                    scale: 1.05;
+                }
+
+                &:active {
+                    scale: 1;
+
+                }
+
+
+            }
+        }
+        .input-misc{
+            display: grid;
+            grid-template-columns: 47.5% 47.5%;
+            gap: 5%;
+            padding-bottom: 50px;
+        }
+        .input-rich{
+
+        }
+    }
+   
+}

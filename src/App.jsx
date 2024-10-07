@@ -14,6 +14,8 @@ import SeekerResumePage from "./Pages/SeekerPage/MessagesAndEvents/SeekerResumeP
 import SeekerOffersPage from "./Pages/SeekerPage/MessagesAndEvents/SeekerOffersPage.tsx";
 import EmptyOutlet from "./Pages/EmptyOutlet/EmptyOutlet.jsx";
 import EmptyOutletNoFooter from "./Pages/EmptyOutlet/EmptyOutletNoFooter.jsx";
+import CompanyEditInfo from "./Pages/EmployerPage/CompanyEditInfo/CompanyEditInfo.tsx";
+
 import "@mantine/core/styles.css";
 import "./App.scss";
 import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
@@ -64,13 +66,14 @@ function App() {
           <Route path="messages" element={<CompanyMessage />} />
           <Route path="candidates" element={<h1>Company Candidates</h1>} />
           <Route path="favorites" element={<h1>Company Favorites</h1>} />
+          <Route path="edit" element={<CompanyEditInfo/>} />
+
         </Route>
 
         {/* These are all the routes and pages related to seeker cabinet */}
         <Route path="/BuxOnline/seeker/cabinet/:id" element={<EmptyOutlet />}>
           {/* the line below is responsible for the main page */}
           <Route index element={<h1>Seeker cabinet</h1>} />
-
           {/* all the other lines below are different paths and pages inside the cabinet */}
           <Route path="resumes" element={<SeekerResumePage />} />
           <Route path="offers" element={<SeekerOffersPage />} />

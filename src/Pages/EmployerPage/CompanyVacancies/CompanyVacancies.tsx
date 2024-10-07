@@ -283,8 +283,8 @@ const Multiform = () => {
         }, [])
 
 
-        const AreaInputChange = (event,id) => {
-            handleVacancyDataChange({ target: { value: event, id: {id} } })
+        const AreaInputChange = (value, id) => {
+            handleVacancyDataChange({ target: { value, id } });
         }
         const SkillsChange = (event) => {
             handleVacancyDataChange({ target: { value: event, id: 'skills' } })
