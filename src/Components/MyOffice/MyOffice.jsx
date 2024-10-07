@@ -5,6 +5,7 @@ import "./MyOffice.scss";
 import clsx from "clsx";
 import titleImage from "../../assets/vacancyTitleImg.png";
 import InputCheckbox from "../Input/InputCheckbox/InputCheckbox";
+import InputRadioBtn from "../Input/InputRadioBtn/InputRadioBtn";
 
 const jobs = [
   {
@@ -64,7 +65,6 @@ const jobs = [
     work_format: "online",
     type: "pending",
     country: "Portugal",
-    position: "Senior Software Engineer",
     employer: 1,
   },
   {
@@ -72,7 +72,7 @@ const jobs = [
     skills: [
       {
         id: 1,
-        name: "ячс",
+        name: "Html",
       },
     ],
     category: 2,
@@ -107,8 +107,7 @@ const jobs = [
     work_type: "fulltime",
     work_format: "online",
     type: "pending",
-    country: null,
-    position: null,
+    country: "Україна",
     employer: 1,
   },
   {
@@ -116,7 +115,11 @@ const jobs = [
     skills: [
       {
         id: 1,
-        name: "ячс",
+        name: "Css",
+      },
+      {
+        id: 2,
+        name: "React",
       },
     ],
     category: 4,
@@ -151,8 +154,7 @@ const jobs = [
     work_type: "fulltime",
     work_format: "online",
     type: "pending",
-    country: null,
-    position: null,
+    country: "Spain",
     employer: 1,
   },
   {
@@ -160,7 +162,23 @@ const jobs = [
     skills: [
       {
         id: 1,
-        name: "ячс",
+        name: "Html",
+      },
+      {
+        id: 2,
+        name: "Css",
+      },
+      {
+        id: 3,
+        name: "PHP",
+      },
+      {
+        id: 4,
+        name: "jQuery",
+      },
+      {
+        id: 5,
+        name: "Symfony",
       },
     ],
     category: 5,
@@ -195,8 +213,7 @@ const jobs = [
     work_type: "fulltime",
     work_format: "online",
     type: "pending",
-    country: null,
-    position: null,
+    country: "Україна",
     employer: 1,
   },
   {
@@ -264,7 +281,15 @@ const jobs = [
     skills: [
       {
         id: 1,
-        name: "ячс",
+        name: "Html",
+      },
+      {
+        id: 2,
+        name: "Css",
+      },
+      {
+        id: 3,
+        name: "PHP",
       },
     ],
     category: 2,
@@ -438,7 +463,7 @@ const jobs = [
 ];
 
 const MyOffice = () => {
-  const [cards, setCards] = useState(jobs);
+  const [cards, setCards] = useState([]);
   const [isActive, setIsActive] = useState("vacancy");
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -447,6 +472,7 @@ const MyOffice = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [vacancies, setVacancies] = useState(0);
   const [filteredJobs, setFilteredJobs] = useState([]);
+  const [selectedRadio, setSelectedRadio] = useState(null);
 
   const URL = "https://glowing-boa-definite.ngrok-free.app";
   const myHeaders = new Headers();
@@ -461,6 +487,11 @@ const MyOffice = () => {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+  };
+  const handleRadioChange = (label) => {
+    setSelectedRadio((prevSelectedRadio) =>
+      prevSelectedRadio === label ? null : label
+    );
   };
 
   const handleCheckCategory = (categoryName) => {
@@ -477,6 +508,10 @@ const MyOffice = () => {
         ? prevSelected.filter((name) => name !== companyName)
         : [...prevSelected, companyName]
     );
+  };
+
+  const handleChackDate = (selectedDate) => {
+    setDatePeriod();
   };
 
   const filterVacancies = () => {
@@ -564,9 +599,9 @@ const MyOffice = () => {
   };
 
   useEffect(() => {
-    // getCards();
+    getCards();
     getJobsCategories();
-  }, [selectedCategories, companies, cards]);
+  }, []);
 
   return (
     <div className="container">
@@ -602,7 +637,6 @@ const MyOffice = () => {
           onSubmit={(e) => {
             e.preventDefault();
             filterVacancies();
-            resetFilters();
           }}
         >
           <Accordion accordionTitle="Категорія">
@@ -654,15 +688,35 @@ const MyOffice = () => {
             ></InputCheckbox>
           </Accordion>
           <Accordion accordionTitle="За датою">
-            <InputCheckbox label="Сьогодні"></InputCheckbox>
-            <InputCheckbox label="Вчора"></InputCheckbox>
-            <InputCheckbox label="Останні 7 днів"></InputCheckbox>
-            <InputCheckbox label="Останні 30 днів"></InputCheckbox>
+            <InputRadioBtn
+              label="Сьогодні"
+              isSelected={selectedRadio === "Сьогодні"}
+              onChange={() => handleRadioChange("Сьогодні")}
+            ></InputRadioBtn>
+            <InputRadioBtn
+              label="Вчора"
+              isSelected={selectedRadio === "Вчора"}
+              onChange={() => handleRadioChange("Вчора")}
+            ></InputRadioBtn>
+            <InputRadioBtn
+              label="Останні 7 днів"
+              isSelected={selectedRadio === "Останні 7 днів"}
+              onChange={() => handleRadioChange("Останні 7 днів")}
+            ></InputRadioBtn>
+            <InputRadioBtn
+              label="Останні 30 днів"
+              isSelected={selectedRadio === "Останні 30 днів"}
+              onChange={() => handleRadioChange("Останні 30 днів")}
+            ></InputRadioBtn>
             <div>
-              <InputCheckbox
+              <InputRadioBtn
                 label="Вказаний період"
-                onChange={handleCheckboxChange}
-              ></InputCheckbox>
+                isSelected={selectedRadio === "Вказаний період"}
+                onChange={() => {
+                  handleRadioChange("Вказаний період");
+                  handleCheckboxChange();
+                }}
+              ></InputRadioBtn>
 
               {isChecked && (
                 <div className="input-box">
@@ -690,7 +744,7 @@ const MyOffice = () => {
             Застосувати фільтр
           </button>
         </form>
-        <MainContent filter={filteredJobs} cards={cards} />
+        <MainContent filter={filteredJobs} cards={cards} reset={resetFilters} />
       </div>
     </div>
   );

@@ -14,16 +14,18 @@ import { CgClose } from "react-icons/cg";
  *
  * @returns {JSX.Element} A div containing filter options and buttons to clear or select filters.
  */
-const Filter = ({ onClose, isVisible, filter }) => {
+const Filter = ({ onClose, isVisible, filter, cards, reset }) => {
   const [handleCloseCategory, handleCloseCompany, handleCloseDate] = onClose;
   const [isVisibleCategory, isVisibleCompany, isVisibleDate] = isVisible;
-  const findVacancy = filter.length;
+  const findVacancy = filter > 0 ? filter.length : cards.length;
 
   return (
     <div className="filter">
       <p>Знайдено {findVacancy} вакансій</p>
       <div className="filter-panel">
-        <button className="filter-panel-button clear">Очистити фільтр</button>
+        <button className="filter-panel-button clear" onClick={reset}>
+          Очистити фільтр
+        </button>
         {isVisibleCategory && (
           <button
             className="filter-panel-button category"
