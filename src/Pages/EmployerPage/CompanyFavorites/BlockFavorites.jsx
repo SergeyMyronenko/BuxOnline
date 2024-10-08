@@ -6,6 +6,26 @@ import ItemFavorite from './ItemFavorite';
 const BlockFavorites = () => {
     const flag = true;
 
+    const candidates = [
+        { 
+            name: 'Шевченко Олена', 
+            position: 'Back-end engineer', 
+            place: 'Польша', 
+            salary: '$3,000 / міс' 
+        },
+
+        { 
+            name: 'Пономарчук Георгій', 
+            position: 'Back-end engineer', 
+            place: 'Україна, Київ', 
+            salary: '$2,500 / міс' 
+        }
+    ];
+
+    const candidatesList = candidates.map((item) => {
+        return <ItemFavorite {...item} />;
+    });
+
     return (
         <div className='block-list'>
             { 
@@ -13,7 +33,7 @@ const BlockFavorites = () => {
                 
                 <ul>
                     <li>
-                        <ItemFavorite />
+                        { candidatesList }
                     </li>
                 </ul> :
             

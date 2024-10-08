@@ -58,9 +58,8 @@
             }
 
             .place-salary {
-                @include flexProp(space-between, center);
+                @include flexProp(left, center);
 
-                width: 280px;
             }
 
             .place, .salary {
@@ -81,6 +80,10 @@
                     font-size: 16px;
                     line-height: 26px;
                 }
+            }
+
+            .place {
+                margin-right: 65px;
             }
         }
     }
