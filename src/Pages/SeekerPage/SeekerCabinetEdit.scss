@@ -1,0 +1,64 @@
+@use "../../App.scss" as styles;
+
+.profile-data-edit {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  .profile-resume {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 20px;
+
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: styles.$lightBlue;
+    }
+
+    .resumes {
+      height: 100px;
+      width: 100%;
+      display: flex;
+      gap: 20px;
+
+      div {
+        width: 100%;
+        padding: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+
+        &.resume {
+          border: 1px solid styles.$grayForFill;
+
+          button {
+            color: styles.$blackForText;
+          }
+        }
+
+        &.add-resume {
+          border: 1px solid styles.$lightBlue;
+
+          button {
+            color: styles.$lightBlue;
+          }
+        }
+
+        button {
+          background-color: transparent;
+          border: none;
+          font-size: 22px;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+    }
+  }
+}
