@@ -52,8 +52,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
  * ```
  */
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const url='http://127.0.0.1:8000';
-    // const url='https://glowing-boa-definite.ngrok-free.app';
+    // const url='http://127.0.0.1:8000';
+    const url='https://glowing-boa-definite.ngrok-free.app';
 
     const [token, setToken] = useState<string | null>(null);
 
@@ -75,7 +75,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-
+        myHeaders.append("ngrok-skip-browser-warning", "69420");
         const requestOptions: RequestInit = {
             method: "POST",
             headers: myHeaders,
@@ -89,7 +89,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             setToken(result.access);
             Cookies.set('jwt', result.access, { expires: 1 / 96 }); // 15 minutes
             Cookies.set('refreshToken', result.refresh, { expires: 7 }); // Store refresh token for 7 days
-            console.log("successfull login:", result);
+            console.log("successfull login");
         } else {
             throw new Error(`Login failed: ${await response.text()}`);
         }
