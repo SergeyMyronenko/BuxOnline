@@ -6,6 +6,7 @@ import clsx from "clsx";
 import titleImage from "../../assets/vacancyTitleImg.png";
 import InputCheckbox from "../Input/InputCheckbox/InputCheckbox";
 import InputRadioBtn from "../Input/InputRadioBtn/InputRadioBtn";
+import { useAuth } from "../../Hooks/useAuth";
 
 const jobs = [
   {
@@ -478,6 +479,8 @@ const MyOffice = () => {
   const myHeaders = new Headers();
   myHeaders.append("ngrok-skip-browser-warning", "69420");
   myHeaders.append("Content-Type", "application/json");
+  const { token } = useAuth();
+  myHeaders.append("Authorization", `JWT ${token}`);
 
   const requestOptions = {
     method: "GET",
@@ -489,9 +492,15 @@ const MyOffice = () => {
     setIsChecked(!isChecked);
   };
   const handleRadioChange = (label) => {
-    setSelectedRadio((prevSelectedRadio) =>
-      prevSelectedRadio === label ? null : label
-    );
+    console.log("Вибрано:", label);
+
+    if (selectedRadio !== label) {
+      setSelectedRadio(label);
+    }
+
+    setIsChecked(label === "Вказаний період");
+    setSelectedRadio(null);
+    setIsChecked(false);
   };
 
   const handleCheckCategory = (categoryName) => {
@@ -714,7 +723,6 @@ const MyOffice = () => {
                 isSelected={selectedRadio === "Вказаний період"}
                 onChange={() => {
                   handleRadioChange("Вказаний період");
-                  handleCheckboxChange();
                 }}
               ></InputRadioBtn>
 

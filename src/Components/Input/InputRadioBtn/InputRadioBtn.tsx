@@ -8,6 +8,7 @@ interface InputCheckboxProps {
   width?: string;
   height?: string;
   required?: boolean;
+  isSelected?: boolean;
 }
 
 const InputRadioBtn: React.FC<InputCheckboxProps> = ({
@@ -26,7 +27,7 @@ const InputRadioBtn: React.FC<InputCheckboxProps> = ({
           type="radio"
           //either use the id or the label as the id
           id={id || label}
-          checked={isSelected}
+          defaultChecked={isSelected}
           onChange={onChange}
           style={{ width, height }}
           required={required}
