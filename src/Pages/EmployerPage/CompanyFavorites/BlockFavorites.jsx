@@ -4,7 +4,7 @@ import './BlockFavorites.scss';
 import ItemFavorite from './ItemFavorite';
 
 const BlockFavorites = () => {
-    const flag = false;
+    const flag = true;
 
     return (
         <div className='block-list'>
@@ -13,7 +13,7 @@ const BlockFavorites = () => {
                 
                 <ul>
                     <li>
-
+                        <ItemFavorite />
                     </li>
                 </ul> :
             
