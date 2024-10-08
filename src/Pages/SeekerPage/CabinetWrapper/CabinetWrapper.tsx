@@ -13,7 +13,7 @@ const CabinetWrapper = ({ children }) => {
         </div>
       </div>
       <ProfileSettings />
-      <div className="profile-data-wrapper">{children}</div>
+      <div className="profile-data-wrapper ">{children}</div>
     </section>
   );
 };
