@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import './JobDescriptionCard.scss';
 interface JobDescriptionCardProps {
     title: string;
-    description: string[];
+    description: any[];
     icon: ReactNode;
 }
 

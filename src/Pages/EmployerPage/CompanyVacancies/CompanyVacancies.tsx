@@ -23,40 +23,57 @@ import { useAuth } from '../../../Hooks/useAuth';
 
 const Multiform = () => {
     interface Vacancy {
+        moderation_comment: string;
         title: string;
+        name_company: string;
         description: string;
-        skills: (number | string)[];
         required_experience: number;
         city: string;
         salary_min: number;
         salary_max: number;
-        category: number;
-        subcategory: number;
-        education_levels: number[];
         languages: number[];
-        work_type: ('full-time' | 'part-time' | 'contract')[];
-        work_format: ('offline' | 'online' | 'hybrid')[];
-        status?: 'pending' | 'approved' | 'rejected';
+        subcategory: number;
+        category: number;
+        education_levels: number[];
+        work_type: number[];
+        work_format: number[];
+        type: number[];
+        country: string;
+        position: string;
+        employer: number;
+        skills: number[];
+        status: string;
+        idealCandidate: string;
+        
     }
     interface VacancyProps{
         vacancy: Vacancy;
     }
     const testVacancy: Vacancy = {
-        title: 'Back End Engineer',
-        description: 'Ми шукаємо досвідченого бекенд-інженера, який добре орієнтується в таких мовах програмування, як Python, Java або Node.js. Цей кандидат повинен швидко навчатися та вміти вирішувати складні завдання. Він повинен бути в курсі останніх технологічних трендів. Для нас важливо, щоб цей кандидат був командним гравцем і вмів ефективно спілкуватися з колегами. Ми цінуємо командну роботу і прагнемо створити динамічне та продуктивне робоче середовище.',
-        skills: ['Python', 'Java', 'Node.js'],
+        moderation_comment: 'Test comment',
+        title: 'Test Vacancy',
+        name_company: 'Test Company',
+        description: 'This is a test description for the vacancy.',
         required_experience: 3,
-        city: 'Київ',
+        city: 'Test City',
         salary_min: 50000,
         salary_max: 70000,
-        category: 1,
-        subcategory: 2,
-        education_levels: [1, 2],
         languages: [1, 2],
-        work_type: ['part-time', 'full-time'],
-        work_format: ['online', 'hybrid'],
-        status: 'pending'
+        subcategory: 1,
+        category: 1,
+        education_levels: [1, 2],
+        work_type: [1, 2],
+        work_format: [1, 2],
+        type: [1, 2],
+        country: 'Test Country',
+        position: 'Test Position',
+        employer: 1,
+        skills: [1, 2, 3],
+        status: 'active',
+        idealCandidate: 'The ideal candidate should be experienced in test automation and have strong problem-solving skills.'
     };
+    const [vacancyPassData, setVacancyPassData] = useState<Vacancy>(testVacancy);
+
     const { token, url } = useAuth();
     const CompanyVacancies = () => {
 
@@ -67,6 +84,7 @@ const Multiform = () => {
             candidates: 0,
             submited: 0
         }];
+      
         return (
             <div className='vacancies-inner-wrapper'>
                 <span className='title-wrapper'>
@@ -232,17 +250,17 @@ const Multiform = () => {
         const [languages, setLanguages] = useState([{ id: 0, name: '', level: '' }]);
         const [skills, setSkills] = useState([{ id: 0, name: '' }]);
         const [subcategories, setSubcategories] = useState([{ id: 0, category: { id: 0, name: '' }, name: '' }]);
-        const [vacancyData, handleVacancyDataChange] = useFormState({
+        const [vacancyData, handleVacancyDataChange] = useFormState<Vacancy>({
             moderation_comment: '',
             title: '',
             // name_company: '',
             description: '<p>Опишіть роботу</p>',
             skills: [],
-            required_experience: '',
+            required_experience: 0,
             city: '',
-            salary_min: '',
-            salary_max: '',
-            category: {},
+            salary_min: 0,
+            salary_max: 0,
+            category: 0,
             subcategory: subcategories[0].id, // Add a default integer value
             education_levels: [],
             languages: [languages[0].id], // Add a default integer value
@@ -251,24 +269,31 @@ const Multiform = () => {
             // company_type: 'Product',
             work_type: [],
             work_format: [],
-            company_type: [],
+            type: [],
             country: 'Ukraine',
             status: 'pending',
             employer: 1,
-            // position: 'testing'
             idealCandidate: '',
+            name_company: '',
+            position: '',
 
         })
 
         useEffect(() => {
+            const myHeaders= new Headers();
+            myHeaders.append("ngrok-skip-browser-warning", "69420");
+            // myHeaders.append("Content-Type", "application/json");
+
             const requestOptions: RequestInit = {
                 method: "GET",
-                redirect: "follow"
+                redirect: "follow",
+                headers: myHeaders,
+                
             };
             //   fetch languages
             fetch(`${url}/jobs/languages/`, requestOptions)
                 .then((response) => response.json())
-                // .then((result) => { setLanguages(result);handleLanguageChange(1, result[0].id); })
+                .then((result) => { setLanguages(result);handleLanguageChange(1, result[0].id); })
                 .catch((error) => console.error(error));
             // fetch skills
             fetch(`${url}/jobs/skills/`, requestOptions)
@@ -278,7 +303,7 @@ const Multiform = () => {
             // fetch subcategories
             fetch(`${url}/jobs/job-sub-categories/`, requestOptions)
                 .then((response) => response.json())
-                // .then((result) => { setSubcategories(result);handleVacancyDataChange({target:{value:result[0].id,id:"subcategory"}});})
+                .then((result) => { setSubcategories(result);handleVacancyDataChange({target:{value:result[0].id,id:"subcategory"}});})
                 .catch((error) => console.error(error));
         }, [])
 
@@ -345,29 +370,11 @@ const Multiform = () => {
             myHeaders.append("Authorization", `JWT ${token}`);
             myHeaders.append("Content-Type", "application/json");
 
-            const raw = JSON.stringify({
-                "moderation_comment": "",
-                "title": vacancyData.title,
-                "name_company": "esadas",
-                "description": vacancyData.description,
-                "required_experience": vacancyData.required_experience,
-                "city": vacancyData.city,
-                "salary_min": vacancyData.salary_min,
-                "salary_max": vacancyData.salary_max,
-                "languages": vacancyData.languages,
-                "subcategory": vacancyData.subcategory,
-                "category": subcategories.find((subcategory) => subcategory.id === vacancyData.subcategory)!.category.id,
-                // "work_type": vacancyData.work_type,
-                // "work_format": vacancyData.work_format,
-                // "type": vacancyData.company_type,
-                "work_type": "fulltime",
-                "work_format": "online",
-                "type": "Product",
-                "country": "ukr",
-                "position": "adsa",
-                "employer": 1
-            });
+            
+            vacancyData.category=(subcategories.find(subcategory => subcategory.id == vacancyData.subcategory)!.category.id)
 
+
+            const raw = JSON.stringify(vacancyData);
             const requestOptions: RequestInit = {
                 method: "POST",
                 headers: myHeaders,
@@ -377,9 +384,9 @@ const Multiform = () => {
 
             fetch(`${url}/jobs/jobs/`, requestOptions)
                 .then((response) => response.text())
-                .then((result) => console.log(result))
+                .then((result) => {console.log(result);})
                 .catch((error) => console.error(error));
-
+            setVacancyPassData(vacancyData);
             nextStep();
         }
 
@@ -460,27 +467,27 @@ const Multiform = () => {
                                 <div>
                                     <LiaUserClockSolid />
                                     <h4>Вид зайнятості</h4>
-                                    <InputCheckbox label='Part-time' width='20px' height='20px' name='work_type' value='parttime' onChange={handleCheckBoxChange}></InputCheckbox>
-                                    <InputCheckbox label='Full-time' width='20px' height='20px' name='work_type' value='fulltime' onChange={handleCheckBoxChange}></InputCheckbox>
-                                    <InputCheckbox label='Контракт' width='20px' height='20px' name='work_type' value='contract' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Part-time' width='20px' height='20px' name='work_type' value={1} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Full-time' width='20px' height='20px' name='work_type' value={2} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Контракт' width='20px' height='20px' name='work_type' value={3} onChange={handleCheckBoxChange}></InputCheckbox>
 
                                 </div>
                                 <div>
                                     <FaHouseLaptop />
 
                                     <h4>Робоче середовище</h4>
-                                    <InputCheckbox label='Дистанційно' width='20px' height='20px' name='work_format' value='offline' onChange={handleCheckBoxChange}></InputCheckbox>
-                                    <InputCheckbox label='В офісі' width='20px' height='20px' name='work_format' value='online' onChange={handleCheckBoxChange}></InputCheckbox>
-                                    <InputCheckbox label='Гібридно' width='20px' height='20px' name='work_format' value='hybrid' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Дистанційно' width='20px' height='20px' name='work_format' value={1} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='В офісі' width='20px' height='20px' name='work_format' value={2} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Гібридно' width='20px' height='20px' name='work_format' value={3} onChange={handleCheckBoxChange}></InputCheckbox>
 
                                 </div>
                                 <div>
                                     <FaHandshakeAngle />
                                     <h4>Тип бізнесу</h4>
-                                    <InputCheckbox label='Startup' width='20px' height='20px' name='company_type' value='Startup ' onChange={handleCheckBoxChange}></InputCheckbox>
-                                    <InputCheckbox label='Product' width='20px' height='20px' name='company_type' value='Product  ' onChange={handleCheckBoxChange}></InputCheckbox>
-                                    <InputCheckbox label='Outsource' width='20px' height='20px' name='company_type' value='Outstaff  ' onChange={handleCheckBoxChange}></InputCheckbox>
-                                    <InputCheckbox label='Outstaff' width='20px' height='20px' name='company_type' value='Outsource ' onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Startup' width='20px' height='20px' name='type' value={1} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Product' width='20px' height='20px' name='type' value={2} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Outsource' width='20px' height='20px' name='type' value={3} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Outstaff' width='20px' height='20px' name='type' value={4} onChange={handleCheckBoxChange}></InputCheckbox>
                                 </div>
                             </div>
                         </div>
@@ -512,19 +519,19 @@ const Multiform = () => {
                         <div className="job-bullet-points">
                             <JobDescriptionCard title='Вид зайнятості' description={vacancy.work_type} icon={<LiaUserClockSolid />}></JobDescriptionCard>
                             <JobDescriptionCard title='Робоче середовище' description={vacancy.work_format} icon={<FaHouseLaptop />}></JobDescriptionCard>
-                            <JobDescriptionCard title='Тип бізнесу' description={vacancy.work_type} icon={<FaHandshakeAngle />}></JobDescriptionCard>
-                            <JobDescriptionCard title='Mови' description={vacancy.work_type} icon={<IoLanguageOutline />}></JobDescriptionCard>
-                            <JobDescriptionCard title='Діапазон заробітної плати' description={[`$${vacancy.salary_min}-`, `$${testVacancy.salary_max}`]} icon={<GiWallet />}></JobDescriptionCard>
+                            <JobDescriptionCard title='Тип бізнесу' description={vacancy.type} icon={<FaHandshakeAngle />}></JobDescriptionCard>
+                            <JobDescriptionCard title='Mови' description={vacancy.languages} icon={<IoLanguageOutline />}></JobDescriptionCard>
+                            <JobDescriptionCard title='Діапазон заробітної плати' description={[`$${vacancy.salary_min}-`, `$${vacancy.salary_max}`]} icon={<GiWallet />}></JobDescriptionCard>
 
                         </div>
                         <div className="job-description">
                             <h3>Опис роботи</h3>
                             <span>
-                                <p className='job-description-paragraph'>{testVacancy.description}</p>
+                                <p className='job-description-paragraph'>{vacancy.description}</p>
                                 <div className="skills-box">
                                     <h4>Skills</h4>
                                     <ul className='all-skills'>
-                                        {testVacancy.skills.map((skill, index) => (
+                                        {vacancy.skills.map((skill, index) => (
                                             <li key={index}>{skill}</li>
                                         ))}
                                     </ul>
@@ -586,7 +593,7 @@ const Multiform = () => {
             {step === 1 && (<CompanyVacancies />)}
             {step === 2 && (<ChooseMethodToCreate />)}
             {step === 3 && (<CreateVacancy />)}
-            {step === 4 && (<ConfirmCreatedVacancy vacancy={testVacancy}/>)}
+            {step === 4 && (<ConfirmCreatedVacancy vacancy={vacancyPassData}/>)}
             {step === 5 && (<VacancyCreated />)}
 
 {/* 

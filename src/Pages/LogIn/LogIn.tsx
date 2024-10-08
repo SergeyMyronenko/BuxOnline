@@ -33,6 +33,7 @@ const LogIn = () => {
     event.preventDefault();
     try {
       await login(userData.email, userData.password);
+      
       const myHeaders = new Headers();
       // local host doesnt allow this header...
       myHeaders.append("ngrok-skip-browser-warning", "69420");
@@ -49,6 +50,7 @@ const LogIn = () => {
         .then((response) => response.json())
         .then((result) => {
           // console.log(result)
+          // console.log("The sent token:", token);
           navigate(`/BuxOnline/company/cabinet/${result.id}`);
         })
         .catch((error) => console.error(error));
