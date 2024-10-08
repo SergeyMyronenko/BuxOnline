@@ -1,0 +1,98 @@
+@use "../../../../App.scss" as styles;
+
+.profile-info-wrapper {
+  width: 100%;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid styles.$grayForFill;
+  border-radius: 12px;
+
+  .profile-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .user-main-info {
+      width: 100%;
+      display: flex;
+      gap: 16px;
+
+      .user-image {
+        width: 150px;
+        height: 150px;
+        background-color: styles.$grayForFill;
+        border-radius: 12px;
+
+        img {
+          border-radius: 12px;
+        }
+      }
+
+      .user-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+
+        .main-info-area {
+          display: flex;
+          flex-direction: column;
+
+          .name {
+            font-size: 22px;
+            font-weight: 700;
+            color: styles.$blackForText;
+          }
+          .location {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            span {
+              font-size: 14px;
+              font-weight: 400;
+              color: styles.$grayForText;
+            }
+          }
+        }
+      }
+    }
+
+    .user-contacts {
+      width: 100%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid styles.$grayForFill;
+
+      .user-email,
+      .user-phone {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        span {
+          font-size: 14px;
+          font-weight: 400;
+          color: styles.$grayForText;
+        }
+        p {
+          font-size: 14px;
+          font-weight: 500;
+          color: styles.$blackForText;
+        }
+      }
+    }
+
+    .user-description {
+      font-size: 14px;
+      font-weight: 500;
+      color: styles.$blackForText;
+      text-align: left;
+    }
+  }
+}

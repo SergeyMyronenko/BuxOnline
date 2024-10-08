@@ -1,0 +1,51 @@
+@use "../../../../App.scss" as styles;
+
+.messages-and-events-wrapper {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border: 1px solid styles.$grayForFill;
+  border-radius: 12px;
+
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: styles.$blackForText;
+  }
+
+  .messages-and-events-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .messages-and-events-item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .item-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 20px;
+        color: styles.$lightBlue;
+      }
+
+      .amount {
+        font-size: 20px;
+        font-weight: 600;
+        color: styles.$blackForText;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+}

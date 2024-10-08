@@ -21,8 +21,14 @@
       justify-content: space-between;
       align-items: center;
 
-      h3 {
-        font-size: large;
+      .resumes-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        h3 {
+          font-size: large;
+        }
       }
     }
 
