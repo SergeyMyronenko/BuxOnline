@@ -46,12 +46,12 @@ const LogIn = () => {
         redirect: "follow",
       };
 
-      fetch(`${url}/auth/users/me/`, requestOptions)
+      await fetch(`${url}/auth/users/me/`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          // console.log(result)
+          console.log(result)
           // console.log("The sent token:", token);
-          navigate(`/BuxOnline/company/cabinet/${result.id}`);
+          navigate(`/BuxOnline/${result.role}/cabinet/${result.id}`);
         })
         .catch((error) => console.error(error));
 
