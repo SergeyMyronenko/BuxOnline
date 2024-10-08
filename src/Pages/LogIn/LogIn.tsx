@@ -33,6 +33,7 @@ const LogIn = () => {
     event.preventDefault();
     try {
       await login(userData.email, userData.password);
+      
       const myHeaders = new Headers();
       // local host doesnt allow this header...
       myHeaders.append("ngrok-skip-browser-warning", "69420");
@@ -45,11 +46,12 @@ const LogIn = () => {
         redirect: "follow",
       };
 
-      fetch(`${url}/auth/users/me/`, requestOptions)
+      await fetch(`${url}/auth/users/me/`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          // console.log(result)
-          navigate(`/BuxOnline/company/cabinet/${result.id}`);
+          console.log(result)
+          // console.log("The sent token:", token);
+          navigate(`/BuxOnline/${result.role}/cabinet/${result.id}`);
         })
         .catch((error) => console.error(error));
 

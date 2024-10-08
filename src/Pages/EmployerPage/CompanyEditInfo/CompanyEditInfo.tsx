@@ -4,7 +4,7 @@ import InputField from '../../../Components/Input/InputField/InputField';
 import InputArea from '../../../Components/Input/InputArea/InputArea';
 import useFormState  from '../../../Hooks/useFormState';
 
-import companyLogo from '../../.././assets/CompanyEditInfo.svg'
+// import companyLogo from '../../../../src/assets/CompanyEditInfo.svg;'
 const CompanyEditInfo = () => {
     const [userInfo, handleChange] = useFormState({
         company_name: '',
@@ -46,12 +46,10 @@ const CompanyEditInfo = () => {
                             }}
                         />
                     <label htmlFor="input-logo">Виберіть логотип</label>
-
                     </div>
                     <div className="logo-wrapper">
-                    <img src={companyLogo} alt="your company logo"  className='company-logo' />
-                    </div>
-                    
+                    <img src='https://placehold.co/256x256' alt="your company logo"  className='company-logo' />
+                    </div>                    
                 </div>
                 <div className="input-misc">
                     <InputField label='Назва компанії' placeholder='Наприклад: приватна особа, МСРК' type='text' id='company_name' initialValue='' onChange={handleChange}></InputField>

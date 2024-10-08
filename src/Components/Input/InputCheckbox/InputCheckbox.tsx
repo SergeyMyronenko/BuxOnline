@@ -9,7 +9,7 @@ interface InputCheckboxProps {
     width?: string;
     height?: string;
     required?: boolean;
-    value?: string;
+    value?: string|number;
 }
 
 
