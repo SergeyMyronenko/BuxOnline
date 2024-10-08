@@ -13,8 +13,8 @@ const ItemFavorite = () => {
                     </div>
                 </div>
                 <div className="info">
-                    <span>Шевченко Олена</span>
-                    <span>Кандідат <a href='#'>Back-end engineer</a></span>
+                    <span className="name">Шевченко Олена</span>
+                    <span className="position">Кандідат <a href='#'>Back-end engineer</a></span>
                     <div className="place-salary">
                         <div className="place">
                             <div>
@@ -27,8 +27,8 @@ const ItemFavorite = () => {
                         </div>
                         <div className="salary">
                             <div>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14 5H2M14 5C14.2652 5 14.5196 5.10536 14.7071 5.29289C14.8946 5.48043 15 5.73478 15 6V8.6M14 5L10 1M2 5C1.73478 5 1.48043 5.10536 1.29289 5.29289C1.10536 5.48043 1 5.73478 1 6V16C1 16.2652 1.10536 16.5196 1.29289 16.7071C1.48043 16.8946 1.73478 17 2 17H14C14.2652 17 14.5196 16.8946 14.7071 16.7071C14.8946 16.5196 15 16.2652 15 16V13.4M2 5L6 1L10 5M16 9H12C11.4696 9 10.9609 9.21071 10.5858 9.58579C10.2107 9.96086 10 10.4696 10 11C10 11.5304 10.2107 12.0391 10.5858 12.4142C10.9609 12.7893 11.4696 13 12 13H16C16.2652 13 16.5196 12.8946 16.7071 12.7071C16.8946 12.5196 17 12.2652 17 12V10C17 9.73478 16.8946 9.48043 16.7071 9.29289C16.5196 9.10536 16.2652 9 16 9Z" stroke="#3F7EE8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 8H5M17 8C17.2652 8 17.5196 8.10536 17.7071 8.29289C17.8946 8.48043 18 8.73478 18 9V11.6M17 8L13 4M5 8C4.73478 8 4.48043 8.10536 4.29289 8.29289C4.10536 8.48043 4 8.73478 4 9V19C4 19.2652 4.10536 19.5196 4.29289 19.7071C4.48043 19.8946 4.73478 20 5 20H17C17.2652 20 17.5196 19.8946 17.7071 19.7071C17.8946 19.5196 18 19.2652 18 19V16.4M5 8L9 4L13 8M19 12H15C14.4696 12 13.9609 12.2107 13.5858 12.5858C13.2107 12.9609 13 13.4696 13 14C13 14.5304 13.2107 15.0391 13.5858 15.4142C13.9609 15.7893 14.4696 16 15 16H19C19.2652 16 19.5196 15.8946 19.7071 15.7071C19.8946 15.5196 20 15.2652 20 15V13C20 12.7348 19.8946 12.4804 19.7071 12.2929C19.5196 12.1054 19.2652 12 19 12Z" stroke="#3F7EE8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                             <span>$2,500 / міс</span>
@@ -37,7 +37,7 @@ const ItemFavorite = () => {
                 </div>
             </div>
             <div className="heart-button">
-                <div className="wrapper-heart-buttton">
+                <div className="wrapper-heart-button">
                     <div className="button-contact">
                         <div className="message-icon">
                             <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
