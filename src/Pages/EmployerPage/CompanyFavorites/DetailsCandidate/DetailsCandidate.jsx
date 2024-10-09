@@ -14,20 +14,14 @@ const DetailsCandidate = () => {
     return (
         <div className="details-candidate">
             <div className="main-info">
-                <div className="main-info-wrapper-1">
-                    <PersonalData />
-                    <ContactData />
-                </div>
-                <div className="main-info-wrapper-2">
-                    <SalaryRange />
-                    <RoleInterest />
-                    <Languages />
-                </div>
-                <div className="main-info-wrapper-3">
-                    <TypeEnployment />
-                    <WorkingEnvironment />
-                    <BusinessType />
-                </div>
+                <PersonalData />
+                <ContactData />
+                <SalaryRange />
+                <RoleInterest />
+                <Languages />
+                <TypeEnployment />
+                <WorkingEnvironment />
+                <BusinessType />
             </div>
             <div className="work-history">
                 <h2 className="work-history-title">Трудова історія</h2>
