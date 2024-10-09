@@ -4,7 +4,7 @@ import { TbEdit } from "react-icons/tb";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaHouseLaptop, FaHandshakeAngle } from "react-icons/fa6";
 import { LiaUserClockSolid } from "react-icons/lia";
-import {HiOutlineLocationMarker} from "react-icons/hi";
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import { IoLanguageOutline } from "react-icons/io5";
 import { GiWallet } from "react-icons/gi";
 
@@ -18,10 +18,11 @@ import JobDescriptionCard from '../../../Components/JobDescriptionCard/JobDescri
 import './CompanyVacancies.scss';
 import useFormState from '../../../Hooks/useFormState';
 import { useAuth } from '../../../Hooks/useAuth';
-
-
+import { useModal } from '../../../Components/Modal/Modal';
+import Cookies from 'js-cookie';
 
 const Multiform = () => {
+    const { openModal, closeModal, Modal } = useModal();
     interface Vacancy {
         moderation_comment: string;
         title: string;
@@ -44,9 +45,9 @@ const Multiform = () => {
         skills: number[];
         status: string;
         idealCandidate: string;
-        
+
     }
-    interface VacancyProps{
+    interface VacancyProps {
         vacancy: Vacancy;
     }
     const testVacancy: Vacancy = {
@@ -74,18 +75,19 @@ const Multiform = () => {
     };
     const [vacancyPassData, setVacancyPassData] = useState<Vacancy>(testVacancy);
 
-    const { token, url } = useAuth();
+    const { token, url,userId } = useAuth();
     const CompanyVacancies = () => {
 
-     
+
         const dataPlaceholder = [{
             id: 1,
             name: "Back End Engineer",
             candidates: 0,
             submited: 0
         }];
-      
+
         return (
+
             <div className='vacancies-inner-wrapper'>
                 <span className='title-wrapper'>
                     <span>
@@ -280,7 +282,7 @@ const Multiform = () => {
         })
 
         useEffect(() => {
-            const myHeaders= new Headers();
+            const myHeaders = new Headers();
             myHeaders.append("ngrok-skip-browser-warning", "69420");
             // myHeaders.append("Content-Type", "application/json");
 
@@ -288,12 +290,12 @@ const Multiform = () => {
                 method: "GET",
                 redirect: "follow",
                 headers: myHeaders,
-                
+
             };
             //   fetch languages
             fetch(`${url}/jobs/languages/`, requestOptions)
                 .then((response) => response.json())
-                .then((result) => { setLanguages(result);handleLanguageChange(1, result[0].id); })
+                .then((result) => { setLanguages(result); handleLanguageChange(1, result[0].id); })
                 .catch((error) => console.error(error));
             // fetch skills
             fetch(`${url}/jobs/skills/`, requestOptions)
@@ -303,7 +305,7 @@ const Multiform = () => {
             // fetch subcategories
             fetch(`${url}/jobs/job-sub-categories/`, requestOptions)
                 .then((response) => response.json())
-                .then((result) => { setSubcategories(result);handleVacancyDataChange({target:{value:result[0].id,id:"subcategory"}});})
+                .then((result) => { setSubcategories(result); handleVacancyDataChange({ target: { value: result[0].id, id: "subcategory" } }); })
                 .catch((error) => console.error(error));
         }, [])
 
@@ -363,17 +365,13 @@ const Multiform = () => {
 
         const createVacancy = (event: React.FormEvent) => {
             event.preventDefault();
-
             console.log("Form sent")
-
             const myHeaders = new Headers();
-            myHeaders.append("Authorization", `JWT ${token}`);
+            // myHeaders.append("Authorization", `JWT ${token}`);
+            myHeaders.append("Authorization", `JWT ${Cookies.get('jwt')}`);
             myHeaders.append("Content-Type", "application/json");
-
-            
-            vacancyData.category=(subcategories.find(subcategory => subcategory.id == vacancyData.subcategory)!.category.id)
-
-
+            vacancyData.category = (subcategories.find(subcategory => subcategory.id == vacancyData.subcategory)!.category.id)
+            vacancyData.employer=userId;
             const raw = JSON.stringify(vacancyData);
             const requestOptions: RequestInit = {
                 method: "POST",
@@ -383,11 +381,23 @@ const Multiform = () => {
             };
 
             fetch(`${url}/jobs/jobs/`, requestOptions)
-                .then((response) => response.text())
-                .then((result) => {console.log(result);})
-                .catch((error) => console.error(error));
-            setVacancyPassData(vacancyData);
-            nextStep();
+                .then(async (result) => {
+                    if (result.ok) {
+                        nextStep();
+                        setVacancyPassData(vacancyData);
+                        console.log(result);
+                    }
+                    else {
+                        throw new Error(await result.text())
+                    }
+                }
+                )
+                .catch((error) => {                   
+                    openModal(error.message);
+                });
+
+
+
         }
 
         return (
@@ -498,7 +508,7 @@ const Multiform = () => {
                         </div>
 
 
-                                <SolidButton type='submit'>Далі</SolidButton>
+                        <SolidButton type='submit'>Далі</SolidButton>
 
                     </form>
                 </div>
@@ -506,48 +516,48 @@ const Multiform = () => {
             </>
         );
     };
-    const ConfirmCreatedVacancy: React.FC<VacancyProps> = ({vacancy} ) => {
+    const ConfirmCreatedVacancy: React.FC<VacancyProps> = ({ vacancy }) => {
         return (
             <>
-                
-                    <div className="confirm-inner-wrapper">
-                        <h2 className='title'>{vacancy.title}</h2>
-                        <h4 className='city'>
-                            <HiOutlineLocationMarker />
-                            {vacancy.city}
-                        </h4>
-                        <div className="job-bullet-points">
-                            <JobDescriptionCard title='Вид зайнятості' description={vacancy.work_type} icon={<LiaUserClockSolid />}></JobDescriptionCard>
-                            <JobDescriptionCard title='Робоче середовище' description={vacancy.work_format} icon={<FaHouseLaptop />}></JobDescriptionCard>
-                            <JobDescriptionCard title='Тип бізнесу' description={vacancy.type} icon={<FaHandshakeAngle />}></JobDescriptionCard>
-                            <JobDescriptionCard title='Mови' description={vacancy.languages} icon={<IoLanguageOutline />}></JobDescriptionCard>
-                            <JobDescriptionCard title='Діапазон заробітної плати' description={[`$${vacancy.salary_min}-`, `$${vacancy.salary_max}`]} icon={<GiWallet />}></JobDescriptionCard>
 
-                        </div>
-                        <div className="job-description">
-                            <h3>Опис роботи</h3>
-                            <span>
-                                <p className='job-description-paragraph'>{vacancy.description}</p>
-                                <div className="skills-box">
-                                    <h4>Skills</h4>
-                                    <ul className='all-skills'>
-                                        {vacancy.skills.map((skill, index) => (
-                                            <li key={index}>{skill}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </span>
-                        </div>
-                        <SolidButton onClick={()=>{nextStep()}}>Далі</SolidButton>
+                <div className="confirm-inner-wrapper">
+                    <h2 className='title'>{vacancy.title}</h2>
+                    <h4 className='city'>
+                        <HiOutlineLocationMarker />
+                        {vacancy.city}
+                    </h4>
+                    <div className="job-bullet-points">
+                        <JobDescriptionCard title='Вид зайнятості' description={vacancy.work_type} icon={<LiaUserClockSolid />}></JobDescriptionCard>
+                        <JobDescriptionCard title='Робоче середовище' description={vacancy.work_format} icon={<FaHouseLaptop />}></JobDescriptionCard>
+                        <JobDescriptionCard title='Тип бізнесу' description={vacancy.type} icon={<FaHandshakeAngle />}></JobDescriptionCard>
+                        <JobDescriptionCard title='Mови' description={vacancy.languages} icon={<IoLanguageOutline />}></JobDescriptionCard>
+                        <JobDescriptionCard title='Діапазон заробітної плати' description={[`$${vacancy.salary_min}-`, `$${vacancy.salary_max}`]} icon={<GiWallet />}></JobDescriptionCard>
+
                     </div>
-               
+                    <div className="job-description">
+                        <h3>Опис роботи</h3>
+                        <span>
+                            <p className='job-description-paragraph'>{vacancy.description}</p>
+                            <div className="skills-box">
+                                <h4>Skills</h4>
+                                <ul className='all-skills'>
+                                    {vacancy.skills.map((skill, index) => (
+                                        <li key={index}>{skill}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </span>
+                    </div>
+                    <SolidButton onClick={() => { nextStep() }}>Далі</SolidButton>
+                </div>
+
             </>
         );
     };
 
     const VacancyCreated = () => {
         const [idealCandidate, setIdealCandidate] = useState('');
-        useEffect(() => {console.log(idealCandidate)},[idealCandidate])
+        useEffect(() => { console.log(idealCandidate) }, [idealCandidate])
         return (
             <>
                 <div className="created-inner-wrapper">
@@ -562,12 +572,12 @@ const Multiform = () => {
                     <div className="best-fit-wrapper">
                         <h1>Ідеальна особа кандидата</h1>
                         <InputArea initialValue={idealCandidate} setValue={setIdealCandidate} id='idealCandidate'></InputArea>
-               
-                            <SolidButton onClick={()=>{nextStep()}}>Далі</SolidButton>
-                       
+
+                        <SolidButton onClick={() => { nextStep() }}>Далі</SolidButton>
+
                     </div>
                 </div>
-    
+
             </>
         );
     };
@@ -578,7 +588,7 @@ const Multiform = () => {
             return;
         }
         setStep(step + 1);
-        
+
     };
     const previousStep = () => {
         if (step === 1) {
@@ -588,19 +598,21 @@ const Multiform = () => {
     };
 
     return (
+        <>
+            <Modal></Modal>
+            <div className="vacancies-wrapper">
+                {step === 1 && (<CompanyVacancies />)}
+                {step === 2 && (<ChooseMethodToCreate />)}
+                {step === 3 && (<CreateVacancy />)}
+                {step === 4 && (<ConfirmCreatedVacancy vacancy={vacancyPassData} />)}
+                {step === 5 && (<VacancyCreated />)}
 
-        <div className="vacancies-wrapper">
-            {step === 1 && (<CompanyVacancies />)}
-            {step === 2 && (<ChooseMethodToCreate />)}
-            {step === 3 && (<CreateVacancy />)}
-            {step === 4 && (<ConfirmCreatedVacancy vacancy={vacancyPassData}/>)}
-            {step === 5 && (<VacancyCreated />)}
-
-{/* 
+                {/* 
             <SolidButton type='submit' onClick={()=>previousStep()} >Назад</SolidButton>
             <SolidButton type='submit'onClick={()=>nextStep()} >Далі</SolidButton> */}
 
-        </div >
+            </div >
+        </>
     );
 };
 

@@ -4,6 +4,8 @@ import Cookies from 'js-cookie';
 interface AuthContextType {
     url:string;
     token: string | null;
+    userId:number;
+    setUserId:(id:number)=>void;
     login: (email: string, password: string) => Promise<void>;
     logout: () => void;
     refreshToken: () => Promise<void>;
@@ -56,6 +58,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     const url='https://glowing-boa-definite.ngrok-free.app';
 
     const [token, setToken] = useState<string | null>(null);
+    const [userId, setUserId] = useState<number>(1);
+
 
     useEffect(() => {
         const storedToken = Cookies.get('jwt');
@@ -91,7 +95,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             Cookies.set('refreshToken', result.refresh, { expires: 7 }); // Store refresh token for 7 days
             console.log("successfull login");
         } else {
-            throw new Error(`Login failed: ${await response.text()}`);
+            throw new Error(await response.text());
         }
 
     };
@@ -132,7 +136,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ token, login, logout, refreshToken,url }}>
+        <AuthContext.Provider value={{ token, login, logout, refreshToken,url,userId,setUserId }}>
             {children}
         </AuthContext.Provider>
     );
