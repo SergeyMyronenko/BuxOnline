@@ -1,7 +1,6 @@
 import { Children, useState } from "react";
 import "./Filter.scss";
 
-import { CgClose } from "react-icons/cg";
 import { lift } from "@tiptap/pm/commands";
 import FilterItem from "../FilterItem/FilterItem";
 
@@ -27,6 +26,7 @@ const Filter = ({
   const [handleCloseCategory, handleCloseCompany, handleCloseDate] = onClose;
   const [isVisibleCategory, isVisibleCompany, isVisibleDate] = isVisible;
   const [selectedCategories, selectedCompanies] = selectedItems;
+
   const findedVacancy = filter > 0 ? filter.length : cards.length;
 
   return (
@@ -37,41 +37,31 @@ const Filter = ({
           <p className="clear">Очистити фільтр</p>
         </button>
         <ul className="filter-list">
-          {isVisibleCategory && (
+          {isVisibleCategory &&
+            selectedCategories.map((item) => {
+              return (
+                <li key={item} className="filter-item">
+                  <FilterItem onClose={handleCloseCategory} title={item} />
+                </li>
+              );
+            })}
+
+          {isVisibleCompany &&
+            selectedCompanies.map((item) => {
+              return (
+                <li key={item}>
+                  <FilterItem onClose={handleCloseCategory} title={item} />
+                </li>
+              );
+            })}
+          {/* {isVisibleDate && (
             <FilterItem>
               <li className="wrapper">
-                {selectedCategories.forEach((element) => {
-                  <p className="">{element}</p>;
-                })}
-                <CgClose
-                  onClick={handleCloseCategory}
-                  style={{ cursor: "pointer" }}
-                />
+                <p className=""></p>
+
               </li>
             </FilterItem>
-          )}
-          {isVisibleCompany && (
-            <FilterItem>
-              <li className="wrapper">
-                <p className="">{selectedCompanies}</p>
-                <CgClose
-                  onClick={handleCloseCompany}
-                  style={{ cursor: "pointer" }}
-                />
-              </li>
-            </FilterItem>
-          )}
-          {isVisibleDate && (
-            <FilterItem>
-              <li className="wrapper">
-                <p className="">{filter.name}</p>
-                <CgClose
-                  onClick={handleCloseDate}
-                  style={{ cursor: "pointer" }}
-                />
-              </li>
-            </FilterItem>
-          )}
+          )} */}
         </ul>
         {/* {isVisibleCategory && (
           <button
