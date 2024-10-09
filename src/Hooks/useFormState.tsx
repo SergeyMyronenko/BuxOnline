@@ -9,9 +9,14 @@ import { useState, ChangeEvent } from 'react';
  *
  * @example
  * const [formState, handleChange] = useFormState({ name: '', email: '' });
- *
+ * 
+ * Manual update of form state: *
+ * <handleChange>({ target: { value: <your value>, id: <the id of the related form field> } })
+ * 
+ * Automatic update of form state:
  * <input id="name" value={formState.name} onChange={handleChange} />
  * <input id="email" value={formState.email} onChange={handleChange} />
+ * 
  */
 const useFormState = <T extends Record<string, any>>(initialState: T) => {
     const [formState, setFormState] = useState<T>(initialState);
