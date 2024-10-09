@@ -1,8 +1,16 @@
+.details-candidate {
+    margin-top: 70px;
+}
+
 .main-info {
     display: grid;
     gap: 50px 20px;
+    margin-bottom: 130px;
 
     >* {
+        border: 1px solid #BCBCBC;
+        border-radius: 12px;
+
         &:nth-child(1) {
             grid-column: 1 / 2;
         }
@@ -34,5 +42,17 @@
         &:nth-child(8) {
             grid-column: 3 / 4;
         }
+    }
+
+    .main-info-child {
+        padding: 30px 25px;
+
+        .main-info-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 0px auto 40px;
+        } 
     }
 }
