@@ -7,473 +7,22 @@ import titleImage from "../../assets/vacancyTitleImg.png";
 import InputCheckbox from "../Input/InputCheckbox/InputCheckbox";
 import InputRadioBtn from "../Input/InputRadioBtn/InputRadioBtn";
 import { useAuth } from "../../Hooks/useAuth";
-
-const jobs = [
-  {
-    id: 1,
-    skills: [
-      {
-        id: 1,
-        name: "Html",
-      },
-      {
-        id: 2,
-        name: "Css",
-      },
-      {
-        id: 3,
-        name: "PHP",
-      },
-      {
-        id: 4,
-        name: "jQuery",
-      },
-      {
-        id: 5,
-        name: "Symfony",
-      },
-    ],
-    category: 5,
-    subcategory: 5,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "25000",
-    salary_max: "30000",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: "Portugal",
-    employer: 1,
-  },
-  {
-    id: 2,
-    skills: [
-      {
-        id: 1,
-        name: "Html",
-      },
-    ],
-    category: 2,
-    subcategory: 6,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 2,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: "Україна",
-    employer: 1,
-  },
-  {
-    id: 3,
-    skills: [
-      {
-        id: 1,
-        name: "Css",
-      },
-      {
-        id: 2,
-        name: "React",
-      },
-    ],
-    category: 4,
-    subcategory: 6,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 3,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: "Spain",
-    employer: 1,
-  },
-  {
-    id: 4,
-    skills: [
-      {
-        id: 1,
-        name: "Html",
-      },
-      {
-        id: 2,
-        name: "Css",
-      },
-      {
-        id: 3,
-        name: "PHP",
-      },
-      {
-        id: 4,
-        name: "jQuery",
-      },
-      {
-        id: 5,
-        name: "Symfony",
-      },
-    ],
-    category: 5,
-    subcategory: 3,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: "Україна",
-    employer: 1,
-  },
-  {
-    id: 5,
-    skills: [
-      {
-        id: 1,
-        name: "Html",
-      },
-      {
-        id: 2,
-        name: "Css",
-      },
-      {
-        id: 3,
-        name: "PHP",
-      },
-      {
-        id: 4,
-        name: "jQuery",
-      },
-      {
-        id: 5,
-        name: "Symfony",
-      },
-    ],
-    category: 6,
-    subcategory: 4,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "25000",
-    salary_max: "30000",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: "Portugal",
-    position: "Senior Software Engineer",
-    employer: 1,
-  },
-  {
-    id: 6,
-    skills: [
-      {
-        id: 1,
-        name: "Html",
-      },
-      {
-        id: 2,
-        name: "Css",
-      },
-      {
-        id: 3,
-        name: "PHP",
-      },
-    ],
-    category: 2,
-    subcategory: 4,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 2,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 7,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: null,
-    subcategory: 5,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 3,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 8,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: null,
-    subcategory: 6,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 9,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: null,
-    subcategory: 7,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-];
+import CompanyList from "../../../company.json";
 
 const MyOffice = () => {
   const [cards, setCards] = useState([]);
   const [isActive, setIsActive] = useState("vacancy");
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState(CompanyList);
+  const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [datePeriod, setDatePeriod] = useState({ from: "", to: "" });
   const [isChecked, setIsChecked] = useState(false);
   const [vacancies, setVacancies] = useState(0);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [selectedRadio, setSelectedRadio] = useState(null);
+
+  const selectedItems = [selectedCategories, selectedCompanies];
 
   const URL = "https://glowing-boa-definite.ngrok-free.app";
   const myHeaders = new Headers();
@@ -504,19 +53,23 @@ const MyOffice = () => {
   };
 
   const handleCheckCategory = (categoryName) => {
-    setSelectedCategories((prevSelected) =>
-      prevSelected.includes(categoryName)
+    setSelectedCategories((prevSelected) => {
+      const updatedCategories = prevSelected.includes(categoryName)
         ? prevSelected.filter((name) => name !== categoryName)
-        : [...prevSelected, categoryName]
-    );
+        : [...prevSelected, categoryName];
+
+      return updatedCategories;
+    });
   };
 
   const handleCheckCompanies = (companyName) => {
-    setCompanies((prevSelected) =>
-      prevSelected.includes(companyName)
+    setSelectedCompanies((prevSelected) => {
+      const updateCompanies = prevSelected.includes(companyName)
         ? prevSelected.filter((name) => name !== companyName)
-        : [...prevSelected, companyName]
-    );
+        : [...prevSelected, companyName];
+
+      return updateCompanies;
+    });
   };
 
   const handleChackDate = (selectedDate) => {
@@ -567,6 +120,16 @@ const MyOffice = () => {
     }
   };
 
+  const getCompanies = async () => {
+    const res = await fetch(`${URL}/auth/users`, requestOptions);
+
+    if (!res.ok) {
+      throw new Error(`Not found: ${res.text()}`);
+    }
+    const data = await res.json();
+    setCompanies(data);
+  };
+
   const getJobsCategories = async () => {
     const BASE_URL = "https://glowing-boa-definite.ngrok-free.app";
 
@@ -610,6 +173,7 @@ const MyOffice = () => {
   useEffect(() => {
     getCards();
     getJobsCategories();
+    // getCompanies();
   }, []);
 
   return (
@@ -655,7 +219,7 @@ const MyOffice = () => {
                   <li key={category.id}>
                     <InputCheckbox
                       label={category.name}
-                      onChange={() => {
+                      onClick={() => {
                         handleCheckCategory(category.name);
                       }}
                     ></InputCheckbox>
@@ -665,36 +229,23 @@ const MyOffice = () => {
             </ul>
           </Accordion>
           <Accordion accordionTitle="Компанії">
-            <InputCheckbox
-              label="SoftServe"
-              onChange={() => {
-                handleCheckCompanies("softserve");
-              }}
-            ></InputCheckbox>
-            <InputCheckbox
-              label="Nakivo"
-              onChange={() => {
-                handleCheckCompanies("nakivo");
-              }}
-            ></InputCheckbox>
-            <InputCheckbox
-              label="MCPK"
-              onChange={() => {
-                handleCheckCompanies("mcpk");
-              }}
-            ></InputCheckbox>
-            <InputCheckbox
-              label="GlobalLogic"
-              onChange={() => {
-                handleCheckCompanies("globallogic");
-              }}
-            ></InputCheckbox>
-            <InputCheckbox
-              label="Luxoft"
-              onChange={() => {
-                handleCheckCompanies("luxoft");
-              }}
-            ></InputCheckbox>
+            {companies.map((company, i) => {
+              if (!company.company_name) {
+                return;
+              }
+
+              return (
+                <li key={i}>
+                  <InputCheckbox
+                    label={company.company_name}
+                    onClick={() => {
+                      handleCheckCompanies(company.company_name);
+                      console.log(company.company_name);
+                    }}
+                  ></InputCheckbox>
+                </li>
+              );
+            })}
           </Accordion>
           <Accordion accordionTitle="За датою">
             <InputRadioBtn
@@ -752,7 +303,12 @@ const MyOffice = () => {
             Застосувати фільтр
           </button>
         </form>
-        <MainContent filter={filteredJobs} cards={cards} reset={resetFilters} />
+        <MainContent
+          filter={filteredJobs}
+          cards={cards}
+          reset={resetFilters}
+          selectedItems={selectedItems}
+        />
       </div>
     </div>
   );

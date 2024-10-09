@@ -1,0 +1,157 @@
+[
+  {
+    "id": 4,
+    "email": "zxc@gmail.com",
+    "role": "employee",
+    "name": "maxdsd",
+    "surname": "zxczxc",
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 5,
+    "email": "",
+    "role": "employee",
+    "name": "Дмитро",
+    "surname": "Кукуляк",
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 6,
+    "email": "admin123@gmail.com",
+    "role": "employee",
+    "name": "",
+    "surname": "",
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 7,
+    "email": "admin123232@gmail.com",
+    "role": "employee",
+    "name": "",
+    "surname": "",
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 8,
+    "email": "testuse2",
+    "role": "employee",
+    "name": "Dmytro",
+    "surname": "Kukuliak",
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 9,
+    "email": "testuse3",
+    "role": "employee",
+    "name": "Dmytro",
+    "surname": "Kukuliak",
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 10,
+    "email": "admin121233@gmail.com",
+    "role": "employee",
+    "name": "",
+    "surname": "",
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 11,
+    "email": "testuse4",
+    "role": "employee",
+    "name": "Dmytro2",
+    "surname": "Kukuliak2",
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 12,
+    "email": "placeholder",
+    "role": "employee",
+    "name": null,
+    "surname": null,
+    "photo": null,
+    "telegram_id": null,
+    "type": "pending"
+  },
+  {
+    "id": 13,
+    "email": "placeholderssds",
+    "role": "employer",
+    "name": null,
+    "surname": null,
+    "photo": null,
+    "telegram_id": null,
+    "company_name": "Luxoft",
+    "type": "pending"
+  },
+  {
+    "id": 16,
+    "email": "registrationtesting@gmail.com",
+    "role": "employer",
+    "name": null,
+    "surname": null,
+    "photo": null,
+    "telegram_id": null,
+    "company_name": "GlobalLogic",
+    "type": "pending"
+  },
+  {
+    "id": 17,
+    "email": "yimew70973@adambra.com",
+    "role": "employer",
+    "name": "",
+    "surname": "",
+    "photo": null,
+    "telegram_id": null,
+    "company_name": "MCPK",
+    "type": ""
+  },
+  {
+    "id": 18,
+    "email": "ira.ryzha2803@gmail.com",
+    "role": "employee",
+    "name": "",
+    "surname": "",
+    "photo": null,
+    "telegram_id": null,
+    "type": null
+  },
+  {
+    "id": 19,
+    "email": "jynz4yjj@mailpwr.com",
+    "role": "employer",
+    "name": "",
+    "surname": "",
+    "photo": null,
+    "telegram_id": null,
+    "company_name": "SoftServe",
+    "type": ""
+  },
+  {
+    "id": 22,
+    "email": "868@gmail.com",
+    "role": "employer",
+    "name": "",
+    "surname": "",
+    "photo": null,
+    "telegram_id": null,
+    "company_name": "Nakivo",
+    "type": ""
+  }
+]

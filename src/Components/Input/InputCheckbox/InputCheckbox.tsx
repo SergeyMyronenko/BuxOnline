@@ -1,17 +1,16 @@
-import React from 'react';
-import './InputCheckbox.scss';
+import React from "react";
+import "./InputCheckbox.scss";
 
 interface InputCheckboxProps {
-    label?: string;
-    id?: string;
-    name?: string;
-    onChange?: (event?: any) => void;
-    width?: string;
-    height?: string;
-    required?: boolean;
-    value?: string|number;
+  label?: string;
+  id?: string;
+  name?: string;
+  onClick?: (event?: any) => void;
+  width?: string;
+  height?: string;
+  required?: boolean;
+  value?: string | number;
 }
-
 
 /**
  * InputCheckbox component renders a customizable checkbox input with a label.
@@ -26,24 +25,35 @@ interface InputCheckboxProps {
  * @param {boolean} [props.required=false] - Whether the checkbox input is required.
  * @returns {JSX.Element} The rendered InputCheckbox component.
  */
-const InputCheckbox: React.FC<InputCheckboxProps> = ({ label, onChange, id, width, height,required=false,name,value }) => {
-    return (
-        <div className="subcategory-wrapper">
-            <div className="checkbox-wrapper">
-                <input
-                    type="checkbox"
-                    //either use the id or the label as the id
-                    id={id || label}
-                    onChange={onChange}
-                    style={{ width, height }}
-                    required={required}
-                    name={name}
-                    value={value}
-                />
-            </div>
-            <label htmlFor={id || label}><h6>{label}</h6></label>
-        </div>
-    );
+const InputCheckbox: React.FC<InputCheckboxProps> = ({
+  label,
+  onClick,
+  id,
+  width,
+  height,
+  required = false,
+  name,
+  value,
+}) => {
+  return (
+    <div className="subcategory-wrapper">
+      <div className="checkbox-wrapper">
+        <input
+          type="checkbox"
+          //either use the id or the label as the id
+          id={id || label}
+          onChange={onClick}
+          style={{ width, height }}
+          required={required}
+          name={name}
+          value={value}
+        />
+      </div>
+      <label htmlFor={id || label}>
+        <h6>{label}</h6>
+      </label>
+    </div>
+  );
 };
 
 export default InputCheckbox;

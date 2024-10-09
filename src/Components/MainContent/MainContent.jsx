@@ -4,7 +4,7 @@ import "./MainContent.scss";
 import Filter from "../Filter/Filter";
 import { useParams } from "react-router";
 
-const MainContent = ({ filter, cards, reset }) => {
+const MainContent = ({ filter, cards, reset, selectedItems }) => {
   const [isVisibleCategory, setIsVisibleCategory] = useState(true);
   const [isVisibleCompany, setIsVisibleCompany] = useState(true);
   const [isVisibleDate, setIsVisibleDate] = useState(true);
@@ -48,6 +48,7 @@ const MainContent = ({ filter, cards, reset }) => {
         filter={filter}
         cards={cards}
         reset={reset}
+        selectedItems={selectedItems}
       />
       <ul className="job-card-list">
         {itemsOnPage.length > 0 ? (
