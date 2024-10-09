@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
+// Icons
 import { TbEdit } from "react-icons/tb";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaHouseLaptop, FaHandshakeAngle } from "react-icons/fa6";
@@ -8,6 +11,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { IoLanguageOutline } from "react-icons/io5";
 import { GiWallet } from "react-icons/gi";
 
+// Components
 import SolidButton from '../../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../../Components/Input/InputField/InputField';
 import InputSelect from '../../../Components/Input/InputSelect/InputSelect';
@@ -15,14 +19,17 @@ import InputCheckbox from '../../../Components/Input/InputCheckbox/InputCheckbox
 import InputArea from '../../../Components/Input/InputArea/InputArea';
 import MultipleSelect from '../../../Components/MultipleSelect/MultipleSelect';
 import JobDescriptionCard from '../../../Components/JobDescriptionCard/JobDescriptionCard';
-import './CompanyVacancies.scss';
+import { useModal } from '../../../Components/Modal/Modal';
+
+// Hooks
 import useFormState from '../../../Hooks/useFormState';
 import { useAuth } from '../../../Hooks/useAuth';
-import { useModal } from '../../../Components/Modal/Modal';
-import Cookies from 'js-cookie';
+
+// Styles
+import './CompanyVacancies.scss';
 
 const Multiform = () => {
-    const { openModal, closeModal, Modal } = useModal();
+    const { openModal, Modal } = useModal();
     interface Vacancy {
         moderation_comment: string;
         title: string;
@@ -74,9 +81,10 @@ const Multiform = () => {
         idealCandidate: 'The ideal candidate should be experienced in test automation and have strong problem-solving skills.'
     };
     const [vacancyPassData, setVacancyPassData] = useState<Vacancy>(testVacancy);
+    const { token, url, userId } = useAuth();
 
-    const { token, url,userId } = useAuth();
-    const CompanyVacancies = () => {
+
+   const CompanyVacancies = () => {
 
 
         const dataPlaceholder = [{
@@ -143,7 +151,9 @@ const Multiform = () => {
         )
     };
 
+    
     const ChooseMethodToCreate = () => {
+  
         const [fileName, setFileName] = useState('');
 
         const handleFileChange = (event) => {
@@ -248,7 +258,8 @@ const Multiform = () => {
         );
     };
 
-    const CreateVacancy = () => {
+    const CreateVacancy = () => {      
+
         const [languages, setLanguages] = useState([{ id: 0, name: '', level: '' }]);
         const [skills, setSkills] = useState([{ id: 0, name: '' }]);
         const [subcategories, setSubcategories] = useState([{ id: 0, category: { id: 0, name: '' }, name: '' }]);
@@ -371,7 +382,7 @@ const Multiform = () => {
             myHeaders.append("Authorization", `JWT ${Cookies.get('jwt')}`);
             myHeaders.append("Content-Type", "application/json");
             vacancyData.category = (subcategories.find(subcategory => subcategory.id == vacancyData.subcategory)!.category.id)
-            vacancyData.employer=userId;
+            vacancyData.employer = userId;
             const raw = JSON.stringify(vacancyData);
             const requestOptions: RequestInit = {
                 method: "POST",
@@ -392,7 +403,7 @@ const Multiform = () => {
                     }
                 }
                 )
-                .catch((error) => {                   
+                .catch((error) => {
                     openModal(error.message);
                 });
 

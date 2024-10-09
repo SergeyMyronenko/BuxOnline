@@ -1,13 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
 import { useAuth } from "../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";
-import InputField from "../../Components/Input/InputField/InputField";
 import useFormState from "../../Hooks/useFormState";
 import { useModal } from "../../Components/Modal/Modal";
+
+import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";
+import InputField from "../../Components/Input/InputField/InputField";
+
 import "./LogIn.scss";
-import Cookies from "js-cookie";
 /**
  * LogIn component renders a login form with options to log in via Google, LinkedIn, or GitHub,
  * as well as through email and password.
@@ -39,6 +41,7 @@ const LogIn = () => {
       myHeaders.append("ngrok-skip-browser-warning", "69420");
       myHeaders.append("Content-Type", "application/json");
       // myHeaders.append("Authorization", `JWT ${token}`);
+      //it's supposed to be {token}, but it does not work the first time, you need to login twice
       myHeaders.append("Authorization", `JWT ${Cookies.get("jwt")}`);
 
 
