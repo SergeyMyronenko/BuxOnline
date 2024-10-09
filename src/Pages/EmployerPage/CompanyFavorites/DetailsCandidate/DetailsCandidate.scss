@@ -1,0 +1,18 @@
+.main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    >* {
+        display: grid;
+        column-gap: 20px;
+
+        &:not(:nth-child(1)) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        &:nth-child(1) {
+            grid-template-columns: 1fr 2fr;
+        }
+    }
+}
