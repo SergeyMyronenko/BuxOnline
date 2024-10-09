@@ -1,20 +1,21 @@
 import React from 'react';
 import './CompanyFavorites.scss';
 
-import TitleFavorites from './TitleFavorites';
-import TitleProfile from './TitleProfile';
-import BlockFavorites from './BlockFavorites';
+import TitleFavorites from './TitleFavorites/TitleFavorites';
+import TitleProfile from './TitleProfile/TitleProfile';
+import BlockFavorites from './BlockFavorites/BlockFavorites';
+import DetailsCandidate from './DetailsCandidate/DetailsCandidate';
 
 const CompanyFavorites = () => {
  
-    const flag = false;
+    let flag = false;
 
     return (
         <div>
             <div className="my-div">
                 { flag ? <TitleFavorites /> : <TitleProfile /> }
             </div>
-            <BlockFavorites />
+            { flag ? <BlockFavorites /> : <DetailsCandidate /> }
         </div>
     );
 };

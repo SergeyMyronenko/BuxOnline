@@ -1,7 +1,7 @@
 import React from 'react';
 import './BlockFavorites.scss';
 
-import ItemFavorite from './ItemFavorite';
+import ItemFavorite from '../ItemFavorite/ItemFavorite';
 
 const BlockFavorites = () => {
     const flag = true;
