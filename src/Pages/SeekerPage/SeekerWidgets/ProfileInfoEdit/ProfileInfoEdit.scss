@@ -1,0 +1,66 @@
+@use "../../../../App.scss" as styles;
+
+.profile-info-edit-wrapper {
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  padding: 32px;
+  border: 1px solid styles.$grayForFill;
+  border-radius: 12px;
+
+  .seeker-photo {
+    width: 240px;
+    height: 240px;
+    background-color: styles.$lightBlue;
+    border-radius: 12px;
+  }
+
+  .seeker-data {
+    width: calc(100% - 240px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .seeker-info-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+
+      .seeker-info {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border: 1px solid styles.$grayForFill;
+        border-radius: 12px;
+
+        h3 {
+          font-size: 22px;
+          font-weight: 700;
+          color: styles.$blackForText;
+        }
+
+        .other-info {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          p {
+            font-size: 16px;
+            font-weight: 400;
+            color: styles.$blackForText;
+            span {
+              margin-left: 3px;
+              &.editing {
+                color: styles.$lightBlue;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
