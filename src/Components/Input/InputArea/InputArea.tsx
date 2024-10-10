@@ -10,7 +10,8 @@ import './InputArea.scss';
 
 interface InputAreaProps {
     initialValue?: string;
-    setValue: (value: string) => void;
+    id:string;
+    setValue: (value: string,id:string) => void;
 }
 
 /**
@@ -27,7 +28,7 @@ interface InputAreaProps {
  * @example
  * <InputArea setValue={handleSetValue} />
  */
-const InputArea: React.FC<InputAreaProps> = ({ setValue,initialValue }) => {
+const InputArea: React.FC<InputAreaProps> = ({ setValue,initialValue,id }) => {
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -37,7 +38,7 @@ const InputArea: React.FC<InputAreaProps> = ({ setValue,initialValue }) => {
         ],       
         onUpdate(props) {
            const content = props.editor.getHTML();
-           setValue(content);
+           setValue(content,id);
         },
         content: initialValue,
     });

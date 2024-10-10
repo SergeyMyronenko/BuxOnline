@@ -1,0 +1,12 @@
+.filter-wrapper {
+  display: flex;
+  gap: 16px;
+  padding: 8px 12px;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid #3f7ee8;
+
+  .filter-title {
+    color: #3f7ee8;
+  }
+}

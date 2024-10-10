@@ -1,34 +1,101 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
+// Icons
 import { TbEdit } from "react-icons/tb";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaHouseLaptop, FaHandshakeAngle } from "react-icons/fa6";
 import { LiaUserClockSolid } from "react-icons/lia";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { IoLanguageOutline } from "react-icons/io5";
+import { GiWallet } from "react-icons/gi";
 
+// Components
 import SolidButton from '../../../Components/Buttons/SolidButton/SolidButton';
 import InputField from '../../../Components/Input/InputField/InputField';
 import InputSelect from '../../../Components/Input/InputSelect/InputSelect';
 import InputCheckbox from '../../../Components/Input/InputCheckbox/InputCheckbox';
 import InputArea from '../../../Components/Input/InputArea/InputArea';
 import MultipleSelect from '../../../Components/MultipleSelect/MultipleSelect';
+import JobDescriptionCard from '../../../Components/JobDescriptionCard/JobDescriptionCard';
+import { useModal } from '../../../Components/Modal/Modal';
 
-import './CompanyVacancies.scss';
+// Hooks
 import useFormState from '../../../Hooks/useFormState';
 import { useAuth } from '../../../Hooks/useAuth';
 
-
+// Styles
+import './CompanyVacancies.scss';
 
 const Multiform = () => {
+    const { openModal, Modal } = useModal();
+    interface Vacancy {
+        moderation_comment: string;
+        title: string;
+        name_company: string;
+        description: string;
+        required_experience: number;
+        city: string;
+        salary_min: number;
+        salary_max: number;
+        languages: number[];
+        subcategory: number;
+        category: number;
+        education_levels: number[];
+        work_type: number[];
+        work_format: number[];
+        type: number[];
+        country: string;
+        position: string;
+        employer: number;
+        skills: number[];
+        status: string;
+        idealCandidate: string;
 
-    const {token,url} = useAuth();
-    const CompanyVacancies = () => {
+    }
+    interface VacancyProps {
+        vacancy: Vacancy;
+    }
+    const testVacancy: Vacancy = {
+        moderation_comment: 'Test comment',
+        title: 'Test Vacancy',
+        name_company: 'Test Company',
+        description: 'This is a test description for the vacancy.',
+        required_experience: 3,
+        city: 'Test City',
+        salary_min: 50000,
+        salary_max: 70000,
+        languages: [1, 2],
+        subcategory: 1,
+        category: 1,
+        education_levels: [1, 2],
+        work_type: [1, 2],
+        work_format: [1, 2],
+        type: [1, 2],
+        country: 'Test Country',
+        position: 'Test Position',
+        employer: 1,
+        skills: [1, 2, 3],
+        status: 'active',
+        idealCandidate: 'The ideal candidate should be experienced in test automation and have strong problem-solving skills.'
+    };
+    const [vacancyPassData, setVacancyPassData] = useState<Vacancy>(testVacancy);
+    const { token, url, userId } = useAuth();
+
+
+   const CompanyVacancies = () => {
+
+
         const dataPlaceholder = [{
             id: 1,
             name: "Back End Engineer",
             candidates: 0,
             submited: 0
         }];
+
         return (
+
             <div className='vacancies-inner-wrapper'>
                 <span className='title-wrapper'>
                     <span>
@@ -84,7 +151,9 @@ const Multiform = () => {
         )
     };
 
+    
     const ChooseMethodToCreate = () => {
+  
         const [fileName, setFileName] = useState('');
 
         const handleFileChange = (event) => {
@@ -135,7 +204,7 @@ const Multiform = () => {
 
                             </div>
                             <form action="">
-                                <InputSelect label="Шаблони" options={["Шаблон 1", "Шаблон 2", "Шаблон 3"]} id='template'></InputSelect>
+                                <InputSelect label="Шаблони" options={[{ name: "Шаблон 1", value: 1 }, { name: "Шаблон 2", value: 2 }, { name: "Шаблон 3", value: 3 }]} id='template'></InputSelect>
                                 <SolidButton type="submit" width='100%' borderRadius='20px'> Завантажити </SolidButton>
 
                             </form>
@@ -177,9 +246,9 @@ const Multiform = () => {
 
                             </div>
                             {/* the styles for these card are applied to the form element, so it is here to use them*/}
-                            {/* <form action=""> */}
+                            <form action="">
                                 <SolidButton width='100%' height='39px' borderRadius='20px' onClick={() => nextStep()}>Далі</SolidButton>
-                            {/* </form> */}
+                            </form>
 
                         </div>
                     </div>
@@ -189,45 +258,76 @@ const Multiform = () => {
         );
     };
 
-    const CreateVacancy = () => {
-        const allItems = [
-            'JavaScript', 'TypeScript', 'React', 'Node.js', 'Express', 'MongoDB',
-            'GraphQL', 'Apollo', 'Redux', 'HTML', 'CSS', 'Sass', 'Webpack',
-            'Babel', 'Jest', 'Cypress', 'Docker', 'Kubernetes', 'AWS', 'Azure',
-            'GCP', 'Python', 'Django', 'Flask', 'Java', 'Spring', 'Hibernate',
-            'MySQL', 'PostgreSQL', 'SQLite', 'Git', 'GitHub', 'GitLab', 'CI/CD',
-            'Agile', 'Scrum', 'JIRA', 'Trello', 'VSCode', 'IntelliJ', 'Eclipse'
-        ];
-        const [vacancyData, handleVacancyDataChange] = useFormState({
+    const CreateVacancy = () => {      
+
+        const [languages, setLanguages] = useState([{ id: 0, name: '', level: '' }]);
+        const [skills, setSkills] = useState([{ id: 0, name: '' }]);
+        const [subcategories, setSubcategories] = useState([{ id: 0, category: { id: 0, name: '' }, name: '' }]);
+        const [vacancyData, handleVacancyDataChange] = useFormState<Vacancy>({
             moderation_comment: '',
             title: '',
-            name_company: '',
+            // name_company: '',
             description: '<p>Опишіть роботу</p>',
             skills: [],
-            required_experience: '',
+            required_experience: 0,
             city: '',
-            salary_min: '',
-            salary_max: '',
-            category: {},
-            subcategory: '',
+            salary_min: 0,
+            salary_max: 0,
+            category: 0,
+            subcategory: subcategories[0].id, // Add a default integer value
             education_levels: [],
-            languages: [{}],
-            work_type: 'fulltime',
-            work_format: 'online',
-            company_type: 'Product',
+            languages: [languages[0].id], // Add a default integer value
+            // work_type: 'fulltime',
+            // work_format: 'online',
+            // company_type: 'Product',
+            work_type: [],
+            work_format: [],
+            type: [],
             country: 'Ukraine',
             status: 'pending',
             employer: 1,
-            position: 'testing'
+            idealCandidate: '',
+            name_company: '',
+            position: '',
 
         })
 
-        const AreaInputChange = (string) => {
-            handleVacancyDataChange({ target: { value: string, id: 'description' } })
+        useEffect(() => {
+            const myHeaders = new Headers();
+            myHeaders.append("ngrok-skip-browser-warning", "69420");
+            // myHeaders.append("Content-Type", "application/json");
+
+            const requestOptions: RequestInit = {
+                method: "GET",
+                redirect: "follow",
+                headers: myHeaders,
+
+            };
+            //   fetch languages
+            fetch(`${url}/jobs/languages/`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => { setLanguages(result); handleLanguageChange(1, result[0].id); })
+                .catch((error) => console.error(error));
+            // fetch skills
+            fetch(`${url}/jobs/skills/`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => { setSkills(result); })
+                .catch((error) => console.error(error));
+            // fetch subcategories
+            fetch(`${url}/jobs/job-sub-categories/`, requestOptions)
+                .then((response) => response.json())
+                .then((result) => { setSubcategories(result); handleVacancyDataChange({ target: { value: result[0].id, id: "subcategory" } }); })
+                .catch((error) => console.error(error));
+        }, [])
+
+
+        const AreaInputChange = (value, id) => {
+            handleVacancyDataChange({ target: { value, id } });
         }
-        const SkillsChange = (skills) => {
-            handleVacancyDataChange({ target: { value: skills, id: 'skills' } })
+        const SkillsChange = (event) => {
+            handleVacancyDataChange({ target: { value: event, id: 'skills' } })
         }
+
         const [languageSelectors, setLanguageSelectors] = useState([{ id: 1 }]);
 
         const addLanguageSelector = () => {
@@ -237,7 +337,7 @@ const Multiform = () => {
             handleVacancyDataChange({
                 target: {
                     name: 'languages',
-                    value: [...vacancyData.languages, {}]
+                    value: [...vacancyData.languages, languages[0].id] // Add a default integer value
                 }
             });
         };
@@ -254,7 +354,7 @@ const Multiform = () => {
         };
         const handleLanguageChange = (id, value) => {
             const newLanguages = vacancyData.languages.map((language, index) =>
-                index === id - 1 ? value : language
+                index === id - 1 ? parseInt(value) : language
             );
             handleVacancyDataChange({
                 target: {
@@ -263,33 +363,28 @@ const Multiform = () => {
                 }
             });
         };
-        const createVacancy = (event:React.FormEvent) => {
-            event.preventDefault();
 
-            console.log("Form sent")
-           
-            const myHeaders = new Headers();
-            myHeaders.append("Authorization", `JWT ${token}`);
-            myHeaders.append("Content-Type", "application/json");
-
-            const raw = JSON.stringify({
-                "moderation_comment": "",
-                "title": vacancyData.title,
-                "name_company": "esadas",
-                "description": vacancyData.description,
-                "required_experience": vacancyData.required_experience,
-                "city": vacancyData.description,
-                "salary_min": vacancyData.salary_min,
-                "salary_max": vacancyData.salary_max,
-                "work_type": "fulltime",
-                "work_format": "online",
-                "type": "Product",
-                "country": "ukr",
-                "position": "adsa",
-                "employer": 1
+        const handleCheckBoxChange = (event) => {
+            const { name, value, checked } = event.target;
+            handleVacancyDataChange({
+                target: {
+                    name,
+                    value: checked ? [...vacancyData[name], value] : vacancyData[name].filter((item) => item !== value),
+                },
             });
+        };
 
-            const requestOptions:RequestInit = {
+        const createVacancy = (event: React.FormEvent) => {
+            event.preventDefault();
+            console.log("Form sent")
+            const myHeaders = new Headers();
+            // myHeaders.append("Authorization", `JWT ${token}`);
+            myHeaders.append("Authorization", `JWT ${Cookies.get('jwt')}`);
+            myHeaders.append("Content-Type", "application/json");
+            vacancyData.category = (subcategories.find(subcategory => subcategory.id == vacancyData.subcategory)!.category.id)
+            vacancyData.employer = userId;
+            const raw = JSON.stringify(vacancyData);
+            const requestOptions: RequestInit = {
                 method: "POST",
                 headers: myHeaders,
                 body: raw,
@@ -297,9 +392,23 @@ const Multiform = () => {
             };
 
             fetch(`${url}/jobs/jobs/`, requestOptions)
-                .then((response) => response.text())
-                .then((result) => console.log(result))
-                .catch((error) => console.error(error));
+                .then(async (result) => {
+                    if (result.ok) {
+                        nextStep();
+                        setVacancyPassData(vacancyData);
+                        console.log(result);
+                    }
+                    else {
+                        throw new Error(await result.text())
+                    }
+                }
+                )
+                .catch((error) => {
+                    openModal(error.message);
+                });
+
+
+
         }
 
         return (
@@ -313,7 +422,7 @@ const Multiform = () => {
                         </div>
                         <div className='field-wrapper'>
                             <h2>Роль</h2>
-                            <InputSelect label="Роль, яку ви б хотіли найняти" id='subcategory' onChange={handleVacancyDataChange} options={[{ name: "Back End Developer", value: 1 }, { name: "Front End Developer", value: 2 }, { name: "Fullstack Developer", value: 3 }]}></InputSelect>
+                            <InputSelect label="Роль, яку ви б хотіли найняти" id='subcategory' onChange={handleVacancyDataChange} options={subcategories.map((subcategory) => ({ name: subcategory.name, value: subcategory.id }))}></InputSelect>
                         </div>
                         <div className='field-wrapper'>
                             <h2>Років досвіду</h2>
@@ -335,7 +444,7 @@ const Multiform = () => {
                         </div>
                         <div className='field-wrapper'>
                             <h2>Навички</h2>
-                            <MultipleSelect skills={allItems} id='skills' onChange={SkillsChange}></MultipleSelect>
+                            <MultipleSelect skills={skills} id='skills' onChange={SkillsChange}></MultipleSelect>
                         </div>
                         <div className='field-wrapper'>
                             <h2>Діапазон заробітної плати($)</h2>
@@ -357,26 +466,11 @@ const Multiform = () => {
                                     <div key={selector.id}>
                                         <InputSelect
                                             label='Мови'
-                                            options={[
-                                                { name: "Англійська", value: "English" },
-                                                { name: "Українська", value: "Ukrainian" },
-                                                { name: "Французька", value: "French" },
-                                                { name: "Німецька", value: "German" }
-                                            ]}
+                                            options={languages.map((language) => ({ name: language.name + ' - ' + language.level, value: language.id }))}
                                             id={`language-${selector.id}`}
-                                            onChange={(e) => handleLanguageChange(selector.id, { ...vacancyData.languages[selector.id - 1], language: e.target.value })}
+                                            onChange={(e) => handleLanguageChange(selector.id, e.target.value)} // Pass the integer value
                                         />
-                                        <InputSelect
-                                            label='Рівень'
-                                            options={[
-                                                { name: "Beginner", value: "Beginner" },
-                                                { name: "Intermediate", value: "Intermediate" },
-                                                { name: "Advanced", value: "Advanced" },
-                                                { name: "Native", value: "Native" }
-                                            ]}
-                                            id={`language-level-${selector.id}`}
-                                            onChange={(e) => handleLanguageChange(selector.id, { ...vacancyData.languages[selector.id - 1], level: e.target.value })}
-                                        />
+
                                         <div key={selector.id} className="clear-language">
                                             <button type='button' onClick={() => clearLanguageSelector(selector.id)}>
                                                 <AiOutlineDelete />
@@ -394,58 +488,142 @@ const Multiform = () => {
                                 <div>
                                     <LiaUserClockSolid />
                                     <h4>Вид зайнятості</h4>
-                                    <InputCheckbox label='Part-time' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
-                                    <InputCheckbox label='Full-time' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
-                                    <InputCheckbox label='Контракт' width='20px' height='20px' id='work_type' onChange={handleVacancyDataChange}></InputCheckbox>
+                                    <InputCheckbox label='Part-time' width='20px' height='20px' name='work_type' value={1} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Full-time' width='20px' height='20px' name='work_type' value={2} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Контракт' width='20px' height='20px' name='work_type' value={3} onChange={handleCheckBoxChange}></InputCheckbox>
 
                                 </div>
                                 <div>
                                     <FaHouseLaptop />
 
                                     <h4>Робоче середовище</h4>
-                                    <InputCheckbox label='Дистанційно' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='В офісі' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='Гібридно' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='Дистанційно' width='20px' height='20px' name='work_format' value={1} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='В офісі' width='20px' height='20px' name='work_format' value={2} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Гібридно' width='20px' height='20px' name='work_format' value={3} onChange={handleCheckBoxChange}></InputCheckbox>
 
                                 </div>
                                 <div>
                                     <FaHandshakeAngle />
                                     <h4>Тип бізнесу</h4>
-                                    <InputCheckbox label='Startup' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='Product' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='Outsource' width='20px' height='20px'></InputCheckbox>
-                                    <InputCheckbox label='Outstaff' width='20px' height='20px'></InputCheckbox>
+                                    <InputCheckbox label='Startup' width='20px' height='20px' name='type' value={1} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Product' width='20px' height='20px' name='type' value={2} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Outsource' width='20px' height='20px' name='type' value={3} onChange={handleCheckBoxChange}></InputCheckbox>
+                                    <InputCheckbox label='Outstaff' width='20px' height='20px' name='type' value={4} onChange={handleCheckBoxChange}></InputCheckbox>
                                 </div>
                             </div>
                         </div>
                         <div className="field-wrapper">
                             <h2>Опис роботи</h2>
-                            <InputArea initialValue={vacancyData.description} setValue={AreaInputChange} ></InputArea>
+                            <InputArea initialValue={vacancyData.description} setValue={AreaInputChange} id='description' ></InputArea>
 
                         </div>
-                        
-                            <SolidButton type='submit' >Далі</SolidButton>
-                       
+
+
+                        <SolidButton type='submit'>Далі</SolidButton>
+
                     </form>
                 </div>
 
             </>
         );
     };
+    const ConfirmCreatedVacancy: React.FC<VacancyProps> = ({ vacancy }) => {
+        return (
+            <>
 
+                <div className="confirm-inner-wrapper">
+                    <h2 className='title'>{vacancy.title}</h2>
+                    <h4 className='city'>
+                        <HiOutlineLocationMarker />
+                        {vacancy.city}
+                    </h4>
+                    <div className="job-bullet-points">
+                        <JobDescriptionCard title='Вид зайнятості' description={vacancy.work_type} icon={<LiaUserClockSolid />}></JobDescriptionCard>
+                        <JobDescriptionCard title='Робоче середовище' description={vacancy.work_format} icon={<FaHouseLaptop />}></JobDescriptionCard>
+                        <JobDescriptionCard title='Тип бізнесу' description={vacancy.type} icon={<FaHandshakeAngle />}></JobDescriptionCard>
+                        <JobDescriptionCard title='Mови' description={vacancy.languages} icon={<IoLanguageOutline />}></JobDescriptionCard>
+                        <JobDescriptionCard title='Діапазон заробітної плати' description={[`$${vacancy.salary_min}-`, `$${vacancy.salary_max}`]} icon={<GiWallet />}></JobDescriptionCard>
+
+                    </div>
+                    <div className="job-description">
+                        <h3>Опис роботи</h3>
+                        <span>
+                            <p className='job-description-paragraph'>{vacancy.description}</p>
+                            <div className="skills-box">
+                                <h4>Skills</h4>
+                                <ul className='all-skills'>
+                                    {vacancy.skills.map((skill, index) => (
+                                        <li key={index}>{skill}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </span>
+                    </div>
+                    <SolidButton onClick={() => { nextStep() }}>Далі</SolidButton>
+                </div>
+
+            </>
+        );
+    };
+
+    const VacancyCreated = () => {
+        const [idealCandidate, setIdealCandidate] = useState('');
+        useEffect(() => { console.log(idealCandidate) }, [idealCandidate])
+        return (
+            <>
+                <div className="created-inner-wrapper">
+                    <div className="created-card">
+                        <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="65" cy="65" r="65" fill="#3F7EE8" />
+                            <path fillRule="evenodd" clipRule="evenodd" d="M64.9993 36.3332C57.3965 36.3332 50.105 39.3534 44.729 44.7294C39.3529 50.1055 36.3327 57.397 36.3327 64.9998C36.3327 72.6027 39.3529 79.8942 44.729 85.2702C50.105 90.6463 57.3965 93.6665 64.9993 93.6665C72.6022 93.6665 79.8937 90.6463 85.2697 85.2702C90.6458 79.8942 93.666 72.6027 93.666 64.9998C93.666 57.397 90.6458 50.1055 85.2697 44.7294C79.8937 39.3534 72.6022 36.3332 64.9993 36.3332ZM29.166 64.9998C29.166 45.2091 45.2086 29.1665 64.9993 29.1665C84.7901 29.1665 100.833 45.2091 100.833 64.9998C100.833 84.7906 84.7901 100.833 64.9993 100.833C45.2086 100.833 29.166 84.7906 29.166 64.9998ZM52.4577 57.8332C51.7589 57.8332 50.8667 58.2775 50.2862 59.4385C49.856 60.2805 49.1105 60.9184 48.212 61.2132C47.3136 61.5079 46.3351 61.4356 45.4897 61.012C44.6444 60.5883 44.0007 59.8478 43.6991 58.9516C43.3974 58.0555 43.4621 57.0764 43.8792 56.2278C45.4415 53.1032 48.5626 50.6665 52.4577 50.6665C56.3528 50.6665 59.4703 53.1032 61.0362 56.2278C61.4532 57.0764 61.518 58.0555 61.2163 58.9516C60.9146 59.8478 60.271 60.5883 59.4256 61.012C58.5803 61.4356 57.6018 61.5079 56.7033 61.2132C55.8049 60.9184 55.0593 60.2805 54.6292 59.4385C54.0487 58.2775 53.16 57.8332 52.4577 57.8332ZM77.541 57.8332C76.8423 57.8332 75.95 58.2775 75.3695 59.4385C75.1609 59.8629 74.8704 60.2419 74.5147 60.5535C74.1589 60.8651 73.745 61.1032 73.2968 61.254C72.8487 61.4049 72.375 61.4656 71.9033 61.4326C71.4315 61.3995 70.971 61.2734 70.5482 61.0616C70.1254 60.8497 69.7487 60.5563 69.4399 60.1981C69.1311 59.84 68.8962 59.4243 68.7488 58.9749C68.6014 58.5256 68.5444 58.0515 68.581 57.58C68.6177 57.1085 68.7474 56.649 68.9625 56.2278C70.5284 53.1032 73.6459 50.6665 77.541 50.6665C81.4361 50.6665 84.5536 53.1032 86.1195 56.2278C86.5366 57.0764 86.6013 58.0555 86.2996 58.9516C85.998 59.8478 85.3543 60.5883 84.509 61.012C83.6636 61.4356 82.6851 61.5079 81.7866 61.2132C80.8882 60.9184 80.1427 60.2805 79.7125 59.4385C79.132 58.2775 78.2433 57.8332 77.541 57.8332ZM52.8303 73.3777C53.1418 73.0246 53.5197 72.7363 53.9426 72.5294C54.3655 72.3224 54.825 72.2008 55.2948 72.1716C55.7647 72.1423 56.2358 72.2059 56.6811 72.3587C57.1264 72.5116 57.5372 72.7507 57.89 73.0623C59.7892 74.7393 62.2724 75.7498 64.9993 75.7498C67.7263 75.7498 70.2131 74.7393 72.1087 73.0623C72.8215 72.4332 73.755 72.113 74.7038 72.1721C75.6527 72.2312 76.5392 72.6649 77.1683 73.3777C77.7975 74.0904 78.1177 75.0239 78.0586 75.9728C77.9994 76.9217 77.5658 77.8082 76.853 78.4373C73.5828 81.3302 69.3655 82.9238 64.9993 82.9165C60.6332 82.9238 56.4159 81.3302 53.1457 78.4373C52.7926 78.1259 52.5043 77.748 52.2974 77.3251C52.0904 76.9022 51.9689 76.4427 51.9396 75.9728C51.9103 75.503 51.9739 75.0319 52.1267 74.5866C52.2796 74.1413 52.5187 73.7305 52.8303 73.3777Z" fill="white" />
+                        </svg>
+                        <h3 className="title">Вакансія створена!</h3>
+                        <p className="description">Щиро вітаю! Ваша нова вакансія успішно створена. Тепер давайте познайомимо вас із профілем ідеального кандидата, щоб забезпечити найкращий відповідність вашій вакансії.</p>
+                    </div>
+                    <div className="best-fit-wrapper">
+                        <h1>Ідеальна особа кандидата</h1>
+                        <InputArea initialValue={idealCandidate} setValue={setIdealCandidate} id='idealCandidate'></InputArea>
+
+                        <SolidButton onClick={() => { nextStep() }}>Далі</SolidButton>
+
+                    </div>
+                </div>
+
+            </>
+        );
+    };
     const [step, setStep] = useState(1);
 
     const nextStep = () => {
+        if (step === 5) {
+            return;
+        }
         setStep(step + 1);
+
+    };
+    const previousStep = () => {
+        if (step === 1) {
+            return;
+        }
+        setStep(step - 1);
     };
 
     return (
+        <>
+            <Modal></Modal>
+            <div className="vacancies-wrapper">
+                {step === 1 && (<CompanyVacancies />)}
+                {step === 2 && (<ChooseMethodToCreate />)}
+                {step === 3 && (<CreateVacancy />)}
+                {step === 4 && (<ConfirmCreatedVacancy vacancy={vacancyPassData} />)}
+                {step === 5 && (<VacancyCreated />)}
 
-        <div className="vacancies-wrapper">
-            {step === 1 && (<CompanyVacancies />)}
-            {step === 2 && (<ChooseMethodToCreate />)}
-            {step === 3 && (<CreateVacancy />)}
-        </div >
+                {/* 
+            <SolidButton type='submit' onClick={()=>previousStep()} >Назад</SolidButton>
+            <SolidButton type='submit'onClick={()=>nextStep()} >Далі</SolidButton> */}
+
+            </div >
+        </>
     );
 };
 

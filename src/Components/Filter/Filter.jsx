@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { Children, useState } from "react";
 import "./Filter.scss";
 
-import { CgClose } from "react-icons/cg";
+import { lift } from "@tiptap/pm/commands";
+import FilterItem from "../FilterItem/FilterItem";
 
 /**
  * Filter component renders a filter panel with various filter options.
@@ -14,17 +15,55 @@ import { CgClose } from "react-icons/cg";
  *
  * @returns {JSX.Element} A div containing filter options and buttons to clear or select filters.
  */
-const Filter = ({ onClose, isVisible, filter }) => {
+const Filter = ({
+  onClose,
+  isVisible,
+  filter,
+  cards,
+  reset,
+  selectedItems,
+}) => {
   const [handleCloseCategory, handleCloseCompany, handleCloseDate] = onClose;
   const [isVisibleCategory, isVisibleCompany, isVisibleDate] = isVisible;
-  const findVacancy = filter.length;
+  const [selectedCategories, selectedCompanies] = selectedItems;
+
+  const findedVacancy = filter > 0 ? filter.length : cards.length;
 
   return (
     <div className="filter">
-      <p>Знайдено {findVacancy} вакансій</p>
+      <p>Знайдено {findedVacancy} вакансій</p>
       <div className="filter-panel">
-        <button className="filter-panel-button clear">Очистити фільтр</button>
-        {isVisibleCategory && (
+        <button className="filter-panel-button" onClick={reset}>
+          <p className="clear">Очистити фільтр</p>
+        </button>
+        <ul className="filter-list">
+          {isVisibleCategory &&
+            selectedCategories.map((item) => {
+              return (
+                <li key={item} className="filter-item">
+                  <FilterItem onClose={handleCloseCategory} title={item} />
+                </li>
+              );
+            })}
+
+          {isVisibleCompany &&
+            selectedCompanies.map((item) => {
+              return (
+                <li key={item}>
+                  <FilterItem onClose={handleCloseCategory} title={item} />
+                </li>
+              );
+            })}
+          {/* {isVisibleDate && (
+            <FilterItem>
+              <li className="wrapper">
+                <p className=""></p>
+
+              </li>
+            </FilterItem>
+          )} */}
+        </ul>
+        {/* {isVisibleCategory && (
           <button
             className="filter-panel-button category"
             onClick={() => {
@@ -34,8 +73,8 @@ const Filter = ({ onClose, isVisible, filter }) => {
             Software development
             <CgClose />
           </button>
-        )}
-        {isVisibleCompany && (
+        )} */}
+        {/* {isVisibleCompany && (
           <button
             className="filter-panel-button company"
             onClick={() => {
@@ -45,8 +84,8 @@ const Filter = ({ onClose, isVisible, filter }) => {
             SoftServe
             <CgClose />
           </button>
-        )}
-        {isVisibleDate && (
+        )} */}
+        {/* {isVisibleDate && (
           <button
             className="filter-panel-button time"
             onClick={() => {
@@ -56,7 +95,7 @@ const Filter = ({ onClose, isVisible, filter }) => {
             Сьогодні
             <CgClose />
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );

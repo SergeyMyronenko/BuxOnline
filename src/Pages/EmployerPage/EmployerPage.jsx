@@ -1,7 +1,5 @@
 import React from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
-import Header from '../../Components/Header/Header';
-import Nav from '../../Components/Nav/Nav';
 import SolidButton from '../../Components/Buttons/SolidButton/SolidButton';
 import { PiBriefcase } from "react-icons/pi";
 import { IoMailOutline, IoPeopleOutline } from "react-icons/io5";
@@ -56,7 +54,6 @@ function profileData(data) {
 
 const CompanyCabinetBase = () => {
   const navigate = useNavigate();
-
   const dataPlaceholer = {
     imageUrl: "",
     companyName: "WebDevPro",
