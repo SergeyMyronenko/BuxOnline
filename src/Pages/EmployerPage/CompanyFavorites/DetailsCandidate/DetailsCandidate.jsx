@@ -9,6 +9,7 @@ import Languages from '../Languages/Languages';
 import TypeEnployment from '../TypeEnployment/TypeEmployment';
 import WorkingEnvironment from '../WorkingEnvironment/WorkingEnvironment';
 import BusinessType from '../BusinessType/BusinessType';
+import JobHistory from '../JobHistory/JobHistory';
 
 const DetailsCandidate = () => {
     return (
@@ -73,9 +74,7 @@ const DetailsCandidate = () => {
             </div>
             <div className="work-history">
                 <h2 className="work-history-title">Трудова історія</h2>
-                <div className="work-history-wrapper">
-
-                </div>
+                <JobHistory/>
             </div>
         </div>
     );

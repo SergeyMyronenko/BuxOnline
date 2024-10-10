@@ -6,6 +6,7 @@
     display: grid;
     gap: 50px 20px;
     margin-bottom: 130px;
+    grid-template-columns: 1fr 1fr 1fr;
 
     >* {
         border: 1px solid #BCBCBC;
@@ -54,5 +55,11 @@
             gap: 10px;
             margin: 0px auto 40px;
         } 
+    }
+}
+
+.work-history {
+    .work-history-title {
+        margin-bottom: 70px;
     }
 }
