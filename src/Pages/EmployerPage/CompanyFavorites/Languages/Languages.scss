@@ -1,0 +1,15 @@
+.languages {
+    display: grid;
+    row-gap: 25px;
+
+    .language {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #626262;
+
+        .blue {
+            color: #3F7EE8;
+        }
+    }
+}

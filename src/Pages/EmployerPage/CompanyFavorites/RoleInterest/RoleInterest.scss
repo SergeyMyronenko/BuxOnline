@@ -1,0 +1,18 @@
+.role-interest {
+    display: grid;
+    row-gap: 25px;
+
+    .role-interst-info {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        
+        .role-position {
+            color: #3F7EE8;
+        }
+
+        .role-experience {
+            color: #626262;
+        }
+    }
+}
