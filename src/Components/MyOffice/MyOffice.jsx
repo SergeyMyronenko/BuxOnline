@@ -8,6 +8,7 @@ import InputCheckbox from "../Input/InputCheckbox/InputCheckbox";
 import InputRadioBtn from "../Input/InputRadioBtn/InputRadioBtn";
 import { useAuth } from "../../Hooks/useAuth";
 import CompanyList from "../../../company.json";
+import { format, subDays } from "date-fns";
 
 const MyOffice = () => {
   const [cards, setCards] = useState([]);
@@ -20,9 +21,10 @@ const MyOffice = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [vacancies, setVacancies] = useState(0);
   const [filteredJobs, setFilteredJobs] = useState([]);
-  const [selectedRadio, setSelectedRadio] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+  console.log(selectedDate);
 
-  const selectedItems = [selectedCategories, selectedCompanies];
+  const selectedItems = [selectedCategories, selectedCompanies, selectedDate];
 
   const URL = "https://glowing-boa-definite.ngrok-free.app";
   const myHeaders = new Headers();
@@ -40,16 +42,49 @@ const MyOffice = () => {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+
   const handleRadioChange = (label) => {
-    console.log("Вибрано:", label);
-
-    if (selectedRadio !== label) {
-      setSelectedRadio(label);
+    if (selectedDate === label) {
+      setSelectedDate(null);
+      setDatePeriod({ from: "", to: "" });
+      setIsChecked(false);
+    } else {
+      setSelectedDate(label);
     }
+    const today = new Date();
 
-    setIsChecked(label === "Вказаний період");
-    setSelectedRadio(null);
-    setIsChecked(false);
+    switch (label) {
+      case "Сьогодні":
+        setDatePeriod({
+          from: format(today, "yyyy-MM-dd"),
+          to: format(today, "yyyy-MM-dd"),
+        });
+        break;
+      case "Вчора":
+        setDatePeriod({
+          from: format(subDays(today, 1), "yyyy-MM-dd"),
+          to: format(today, "yyyy-MM-dd"),
+        });
+        break;
+      case "Останні 7 днів":
+        setDatePeriod({
+          from: format(subDays(today, 7), "yyyy-MM-dd"),
+          to: format(today, "yyyy-MM-dd"),
+        });
+        break;
+      case "Останні 30 днів":
+        setDatePeriod({
+          from: format(subDays(today, 30), "yyyy-MM-dd"),
+          to: format(today, "yyyy-MM-dd"),
+        });
+        break;
+      case "Вказаний період":
+        setIsChecked(true);
+        break;
+      default:
+        setDatePeriod({ from: "", to: "" });
+        break;
+    }
   };
 
   const handleCheckCategory = (categoryName) => {
@@ -72,8 +107,12 @@ const MyOffice = () => {
     });
   };
 
-  const handleChackDate = (selectedDate) => {
-    setDatePeriod();
+  const handleCheckDate = (e) => {
+    const { name, value } = e.target;
+    setDatePeriod((prevPeriod) => ({
+      ...prevPeriod,
+      [name]: value,
+    }));
   };
 
   const filterVacancies = () => {
@@ -98,7 +137,8 @@ const MyOffice = () => {
 
   const resetFilters = () => {
     setSelectedCategories([]);
-    setCompanies([]);
+    setSelectedCompanies([]);
+    setSelectedDate(null);
     setDatePeriod({ from: "", to: "" });
     setIsChecked(false);
   };
@@ -240,7 +280,6 @@ const MyOffice = () => {
                     label={company.company_name}
                     onClick={() => {
                       handleCheckCompanies(company.company_name);
-                      console.log(company.company_name);
                     }}
                   ></InputCheckbox>
                 </li>
@@ -250,30 +289,31 @@ const MyOffice = () => {
           <Accordion accordionTitle="За датою">
             <InputRadioBtn
               label="Сьогодні"
-              isSelected={selectedRadio === "Сьогодні"}
-              onChange={() => handleRadioChange("Сьогодні")}
+              isSelected={selectedDate === "Сьогодні"}
+              onClick={() => handleRadioChange("Сьогодні")}
             ></InputRadioBtn>
             <InputRadioBtn
               label="Вчора"
-              isSelected={selectedRadio === "Вчора"}
-              onChange={() => handleRadioChange("Вчора")}
+              isSelected={selectedDate === "Вчора"}
+              onClick={() => handleRadioChange("Вчора")}
             ></InputRadioBtn>
             <InputRadioBtn
               label="Останні 7 днів"
-              isSelected={selectedRadio === "Останні 7 днів"}
+              isSelected={selectedDate === "Останні 7 днів"}
               onChange={() => handleRadioChange("Останні 7 днів")}
             ></InputRadioBtn>
             <InputRadioBtn
               label="Останні 30 днів"
-              isSelected={selectedRadio === "Останні 30 днів"}
+              isSelected={selectedDate === "Останні 30 днів"}
               onChange={() => handleRadioChange("Останні 30 днів")}
             ></InputRadioBtn>
             <div>
               <InputRadioBtn
                 label="Вказаний період"
-                isSelected={selectedRadio === "Вказаний період"}
+                isSelected={selectedDate === "Вказаний період"}
                 onChange={() => {
                   handleRadioChange("Вказаний період");
+                  handleCheckboxChange();
                 }}
               ></InputRadioBtn>
 
@@ -284,7 +324,9 @@ const MyOffice = () => {
                     <input
                       className="date-input"
                       type="date"
-                      placeholder="дд/мм/рррр"
+                      name="from"
+                      value={datePeriod.from}
+                      onChange={handleCheckDate}
                     />
                   </label>
                   <label className="form-date">
@@ -292,7 +334,9 @@ const MyOffice = () => {
                     <input
                       className="date-input"
                       type="date"
-                      placeholder="дд/мм/рррр"
+                      name="to"
+                      value={datePeriod.to}
+                      onChange={handleCheckDate}
                     />
                   </label>
                 </div>

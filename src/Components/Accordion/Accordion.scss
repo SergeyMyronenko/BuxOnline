@@ -27,12 +27,12 @@ $transitionAll: 0.5s cubic-bezier(0.7, 0, 0.31, 0.98);
     align-items: center;
     justify-content: space-between;
     width: 205px;
+    margin-bottom: 15px;
 
     h5 {
       font-weight: 700;
       cursor: pointer;
       width: 90%;
-      margin-bottom: 15px;
     }
     .accordion-button {
       height: 20px !important;
