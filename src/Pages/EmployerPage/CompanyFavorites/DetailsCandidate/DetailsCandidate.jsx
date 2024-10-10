@@ -68,7 +68,7 @@ const DetailsCandidate = () => {
                         </svg>
                         <h3>Тип бізнесу</h3>
                     </div>
-                    < BusinessType />
+                    <BusinessType />
                 </div>
             </div>
             <div className="work-history">
