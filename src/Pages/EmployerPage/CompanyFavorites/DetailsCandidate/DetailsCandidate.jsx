@@ -74,7 +74,7 @@ const DetailsCandidate = () => {
             </div>
             <div className="work-history">
                 <h2 className="work-history-title">Трудова історія</h2>
-                <JobHistory/>
+                <JobHistory/> 
             </div>
         </div>
     );
