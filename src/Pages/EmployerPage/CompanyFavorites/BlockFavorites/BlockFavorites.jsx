@@ -3,7 +3,7 @@ import './BlockFavorites.scss';
 
 import ItemFavorite from '../ItemFavorite/ItemFavorite';
 
-const BlockFavorites = () => {
+const BlockFavorites = ({ switcher }) => {
     const flag = true;
 
     const candidates = [
@@ -23,7 +23,7 @@ const BlockFavorites = () => {
     ];
 
     const candidatesList = candidates.map((item) => {
-        return <ItemFavorite {...item} />;
+        return <ItemFavorite switcher={switcher} {...item} />;
     });
 
     return (

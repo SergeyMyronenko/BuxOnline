@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CompanyFavorites.scss';
 
 import TitleFavorites from './TitleFavorites/TitleFavorites';
@@ -8,14 +8,20 @@ import DetailsCandidate from './DetailsCandidate/DetailsCandidate';
 
 const CompanyFavorites = () => {
  
-    let flag = false;
+    const flag = true;
+
+    const [name, setName] = useState(flag);
+
+    const switcher = () => {
+        setName(!name);
+    };
 
     return (
         <div>
             <div className="my-div">
-                { flag ? <TitleFavorites /> : <TitleProfile /> }
+                { name ? <TitleFavorites /> : <TitleProfile switcher={switcher} /> }
             </div>
-            { flag ? <BlockFavorites /> : <DetailsCandidate /> }
+            { name ? <BlockFavorites switcher={switcher} /> : <DetailsCandidate /> }
         </div>
     );
 };

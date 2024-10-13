@@ -1,7 +1,7 @@
 import React from 'react';
 import './ItemFavorite.scss';
 
-const ItemFavorite = ({ name, position, place, salary }) => {
+const ItemFavorite = ({ name, position, place, salary, switcher }) => {
     return (
         <div className="item-favorite">
             <div className="candidate-info">
@@ -13,7 +13,7 @@ const ItemFavorite = ({ name, position, place, salary }) => {
                     </div>
                 </div>
                 <div className="info">
-                    <span className="name">{ name }</span>
+                    <span onClick={() => switcher()} className="name">{ name }</span>
                     <span className="position">Кандідат <a href='#'>{ position }</a></span>
                     <div className="place-salary">
                         <div className="place">

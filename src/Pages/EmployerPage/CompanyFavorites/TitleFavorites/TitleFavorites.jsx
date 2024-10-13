@@ -26,3 +26,4 @@ const TitleFavorites = () => {
 };
 
 export default TitleFavorites;
+

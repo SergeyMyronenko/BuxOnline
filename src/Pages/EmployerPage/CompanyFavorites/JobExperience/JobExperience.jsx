@@ -2,6 +2,7 @@ import React from "react";
 import './JobExperience.scss';
 
 const JobExperience = () => {
+    console.log('job experince');
 
     return (
         <div class="job-experience">
