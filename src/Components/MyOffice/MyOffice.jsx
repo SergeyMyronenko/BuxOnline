@@ -18,15 +18,19 @@ const MyOffice = () => {
   const [companies, setCompanies] = useState(CompanyList);
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [datePeriod, setDatePeriod] = useState({ from: "", to: "" });
-  const [isChecked, setIsChecked] = useState(false);
   const [vacancies, setVacancies] = useState(0);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
-  console.log(selectedDate);
+  const [isVisibleCategory, setIsVisibleCategory] = useState(true);
+  const [isVisibleCompany, setIsVisibleCompany] = useState(true);
+  const [isVisibleDate, setIsVisibleDate] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log(cards);
 
   const selectedItems = [selectedCategories, selectedCompanies, selectedDate];
 
-  const URL = "https://glowing-boa-definite.ngrok-free.app";
+  const URL =
+    "https://6243-2003-dd-b736-6c81-d1cb-78bc-a67-4a9c.ngrok-free.app";
   const myHeaders = new Headers();
   myHeaders.append("ngrok-skip-browser-warning", "69420");
   myHeaders.append("Content-Type", "application/json");
@@ -39,15 +43,9 @@ const MyOffice = () => {
     redirect: "follow",
   };
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
-
   const handleRadioChange = (label) => {
     if (selectedDate === label) {
       setSelectedDate(null);
-      setDatePeriod({ from: "", to: "" });
-      setIsChecked(false);
     } else {
       setSelectedDate(label);
     }
@@ -77,9 +75,6 @@ const MyOffice = () => {
           from: format(subDays(today, 30), "yyyy-MM-dd"),
           to: format(today, "yyyy-MM-dd"),
         });
-        break;
-      case "Вказаний період":
-        setIsChecked(true);
         break;
       default:
         setDatePeriod({ from: "", to: "" });
@@ -117,6 +112,7 @@ const MyOffice = () => {
 
   const filterVacancies = () => {
     let filteredCards = [...cards];
+    console.log(filteredCards);
 
     // Filter by categories
     if (selectedCategories.length > 0) {
@@ -126,10 +122,21 @@ const MyOffice = () => {
     }
 
     // Filter by companies
-    if (companies.length > 0) {
+    if (selectedCompanies.length > 0) {
       filteredCards = filteredCards.filter((job) =>
-        companies.includes(job.name_company?.toLowerCase())
+        selectedCompanies.includes(job.name_company)
       );
+    }
+
+    //Filter by date
+    if (datePeriod.from && datePeriod.to) {
+      filteredCards = filteredCards.filter((job) => {
+        const jobDate = new Date(job.Atdate);
+        const fromDate = new Date(datePeriod.from);
+        const toDate = new Date(datePeriod.to);
+
+        return jobDate >= fromDate && jobDate <= toDate;
+      });
     }
 
     setFilteredJobs(filteredCards);
@@ -140,10 +147,10 @@ const MyOffice = () => {
     setSelectedCompanies([]);
     setSelectedDate(null);
     setDatePeriod({ from: "", to: "" });
-    setIsChecked(false);
   };
 
   const getCards = async () => {
+    setIsLoading(true);
     try {
       const res = await fetch(`${URL}/jobs/jobs`, requestOptions);
 
@@ -152,7 +159,7 @@ const MyOffice = () => {
       }
 
       const data = await res.json();
-
+      setIsLoading(false);
       setCards(data);
     } catch (error) {
       console.error("Помилка при завантаженні даних:", error);
@@ -161,33 +168,22 @@ const MyOffice = () => {
   };
 
   const getCompanies = async () => {
-    const res = await fetch(`${URL}/auth/users`, requestOptions);
+    try {
+      const res = await fetch(`${URL}/auth/users`, requestOptions);
 
-    if (!res.ok) {
-      throw new Error(`Not found: ${res.text()}`);
+      if (!res.ok) {
+        throw new Error(`Not found: ${res.text()}`);
+      }
+      const data = await res.json();
+      setCompanies(data);
+    } catch (error) {
+      console.error("Помилка при завантаженні даних:", error);
     }
-    const data = await res.json();
-    setCompanies(data);
   };
 
   const getJobsCategories = async () => {
-    const BASE_URL = "https://glowing-boa-definite.ngrok-free.app";
-
-    const myHeaders = new Headers();
-    myHeaders.append("ngrok-skip-browser-warning", "69420");
-    myHeaders.append("Content-Type", "application/json");
-
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-
     try {
-      const res = await fetch(
-        `${BASE_URL}/jobs/job-categories`,
-        requestOptions
-      );
+      const res = await fetch(`${URL}/jobs/job-categories`, requestOptions);
 
       if (!res.ok) {
         throw new Error(`Not found: ${await res.text()}`);
@@ -196,7 +192,7 @@ const MyOffice = () => {
       const data = await res.json();
       setCategories(data);
 
-      const resJobs = await fetch(`${BASE_URL}/jobs/jobs`, requestOptions);
+      const resJobs = await fetch(`${URL}/jobs/jobs`, requestOptions);
 
       if (!resJobs.ok) {
         throw new Error(`Not found: ${await res.text()}`);
@@ -210,11 +206,34 @@ const MyOffice = () => {
     }
   };
 
+  const handleCloseCategory = () => {
+    setIsVisibleCategory(false);
+    setSelectedCategories([]);
+  };
+  const handleCloseCompany = () => {
+    setIsVisibleCompany(false);
+    setSelectedCompanies([]);
+  };
+  const handleCloseDate = () => {
+    setIsVisibleDate(false);
+    setDatePeriod({ from: "", to: "" });
+  };
+
+  const CloseButton = [
+    handleCloseCategory,
+    handleCloseCompany,
+    handleCloseDate,
+  ];
+
+  const visibleButton = [isVisibleCategory, isVisibleCompany, isVisibleDate];
+
   useEffect(() => {
-    getCards();
-    getJobsCategories();
-    // getCompanies();
-  }, []);
+    if (token) {
+      getCards();
+      getJobsCategories();
+      // getCompanies();
+    }
+  }, [token]);
 
   return (
     <div className="container">
@@ -300,24 +319,23 @@ const MyOffice = () => {
             <InputRadioBtn
               label="Останні 7 днів"
               isSelected={selectedDate === "Останні 7 днів"}
-              onChange={() => handleRadioChange("Останні 7 днів")}
+              onClick={() => handleRadioChange("Останні 7 днів")}
             ></InputRadioBtn>
             <InputRadioBtn
               label="Останні 30 днів"
               isSelected={selectedDate === "Останні 30 днів"}
-              onChange={() => handleRadioChange("Останні 30 днів")}
+              onClick={() => handleRadioChange("Останні 30 днів")}
             ></InputRadioBtn>
             <div>
               <InputRadioBtn
                 label="Вказаний період"
                 isSelected={selectedDate === "Вказаний період"}
-                onChange={() => {
+                onClick={() => {
                   handleRadioChange("Вказаний період");
-                  handleCheckboxChange();
                 }}
               ></InputRadioBtn>
 
-              {isChecked && (
+              {selectedDate === "Вказаний період" && (
                 <div className="input-box">
                   <label className="form-date">
                     З*:
@@ -343,7 +361,11 @@ const MyOffice = () => {
               )}
             </div>
           </Accordion>
-          <button className="filter-button" type="submit">
+          <button
+            className="filter-button"
+            type="submit"
+            title="Фільтрує по вибраним критеріям"
+          >
             Застосувати фільтр
           </button>
         </form>
@@ -352,6 +374,9 @@ const MyOffice = () => {
           cards={cards}
           reset={resetFilters}
           selectedItems={selectedItems}
+          onClose={CloseButton}
+          isVisible={visibleButton}
+          isLoading={isLoading}
         />
       </div>
     </div>
