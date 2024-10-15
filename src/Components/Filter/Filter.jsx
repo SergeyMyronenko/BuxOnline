@@ -25,9 +25,16 @@ const Filter = ({
 }) => {
   const [handleCloseCategory, handleCloseCompany, handleCloseDate] = onClose;
   const [isVisibleCategory, isVisibleCompany, isVisibleDate] = isVisible;
-  const [selectedCategories, selectedCompanies] = selectedItems;
+  const [selectedCategories, selectedCompanies, selectedDate] = selectedItems;
 
   const findedVacancy = filter > 0 ? filter.length : cards.length;
+  const dateTitles = [
+    "Сьогодні",
+    "Вчора",
+    "Останні 7 днів",
+    "Останні 30 днів",
+    "Вказаний період",
+  ];
 
   return (
     <div className="filter">
@@ -50,52 +57,24 @@ const Filter = ({
             selectedCompanies.map((item) => {
               return (
                 <li key={item}>
-                  <FilterItem onClose={handleCloseCategory} title={item} />
+                  <FilterItem onClose={handleCloseCompany} title={item} />
                 </li>
               );
             })}
-          {/* {isVisibleDate && (
-            <FilterItem>
-              <li className="wrapper">
-                <p className=""></p>
-
-              </li>
-            </FilterItem>
-          )} */}
+          {isVisibleDate && (
+            <>
+              {dateTitles.map((title) => {
+                return (
+                  selectedDate === title && (
+                    <li key={title}>
+                      <FilterItem onClose={handleCloseDate} title={title} />
+                    </li>
+                  )
+                );
+              })}
+            </>
+          )}
         </ul>
-        {/* {isVisibleCategory && (
-          <button
-            className="filter-panel-button category"
-            onClick={() => {
-              handleCloseCategory();
-            }}
-          >
-            Software development
-            <CgClose />
-          </button>
-        )} */}
-        {/* {isVisibleCompany && (
-          <button
-            className="filter-panel-button company"
-            onClick={() => {
-              handleCloseCompany();
-            }}
-          >
-            SoftServe
-            <CgClose />
-          </button>
-        )} */}
-        {/* {isVisibleDate && (
-          <button
-            className="filter-panel-button time"
-            onClick={() => {
-              handleCloseDate();
-            }}
-          >
-            Сьогодні
-            <CgClose />
-          </button>
-        )} */}
       </div>
     </div>
   );
