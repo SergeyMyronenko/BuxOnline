@@ -86,6 +86,11 @@
         border: 1px solid #2e85ec;
         color: #2e85ec;
         cursor: pointer;
+        transition: styles.$mediumAnimation;
+        &.filter-button:hover {
+          background-color: #2e85ec;
+          color: styles.$white;
+        }
       }
     }
   }

@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
 import { useAuth } from "../../Hooks/useAuth";
-import Header from "../../Components/Header/Header";
-import Nav from "../../Components/Nav/Nav";
-import { useNavigate } from "react-router-dom";
+import useFormState from "../../Hooks/useFormState";
+import { useModal } from "../../Components/Modal/Modal";
+
 import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";
 import InputField from "../../Components/Input/InputField/InputField";
-import useFormState from "../../Hooks/useFormState";
 
 import "./LogIn.scss";
 /**
@@ -23,21 +24,26 @@ import "./LogIn.scss";
  */
 
 const LogIn = () => {
+  const {openModal, Modal } = useModal();
   const navigate = useNavigate();
   const [userData, handleUserData] = useFormState({
     email: "",
     password: "",
   });
-  const { login, token, url } = useAuth();
+  const { login, token, url,setUserId } = useAuth();
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
       await login(userData.email, userData.password);
+
       const myHeaders = new Headers();
       // local host doesnt allow this header...
       myHeaders.append("ngrok-skip-browser-warning", "69420");
       myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("Authorization", `JWT ${token}`);
+      // myHeaders.append("Authorization", `JWT ${token}`);
+      //it's supposed to be {token}, but it does not work the first time, you need to login twice
+      myHeaders.append("Authorization", `JWT ${Cookies.get("jwt")}`);
+
 
       const requestOptions: RequestInit = {
         method: "GET",
@@ -45,22 +51,26 @@ const LogIn = () => {
         redirect: "follow",
       };
 
-      fetch(`${url}/auth/users/me/`, requestOptions)
+      await fetch(`${url}/auth/users/me/`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          // console.log(result)
-          navigate(`/BuxOnline/company/cabinet/${result.id}`);
+          console.log(result)
+          // console.log("The sent token:", token);
+          setUserId(result.id);
+          navigate(`/BuxOnline/${result.role}/cabinet/${result.id}`);
         })
-        .catch((error) => console.error(error));
+        .catch((error) =>  openModal(error.message));
 
       // navigate(`/BuxOnline/company/cabinet/1`)
     } catch (error) {
-      console.error(error);
-      // Handle login error
+      console.log(error.message);
+      openModal(error.message);
+
     }
   };
   return (
     <>
+      <Modal></Modal>
       <div className="form-wrapper">
         <form onSubmit={handleLogin}>
           <span className="title">

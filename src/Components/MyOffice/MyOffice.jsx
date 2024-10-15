@@ -5,453 +5,37 @@ import "./MyOffice.scss";
 import clsx from "clsx";
 import titleImage from "../../assets/vacancyTitleImg.png";
 import InputCheckbox from "../Input/InputCheckbox/InputCheckbox";
-
-const jobs = [
-  {
-    id: 1,
-    skills: [
-      {
-        id: 1,
-        name: "Html",
-      },
-      {
-        id: 2,
-        name: "Css",
-      },
-      {
-        id: 3,
-        name: "PHP",
-      },
-      {
-        id: 4,
-        name: "jQuery",
-      },
-      {
-        id: 5,
-        name: "Symfony",
-      },
-    ],
-    category: 5,
-    subcategory: 5,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "25000",
-    salary_max: "30000",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: "Portugal",
-    position: "Senior Software Engineer",
-    employer: 1,
-  },
-  {
-    id: 2,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: 2,
-    subcategory: 6,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 2,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 3,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: 4,
-    subcategory: 6,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 3,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 4,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: 5,
-    subcategory: 3,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 5,
-    skills: [
-      {
-        id: 1,
-        name: "Html",
-      },
-      {
-        id: 2,
-        name: "Css",
-      },
-      {
-        id: 3,
-        name: "PHP",
-      },
-      {
-        id: 4,
-        name: "jQuery",
-      },
-      {
-        id: 5,
-        name: "Symfony",
-      },
-    ],
-    category: 6,
-    subcategory: 4,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "25000",
-    salary_max: "30000",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: "Portugal",
-    position: "Senior Software Engineer",
-    employer: 1,
-  },
-  {
-    id: 6,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: 2,
-    subcategory: 4,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 2,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 7,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: null,
-    subcategory: 5,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 3,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 8,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: null,
-    subcategory: 6,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-  {
-    id: 9,
-    skills: [
-      {
-        id: 1,
-        name: "ячс",
-      },
-    ],
-    category: null,
-    subcategory: 7,
-    education_levels: [
-      {
-        id: 1,
-        city: "киев",
-        specialty: "123",
-        start_date: "2024-09-09",
-        end_date: "2025-08-16",
-        education_level: "highschool",
-      },
-    ],
-    languages: [
-      {
-        id: 1,
-        name: "ячс",
-        level: "beginner",
-      },
-    ],
-    status: "approved",
-    moderation_comment: "zxcxzcsdsdsd",
-    view_count: 5,
-    title: "zxcsd",
-    name_company: null,
-    description: "1232123123",
-    required_experience: 3,
-    city: "Киев",
-    salary_min: "123.00",
-    salary_max: "321.00",
-    work_type: "fulltime",
-    work_format: "online",
-    type: "pending",
-    country: null,
-    position: null,
-    employer: 1,
-  },
-];
+import InputRadioBtn from "../Input/InputRadioBtn/InputRadioBtn";
+import { useAuth } from "../../Hooks/useAuth";
+import CompanyList from "../../../company.json";
+import { format, subDays } from "date-fns";
 
 const MyOffice = () => {
-  const [cards, setCards] = useState(jobs);
+  const [cards, setCards] = useState([]);
   const [isActive, setIsActive] = useState("vacancy");
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState(CompanyList);
+  const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [datePeriod, setDatePeriod] = useState({ from: "", to: "" });
-  const [isChecked, setIsChecked] = useState(false);
   const [vacancies, setVacancies] = useState(0);
   const [filteredJobs, setFilteredJobs] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [isVisibleCategory, setIsVisibleCategory] = useState(true);
+  const [isVisibleCompany, setIsVisibleCompany] = useState(true);
+  const [isVisibleDate, setIsVisibleDate] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log(cards);
 
-  const URL = "https://glowing-boa-definite.ngrok-free.app";
+  const selectedItems = [selectedCategories, selectedCompanies, selectedDate];
+
+  const URL =
+    "https://6243-2003-dd-b736-6c81-d1cb-78bc-a67-4a9c.ngrok-free.app";
   const myHeaders = new Headers();
   myHeaders.append("ngrok-skip-browser-warning", "69420");
   myHeaders.append("Content-Type", "application/json");
+  const { token } = useAuth();
+  myHeaders.append("Authorization", `JWT ${token}`);
 
   const requestOptions = {
     method: "GET",
@@ -459,28 +43,76 @@ const MyOffice = () => {
     redirect: "follow",
   };
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+  const handleRadioChange = (label) => {
+    if (selectedDate === label) {
+      setSelectedDate(null);
+    } else {
+      setSelectedDate(label);
+    }
+    const today = new Date();
+
+    switch (label) {
+      case "Сьогодні":
+        setDatePeriod({
+          from: format(today, "yyyy-MM-dd"),
+          to: format(today, "yyyy-MM-dd"),
+        });
+        break;
+      case "Вчора":
+        setDatePeriod({
+          from: format(subDays(today, 1), "yyyy-MM-dd"),
+          to: format(today, "yyyy-MM-dd"),
+        });
+        break;
+      case "Останні 7 днів":
+        setDatePeriod({
+          from: format(subDays(today, 7), "yyyy-MM-dd"),
+          to: format(today, "yyyy-MM-dd"),
+        });
+        break;
+      case "Останні 30 днів":
+        setDatePeriod({
+          from: format(subDays(today, 30), "yyyy-MM-dd"),
+          to: format(today, "yyyy-MM-dd"),
+        });
+        break;
+      default:
+        setDatePeriod({ from: "", to: "" });
+        break;
+    }
   };
 
   const handleCheckCategory = (categoryName) => {
-    setSelectedCategories((prevSelected) =>
-      prevSelected.includes(categoryName)
+    setSelectedCategories((prevSelected) => {
+      const updatedCategories = prevSelected.includes(categoryName)
         ? prevSelected.filter((name) => name !== categoryName)
-        : [...prevSelected, categoryName]
-    );
+        : [...prevSelected, categoryName];
+
+      return updatedCategories;
+    });
   };
 
   const handleCheckCompanies = (companyName) => {
-    setCompanies((prevSelected) =>
-      prevSelected.includes(companyName)
+    setSelectedCompanies((prevSelected) => {
+      const updateCompanies = prevSelected.includes(companyName)
         ? prevSelected.filter((name) => name !== companyName)
-        : [...prevSelected, companyName]
-    );
+        : [...prevSelected, companyName];
+
+      return updateCompanies;
+    });
+  };
+
+  const handleCheckDate = (e) => {
+    const { name, value } = e.target;
+    setDatePeriod((prevPeriod) => ({
+      ...prevPeriod,
+      [name]: value,
+    }));
   };
 
   const filterVacancies = () => {
     let filteredCards = [...cards];
+    console.log(filteredCards);
 
     // Filter by categories
     if (selectedCategories.length > 0) {
@@ -490,10 +122,21 @@ const MyOffice = () => {
     }
 
     // Filter by companies
-    if (companies.length > 0) {
+    if (selectedCompanies.length > 0) {
       filteredCards = filteredCards.filter((job) =>
-        companies.includes(job.name_company?.toLowerCase())
+        selectedCompanies.includes(job.name_company)
       );
+    }
+
+    //Filter by date
+    if (datePeriod.from && datePeriod.to) {
+      filteredCards = filteredCards.filter((job) => {
+        const jobDate = new Date(job.Atdate);
+        const fromDate = new Date(datePeriod.from);
+        const toDate = new Date(datePeriod.to);
+
+        return jobDate >= fromDate && jobDate <= toDate;
+      });
     }
 
     setFilteredJobs(filteredCards);
@@ -501,12 +144,13 @@ const MyOffice = () => {
 
   const resetFilters = () => {
     setSelectedCategories([]);
-    setCompanies([]);
+    setSelectedCompanies([]);
+    setSelectedDate(null);
     setDatePeriod({ from: "", to: "" });
-    setIsChecked(false);
   };
 
   const getCards = async () => {
+    setIsLoading(true);
     try {
       const res = await fetch(`${URL}/jobs/jobs`, requestOptions);
 
@@ -515,7 +159,7 @@ const MyOffice = () => {
       }
 
       const data = await res.json();
-
+      setIsLoading(false);
       setCards(data);
     } catch (error) {
       console.error("Помилка при завантаженні даних:", error);
@@ -523,24 +167,23 @@ const MyOffice = () => {
     }
   };
 
-  const getJobsCategories = async () => {
-    const BASE_URL = "https://glowing-boa-definite.ngrok-free.app";
-
-    const myHeaders = new Headers();
-    myHeaders.append("ngrok-skip-browser-warning", "69420");
-    myHeaders.append("Content-Type", "application/json");
-
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-
+  const getCompanies = async () => {
     try {
-      const res = await fetch(
-        `${BASE_URL}/jobs/job-categories`,
-        requestOptions
-      );
+      const res = await fetch(`${URL}/auth/users`, requestOptions);
+
+      if (!res.ok) {
+        throw new Error(`Not found: ${res.text()}`);
+      }
+      const data = await res.json();
+      setCompanies(data);
+    } catch (error) {
+      console.error("Помилка при завантаженні даних:", error);
+    }
+  };
+
+  const getJobsCategories = async () => {
+    try {
+      const res = await fetch(`${URL}/jobs/job-categories`, requestOptions);
 
       if (!res.ok) {
         throw new Error(`Not found: ${await res.text()}`);
@@ -549,7 +192,7 @@ const MyOffice = () => {
       const data = await res.json();
       setCategories(data);
 
-      const resJobs = await fetch(`${BASE_URL}/jobs/jobs`, requestOptions);
+      const resJobs = await fetch(`${URL}/jobs/jobs`, requestOptions);
 
       if (!resJobs.ok) {
         throw new Error(`Not found: ${await res.text()}`);
@@ -563,10 +206,34 @@ const MyOffice = () => {
     }
   };
 
+  const handleCloseCategory = () => {
+    setIsVisibleCategory(false);
+    setSelectedCategories([]);
+  };
+  const handleCloseCompany = () => {
+    setIsVisibleCompany(false);
+    setSelectedCompanies([]);
+  };
+  const handleCloseDate = () => {
+    setIsVisibleDate(false);
+    setDatePeriod({ from: "", to: "" });
+  };
+
+  const CloseButton = [
+    handleCloseCategory,
+    handleCloseCompany,
+    handleCloseDate,
+  ];
+
+  const visibleButton = [isVisibleCategory, isVisibleCompany, isVisibleDate];
+
   useEffect(() => {
-    // getCards();
-    getJobsCategories();
-  }, [selectedCategories, companies, cards]);
+    if (token) {
+      getCards();
+      getJobsCategories();
+      // getCompanies();
+    }
+  }, [token]);
 
   return (
     <div className="container">
@@ -602,7 +269,6 @@ const MyOffice = () => {
           onSubmit={(e) => {
             e.preventDefault();
             filterVacancies();
-            resetFilters();
           }}
         >
           <Accordion accordionTitle="Категорія">
@@ -612,7 +278,7 @@ const MyOffice = () => {
                   <li key={category.id}>
                     <InputCheckbox
                       label={category.name}
-                      onChange={() => {
+                      onClick={() => {
                         handleCheckCategory(category.name);
                       }}
                     ></InputCheckbox>
@@ -622,56 +288,63 @@ const MyOffice = () => {
             </ul>
           </Accordion>
           <Accordion accordionTitle="Компанії">
-            <InputCheckbox
-              label="SoftServe"
-              onChange={() => {
-                handleCheckCompanies("softserve");
-              }}
-            ></InputCheckbox>
-            <InputCheckbox
-              label="Nakivo"
-              onChange={() => {
-                handleCheckCompanies("nakivo");
-              }}
-            ></InputCheckbox>
-            <InputCheckbox
-              label="MCPK"
-              onChange={() => {
-                handleCheckCompanies("mcpk");
-              }}
-            ></InputCheckbox>
-            <InputCheckbox
-              label="GlobalLogic"
-              onChange={() => {
-                handleCheckCompanies("globallogic");
-              }}
-            ></InputCheckbox>
-            <InputCheckbox
-              label="Luxoft"
-              onChange={() => {
-                handleCheckCompanies("luxoft");
-              }}
-            ></InputCheckbox>
+            {companies.map((company, i) => {
+              if (!company.company_name) {
+                return;
+              }
+
+              return (
+                <li key={i}>
+                  <InputCheckbox
+                    label={company.company_name}
+                    onClick={() => {
+                      handleCheckCompanies(company.company_name);
+                    }}
+                  ></InputCheckbox>
+                </li>
+              );
+            })}
           </Accordion>
           <Accordion accordionTitle="За датою">
-            <InputCheckbox label="Сьогодні"></InputCheckbox>
-            <InputCheckbox label="Вчора"></InputCheckbox>
-            <InputCheckbox label="Останні 7 днів"></InputCheckbox>
-            <InputCheckbox label="Останні 30 днів"></InputCheckbox>
+            <InputRadioBtn
+              label="Сьогодні"
+              isSelected={selectedDate === "Сьогодні"}
+              onClick={() => handleRadioChange("Сьогодні")}
+            ></InputRadioBtn>
+            <InputRadioBtn
+              label="Вчора"
+              isSelected={selectedDate === "Вчора"}
+              onClick={() => handleRadioChange("Вчора")}
+            ></InputRadioBtn>
+            <InputRadioBtn
+              label="Останні 7 днів"
+              isSelected={selectedDate === "Останні 7 днів"}
+              onClick={() => handleRadioChange("Останні 7 днів")}
+            ></InputRadioBtn>
+            <InputRadioBtn
+              label="Останні 30 днів"
+              isSelected={selectedDate === "Останні 30 днів"}
+              onClick={() => handleRadioChange("Останні 30 днів")}
+            ></InputRadioBtn>
             <div>
-              <InputCheckbox
+              <InputRadioBtn
                 label="Вказаний період"
-                onChange={handleCheckboxChange}
-              ></InputCheckbox>
+                isSelected={selectedDate === "Вказаний період"}
+                onClick={() => {
+                  handleRadioChange("Вказаний період");
+                }}
+              ></InputRadioBtn>
 
-              {isChecked && (
+              {selectedDate === "Вказаний період" && (
                 <div className="input-box">
                   <label className="form-date">
                     З*:
                     <input
                       className="date-input"
                       type="date"
-                      placeholder="дд/мм/рррр"
+                      name="from"
+                      value={datePeriod.from}
+                      onChange={handleCheckDate}
                     />
                   </label>
                   <label className="form-date">
@@ -679,18 +352,32 @@ const MyOffice = () => {
                     <input
                       className="date-input"
                       type="date"
-                      placeholder="дд/мм/рррр"
+                      name="to"
+                      value={datePeriod.to}
+                      onChange={handleCheckDate}
                     />
                   </label>
                 </div>
               )}
             </div>
           </Accordion>
-          <button className="filter-button" type="submit">
+          <button
+            className="filter-button"
+            type="submit"
+            title="Фільтрує по вибраним критеріям"
+          >
             Застосувати фільтр
           </button>
         </form>
-        <MainContent filter={filteredJobs} cards={cards} />
+        <MainContent
+          filter={filteredJobs}
+          cards={cards}
+          reset={resetFilters}
+          selectedItems={selectedItems}
+          onClose={CloseButton}
+          isVisible={visibleButton}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );

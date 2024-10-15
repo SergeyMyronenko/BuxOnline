@@ -26,7 +26,7 @@ import { RiMapPinLine } from "react-icons/ri";
  */
 // eslint-disable-next-line react/prop-types
 
-const URL = "https://glowing-boa-definite.ngrok-free.app";
+const URL = "https://6243-2003-dd-b736-6c81-d1cb-78bc-a67-4a9c.ngrok-free.app";
 const myHeaders = new Headers();
 myHeaders.append("ngrok-skip-browser-warning", "69420");
 myHeaders.append("Content-Type", "application/json");

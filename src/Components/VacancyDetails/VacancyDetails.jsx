@@ -4,8 +4,6 @@ import { LiaUserClockSolid } from "react-icons/lia";
 import { FaHandshakeAngle, FaHouseLaptop } from "react-icons/fa6";
 import { IoLanguageOutline } from "react-icons/io5";
 import { GiWallet } from "react-icons/gi";
-import SolidButton from "../Buttons/SolidButton/SolidButton";
-import { Link } from "react-router-dom";
 import "./VacancyDetails.scss";
 
 const testVacancy = {
@@ -28,6 +26,7 @@ const testVacancy = {
 };
 
 const VacancyDetails = ({ btnApply, btnReject, onClick }) => {
+  const [handleApprove, handleReject] = onClick;
   return (
     <>
       <div className="confirm-wrapper">
@@ -99,11 +98,17 @@ const VacancyDetails = ({ btnApply, btnReject, onClick }) => {
           <button
             className="button details-button"
             type="submit"
-            onClick={onClick}
+            onClick={handleApprove}
           >
             {btnApply}
           </button>
-          <button className="button apply-button">{btnReject}</button>
+          <button
+            className="button apply-button"
+            type="submit"
+            onClick={handleReject}
+          >
+            {btnReject}
+          </button>
         </div>
       </div>
     </>
