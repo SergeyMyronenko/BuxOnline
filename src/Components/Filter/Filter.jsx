@@ -48,7 +48,10 @@ const Filter = ({
             selectedCategories.map((item) => {
               return (
                 <li key={item} className="filter-item">
-                  <FilterItem onClose={handleCloseCategory} title={item} />
+                  <FilterItem
+                    onClose={() => handleCloseCategory(item)}
+                    title={item}
+                  />
                 </li>
               );
             })}
@@ -57,7 +60,10 @@ const Filter = ({
             selectedCompanies.map((item) => {
               return (
                 <li key={item}>
-                  <FilterItem onClose={handleCloseCompany} title={item} />
+                  <FilterItem
+                    onClose={() => handleCloseCompany(item)}
+                    title={item}
+                  />
                 </li>
               );
             })}

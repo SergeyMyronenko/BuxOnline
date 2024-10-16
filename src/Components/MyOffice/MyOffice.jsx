@@ -21,16 +21,14 @@ const MyOffice = () => {
   const [vacancies, setVacancies] = useState(0);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [isVisibleCategory, setIsVisibleCategory] = useState(true);
-  const [isVisibleCompany, setIsVisibleCompany] = useState(true);
-  const [isVisibleDate, setIsVisibleDate] = useState(true);
+  const [isVisibleCategory, setIsVisibleCategory] = useState(false);
+  const [isVisibleCompany, setIsVisibleCompany] = useState(false);
+  const [isVisibleDate, setIsVisibleDate] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(cards);
 
   const selectedItems = [selectedCategories, selectedCompanies, selectedDate];
 
-  const URL =
-    "https://6243-2003-dd-b736-6c81-d1cb-78bc-a67-4a9c.ngrok-free.app";
+  const URL = "https://relaxing-ultimate-chigger.ngrok-free.app";
   const myHeaders = new Headers();
   myHeaders.append("ngrok-skip-browser-warning", "69420");
   myHeaders.append("Content-Type", "application/json");
@@ -112,7 +110,6 @@ const MyOffice = () => {
 
   const filterVacancies = () => {
     let filteredCards = [...cards];
-    console.log(filteredCards);
 
     // Filter by categories
     if (selectedCategories.length > 0) {
@@ -124,7 +121,7 @@ const MyOffice = () => {
     // Filter by companies
     if (selectedCompanies.length > 0) {
       filteredCards = filteredCards.filter((job) =>
-        selectedCompanies.includes(job.name_company)
+        selectedCompanies.includes(job.company_name)
       );
     }
 
@@ -147,6 +144,9 @@ const MyOffice = () => {
     setSelectedCompanies([]);
     setSelectedDate(null);
     setDatePeriod({ from: "", to: "" });
+    setIsVisibleCategory(false);
+    setIsVisibleCompany(false);
+    setIsVisibleDate(false);
   };
 
   const getCards = async () => {
@@ -159,6 +159,7 @@ const MyOffice = () => {
       }
 
       const data = await res.json();
+
       setIsLoading(false);
       setCards(data);
     } catch (error) {
@@ -206,14 +207,18 @@ const MyOffice = () => {
     }
   };
 
-  const handleCloseCategory = () => {
-    setIsVisibleCategory(false);
-    setSelectedCategories([]);
+  const handleCloseCategory = (title) => {
+    setSelectedCategories((prevCategory) =>
+      prevCategory.filter((cat) => cat !== title)
+    );
   };
-  const handleCloseCompany = () => {
-    setIsVisibleCompany(false);
-    setSelectedCompanies([]);
+
+  const handleCloseCompany = (title) => {
+    setSelectedCompanies((prevCompany) =>
+      prevCompany.filter((com) => com !== title)
+    );
   };
+
   const handleCloseDate = () => {
     setIsVisibleDate(false);
     setDatePeriod({ from: "", to: "" });
@@ -233,7 +238,7 @@ const MyOffice = () => {
       getJobsCategories();
       // getCompanies();
     }
-  }, [token]);
+  }, [token, selectedCategories, selectedCompanies, selectedDate]);
 
   return (
     <div className="container">
@@ -269,6 +274,9 @@ const MyOffice = () => {
           onSubmit={(e) => {
             e.preventDefault();
             filterVacancies();
+            setIsVisibleCategory(true);
+            setIsVisibleCompany(true);
+            setIsVisibleDate(true);
           }}
         >
           <Accordion accordionTitle="Категорія">
@@ -278,6 +286,7 @@ const MyOffice = () => {
                   <li key={category.id}>
                     <InputCheckbox
                       label={category.name}
+                      checked={selectedCategories.includes(category.name)}
                       onClick={() => {
                         handleCheckCategory(category.name);
                       }}
@@ -288,22 +297,25 @@ const MyOffice = () => {
             </ul>
           </Accordion>
           <Accordion accordionTitle="Компанії">
-            {companies.map((company, i) => {
-              if (!company.company_name) {
-                return;
-              }
+            <ul>
+              {companies.map((company, i) => {
+                if (!company.company_name) {
+                  return null;
+                }
 
-              return (
-                <li key={i}>
-                  <InputCheckbox
-                    label={company.company_name}
-                    onClick={() => {
-                      handleCheckCompanies(company.company_name);
-                    }}
-                  ></InputCheckbox>
-                </li>
-              );
-            })}
+                return (
+                  <li key={i}>
+                    <InputCheckbox
+                      label={company.company_name}
+                      checked={selectedCompanies.includes(company.company_name)}
+                      onClick={() => {
+                        handleCheckCompanies(company.company_name);
+                      }}
+                    ></InputCheckbox>
+                  </li>
+                );
+              })}
+            </ul>
           </Accordion>
           <Accordion accordionTitle="За датою">
             <InputRadioBtn

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
 import "./Card.scss";
+import editIcon from "../../assets/edit.svg";
 
 import { RiMapPinLine } from "react-icons/ri";
 
@@ -26,7 +27,7 @@ import { RiMapPinLine } from "react-icons/ri";
  */
 // eslint-disable-next-line react/prop-types
 
-const URL = "https://6243-2003-dd-b736-6c81-d1cb-78bc-a67-4a9c.ngrok-free.app";
+const URL = "https://relaxing-ultimate-chigger.ngrok-free.app";
 const myHeaders = new Headers();
 myHeaders.append("ngrok-skip-browser-warning", "69420");
 myHeaders.append("Content-Type", "application/json");
@@ -37,9 +38,11 @@ const requestOptions = {
   redirect: "follow",
 };
 
-const Card = ({ cardInfo, btnDetail, btnApply, type, width, user }) => {
+const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
   const [position, setPosition] = useState("");
+  const [skillName, setSkillName] = useState([]);
   const navigate = useNavigate();
+  console.log(cardInfo);
 
   const handleDetailsClick = () => {
     navigate(`/BuxOnline/moderator/cabinet/${user.id}/resumes/${cardInfo.id}`);
@@ -61,9 +64,19 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user }) => {
       data.forEach((element) => {
         setPosition(element.name);
       });
+
+      const names = skills
+        .filter((skill) => cardInfo.skills.includes(skill.id))
+        .map((item) => item.name);
+
+      setSkillName(names);
     } catch (error) {
       console.error("Помилка при завантаженні даних:", error);
     }
+  };
+
+  const handleOpenEdit = () => {
+    navigate(`/BuxOnline/moderator/cabinet/${cardInfo.id}/edit`);
   };
 
   useEffect(() => {
@@ -104,11 +117,11 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user }) => {
           <div className="experience">{cardInfo.required_experience} years</div>
         </div>
         <ul className="card-description-skills">
-          {cardInfo.skills &&
-            cardInfo.skills.map((skill, i) => {
+          {skillName &&
+            skillName.map((skill, i) => {
               return (
                 <li key={i}>
-                  <p className="skill">{skill.name}</p>
+                  <p className="skill">{skill}</p>
                 </li>
               );
             })}
@@ -126,6 +139,9 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user }) => {
         {type === "moderator" && (
           <button className="button apply-button">{btnApply}</button>
         )}
+        <button className="editIcon" type="button" onClick={handleOpenEdit}>
+          <img src={editIcon} alt="icon for edit vacancy" />
+        </button>
       </div>
     </div>
   );
