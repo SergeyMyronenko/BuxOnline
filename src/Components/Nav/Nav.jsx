@@ -5,7 +5,7 @@ import "../Nav/Nav.scss";
 import { Link } from "react-router-dom";
 import HollowButton from "../Buttons/HollowButton/HollowButton";
 import { useAuth } from "../../Hooks/useAuth";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 //флаг України у svg
 const UA_FLAG = (
   <svg
@@ -50,24 +50,24 @@ const UK_FLAG = (
 
 /**
  * Nav component renders the navigation bar for the application.
- * 
+ *
  * @component
  * @example
  * return (
  *   <Nav />
  * )
- * 
+ *
  * @returns {JSX.Element} The rendered navigation bar component.
- * 
+ *
  * @description
  * The Nav component includes:
  * - A logo section with an SVG icon and a link to the homepage.
  * - Navigation links to different sections of the application.
  * - A language selection dropdown that allows users to switch between languages.
- * 
+ *
  * @function
  * @name Nav
- * 
+ *
  * @property {string} language - The current language selected.
  * @property {function} setLanguage - Function to update the selected language.
  * @property {string} flag - The current flag icon representing the selected language.
@@ -79,7 +79,7 @@ const UK_FLAG = (
 export default function Nav() {
   const [language, setLanguage] = useState("UK");
   const [flag, setFlag] = useState(UA_FLAG);
-  const {token} = useAuth();
+  const { token } = useAuth();
 
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const changeLanguage = () => {
@@ -109,13 +109,15 @@ export default function Nav() {
       </div>
 
       <div className="nav-block-right">
-        <Link to='/BuxOnline/vacancy'>
+        <Link to="/BuxOnline/vacancies">
           <h5>ВАКАНСІЇ</h5>
         </Link>
         <h5>ДЛЯ БІЗНЕСУ</h5>
-        
-        <Link to='/BuxOnline/login'>
-         <HollowButton width={157} fontSize={16} borderRadius={12} >Вхід/реєстрація</HollowButton>
+
+        <Link to="/BuxOnline/login">
+          <HollowButton width={157} fontSize={16} borderRadius={12}>
+            Вхід/реєстрація
+          </HollowButton>
         </Link>
         <button className="button-language-change" onClick={changeLanguage}>
           {flag}
@@ -152,8 +154,3 @@ export default function Nav() {
     </nav>
   );
 }
- 
-
-       
-        
-   

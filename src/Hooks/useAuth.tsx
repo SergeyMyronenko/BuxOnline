@@ -21,8 +21,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const url =
-    "https://6243-2003-dd-b736-6c81-d1cb-78bc-a67-4a9c.ngrok-free.app";
+  const url = "https://relaxing-ultimate-chigger.ngrok-free.app";
 
   const [token, setToken] = useState<string | null>(null);
   const [userId, setUserId] = useState<number>(1);

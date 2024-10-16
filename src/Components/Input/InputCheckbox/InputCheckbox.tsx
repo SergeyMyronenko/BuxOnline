@@ -10,6 +10,7 @@ interface InputCheckboxProps {
   height?: string;
   required?: boolean;
   value?: string | number;
+  checked: boolean;
 }
 
 /**
@@ -34,6 +35,7 @@ const InputCheckbox: React.FC<InputCheckboxProps> = ({
   required = false,
   name,
   value,
+  checked,
 }) => {
   return (
     <div className="subcategory-wrapper">
@@ -47,6 +49,7 @@ const InputCheckbox: React.FC<InputCheckboxProps> = ({
           required={required}
           name={name}
           value={value}
+          checked={checked}
         />
       </div>
       <label htmlFor={id || label}>

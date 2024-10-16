@@ -74,6 +74,7 @@
     display: flex;
     gap: 27px;
     margin-top: 30px;
+    align-items: center;
     .button {
       display: inline-flex;
       padding: 12px 22px;
@@ -95,6 +96,11 @@
     .apply-button {
       background-color: white;
       color: #2e85ec;
+    }
+    .editIcon {
+      height: 35px;
+      border: none;
+      background-color: transparent;
     }
   }
 }

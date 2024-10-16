@@ -14,11 +14,9 @@ const MainContent = ({
   isLoading,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [skills, setSkills] = useState([]);
-  console.log(skills);
+  const [skillsId, setSkillsId] = useState([]);
 
-  const URL =
-    "https://6243-2003-dd-b736-6c81-d1cb-78bc-a67-4a9c.ngrok-free.app";
+  const URL = "https://relaxing-ultimate-chigger.ngrok-free.app";
   const myHeaders = new Headers();
   myHeaders.append("ngrok-skip-browser-warning", "69420");
   myHeaders.append("Content-Type", "application/json");
@@ -39,10 +37,6 @@ const MainContent = ({
   const iStart = 0;
   const iEnd = currentPage * perPage;
   const items = filter.length > 0 ? filter : cards;
-  const selectedIdSkills = items.skills;
-  console.log(items);
-
-  console.log(selectedIdSkills);
 
   const itemsOnPage = items.slice(iStart, iEnd);
   const totalPages = Math.ceil(items.length / perPage);
@@ -51,18 +45,12 @@ const MainContent = ({
     try {
       const res = await fetch(`${URL}/jobs/skills`, requestOptions);
 
-      if (!res.ok) {
-        throw new Error(`Not found: ${await res.text()}`);
-      }
-
       const data = await res.json();
-      setSkills(data);
+      setSkillsId(data);
     } catch (error) {
       console.error("Помилка при завантаженні даних:", error);
     }
   };
-
-  const selectedSkills = skills.filter((item) => items.includes(item.id));
 
   useEffect(() => {
     getSkills();
@@ -91,6 +79,7 @@ const MainContent = ({
                   btnDetail="Детальніше"
                   btnApply="Схвалити"
                   type="moderator"
+                  skills={skillsId}
                 />
               </li>
             ))
