@@ -115,7 +115,7 @@ function Index() {
   }, []);
 
   async function getData() {
-    const url = "https://glowing-boa-definite.ngrok-free.app";
+    const url = "https://relaxing-ultimate-chigger.ngrok-free.app";
     try {
       const response = await fetch(`${url}/jobs/jobs`);
       console.log(response);

@@ -14,8 +14,8 @@ import InputSelect from "../../Components/Input/InputSelect/InputSelect.tsx";
 
 import useFormState from "../../Hooks/useFormState.tsx";
 
-import './Register.scss';
-import { useAuth } from '../../Hooks/useAuth.tsx';
+import "./Register.scss";
+import { useAuth } from "../../Hooks/useAuth.tsx";
 
 /**
  * Step1 component renders the first step of the registration form.
@@ -274,26 +274,26 @@ const Step3 = () => (
  * @returns {JSX.Element} The rendered registration form component.
  **/
 const Register = () => {
-    const navigate = useNavigate();
-    const [step, setStep] = useState(1);
-    const {url}=useAuth();
-    const [userData, handleUserData] = useFormState({
-        email: '',
-        password: '',
-        role: 'employee',
-        userName: '',
-        companyName:'',
-        companyType: 'Company',
+  const navigate = useNavigate();
+  const [step, setStep] = useState(1);
+  const { url } = useAuth();
+  const [userData, handleUserData] = useFormState({
+    email: "",
+    password: "",
+    role: "employee",
+    userName: "",
+    companyName: "",
+    companyType: "Company",
+  });
+  const registerAsSeeker = () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    const raw = JSON.stringify({
+      email: userData.email,
+      password: userData.password,
+      role: userData.role,
+      username: userData.email,
     });
-    const registerAsSeeker = () => {
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        const raw = JSON.stringify({
-            "email": userData.email,
-            "password": userData.password,
-            "role": userData.role,
-            "username": userData.email,
-        });
 
     const requestOptions: RequestInit = {
       method: "POST",
@@ -337,13 +337,13 @@ const Register = () => {
     console.log("Form submitted");
     event.preventDefault();
     if (userData.role === "employee") {
-      // navigate('/BuxOnline/seeker');
+      navigate("/BuxOnline/seeker");
       // console.log('Register as seeker');
       registerAsSeeker();
     } else if (userData.role === "employer") {
       if (step === 3) {
         registerAsEmployer();
-        // navigate('/BuxOnline/company/cabinet/1');
+        navigate("/BuxOnline/company/cabinet/1");
         // console.log('Register as employer');
       } else {
         setStep(step + 1);
