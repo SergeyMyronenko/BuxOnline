@@ -1,0 +1,22 @@
+.job-experience {
+    color: #282828;
+    margin-top: 40px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+
+    .job-experience-text {
+        margin-bottom: 30px;
+    }
+
+    .job-experience-list {
+        list-style-type: disc;
+        margin-left: 40px;
+        
+        li:not(:last-child) {
+            margin-bottom: 30px;
+        }
+    }
+}

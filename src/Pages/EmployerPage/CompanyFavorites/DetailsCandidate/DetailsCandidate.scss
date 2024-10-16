@@ -1,0 +1,65 @@
+.details-candidate {
+    margin-top: 70px;
+}
+
+.main-info {
+    display: grid;
+    gap: 50px 20px;
+    margin-bottom: 130px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    >* {
+        border: 1px solid #BCBCBC;
+        border-radius: 12px;
+
+        &:nth-child(1) {
+            grid-column: 1 / 2;
+        }
+    
+        &:nth-child(2) {
+            grid-column: 2 / 4;
+        }
+    
+        &:nth-child(3) {
+            grid-column: 1 / 2;
+        }
+    
+        &:nth-child(4) {
+            grid-column: 2 / 3;
+        }
+    
+        &:nth-child(5) {
+            grid-column: 3 / 4;
+        }
+    
+        &:nth-child(6) {
+            grid-column: 1 / 2;
+        }
+    
+        &:nth-child(7) {
+            grid-column: 2 / 3;
+        }
+    
+        &:nth-child(8) {
+            grid-column: 3 / 4;
+        }
+    }
+
+    .main-info-child {
+        padding: 30px 25px;
+
+        .main-info-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 0px auto 40px;
+        } 
+    }
+}
+
+.work-history {
+    .work-history-title {
+        margin-bottom: 70px;
+    }
+}

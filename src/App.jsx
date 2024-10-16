@@ -22,7 +22,9 @@ import "@mantine/core/styles.css";
 import "./App.scss";
 import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
 import VacancyDetailsPage from "./Pages/VacancyDetailsPage/VacancyDetailsPage.jsx";
+import CompanyFavorites from "./Pages/EmployerPage/CompanyFavorites/CompanyFavorites.jsx";
 import CompanyCandidates from "./Components/CompanyCandidates/CompanyCandidates.jsx";
+
 
 /**
  * The main application component that sets up the routing for the application.
@@ -68,9 +70,9 @@ function App() {
           <Route path="jobs" element={<CompanyVacancies />} />
           <Route path="messages" element={<CompanyMessage />} />
           <Route path="candidates" element={<CompanyCandidates />} />
-          <Route path="favorites" element={<h1>Company Favorites</h1>} />
-          <Route path="edit" element={<CompanyEditInfo/>} />
+          <Route path="favorites" element={<CompanyFavorites />} />
 
+          <Route path="edit" element={<CompanyEditInfo/>} />
         </Route>
 
         {/* These are all the routes and pages related to seeker cabinet */}

@@ -1,0 +1,38 @@
+.personal-data {
+    padding: 20px 0 30px;
+
+    .personal-data-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        margin: 0 auto 13px;
+        background-color: #9E9E9E;
+    }
+
+    .personal-data-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .personal-name {
+            margin-bottom: 5px;
+        }
+
+        .personal-position {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 30px;
+            margin-bottom: 5px;
+        }
+
+        .personal-place {
+            display: flex;
+            gap: 5px;
+        }
+    }
+}

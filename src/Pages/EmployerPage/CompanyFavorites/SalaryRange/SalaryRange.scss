@@ -1,0 +1,19 @@
+.salary-range {
+    display: grid;
+    row-gap: 25px;
+    color: #626262;
+
+    .salary-year {
+        font-weight: 600;
+
+        span {
+            color: #3F7EE8;
+        }
+    }
+
+    .salary-month {
+        span:last-child {
+            color: #3F7EE8;
+        }
+    }
+}
