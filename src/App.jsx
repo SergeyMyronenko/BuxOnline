@@ -6,7 +6,7 @@ import Index from "./Pages/Index/Index";
 import NotFound from "./Pages/NotFound/NotFound";
 import LogIn from "./Pages/LogIn/LogIn";
 import Register from "./Pages/Register/Register";
-import CompanyCabinet from "./Pages/EmployerPage/EmployerPage.jsx";
+import EmployerPage from "./Pages/EmployerPage/EmployerPage.jsx";
 import CompanyMessage from "./Pages/EmployerPage/CompanyMessages/CompanyMessage.jsx";
 import CompanyVacancies from "./Pages/EmployerPage/CompanyVacancies/CompanyVacancies";
 import ForgotPassword from "./Pages/LogIn/ForgotPassword.jsx";
@@ -23,6 +23,8 @@ import "./App.scss";
 import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
 import VacancyDetailsPage from "./Pages/VacancyDetailsPage/VacancyDetailsPage.jsx";
 import CompanyFavorites from "./Pages/EmployerPage/CompanyFavorites/CompanyFavorites.jsx";
+import CompanyCandidates from "./Components/CompanyCandidates/CompanyCandidates.jsx";
+
 
 /**
  * The main application component that sets up the routing for the application.
@@ -63,12 +65,13 @@ function App() {
         {/* These are all the routes and pages related to company cabinet */}
         <Route path="/BuxOnline/employer/cabinet/:id" element={<EmptyOutlet />}>
           {/* the line below is responsible for the main page */}
-          <Route index element={<CompanyCabinet />} />
+          <Route index element={<EmployerPage />} />
           {/* all the other lines below are different paths and pages inside the cabinet */}
           <Route path="jobs" element={<CompanyVacancies />} />
           <Route path="messages" element={<CompanyMessage />} />
-          <Route path="candidates" element={<h1>Company Candidates</h1>} />
+          <Route path="candidates" element={<CompanyCandidates />} />
           <Route path="favorites" element={<CompanyFavorites />} />
+
           <Route path="edit" element={<CompanyEditInfo/>} />
         </Route>
 
@@ -98,6 +101,7 @@ function App() {
           <Route path="offers" element={<h1>Seeker offers</h1>} />
           <Route path="messages" element={<h1>Seeker Messages</h1>} />
           <Route path="favorites" element={<h1>Seeker Favorites</h1>} />
+          <Route path="edit" element={<CompanyEditInfo/>} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
