@@ -25,7 +25,6 @@ import VacancyDetailsPage from "./Pages/VacancyDetailsPage/VacancyDetailsPage.js
 import CompanyFavorites from "./Pages/EmployerPage/CompanyFavorites/CompanyFavorites.jsx";
 import CompanyCandidates from "./Components/CompanyCandidates/CompanyCandidates.jsx";
 
-
 /**
  * The main application component that sets up the routing for the application.
  *
@@ -97,7 +96,7 @@ function App() {
           {/* the line below is responsible for the main page */}
           <Route index element={<AdminPage />} />
           {/* all the other lines are different paths and pages inside the cabinet */}
-          <Route path="resumes/:id" element={<VacancyDetailsPage />} />
+          <Route path="resumes/:vacancyId" element={<VacancyDetailsPage />} />
           <Route path="offers" element={<h1>Seeker offers</h1>} />
           <Route path="messages" element={<h1>Seeker Messages</h1>} />
           <Route path="favorites" element={<h1>Seeker Favorites</h1>} />

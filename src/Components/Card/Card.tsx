@@ -42,7 +42,6 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
   const [position, setPosition] = useState("");
   const [skillName, setSkillName] = useState([]);
   const navigate = useNavigate();
-  console.log(cardInfo);
 
   const handleDetailsClick = () => {
     navigate(`/BuxOnline/moderator/cabinet/${user.id}/resumes/${cardInfo.id}`);

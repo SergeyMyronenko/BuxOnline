@@ -5,12 +5,13 @@ import { FaHandshakeAngle, FaHouseLaptop } from "react-icons/fa6";
 import { IoLanguageOutline } from "react-icons/io5";
 import { GiWallet } from "react-icons/gi";
 import "./VacancyDetails.scss";
+import { useEffect, useState } from "react";
 
 const testVacancy = {
   title: "Back End Engineer",
   description:
     "Ми шукаємо досвідченого бекенд-інженера, який добре орієнтується в таких мовах програмування, як Python, Java або Node.js. Цей кандидат повинен швидко навчатися та вміти вирішувати складні завдання. Він повинен бути в курсі останніх технологічних трендів. Для нас важливо, щоб цей кандидат був командним гравцем і вмів ефективно спілкуватися з колегами. Ми цінуємо командну роботу і прагнемо створити динамічне та продуктивне робоче середовище.",
-  skills: ["Python", "Java", "Node.js"],
+  skills: [9, 10, 11, 12],
   required_experience: 3,
   city: "Київ",
   salary_min: 50000,
@@ -25,57 +26,103 @@ const testVacancy = {
   status: "pending",
 };
 
+const URL = "https://relaxing-ultimate-chigger.ngrok-free.app";
+const myHeaders = new Headers();
+myHeaders.append("ngrok-skip-browser-warning", "69420");
+myHeaders.append("Content-Type", "application/json");
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow",
+};
+
 const VacancyDetails = ({ btnApply, btnReject, onClick }) => {
   const [handleApprove, handleReject] = onClick;
+  const [skillsId, setSkillsId] = useState([]);
+  const [names, setNames] = useState([]);
+  console.log(skillsId);
+  console.log(names);
+
+  const {
+    title,
+    city,
+    work_type,
+    work_format,
+    business_type,
+    languages,
+    salary_min,
+    salary_max,
+    description,
+  } = testVacancy;
+
+  const getSkills = async () => {
+    try {
+      const res = await fetch(`${URL}/jobs/skills`, requestOptions);
+
+      const data = await res.json();
+      setSkillsId(data);
+      console.log("list", data);
+
+      const skillName = skillsId.filter((skill) =>
+        testVacancy.skills.includes(skill.id).map((item) => item.name)
+      );
+      console.log("nameList", skillName);
+
+      setNames(skillName);
+    } catch (error) {
+      console.error("Помилка при завантаженні даних:", error);
+    }
+  };
+
+  useEffect(() => {
+    getSkills();
+  }, []);
+
   return (
     <>
       <div className="confirm-wrapper">
         <div className="inner-confirm-wrapper">
-          <h2 className="title">{testVacancy.title}</h2>
+          <h2 className="title">{title}</h2>
           <h4 className="city">
             <HiOutlineLocationMarker />
-            {testVacancy.city}
+            {city}
           </h4>
           <div className="job-bullet-points">
             <JobDescriptionCard
               title="Вид зайнятості"
-              description={testVacancy.work_type}
+              description={work_type}
               icon={<LiaUserClockSolid />}
             ></JobDescriptionCard>
             <JobDescriptionCard
               title="Робоче середовище"
-              description={testVacancy.work_format}
+              description={work_format}
               icon={<FaHouseLaptop />}
             ></JobDescriptionCard>
             <JobDescriptionCard
               title="Тип бізнесу"
-              description={testVacancy.business_type}
+              description={business_type}
               icon={<FaHandshakeAngle />}
             ></JobDescriptionCard>
             <JobDescriptionCard
               title="Mови"
-              description={testVacancy.languages}
+              description={languages}
               icon={<IoLanguageOutline />}
             ></JobDescriptionCard>
             <JobDescriptionCard
               title="Діапазон заробітної плати"
-              description={[
-                `$${testVacancy.salary_min}-`,
-                `$${testVacancy.salary_max}`,
-              ]}
+              description={[`$${salary_min}-`, `$${salary_max}`]}
               icon={<GiWallet />}
             ></JobDescriptionCard>
           </div>
           <div className="job-description">
             <h3>Опис роботи</h3>
             <span>
-              <p className="job-description-paragraph">
-                {testVacancy.description}
-              </p>
+              <p className="job-description-paragraph">{description}</p>
               <div className="skills-box">
                 <h4>Skills</h4>
                 <ul className="all-skills">
-                  {testVacancy.skills.map((skill, index) => (
+                  {names.map((skill, index) => (
                     <li key={index}>{skill}</li>
                   ))}
                 </ul>
