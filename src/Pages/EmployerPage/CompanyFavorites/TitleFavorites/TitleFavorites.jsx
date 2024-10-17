@@ -3,7 +3,7 @@ import './TitleFavorites.scss';
 
 const TitleFavorites = () => {
     return (
-        <span className="flex-wrap">
+        <span className="flex-wrapper">
             <span>
                 <svg
                     width="38"
