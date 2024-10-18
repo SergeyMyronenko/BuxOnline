@@ -6,6 +6,8 @@ import { IoLanguageOutline } from "react-icons/io5";
 import { GiWallet } from "react-icons/gi";
 import "./VacancyDetails.scss";
 import { useEffect, useState } from "react";
+import editIcon from "../../assets/edit.svg";
+import { Link, useParams } from "react-router-dom";
 
 const testVacancy = {
   title: "Back End Engineer",
@@ -41,6 +43,7 @@ const VacancyDetails = ({ btnApply, btnReject, onClick }) => {
   const [handleApprove, handleReject] = onClick;
   const [skillsId, setSkillsId] = useState([]);
   const [names, setNames] = useState([]);
+  const { id, vacancyId } = useParams();
   console.log(skillsId);
   console.log(names);
 
@@ -156,6 +159,9 @@ const VacancyDetails = ({ btnApply, btnReject, onClick }) => {
           >
             {btnReject}
           </button>
+          <Link to={`/BuxOnline/moderator/cabinet/${id}/edit/${vacancyId}`}>
+            <img src={editIcon} alt="icon for edit vacancy" />
+          </Link>
         </div>
       </div>
     </>
