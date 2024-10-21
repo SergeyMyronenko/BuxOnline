@@ -71,18 +71,20 @@ const MainContent = ({
       ) : (
         <ul className="job-card-list">
           {itemsOnPage.length > 0 ? (
-            itemsOnPage.map((card, i) => (
-              <li key={i}>
-                <Card
-                  user={user}
-                  cardInfo={card}
-                  btnDetail="Детальніше"
-                  btnApply="Схвалити"
-                  type="moderator"
-                  skills={skillsId}
-                />
-              </li>
-            ))
+            itemsOnPage
+              .filter((card) => card.status === "pending")
+              .map((card, i) => (
+                <li key={i}>
+                  <Card
+                    user={user}
+                    cardInfo={card}
+                    btnDetail="Детальніше"
+                    btnApply="Схвалити"
+                    type="moderator"
+                    skills={skillsId}
+                  />
+                </li>
+              ))
           ) : (
             <p>Вакансії не знайдено</p>
           )}

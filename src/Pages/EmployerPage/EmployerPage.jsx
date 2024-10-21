@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import SolidButton from "../../Components/Buttons/SolidButton/SolidButton";
 import { PiBriefcase } from "react-icons/pi";
 import { IoMailOutline, IoPeopleOutline } from "react-icons/io5";
@@ -7,7 +7,9 @@ import { GoHeart } from "react-icons/go";
 import { TiLocationOutline } from "react-icons/ti";
 import "./EmployerPage.scss";
 
-function profileData(data) {
+function profileData(data, handleEditCompany, user) {
+  console.log(user);
+
   if (data) {
     return (
       <div className="profile-data-wrapper">
@@ -37,7 +39,12 @@ function profileData(data) {
                   {data.location}
                 </p>
               </span>
-              <SolidButton width="100%" borderRadius="20px" height="42px">
+              <SolidButton
+                width="100%"
+                borderRadius="20px"
+                height="42px"
+                onClick={() => handleEditCompany(user.id)}
+              >
                 Редагувати профіль
               </SolidButton>
             </div>
@@ -93,8 +100,14 @@ function profileData(data) {
 }
 
 const CompanyCabinetBase = () => {
-  // const navigate = useNavigate();
-  const dataPlaceholer = {
+  const navigate = useNavigate();
+  const user = useParams();
+
+  const handleEditCompany = (companyId) => {
+    navigate(`/BuxOnline/employer/cabinet/${companyId}/edit`);
+  };
+
+  const dataPlaceholder = {
     imageUrl: "",
     companyName: "WebDevPro",
     location: "Україна, Київ",
@@ -173,7 +186,9 @@ const CompanyCabinetBase = () => {
                 </SolidButton>
               </Link>
             </div>
-            <div className="company-info">{profileData(dataPlaceholer)}</div>
+            <div className="company-info">
+              {profileData(dataPlaceholder, handleEditCompany, user)}
+            </div>
           </span>
         </div>
       </div>

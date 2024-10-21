@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import VacancyDetails from "../../Components/VacancyDetails/VacancyDetails";
+import { useParams } from "react-router";
 
-const URL = "https://38cd-2003-dd-b736-6cef-d1cb-78bc-a67-4a9c.ngrok-free.app";
+const URL = "https://relaxing-ultimate-chigger.ngrok-free.app";
 const myHeaders = new Headers();
 myHeaders.append("ngrok-skip-browser-warning", "69420");
 myHeaders.append("Content-Type", "application/json");
@@ -13,17 +14,39 @@ const requestOptions = {
 };
 
 const VacancyDetailsPage = () => {
-  const [pendingVacancies, setPendingVacancies] = useState([]);
+  const [vacancy, setVacancy] = useState({});
+  console.log(vacancy);
 
-  const handleApprove = async () => {
+  const { vacancyId } = useParams();
+
+  const selectedVacancy = async () => {
     try {
-      const res = await fetch(`${URL}/jobs/jobs`, requestOptions);
+      const res = await fetch(`${URL}/jobs/jobs/${vacancyId}`, requestOptions);
+
       if (!res.ok) {
         throw new Error(`Not found: ${res.text()}`);
       }
 
       const data = await res.json();
-      setPendingVacancies(data);
+
+      setVacancy(data);
+    } catch (error) {
+      console.error("Помилка при завантаженні даних:", error);
+    }
+  };
+
+  const handleApprove = async () => {
+    try {
+      const res = await fetch(
+        `${URL}/jobs/jobs/${id.vacancyId}`,
+        requestOptions
+      );
+      if (!res.ok) {
+        throw new Error(`Not found: ${res.text()}`);
+      }
+
+      const data = await res.json();
+      console.log(data);
     } catch (error) {
       console.error("Помилка при завантаженні даних:", error);
     }
@@ -33,12 +56,19 @@ const VacancyDetailsPage = () => {
 
   const handlers = [handleApprove, handleReject];
 
+  useEffect(() => {
+    if (vacancyId) {
+      selectedVacancy();
+    }
+  }, [vacancyId]);
+
   return (
     <div>
       <VacancyDetails
         btnApply="Схвалити вакансію"
         btnReject="Відхилити вакансію"
         onClick={handlers}
+        vacancy={vacancy}
       />
     </div>
   );
