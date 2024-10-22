@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { json, useNavigate, useParams } from "react-router";
 import "./Card.scss";
 import editIcon from "../../assets/edit.svg";
-
 import { RiMapPinLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 /**
  * Card Component
@@ -42,10 +42,29 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
   const [position, setPosition] = useState("");
   const [skillName, setSkillName] = useState([]);
   const navigate = useNavigate();
-  console.log(cardInfo);
+  const { id } = useParams();
 
   const handleDetailsClick = () => {
     navigate(`/BuxOnline/moderator/cabinet/${user.id}/resumes/${cardInfo.id}`);
+  };
+
+  const handleApproveVacancy = async (id) => {
+    const updateOptions = {
+      method: "PATCH",
+      headers: myHeaders,
+      body: JSON.stringify({ status: "pending" }),
+      redirect: "follow",
+    };
+
+    try {
+      const res = await fetch(`${URL}/jobs/jobs/${id}/`, updateOptions);
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Not found: ${errorText}`);
+      }
+      const data = res.json();
+      console.log("Status changed");
+    } catch (error) {}
   };
 
   const getPosition = async (id) => {
@@ -137,11 +156,19 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
           </button>
         )}
         {type === "moderator" && (
-          <button className="button apply-button">{btnApply}</button>
+          <button
+            className="button apply-button"
+            onClick={() => handleApproveVacancy(cardInfo.id)}
+          >
+            {btnApply}
+          </button>
         )}
-        <button className="editIcon" type="button" onClick={handleOpenEdit}>
+        <Link
+          to={`/BuxOnline/moderator/cabinet/${id}/edit/${cardInfo.id}`}
+          className="editIcon"
+        >
           <img src={editIcon} alt="icon for edit vacancy" />
-        </button>
+        </Link>
       </div>
     </div>
   );

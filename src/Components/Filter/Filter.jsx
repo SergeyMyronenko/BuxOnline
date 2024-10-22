@@ -1,4 +1,3 @@
-import { Children, useState } from "react";
 import "./Filter.scss";
 
 import { lift } from "@tiptap/pm/commands";
