@@ -2,7 +2,7 @@ import React from "react";
 import "./Accordion.scss";
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
-import arrowDown from "../../assets/down-arrow.svg";
+import clsx from "clsx";
 
 /**
  * Accordion component that displays a collapsible section with a title.

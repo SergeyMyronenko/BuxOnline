@@ -8,6 +8,13 @@
     flex-wrap: wrap;
     gap: 20px;
   }
+  .not-found-vacancy {
+    height: 344px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .load-btn {
     display: flex;
     padding: 12px 22px;
