@@ -23,7 +23,7 @@ import "./App.scss";
 import AdminPage from "./Pages/AdminPage/AdminPage.jsx";
 import VacancyDetailsPage from "./Pages/VacancyDetailsPage/VacancyDetailsPage.jsx";
 import CompanyFavorites from "./Pages/EmployerPage/CompanyFavorites/CompanyFavorites.jsx";
-import CompanyCandidates from "./Components/CompanyCandidates/CompanyCandidates.jsx";
+import CompanyCandidates from "./Pages/EmployerPage/CompanyCandidates/CompanyCandidates.jsx";
 import EditDetailVacancy from "./Components/EditDetailVacancy/EditDetailVacancy.jsx";
 import EditVacancyPage from "./Pages/EditVacancyPage/EditVacancyPage.jsx";
 
