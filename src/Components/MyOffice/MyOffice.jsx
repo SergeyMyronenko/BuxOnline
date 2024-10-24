@@ -279,7 +279,7 @@ const MyOffice = () => {
             setIsVisibleDate(true);
           }}
         >
-          <Accordion accordionTitle="Категорія">
+          <Accordion accordionTitle="Категорія" className={"accordion-wrapper"}>
             <ul>
               {categories.map((category) => {
                 return (
@@ -296,7 +296,7 @@ const MyOffice = () => {
               })}
             </ul>
           </Accordion>
-          <Accordion accordionTitle="Компанії">
+          <Accordion accordionTitle="Компанії" className={"accordion-wrapper"}>
             <ul>
               {companies.map((company, i) => {
                 if (!company.company_name) {
@@ -317,7 +317,7 @@ const MyOffice = () => {
               })}
             </ul>
           </Accordion>
-          <Accordion accordionTitle="За датою">
+          <Accordion accordionTitle="За датою" className={"accordion-wrapper"}>
             <InputRadioBtn
               label="Сьогодні"
               isSelected={selectedDate === "Сьогодні"}
