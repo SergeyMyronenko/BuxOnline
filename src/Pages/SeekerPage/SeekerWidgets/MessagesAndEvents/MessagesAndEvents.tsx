@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import "./MessagesAndEvents.scss";
 import BagIcon from "../../../../Components/Icons/BagIcon";
@@ -18,24 +18,28 @@ const MessagesAndEvents = () => {
           linkTo={"resumes"}
           name={"Мої резюме"}
           amount={1}
+          newAmount={0}
         />
         <MessagesAndEventsItem
           icon={<MessageIcon />}
           linkTo={"offers"}
           name={"Відгуки та запрошення"}
           amount={19}
+          newAmount={9}
         />
         <MessagesAndEventsItem
           icon={<ConvertIcon />}
           linkTo={"messages"}
           name={"Повідомлення"}
           amount={7}
+          newAmount={20}
         />
         <MessagesAndEventsItem
           icon={<HeartIcon />}
           linkTo={"favorites"}
           name={"Обрані вакансії"}
           amount={0}
+          newAmount={0}
         />
       </div>
       <div className="actions">
@@ -60,13 +64,20 @@ const MessagesAndEvents = () => {
   );
 };
 
-const MessagesAndEventsItem = ({ icon, linkTo, name, amount }) => {
+const MessagesAndEventsItem = ({ icon, linkTo, name, amount, newAmount }) => {
+  const newA = newAmount > 0;
+
   return (
     <div className="messages-and-events-item">
       <Link to={linkTo} className="item-link">
         {icon} {name}
       </Link>
-      <span className="amount">{amount}</span>
+      <span className="amount">{amount}
+        {
+          newA ?
+          <span className="new-amount">{newAmount}</span> : null
+        }
+      </span>
     </div>
   );
 };
