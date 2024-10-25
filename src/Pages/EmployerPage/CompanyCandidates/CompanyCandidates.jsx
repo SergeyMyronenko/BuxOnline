@@ -11,7 +11,7 @@ const CompanyCandidates = () => {
     const flag = true;
 
     const [name, setName] = useState(flag);
-
+ 
     const switcher = () => {
         setName(!name);
     };
