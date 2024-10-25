@@ -110,7 +110,7 @@
 
                 &:hover {
                     cursor: pointer;
-                    background-color: white;
+                    background-color: transparent;
                     transform: scale(1.05);
                     
                     .contact-text {
@@ -122,7 +122,6 @@
 
                 .message-icon {
                     height: 25px;
-
                     display: flex;
                     @include flexProp(center, center);
                 }

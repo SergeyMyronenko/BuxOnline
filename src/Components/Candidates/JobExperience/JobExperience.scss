@@ -1,11 +1,15 @@
 .job-experience {
     color: #282828;
-    margin-top: 40px;
+    padding-top: 38px;
+    margin-bottom: 0px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 150%;
+    height: 0px;
+    overflow: hidden;
+    transition: 0.5s height, 0.5s padding-bottom;
 
     .job-experience-text {
         margin-bottom: 30px;
