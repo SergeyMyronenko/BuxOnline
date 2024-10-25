@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import "./MainContent.scss";
 import Filter from "../Filter/Filter";
 import { useParams } from "react-router";
+import Pagination from "../Pagination/Pagination";
 
 const MainContent = ({
   filter,
@@ -28,6 +29,9 @@ const MainContent = ({
   };
 
   const perPage = 8;
+  const paginate = (number) => {
+    setCurrentPage(number);
+  };
 
   const user = useParams();
   const loadMore = () => {
@@ -58,46 +62,56 @@ const MainContent = ({
 
   return (
     <div className="content-wrapper">
-      <Filter
-        onClose={onClose}
-        isVisible={isVisible}
-        filter={filter}
-        cards={cards}
-        reset={reset}
-        selectedItems={selectedItems}
-      />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul className="job-card-list">
-          {itemsOnPage.length > 0 ? (
-            itemsOnPage
-              .filter((card) => card.status === "pending")
-              .map((card, i) => (
-                <li key={i}>
-                  <Card
-                    user={user}
-                    cardInfo={card}
-                    btnDetail="Детальніше"
-                    btnApply="Схвалити"
-                    type="moderator"
-                    skills={skillsId}
-                  />
-                </li>
-              ))
-          ) : (
-            <p>Вакансії не знайдено</p>
-          )}
-        </ul>
-      )}
+      <div>
+        <Filter
+          onClose={onClose}
+          isVisible={isVisible}
+          filter={filter}
+          cards={cards}
+          reset={reset}
+          selectedItems={selectedItems}
+        />
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <ul className="job-card-list">
+            {itemsOnPage.length > 0 ? (
+              itemsOnPage
+                .filter((card) => card.status === "pending")
+                .map((card, i) => (
+                  <li key={i}>
+                    <Card
+                      user={user}
+                      cardInfo={card}
+                      btnDetail="Детальніше"
+                      btnApply="Схвалити"
+                      type="moderator"
+                      skills={skillsId}
+                    />
+                  </li>
+                ))
+            ) : (
+              <p className="not-found-vacancy">Вакансій не знайдено</p>
+            )}
+          </ul>
+        )}
 
-      <div style={{ height: "104px" }}>
+        {/* <div style={{ height: "104px" }}>
         {items.length > perPage && currentPage < totalPages && (
           <button className="load-btn" type="submit" onClick={loadMore}>
             Завантажити ще
           </button>
         )}
+      </div> */}
       </div>
+      {items.length > 0 && (
+        <Pagination
+          vacancyPerPage={perPage}
+          totalVacancy={50}
+          paginateNum={paginate}
+          currentPage={currentPage}
+        />
+      )}
     </div>
   );
 };

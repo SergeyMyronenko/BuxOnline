@@ -1,33 +1,33 @@
-@use '../../../App.scss' as styles;
+@use "../../../App.scss" as styles;
 
 .select-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  // padding-bottom: 20px;
+
+  label {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding-bottom: 20px;
+    font-size: 16px;
+    color: styles.$grayforBorder;
+    font-weight: 200;
+    text-align: left;
 
-    label {
-        width: 100%;
-        font-size: 16px;
-        color: styles.$grayforBorder;
-        font-weight: 200;
-        text-align: left;
-
-        &:hover+input {
-            background-color: styles.$grayForFill;
-        }
+    &:hover + input {
+      background-color: styles.$grayForFill;
     }
+  }
 
-    select {
-        width: 100%;
-        height: 43px;
-        border-radius: 12px;
-        border: 1px solid styles.$grayforBorder;
-        font-size: 16px;
-        padding-left: 20px;
-        color: styles.$blackForText;
-    }
+  select {
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    border: 1px solid styles.$grayforBorder;
+    font-size: 16px;
+    padding-left: 20px;
+    color: styles.$blackForText;
+  }
 }

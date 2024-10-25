@@ -1,4 +1,5 @@
 @use "../../App.scss" as styles;
+$transitionAll: 0.3s cubic-bezier(0.7, 0, 0.31, 0.98);
 
 .edit-wrapper {
   border: 1px solid styles.$grayforBorder;
@@ -29,6 +30,45 @@
     gap: 10px;
     width: 100%;
     margin-bottom: 50px;
+
+    .radio-box {
+      display: flex;
+      width: 771px;
+      height: 48px;
+      border-radius: 16px;
+      &-span {
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 0em;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .radio-box-label {
+        border: 1px solid styles.$lightBlue;
+        height: 48px;
+        width: 72px;
+        overflow: hidden;
+
+        &:first-child {
+          border-top-left-radius: 16px;
+          border-bottom-left-radius: 16px;
+        }
+        &:last-child {
+          border-top-right-radius: 16px;
+          border-bottom-right-radius: 16px;
+        }
+      }
+      .radio-input {
+        display: none;
+        &:checked + .radio-box-span {
+          background-color: styles.$lightBlue;
+          color: #fff;
+        }
+      }
+    }
 
     .edit-input-text {
       border: 1px solid styles.$grayforBorder;
@@ -77,10 +117,42 @@
       font-weight: 600;
       font-size: 24px;
       letter-spacing: 0em;
+
+      .select-wrapper {
+        position: relative;
+        width: 324px;
+        height: 48px;
+        .custom-select {
+          outline: none;
+          cursor: pointer;
+          appearance: none;
+          border: 1px solid styles.$grayforBorder;
+          border-radius: 8px;
+          padding: 12px 10px;
+          font-weight: 400;
+          font-size: 16px;
+          letter-spacing: 0em;
+        }
+        .edit-label-icon {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          width: 24px;
+          height: 24px;
+          top: 50%;
+          transform: translateY(-50%);
+          transition: $transitionAll;
+          right: 15px;
+          pointer-events: none;
+        }
+        .open-icon {
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
     }
     &-input {
       border: 1px solid styles.$grayforBorder;
-      border-radius: 7px;
+      border-radius: 8px;
       padding: 12px 10px;
       width: 324px;
       height: 48px;
@@ -99,12 +171,41 @@
         font-weight: 600;
         font-size: 24px;
         letter-spacing: 0em;
+        &-custom {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+          margin-bottom: 20px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 288%;
+          letter-spacing: 0em;
+          cursor: pointer;
+          .disable-input {
+            display: none;
+          }
+          .custom-checkbox {
+            display: block;
+            width: 35px;
+            height: 35px;
+            border: 3px solid styles.$grayforBorder;
+            border-radius: 8px;
+          }
+          .selected-checkbox {
+            background-color: styles.$lightBlue;
+            color: #fff;
+            border-color: styles.$lightBlue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
       }
     }
   }
   .edit-textarea {
     border: 1px solid styles.$grayforBorder;
-    border-radius: 7px;
+    border-radius: 8px;
     padding: 10px;
     width: 100%;
     height: 80px;
