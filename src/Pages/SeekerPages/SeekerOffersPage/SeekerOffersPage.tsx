@@ -3,6 +3,7 @@ import "./SeekerOffersPage.scss";
 import WavyLine from "../../../Components/Icons/WavyLine";
 import { reviewsList, invitationList } from "../../SeekerPage/fakeData";
 import Card from "../../../Components/Card/Card";
+import EmptyList from "../../../Components/EmptyList/EmptyList";
 
 const SeekerOffersPage = () => {
   const [view, setView] = useState<"review" | "invitation">("review");
@@ -37,7 +38,7 @@ const SeekerOffersPage = () => {
         <div className="reviews-list">
           {view === "review" &&
             (reviewsList.length === 0 ? (
-              <div>zero</div>
+              <EmptyList/>
             ) : (
               reviewsList?.map((resume, i) => (
                 <Card
@@ -53,7 +54,7 @@ const SeekerOffersPage = () => {
 
           {view === "invitation" &&
             (invitationList.length === 0 ? (
-              <div>zero</div>
+              <EmptyList/>
             ) : (
               invitationList?.map((invitation, i) => (
                 <Card
