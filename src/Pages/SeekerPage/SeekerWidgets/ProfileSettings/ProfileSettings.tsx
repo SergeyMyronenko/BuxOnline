@@ -15,7 +15,7 @@ const ProfileSettings = () => {
               pathColor: "#007bff",
               textColor: "#282828",
               trailColor: "#d6d6d6",
-              backgroundColor: "#f3f3f3",
+              backgroundColor: "#f3f3f3"
             })}
           />
         </div>

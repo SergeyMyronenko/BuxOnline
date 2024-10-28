@@ -13,6 +13,26 @@
     height: 240px;
     background-color: styles.$lightBlue;
     border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .seeker-photo-text-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      color: white;
+      font-size: 14px;
+      width: 100px;
+      text-align: center;
+      line-height: 17px;
+    }
+
+    #upload-photo {
+      display: none;
+    }
   }
 
   .seeker-data {
