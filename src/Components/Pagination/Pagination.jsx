@@ -8,6 +8,9 @@ const Pagination = ({
   totalVacancy,
   paginateNum,
   currentPage,
+  switchForward,
+  switchBack,
+  getCurrentPage
 }) => {
   const pageNumbers = [];
 
@@ -21,6 +24,7 @@ const Pagination = ({
         className="pagination-box-button"
         src={leftArrow}
         alt="icon left arrow"
+        onClick={() => switchBack()}
       />
       <ul className="pagination-list">
         {pageNumbers.map((number) => {
@@ -31,7 +35,10 @@ const Pagination = ({
                 currentPage === number && "pagination-number-active"
               )}
               key={number}
-              onClick={() => paginateNum(number)}
+              onClick={() => {
+                //paginateNum(number);
+                getCurrentPage(number);
+              }}
             >
               <span>{number}</span>
             </li>
@@ -42,6 +49,7 @@ const Pagination = ({
         className="pagination-box-button"
         src={rightArrow}
         alt="icon right arrow"
+        onClick={() => switchForward()}
       />
     </div>
   );
