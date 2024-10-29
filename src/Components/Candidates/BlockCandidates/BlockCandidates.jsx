@@ -1,9 +1,9 @@
 import React from 'react';
-import './BlockFavorites.scss';
+import './BlockCandidates.scss';
 
 import ItemFavorite from '../ItemFavorite/ItemFavorite';
 
-const BlockFavorites = ({ switcher }) => {
+const BlockCandidates = ({ switcher }) => {
     const flag = true;
 
     const candidates = [
@@ -44,4 +44,4 @@ const BlockFavorites = ({ switcher }) => {
     );
 };
 
-export default BlockFavorites;
+export default BlockCandidates;

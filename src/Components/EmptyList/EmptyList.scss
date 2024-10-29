@@ -1,0 +1,38 @@
+.empty-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px auto;
+
+    .empty-list-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        width: 520px;
+
+        .empty-list-text {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+
+            .empty-list-nothing {
+                font-style: normal;
+                font-weight: 600;
+                font-size: 22px;
+                line-height: 27px;
+                color: #2E85EC;
+            }
+
+            .empty-list-vacancies-link {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 19px;
+                color: #282828;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -39,6 +39,23 @@
         font-size: 20px;
         font-weight: 600;
         color: styles.$blackForText;
+        position: relative;
+
+        .new-amount {
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 14px;
+          height: 14px;
+          font-size: 9px;
+          font-weight: 300;
+          background-color: styles.$lightBlue;
+          color: styles.$white;
+          border-radius: 50%;
+          top: -2px;
+          left: 98%;
+        }
       }
     }
   }

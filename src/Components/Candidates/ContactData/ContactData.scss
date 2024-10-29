@@ -34,10 +34,28 @@
         .button-contact {
             background-color: #3F7EE8;
             color: white;
+            transition-property: all;
+            transition-duration: 0.2s;
+
+            &:hover {
+                transform: scale(1.05);
+                color: #3F7EE8;
+                background-color: #FFFFFF;
+            }
         }
 
         .upload-cv {
             color: #3F7EE8;
+            transition-property: all;
+            transition-duration: 0.2s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            #file-upload {
+                display: none;
+            }
         }
     }
 }

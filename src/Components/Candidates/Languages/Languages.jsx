@@ -1,9 +1,9 @@
 import React from 'react';
 import './Languages.scss';
 
-import english from '../../../../assets/united-kingdom 1.png';
-import spanish from '../../../../assets/Mask group.png';
-import ukrainian from '../../../../assets/Mask group 2.png';
+import english from '../../../assets/united-kingdom 1.png';
+import spanish from '../../../assets/Mask group.png';
+import ukrainian from '../../../assets/Mask group 2.png';
 
 const Languages = () => {
     return (

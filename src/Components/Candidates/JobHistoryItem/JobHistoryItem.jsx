@@ -4,12 +4,12 @@ import './JobHistoryItem.scss';
 import JobExperience from '../JobExperience/JobExperience';
 
 const JobHistoryItem = ({ position, company, date }) => {
-    
     const [isOpen, setIsOpen] = useState(false);
 
-    const switcher = () => {
-        setIsOpen(!isOpen);
-    };
+    const styles = isOpen ? {
+        height: '400px',
+        marginBottom: '38px'
+    } : {};
 
     return (
         <div className="job-history-item">
@@ -26,20 +26,20 @@ const JobHistoryItem = ({ position, company, date }) => {
                         <span>{ date }</span>
                     </span>
                 </div>
-                <div className="job-history-button">
+                <div className="job-history-button" onClick={() => setIsOpen(!isOpen)}>
                     {
                         isOpen ?
-                        <svg onClick={switcher} width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.5452 11.0606C19.2639 11.3418 18.8824 11.4998 18.4847 11.4998C18.0869 11.4998 17.7055 11.3418 17.4242 11.0606L9.9992 3.63557L2.5742 11.0606C2.29129 11.3338 1.91239 11.485 1.51909 11.4816C1.1258 11.4782 0.749578 11.3204 0.471466 11.0423C0.193354 10.7642 0.0356022 10.388 0.0321846 9.99467C0.028767 9.60138 0.179958 9.22248 0.453196 8.93957L8.9387 0.454072C9.21999 0.172866 9.60145 0.0148926 9.9992 0.0148926C10.3969 0.0148926 10.7784 0.172866 11.0597 0.454072L19.5452 8.93957C19.8264 9.22086 19.9844 9.60233 19.9844 10.0001C19.9844 10.3978 19.8264 10.7793 19.5452 11.0606Z" fill="#3F7EE8"/>
                         </svg>
                         :
-                        <svg onClick={switcher} width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.454807 0.939428C0.736098 0.658221 1.11756 0.500248 1.51531 0.500248C1.91305 0.500248 2.29451 0.658222 2.57581 0.939429L10.0008 8.36443L17.4258 0.939431C17.7087 0.666194 18.0876 0.515003 18.4809 0.518421C18.8742 0.521838 19.2504 0.679592 19.5285 0.957703C19.8066 1.23582 19.9644 1.61203 19.9678 2.00533C19.9712 2.39863 19.82 2.77753 19.5468 3.06043L11.0613 11.5459C10.78 11.8271 10.3986 11.9851 10.0008 11.9851C9.60306 11.9851 9.2216 11.8271 8.9403 11.5459L0.454806 3.06043C0.1736 2.77914 0.0156267 2.39767 0.0156267 1.99993C0.0156268 1.60218 0.1736 1.22072 0.454807 0.939428Z" fill="#3F7EE8"/>
                         </svg>
                     }
                 </div>
             </div>
-            { isOpen ? <JobExperience/> : null }
+            <JobExperience style={styles} />
         </div>
     );
 };

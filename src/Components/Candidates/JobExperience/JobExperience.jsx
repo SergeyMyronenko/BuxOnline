@@ -1,11 +1,9 @@
 import React from "react";
 import './JobExperience.scss';
 
-const JobExperience = () => {
-    console.log('job experince');
-
+const JobExperience = ({ style }) => {
     return (
-        <div class="job-experience">
+        <div class="job-experience" style={style}>
             <p className="job-experience-text">
                 Start-up Project. It is a Management Employee Assistant
                 application which offers a solution for effective employee

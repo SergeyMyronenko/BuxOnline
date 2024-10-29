@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ProfileInfoEdit.scss";
 import SolidButton from "../../../../Components/Buttons/SolidButton/SolidButton";
 import { useNavigate } from "react-router-dom";
+import UploadPhoto from "../../../../Components/Icons/UploadPhoto";
 
 const fakeUser = {
   name: "Шевченко Олена",
@@ -21,7 +22,13 @@ const ProfileInfoEdit = () => {
 
   return (
     <div className="profile-info-edit-wrapper">
-      <div className="seeker-photo"></div>
+      <label className="seeker-photo" htmlFor="upload-photo">
+         <div className="seeker-photo-text-icon">
+            <UploadPhoto/>
+            <span>Завантажити фото</span>
+         </div>
+         <input type="file" id="upload-photo"/>
+      </label>
       <div className="seeker-data">
         <div className="seeker-info-wrapper">
           <div className="seeker-info">

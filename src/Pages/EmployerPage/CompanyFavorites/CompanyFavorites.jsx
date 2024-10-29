@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './CompanyFavorites.scss';
 
-import TitleFavorites from './TitleFavorites/TitleFavorites';
-import TitleProfile from './TitleProfile/TitleProfile';
-import BlockFavorites from './BlockFavorites/BlockFavorites';
-import DetailsCandidate from './DetailsCandidate/DetailsCandidate';
+import TitleProfile from '../../../Components/Candidates/TitleProfile/TitleProfile';
+import BlockFavorites from '../../../Components/Candidates/BlockCandidates/BlockCandidates';
+import DetailsCandidate from '../../../Components/Candidates/DetailsCandidate/DetailsCandidate';
+import TitleCandidates from '../../../Components/Candidates/TitleCandidates/TitleCandidates';
 
 const CompanyFavorites = () => {
  
@@ -19,7 +19,10 @@ const CompanyFavorites = () => {
     return (
         <div>
             <div className="my-div">
-                { name ? <TitleFavorites /> : <TitleProfile switcher={switcher} /> }
+                { 
+                    name ? <TitleCandidates textTitle="Обрані кандидати" /> : 
+                    <TitleProfile switcher={switcher} /> 
+                }
             </div>
             { name ? <BlockFavorites switcher={switcher} /> : <DetailsCandidate /> }
         </div>

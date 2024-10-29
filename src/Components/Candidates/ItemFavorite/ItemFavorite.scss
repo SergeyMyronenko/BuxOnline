@@ -104,16 +104,24 @@
                 width: 172px;
                 box-sizing: border-box;
                 padding: 0px 16px;
+                border: 1px solid #3F7EE8;
+                transition-property: all;
+                transition-duration: 0.2s;
 
                 &:hover {
                     cursor: pointer;
+                    background-color: transparent;
+                    transform: scale(1.05);
+                    
+                    .contact-text {
+                        color: #3F7EE8;
+                    }
                 }
 
                 @include flexProp(space-between, center);
 
                 .message-icon {
                     height: 25px;
-
                     display: flex;
                     @include flexProp(center, center);
                 }
@@ -138,6 +146,14 @@
                 
                 &:hover {
                     cursor: pointer;
+                }
+
+                svg {
+                    transition-duration: 0.2s;
+                    transition-property: all;
+                    &:hover { 
+                        transform: scale(1.1);
+                    }
                 }
             }
         }

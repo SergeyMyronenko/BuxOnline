@@ -1,9 +1,9 @@
 import React from 'react';
-import './TitleFavorites.scss';
+import './TitleCandidates.scss';
 
-const TitleFavorites = () => {
+const TitleCandidates = ({ textTitle }) => {
     return (
-        <span className="flex-wrap">
+        <span className="flex-wrapper">
             <span>
                 <svg
                     width="38"
@@ -20,10 +20,10 @@ const TitleFavorites = () => {
                     />
                 </svg>
             </span>
-            <h1>Ваші кандидати</h1>
+            <h1>{textTitle}</h1>
         </span>
     );
 };
 
-export default TitleFavorites;
+export default TitleCandidates;
 
