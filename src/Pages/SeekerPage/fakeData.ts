@@ -1,7 +1,7 @@
 import { IVacancy } from "./interfaces/types";
 
 const reviewsList: IVacancy[] = [
-  /*{
+  {
     position: "Frontend Developer",
     salary_min: 40000,
     salary_max: 70000,
@@ -39,11 +39,11 @@ const reviewsList: IVacancy[] = [
       { name: "Kubernetes" },
       { name: "CI/CD" },
     ],
-  },*/
+  },
 ];
 
 const invitationList: IVacancy[] = [
-  /*{
+  {
     position: "UI/UX Designer",
     salary_min: 30000,
     salary_max: 50000,
@@ -68,7 +68,7 @@ const invitationList: IVacancy[] = [
       { name: "Node.js" },
       { name: "PostgreSQL" },
     ],
-  },*/
+  },
 ];
 
 export { reviewsList, invitationList };

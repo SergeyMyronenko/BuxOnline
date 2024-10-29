@@ -38,7 +38,7 @@ const SeekerOffersPage = () => {
         <div className="reviews-list">
           {view === "review" &&
             (reviewsList.length === 0 ? (
-              <EmptyList/>
+              <EmptyList text="відгуків" />
             ) : (
               reviewsList?.map((resume, i) => (
                 <Card
@@ -54,7 +54,7 @@ const SeekerOffersPage = () => {
 
           {view === "invitation" &&
             (invitationList.length === 0 ? (
-              <EmptyList/>
+              <EmptyList text="запрошень"/>
             ) : (
               invitationList?.map((invitation, i) => (
                 <Card
