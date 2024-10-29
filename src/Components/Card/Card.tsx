@@ -40,7 +40,7 @@ const requestOptions = {
 
 const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
   const [position, setPosition] = useState("");
-  const [skillName, setSkillName] = useState([]);
+  const [skillName, setSkillName] = useState(cardInfo.skills);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -123,7 +123,7 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
         </div>
         {/* <h3 className="company">{cardInfo.title}</h3> */}
         <div className="card-title">
-          <h3 className="card-position">{position}</h3>
+          <h3 className="card-position">{cardInfo.position}</h3>
           <h3 className="card-salary">{`₴${cardInfo.salary_min}-${cardInfo.salary_max}`}</h3>
         </div>
       </div>
@@ -140,7 +140,7 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
             skillName.map((skill, i) => {
               return (
                 <li key={i}>
-                  <p className="skill">{skill}</p>
+                  <p className="skill">{skill.name}</p>
                 </li>
               );
             })}
@@ -163,12 +163,28 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
             {btnApply}
           </button>
         )}
-        <Link
-          to={`/BuxOnline/moderator/cabinet/${id}/edit/${cardInfo.id}`}
-          className="editIcon"
-        >
-          <img src={editIcon} alt="icon for edit vacancy" />
-        </Link>
+        {type === "seeker" && (
+          <div className="seeker-buttons-wrapper">
+            <div>
+              {btnDetail}
+            </div>
+            <button
+              className="button seeker-button"
+              onClick={() => handleApproveVacancy(cardInfo.id)}
+            >
+              {btnApply}
+            </button>
+          </div>
+        )}
+        {type !== "seeker" && (
+          <Link
+            to={`/BuxOnline/moderator/cabinet/${id}/edit/${cardInfo.id}`}
+            className="editIcon"
+          >
+            <img src={editIcon} alt="icon for edit vacancy" />
+          </Link>
+        )}
+        
       </div>
     </div>
   );

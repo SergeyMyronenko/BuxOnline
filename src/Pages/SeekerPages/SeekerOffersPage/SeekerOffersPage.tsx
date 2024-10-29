@@ -4,6 +4,7 @@ import WavyLine from "../../../Components/Icons/WavyLine";
 import { reviewsList, invitationList } from "../../SeekerPage/fakeData";
 import Card from "../../../Components/Card/Card";
 import EmptyList from "../../../Components/EmptyList/EmptyList";
+import Pagination from "../../../Components/Pagination/Pagination";
 
 const SeekerOffersPage = () => {
   const [view, setView] = useState<"review" | "invitation">("review");
@@ -59,7 +60,7 @@ const SeekerOffersPage = () => {
               invitationList?.map((invitation, i) => (
                 <Card
                   key={i}
-                  type="seeker"
+                  type={"seeker"}
                   cardInfo={invitation}
                   btnDetail={"Надіслано 23 червня 2024 15:16"}
                   btnApply={"Переглянуто 5 днів тому"}
@@ -67,7 +68,15 @@ const SeekerOffersPage = () => {
                 />
               ))
             ))}
+
+            
         </div>
+        
+        <Pagination
+            vacancyPerPage={6}
+            totalVacancy={36}
+            paginateNum={5}
+            currentPage={5}/>
       </div>
     </div>
   );

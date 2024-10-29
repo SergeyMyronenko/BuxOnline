@@ -103,5 +103,18 @@
       border: none;
       background-color: transparent;
     }
+    .seeker-buttons-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+
+      .seeker-button {
+          background: rgba(46, 133, 236, 0.3);
+          border-radius: 12px;
+          color: white;
+          border: none;
+      }
+    }
   }
 }
