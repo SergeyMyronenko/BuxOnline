@@ -34,6 +34,16 @@ const SeekerOffersPage = () => {
     setPage(number);
   };
 
+  const getPartOfList = (number: number) => {
+    const n = (number - 1) * 6;
+    if (view === "review") {
+      return reviewsList.slice(n, n + 6);
+    }
+    if (view === "invitation") {
+      return invitationList.slice(n, n + 6);
+    }
+  };
+
   return (
     <div className="reviews-page-wrapper">
       <div className="reviews-wrapper">
@@ -72,7 +82,7 @@ const SeekerOffersPage = () => {
             (reviewsList.length === 0 ? (
               <EmptyList text="відгуків" />
             ) : (
-              reviewsList?.map((resume, i) => (
+              getPartOfList(page)?.map((resume, i) => (
                 <Card
                   key={i}
                   type="seeker"
@@ -88,7 +98,7 @@ const SeekerOffersPage = () => {
             (invitationList.length === 0 ? (
               <EmptyList text="запрошень"/>
             ) : (
-              invitationList?.map((invitation, i) => (
+              getPartOfList(page)?.map((invitation, i) => (
                 <Card
                   key={i}
                   type={"seeker"}
