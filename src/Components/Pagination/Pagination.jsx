@@ -27,7 +27,7 @@ const Pagination = ({
         onClick={() => switchBack()}
       />
       <ul className="pagination-list">
-        {pageNumbers.map((number) => {
+        {pageNumbers.map((number) => { 
           return (
             <li
               className={clsx(

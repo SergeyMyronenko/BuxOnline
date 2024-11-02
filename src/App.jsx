@@ -17,6 +17,7 @@ import SeekerOffersPage from "./Pages/SeekerPages/SeekerOffersPage/SeekerOffersP
 import EmptyOutlet from "./Pages/EmptyOutlet/EmptyOutlet.jsx";
 import EmptyOutletNoFooter from "./Pages/EmptyOutlet/EmptyOutletNoFooter.jsx";
 import CompanyEditInfo from "./Pages/EmployerPage/CompanyEditInfo/CompanyEditInfo.tsx";
+import SeekerMessages from "./Pages/SeekerPages/SeekerMessages/SeekerMessages.jsx";
 
 import "@mantine/core/styles.css";
 import "./App.scss";
@@ -86,7 +87,7 @@ function App() {
           {/* all the other lines below are different paths and pages inside the cabinet */}
           <Route path="resumes" element={<SeekerResumePage />} />
           <Route path="offers" element={<SeekerOffersPage />} />
-          <Route path="messages" element={<h1>Seeker Messages</h1>} />
+          <Route path="messages" element={<SeekerMessages />} />
           <Route path="favorites" element={<h1>Seeker Favorites</h1>} />
         </Route>
 
