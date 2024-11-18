@@ -18,6 +18,7 @@ import EmptyOutlet from "./Pages/EmptyOutlet/EmptyOutlet.jsx";
 import EmptyOutletNoFooter from "./Pages/EmptyOutlet/EmptyOutletNoFooter.jsx";
 import CompanyEditInfo from "./Pages/EmployerPage/CompanyEditInfo/CompanyEditInfo.tsx";
 import SeekerMessages from "./Pages/SeekerPages/SeekerMessages/SeekerMessages.jsx";
+import SeekerFavoritesPage from "./Pages/SeekerPages/SeekerFavoritesPage/SeekerFavoritesPage.jsx";
 
 import "@mantine/core/styles.css";
 import "./App.scss";
@@ -88,7 +89,7 @@ function App() {
           <Route path="resumes" element={<SeekerResumePage />} />
           <Route path="offers" element={<SeekerOffersPage />} />
           <Route path="messages" element={<SeekerMessages />} />
-          <Route path="favorites" element={<h1>Seeker Favorites</h1>} />
+          <Route path="favorites" element={<SeekerFavoritesPage />} />
         </Route>
 
         {/* These are all the routes and pages related to moderator cabinet */}
