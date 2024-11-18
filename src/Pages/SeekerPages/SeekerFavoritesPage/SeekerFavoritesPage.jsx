@@ -4,7 +4,7 @@ import './SeekerFavoritesPage.scss';
 import WavyLine from '../../../Components/Icons/WavyLine';
 import Card from '../../../Components/Card/Card';
 import Pagination from '../../../Components/Pagination/Pagination';
-import {favoritesList} from './fakeData';
+import { favoritesList } from './fakeData';
 
 const SeekerFavoritesPage = () => {
     const list = favoritesList.map((item) => {
