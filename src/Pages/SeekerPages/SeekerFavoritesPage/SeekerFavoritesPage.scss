@@ -11,6 +11,7 @@
     .seeker-favotites-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 40px 40px;
+        column-gap: 40px;
+        row-gap: 40px;
     }
 }

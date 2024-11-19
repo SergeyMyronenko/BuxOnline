@@ -12,9 +12,9 @@ const SeekerFavoritesPage = () => {
             <Card 
                 cardInfo={item}
                 btnDetail={''}
-                btnApply={''}
-                type={''}
-                width={''}
+                btnApply={'Надіслати резюме'}
+                type={'seeker-vacancies'}
+                width={'100%'}
                 user={''}
                 skills={''}
             />

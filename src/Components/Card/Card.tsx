@@ -120,6 +120,11 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
               fill="#282828"
             />
           </svg>
+          {type === "seeker-vacancies" && (
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.5007 5.7607C12.5143 3.08695 9.17019 2.71237 6.45898 3.95107C3.59923 5.26212 1.61523 8.30012 1.61523 11.8031C1.61523 15.2454 3.04898 17.8727 4.93094 19.991C6.43703 21.687 8.28023 23.1065 9.90903 24.3594C10.2793 24.6436 10.6349 24.92 10.9759 25.1887C11.6386 25.7105 12.349 26.2659 13.0684 26.687C13.7879 27.1081 14.6094 27.4491 15.5007 27.4491C16.3919 27.4491 17.2134 27.1068 17.9329 26.687C18.6536 26.2659 19.3627 25.7105 20.0254 25.1887C20.3664 24.92 20.722 24.6436 21.0923 24.3594C22.7198 23.1065 24.5643 21.6857 26.0704 19.991C27.9523 17.8727 29.3861 15.2454 29.3861 11.8031C29.3861 8.30012 27.4034 5.26212 24.5423 3.95366C21.8311 2.71366 18.487 3.08824 15.5007 5.7607Z" fill="#2E85EC"/>
+            </svg>
+          )}
         </div>
         {/* <h3 className="company">{cardInfo.title}</h3> */}
         <div className="card-title">
@@ -176,7 +181,15 @@ const Card = ({ cardInfo, btnDetail, btnApply, type, width, user, skills }) => {
             </button>
           </div>
         )}
-        {type !== "seeker" && (
+        {type === "seeker-vacancies" && (
+          <button
+            className="button seeker-vacancies"
+            onClick={() => handleApproveVacancy(cardInfo.id)}
+          >
+            {btnApply}
+          </button>
+        )}
+        {(type !== "seeker" && type !== "seeker-vacancies") && (
           <Link
             to={`/BuxOnline/moderator/cabinet/${id}/edit/${cardInfo.id}`}
             className="editIcon"
