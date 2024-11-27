@@ -11,6 +11,11 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    .logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .card-title {
       display: flex;
       flex-direction: row;
@@ -102,6 +107,24 @@
       height: 35px;
       border: none;
       background-color: transparent;
+    }
+    .seeker-vacancies {
+      background: rgb(46, 133, 236);
+      border-radius: 12px;
+      color: white;
+      border: none;
+    }
+    .seeker-buttons-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      .seeker-button {
+          background: rgba(46, 133, 236, 0.3);
+          border-radius: 12px;
+          color: white;
+          border: none;
+      }
     }
   }
 }
