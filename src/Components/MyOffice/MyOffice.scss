@@ -52,11 +52,13 @@
     margin: 0 auto;
     gap: 20px;
     align-items: flex-start;
+
     .sidebar {
       width: 246px;
       border-radius: 12px;
       padding: 20px;
       background-color: styles.$grayForFill;
+      margin-bottom: 20px;
       .input-box {
         margin-top: 16px;
       }

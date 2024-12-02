@@ -237,6 +237,7 @@ const EditDetailVacancy = ({ role }) => {
                     setIsOpenLang(false);
                   }}
                 >
+                  <option value="">Оберіть мову</option>
                   <option value="english">Англійська</option>
                   <option value="ukrainian">Українська</option>
                 </select>
@@ -267,6 +268,7 @@ const EditDetailVacancy = ({ role }) => {
                     setIsOpenLevel(false);
                   }}
                 >
+                  <option value="">Оберіть рівень</option>
                   <option value="low">Початковий</option>
                   <option value="medium">Середній</option>
                   <option value="hight">Високий</option>

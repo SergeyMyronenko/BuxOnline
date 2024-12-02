@@ -99,9 +99,6 @@ function App() {
           <Route index element={<AdminPage />} />
           {/* all the other lines are different paths and pages inside the cabinet */}
           <Route path="resumes/:vacancyId" element={<VacancyDetailsPage />} />
-          {/* <Route path="offers" element={<h1>Seeker offers</h1>} />
-          <Route path="messages" element={<h1>Seeker Messages</h1>} />
-          <Route path="favorites" element={<h1>Seeker Favorites</h1>} /> */}
           <Route path="edit/:vacancyId" element={<EditVacancyPage />} />
         </Route>
 
